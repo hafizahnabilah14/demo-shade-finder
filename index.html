@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIDAYU - Puskesmas Dirgahayu</title>
+    <!-- Memanggil Google Fonts Montserrat & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
@@ -26,37 +28,57 @@
             scroll-behavior: smooth;
         }
 
-        /* Header dengan 2 Logo */
+        /* Header dengan Latar Belakang Foto Puskesmas */
         header { 
-            background: linear-gradient(rgba(0,121,107,0.92), rgba(0,121,107,0.92)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1350&q=80');
+            /* Ganti background_puskesmas.jpeg dengan nama file foto asli yang akan kamu upload */
+            background: linear-gradient(rgba(0,121,107,0.85), rgba(0,121,107,0.85)), url('background_puskesmas.jpeg');
             background-size: cover;
             background-position: center;
             color: var(--white); 
-            padding: 40px 20px; 
+            padding: 50px 20px; 
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            display: flex;
+            justify-content: center;
         }
 
         .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
+            max-width: 900px; /* Dipersempit agar logo lebih dekat ke judul */
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Membuat logo di kiri dan kanan */
-            gap: 20px;
+            justify-content: center;
+            gap: 30px; /* Mengatur kerapatan logo dengan nama SIDAYU */
         }
 
         .logo-img {
-            height: 90px; /* Ukuran logo */
+            height: 100px; 
             width: auto;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
-            border-radius: 8px; /* Sedikit lengkungan agar rapi */
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
         }
 
-        .title-area { text-align: center; flex: 1; }
-        .title-area h1 { margin: 0; font-size: 3em; font-weight: 800; letter-spacing: 2px; }
-        .title-area p { margin: 5px 0 0; font-size: 1.1em; opacity: 0.9; }
+        .title-area { text-align: center; }
 
-        /* Navigasi */
+        /* Font SIDAYU: Tegas & Shadow */
+        .title-area h1 { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4em; 
+            font-weight: 800; 
+            letter-spacing: 4px; 
+            text-transform: uppercase;
+            /* Efek Shadow Tegas */
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2), 
+                         8px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-area p { 
+            margin: 5px 0 0; 
+            font-size: 1.1em; 
+            font-weight: 600;
+            opacity: 0.95; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
         nav { 
             background: var(--white); 
             display: flex; 
@@ -83,7 +105,6 @@
 
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
-        /* Visi Misi Section */
         .card { 
             background: var(--white); 
             padding: 30px; 
@@ -111,12 +132,6 @@
             gap: 10px;
         }
 
-        .pillar-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 25px;
-        }
-
         .btn-action { 
             background: linear-gradient(45deg, var(--primary), var(--primary-light));
             color: var(--white); 
@@ -130,20 +145,10 @@
             margin-top: 15px;
         }
 
-        .motto-tag {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .header-container { flex-direction: column; }
-            .logo-img { height: 60px; }
-            .title-area h1 { font-size: 2em; }
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            .title-area h1 { font-size: 2.5em; }
+            .logo-img { height: 70px; }
         }
 
         footer { text-align: center; padding: 40px; color: var(--primary); font-size: 0.9em; }
@@ -153,15 +158,15 @@
 
 <header class="animate__animated animate__fadeIn">
     <div class="header-container">
-        <!-- Logo Kiri: Puskesmas -->
-        <img src="logo_puskesmas.png" alt="Logo Puskesmas" class="logo-img">
+        <!-- Logo Kiri -->
+        <img src="logo_puskesmas.jpeg" alt="Logo Puskesmas" class="logo-img">
         
         <div class="title-area">
             <h1>SIDAYU</h1>
             <p>Sistem Informasi Digital & Layanan Terpadu Puskesmas Dirgahayu</p>
         </div>
 
-        <!-- Logo Kanan: Kabupaten -->
+        <!-- Logo Kanan -->
         <img src="logo_kabupaten.png" alt="Logo Kabupaten" class="logo-img">
     </div>
 </header>
@@ -173,14 +178,11 @@
 </nav>
 
 <div class="container">
-    
     <section id="visi-misi" class="card animate__animated animate__zoomIn">
-        <div class="motto-tag">MOTTO: SERASI & TELITI</div>
         <h3 style="color: var(--primary);"><i class="fas fa-star"></i> Visi & Misi</h3>
-        <p style="font-size: 1.1em; font-weight: bold; color: var(--primary); margin: 10px 0;">
+        <p style="font-size: 1.1em; font-weight: bold; color: var(--primary);">
             “MEWUJUDKAN MASYARAKAT SEHAT KECAMATAN PULAU LAUT UTARA”
         </p>
-        
         <div class="mission-section">
             <div class="mission-card"><i class="fas fa-shield-virus"></i> Pencegahan Penyakit</div>
             <div class="mission-card"><i class="fas fa-hands-helping"></i> Kemandirian PHBS</div>
@@ -190,31 +192,27 @@
         </div>
     </section>
 
-    <div class="pillar-grid">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
         <div class="card animate__animated animate__fadeInLeft" id="profil">
             <h3><i class="fas fa-stethoscope"></i> E-Branding</h3>
             <p>Informasi SDM, Jadwal Praktik, dan Tur Virtual fasilitas Puskesmas Dirgahayu.</p>
             <button class="btn-action">Eksplorasi</button>
         </div>
-
         <div class="card animate__animated animate__fadeInUp" id="skrining">
-            <h3><i class="fas fa-file-medical-alt"></i> Skrining Mandiri</h3>
+            <h3><i class="fas fa-file-medical-alt"></i> Skrining AI</h3>
             <p>Self-assessment untuk deteksi dini TBC, HIV, dan Hepatitis secara mandiri.</p>
             <button class="btn-action">Mulai Cek</button>
         </div>
-
         <div class="card animate__animated animate__fadeInRight" id="edukasi">
             <h3><i class="fas fa-mobile-alt"></i> Hub Edukasi</h3>
             <p>Kuis kesehatan berpoin dan library video kreatif dari tenaga medis kami.</p>
             <button class="btn-action">Buka Library</button>
         </div>
     </div>
-
 </div>
 
 <footer>
     <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu - Kotabaru</p>
-    <p style="opacity: 0.6; font-size: 0.8em;">Project PKL Hafizah Nabilah - UNISKA BJB</p>
 </footer>
 
 </body>
