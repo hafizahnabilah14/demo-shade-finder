@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Edukasi – SIDAYU Puskesmas Dirgahayu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary:       #00796b;
+            --primary-dark:  #004d40;
+            --primary-light: #e0f2f1;
+            --secondary:     #ffb74d;
+            --secondary-dark:#e65100;
+            --white:         #ffffff;
+            --bg:            #f0f5f4;
+            --bg2:           #e8efed;
+            --text:          #1a2e2b;
+            --text-muted:    #5a7470;
+            --border:        #c5d8d5;
+            --card-shadow:   0 8px 32px rgba(0,100,80,0.10);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* ── HEADER ── */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em; color: #fff;
+            font-weight: 900; letter-spacing: 2px; line-height: 1;
+        }
+        .brand p { font-size: 0.63em; color: rgba(255,255,255,0.75); margin-top: 2px; }
+        .back-btn {
+            display: flex; align-items: center; gap: 7px;
+            background: rgba(255,255,255,0.15);
+            color: #fff; text-decoration: none;
+            padding: 8px 18px; border-radius: 50px;
+            font-size: 0.82em; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.25);
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.28); }
+
+        /* ── HERO BANNER ── */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #00897b 60%, #26a69a 100%);
+            padding: 50px 28px 60px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px; padding: 6px 18px;
+            font-size: 0.78em; font-weight: 600;
+            letter-spacing: 1px; margin-bottom: 18px;
+        }
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4em; font-weight: 900;
+            letter-spacing: 1px; line-height: 1.1;
+            margin-bottom: 14px;
+        }
+        .hero p { font-size: 0.95em; opacity: 0.88; max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+        /* ── FILTER TABS ── */
+        .filter-bar {
+            display: flex; justify-content: center;
+            gap: 10px; flex-wrap: wrap;
+            padding: 30px 20px 10px;
+        }
+        .filter-btn {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 22px; border-radius: 50px;
+            border: 2px solid var(--border);
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.84em; font-weight: 600;
+            color: var(--text-muted); cursor: pointer;
+            transition: all 0.22s;
+        }
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active {
+            background: var(--primary); border-color: var(--primary);
+            color: #fff; box-shadow: 0 4px 14px rgba(0,121,107,0.3);
+        }
+
+        /* ── SECTION TITLE ── */
+        .section-wrap { max-width: 1200px; margin: 0 auto; padding: 10px 24px 60px; }
+        .section-head {
+            display: flex; align-items: center; gap: 14px;
+            margin: 36px 0 20px;
+        }
+        .section-head .s-icon {
+            width: 46px; height: 46px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3em; flex-shrink: 0;
+        }
+        .s-icon.yt  { background: #ffebee; color: #c62828; }
+        .s-icon.tt  { background: #fce4ec; color: #880e4f; }
+        .s-icon.po  { background: var(--primary-light); color: var(--primary-dark); }
+        .section-head h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em; font-weight: 900; letter-spacing: 0.5px;
+        }
+        .section-head p { font-size: 0.8em; color: var(--text-muted); margin-top: 3px; }
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 4px; margin-bottom: 22px;
+        }
+
+        /* ── VIDEO GRID ── */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 22px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+            border: 1px solid var(--border);
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(0,100,80,0.16);
+        }
+
+        .video-embed-wrap {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #111;
+        }
+        .video-embed-wrap iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* TikTok embed override – taller ratio */
+        .video-embed-wrap.tiktok-wrap {
+            padding-bottom: 177%; /* 9:16 portrait */
+            max-height: 520px;
+        }
+
+        .video-info {
+            padding: 16px 18px 18px;
+        }
+        .video-tag {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 0.7em; font-weight: 700;
+            padding: 4px 12px; border-radius: 50px;
+            margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-yt  { background: #ffebee; color: #c62828; }
+        .tag-tt  { background: #fce4ec; color: #ad1457; }
+        .tag-tbc { background: #ffebee; color: #b71c1c; }
+        .tag-hiv { background: #f3e5f5; color: #6a1b9a; }
+        .tag-hep { background: #fff3e0; color: #e65100; }
+        .tag-umum{ background: var(--primary-light); color: var(--primary-dark); }
+
+        .video-info h4 {
+            font-size: 0.92em; font-weight: 700;
+            line-height: 1.45; color: var(--text); margin-bottom: 7px;
+        }
+        .video-info p {
+            font-size: 0.78em; color: var(--text-muted);
+            line-height: 1.55;
+        }
+        .video-meta {
+            display: flex; align-items: center; gap: 10px;
+            margin-top: 12px; padding-top: 12px;
+            border-top: 1px solid var(--border);
+            font-size: 0.74em; color: var(--text-muted);
+        }
+        .video-meta i { color: var(--primary); }
+
+        /* ── TIKTOK 2-col grid ── */
+        .tiktok-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        /* ── POSTER GRID ── */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .poster-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+        }
+        .poster-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(0,100,80,0.16);
+        }
+
+        /* Poster dibuat pakai HTML/CSS */
+        .poster-visual {
+            width: 100%;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 22px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .poster-visual::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='20' cy='20' r='15'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .poster-visual .p-icon {
+            font-size: 3.5em; margin-bottom: 12px; position: relative; z-index: 1;
+        }
+        .poster-visual h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em; font-weight: 900;
+            color: #fff; letter-spacing: 1px;
+            line-height: 1.2; margin-bottom: 8px;
+            position: relative; z-index: 1;
+        }
+        .poster-visual p {
+            font-size: 0.78em; color: rgba(255,255,255,0.88);
+            line-height: 1.5; position: relative; z-index: 1;
+        }
+        .poster-visual.tbc-bg  { background: linear-gradient(135deg, #b71c1c, #e53935); }
+        .poster-visual.hiv-bg  { background: linear-gradient(135deg, #4a148c, #7b1fa2); }
+        .poster-visual.hep-bg  { background: linear-gradient(135deg, #bf360c, #e64a19); }
+        .poster-visual.cuci-bg { background: linear-gradient(135deg, #00695c, #00897b); }
+        .poster-visual.gizi-bg { background: linear-gradient(135deg, #2e7d32, #43a047); }
+        .poster-visual.ibu-bg  { background: linear-gradient(135deg, #ad1457, #d81b60); }
+
+        .poster-body-info {
+            padding: 16px 18px 18px;
+        }
+        .poster-body-info h4 {
+            font-size: 0.88em; font-weight: 700;
+            color: var(--text); margin-bottom: 6px;
+        }
+        .poster-body-info p {
+            font-size: 0.76em; color: var(--text-muted); line-height: 1.55;
+        }
+        .poster-actions {
+            display: flex; gap: 8px; margin-top: 13px; flex-wrap: wrap;
+        }
+        .p-btn {
+            flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 9px 12px; border-radius: 10px;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.76em; font-weight: 600;
+            color: var(--text); cursor: pointer;
+            transition: all 0.2s; text-decoration: none;
+        }
+        .p-btn:hover { background: var(--bg); }
+        .p-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .p-btn.primary:hover { background: var(--primary-dark); }
+
+        /* ── MODAL POSTER DETAIL ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.65); z-index: 2000;
+            align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: var(--white); border-radius: 22px;
+            max-width: 540px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            animation: popIn 0.3s ease;
+        }
+        @keyframes popIn {
+            from { transform: scale(0.92); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+        .modal-close {
+            display: flex; justify-content: flex-end;
+            padding: 16px 18px 0;
+        }
+        .modal-close button {
+            background: var(--bg); border: none; border-radius: 50%;
+            width: 36px; height: 36px; cursor: pointer;
+            font-size: 1em; color: var(--text-muted);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close button:hover { background: var(--bg2); }
+        .modal-poster-visual {
+            margin: 0 18px 0;
+            border-radius: 16px;
+            min-height: 220px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 30px 24px;
+            position: relative; overflow: hidden;
+        }
+        .modal-poster-visual::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='20' cy='20' r='15'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .modal-poster-visual .mp-icon { font-size: 4em; margin-bottom: 12px; position: relative; z-index:1; }
+        .modal-poster-visual h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6em; font-weight: 900; color: #fff;
+            position: relative; z-index:1; line-height: 1.15;
+        }
+        .modal-content { padding: 22px 24px 28px; }
+        .modal-content .mc-title {
+            font-size: 0.7em; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-muted); margin: 16px 0 8px;
+        }
+        .modal-content ul {
+            list-style: none; padding: 0;
+            display: flex; flex-direction: column; gap: 7px;
+        }
+        .modal-content ul li {
+            display: flex; gap: 10px; font-size: 0.84em;
+            line-height: 1.5; align-items: flex-start;
+        }
+        .modal-content ul li::before {
+            content: '✓'; font-weight: 700; flex-shrink: 0;
+            width: 20px; height: 20px; border-radius: 50%;
+            background: var(--primary-light); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75em; margin-top: 1px;
+        }
+        .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+        .m-chip {
+            padding: 5px 13px; border-radius: 50px;
+            background: var(--primary-light); color: var(--primary-dark);
+            font-size: 0.76em; font-weight: 600;
+        }
+        .modal-dl-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 13px; margin-top: 20px;
+            background: var(--primary); color: #fff;
+            border: none; border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88em; font-weight: 600;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .modal-dl-btn:hover { background: var(--primary-dark); }
+
+        /* ── NOTICE BOX ── */
+        .notice-box {
+            background: #fff8e1; border-left: 4px solid var(--secondary);
+            border-radius: 0 14px 14px 0;
+            padding: 16px 18px; margin-bottom: 20px;
+            font-size: 0.82em; color: #5d4037; line-height: 1.6;
+        }
+        .notice-box strong { color: var(--secondary-dark); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 680px) {
+            .hero h2 { font-size: 1.7em; }
+            .video-grid { grid-template-columns: 1fr; }
+            .tiktok-grid { grid-template-columns: 1fr; }
+            .poster-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── ANIMATE ── */
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp 0.5s ease forwards;
+        }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+
+        /* ── PRINT ── */
+        @media print {
+            .site-header, .filter-bar, .modal-overlay { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <div>
+            <h1>SIDAYU</h1>
+            <p>Puskesmas Dirgahayu</p>
+        </div>
+    </a>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+    </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">
+        <i class="fas fa-graduation-cap"></i> HUB EDUKASI KESEHATAN
+    </div>
+    <h2>Belajar Sehat,<br>Hidup Lebih Baik</h2>
+    <p>Kumpulan video edukasi dari YouTube & TikTok serta poster kesehatan yang bisa kamu pelajari dan bagikan.</p>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+    <button class="filter-btn active" onclick="filterContent('semua', this)">
+        <i class="fas fa-th-large"></i> Semua
+    </button>
+    <button class="filter-btn" onclick="filterContent('tbc', this)">
+        <i class="fas fa-lungs"></i> TBC
+    </button>
+    <button class="filter-btn" onclick="filterContent('hiv', this)">
+        <i class="fas fa-shield-virus"></i> HIV
+    </button>
+    <button class="filter-btn" onclick="filterContent('hepatitis', this)">
+        <i class="fas fa-heartbeat"></i> Hepatitis
+    </button>
+    <button class="filter-btn" onclick="filterContent('umum', this)">
+        <i class="fas fa-heart"></i> Kesehatan Umum
+    </button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="section-wrap">
+
+    <!-- ══ VIDEO YOUTUBE ══ -->
+    <div id="section-youtube" class="content-section" data-cats="semua tbc hiv hepatitis umum">
+        <div class="section-head">
+            <div class="s-icon yt"><i class="fab fa-youtube"></i></div>
+            <div>
+                <h3>Video Edukasi YouTube</h3>
+                <p>Tonton langsung video pilihan dari kanal kesehatan terpercaya</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="notice-box">
+            <i class="fas fa-info-circle"></i>
+            <strong> Cara update video:</strong> Buka halaman YouTube → klik kanan video → <em>Salin ID Video</em> (bagian setelah <code>?v=</code>) → ganti nilai <code>src</code> pada iframe di kode HTML ini.
+        </div>
+
+        <div class="video-grid">
+
+            <!-- VIDEO 1: TBC -->
+            <div class="video-card fade-in delay-1" data-cat="tbc">
+                <div class="video-embed-wrap">
+                    <!--
+                        CARA GANTI VIDEO:
+                        Ganti "NhLBEf0MWHA" dengan ID video YouTube yang kamu inginkan.
+                        ID ada di URL: youtube.com/watch?v=NhLBEf0MWHA
+                        Contoh video TBC resmi Kemenkes RI
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/NhLBEf0MWHA?rel=0&modestbranding=1"
+                        title="Mengenal Penyakit TBC"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-tbc">TBC</span>
+                    </div>
+                    <h4>Mengenal Penyakit Tuberkulosis (TBC) — Gejala, Penularan & Pengobatan</h4>
+                    <p>Penjelasan lengkap tentang TBC mulai dari gejala, cara penularan, hingga pentingnya menyelesaikan pengobatan OAT selama 6 bulan.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> Kemenkes RI
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±8 menit
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 2: HIV -->
+            <div class="video-card fade-in delay-2" data-cat="hiv">
+                <div class="video-embed-wrap">
+                    <!--
+                        Ganti ID: "qmFeg0oi7XE" → ID video HIV/AIDS pilihan kamu
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/qmFeg0oi7XE?rel=0&modestbranding=1"
+                        title="Edukasi HIV AIDS"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-hiv">HIV</span>
+                    </div>
+                    <h4>HIV & AIDS: Fakta, Mitos, dan Cara Pencegahan yang Benar</h4>
+                    <p>Luruskan mitos tentang HIV. Pelajari cara penularan yang benar, apa yang harus dilakukan setelah paparan, dan bagaimana ARV bekerja.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> Kemenkes RI
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±6 menit
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 3: Hepatitis -->
+            <div class="video-card fade-in delay-3" data-cat="hepatitis">
+                <div class="video-embed-wrap">
+                    <!--
+                        Ganti ID: "Rb_5hGWCLTs" → ID video Hepatitis pilihan kamu
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/Rb_5hGWCLTs?rel=0&modestbranding=1"
+                        title="Edukasi Hepatitis B"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-hep">Hepatitis</span>
+                    </div>
+                    <h4>Hepatitis B & C: Bahaya Diam-Diam yang Mengancam Hati</h4>
+                    <p>Hepatitis B dan C sering tanpa gejala bertahun-tahun. Pelajari cara deteksi dini, vaksinasi, dan pengobatan yang tersedia di Puskesmas.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> PDDI Indonesia
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±10 menit
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 4: Cuci Tangan -->
+            <div class="video-card fade-in delay-4" data-cat="umum">
+                <div class="video-embed-wrap">
+                    <!--
+                        Ganti ID: "3PmVJQUCm4E" → ID video cuci tangan / PHBS pilihan kamu
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/3PmVJQUCm4E?rel=0&modestbranding=1"
+                        title="Cara Cuci Tangan yang Benar"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-umum">Kesehatan Umum</span>
+                    </div>
+                    <h4>6 Langkah Cuci Tangan yang Benar — WHO Hand Hygiene</h4>
+                    <p>Mencuci tangan adalah salah satu cara paling efektif mencegah penyebaran infeksi. Pelajari 6 langkah standar WHO yang benar.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> WHO Indonesia
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±3 menit
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 5: Gizi Seimbang -->
+            <div class="video-card fade-in delay-5" data-cat="umum">
+                <div class="video-embed-wrap">
+                    <!--
+                        Ganti ID: "tqJq5XKJORI" → ID video gizi seimbang pilihan kamu
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/tqJq5XKJORI?rel=0&modestbranding=1"
+                        title="Gizi Seimbang"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-umum">Kesehatan Umum</span>
+                    </div>
+                    <h4>Panduan Gizi Seimbang untuk Imun Tubuh yang Kuat</h4>
+                    <p>Pola makan bergizi seimbang adalah kunci utama imunitas tubuh. Pelajari porsi makan yang tepat sesuai pedoman Kemenkes RI.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> Dirjen Gizi Kemenkes
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±7 menit
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 6: Ibu & Anak -->
+            <div class="video-card fade-in delay-6" data-cat="umum">
+                <div class="video-embed-wrap">
+                    <!--
+                        Ganti ID: "2U4r9IQBWMU" → ID video KIA pilihan kamu
+                    -->
+                    <iframe
+                        src="https://www.youtube.com/embed/2U4r9IQBWMU?rel=0&modestbranding=1"
+                        title="Kesehatan Ibu dan Anak"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-yt"><i class="fab fa-youtube"></i> YouTube</span>
+                        <span class="video-tag tag-umum">Kesehatan Umum</span>
+                    </div>
+                    <h4>Kesehatan Ibu & Anak: Pentingnya ANC dan Imunisasi Dasar</h4>
+                    <p>Panduan pemeriksaan kehamilan (ANC) dan jadwal imunisasi dasar lengkap untuk bayi yang wajib diketahui setiap ibu.</p>
+                    <div class="video-meta">
+                        <i class="fas fa-user-md"></i> Puskesmas Dirgahayu
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±12 menit
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /video-grid -->
+    </div><!-- /section-youtube -->
+
+    <!-- ══ VIDEO TIKTOK ══ -->
+    <div id="section-tiktok" class="content-section" data-cats="semua tbc hiv hepatitis umum">
+        <div class="section-head" style="margin-top:44px">
+            <div class="s-icon tt"><i class="fab fa-tiktok"></i></div>
+            <div>
+                <h3>Video Edukasi TikTok</h3>
+                <p>Konten pendek informatif dari tenaga kesehatan di TikTok</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="notice-box">
+            <i class="fas fa-info-circle"></i>
+            <strong> Cara embed TikTok:</strong> Buka video TikTok di browser → klik <em>Bagikan → Sematkan</em> → salin kode <code>iframe</code> yang diberikan → tempel di tempat iframe di bawah ini.
+            Atau gunakan URL format: <code>https://www.tiktok.com/embed/v2/ID_VIDEO</code>
+        </div>
+
+        <div class="tiktok-grid">
+
+            <!-- TIKTOK 1 -->
+            <div class="video-card fade-in delay-1" data-cat="tbc">
+                <div class="video-embed-wrap tiktok-wrap">
+                    <!--
+                        CARA GANTI TIKTOK:
+                        1. Buka video TikTok di browser desktop
+                        2. Klik "Bagikan" → "Sematkan"
+                        3. Salin src dari iframe yang muncul
+                        4. Tempel di sini menggantikan src di bawah
+
+                        Format URL embed TikTok:
+                        https://www.tiktok.com/embed/v2/[ID_VIDEO]
+
+                        Contoh: video TBC dari @kemenkes_ri
+                        Ganti "7318766543210987521" dengan ID video TikTok kamu
+                    -->
+                    <iframe
+                        src="https://www.tiktok.com/embed/v2/7318766543210987521"
+                        title="TikTok TBC Edukasi"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-tt"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <span class="video-tag tag-tbc">TBC</span>
+                    </div>
+                    <h4>3 Gejala TBC yang Sering Diabaikan — Wajib Tahu!</h4>
+                    <p>Konten edukasi singkat tentang gejala awal TBC yang perlu diwaspadai.</p>
+                    <div class="video-meta">
+                        <i class="fab fa-tiktok"></i> @kemenkes_ri
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±60 detik
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIKTOK 2 -->
+            <div class="video-card fade-in delay-2" data-cat="hiv">
+                <div class="video-embed-wrap tiktok-wrap">
+                    <!--
+                        Ganti ID: "7298123456789012345" → ID video TikTok HIV kamu
+                    -->
+                    <iframe
+                        src="https://www.tiktok.com/embed/v2/7298123456789012345"
+                        title="TikTok HIV Edukasi"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-tt"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <span class="video-tag tag-hiv">HIV</span>
+                    </div>
+                    <h4>Mitos vs Fakta HIV — Jangan Sampai Salah Paham!</h4>
+                    <p>Luruskan 5 mitos paling umum tentang HIV yang masih beredar di masyarakat.</p>
+                    <div class="video-meta">
+                        <i class="fab fa-tiktok"></i> @doktersehat
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±45 detik
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIKTOK 3 -->
+            <div class="video-card fade-in delay-3" data-cat="hepatitis">
+                <div class="video-embed-wrap tiktok-wrap">
+                    <!--
+                        Ganti ID: "7301234567890123456" → ID video TikTok Hepatitis kamu
+                    -->
+                    <iframe
+                        src="https://www.tiktok.com/embed/v2/7301234567890123456"
+                        title="TikTok Hepatitis Edukasi"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-tt"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <span class="video-tag tag-hep">Hepatitis</span>
+                    </div>
+                    <h4>Kenapa Hepatitis B Berbahaya? Ini Penjelasannya!</h4>
+                    <p>Hepatitis B bisa jadi kanker hati tanpa terasa. Ini yang perlu kamu ketahui.</p>
+                    <div class="video-meta">
+                        <i class="fab fa-tiktok"></i> @puskesmasdirgahayu
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±55 detik
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIKTOK 4 -->
+            <div class="video-card fade-in delay-4" data-cat="umum">
+                <div class="video-embed-wrap tiktok-wrap">
+                    <!--
+                        Ganti ID: "7310987654321098765" → ID video TikTok PHBS kamu
+                    -->
+                    <iframe
+                        src="https://www.tiktok.com/embed/v2/7310987654321098765"
+                        title="TikTok PHBS Edukasi"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <div>
+                        <span class="video-tag tag-tt"><i class="fab fa-tiktok"></i> TikTok</span>
+                        <span class="video-tag tag-umum">Kesehatan Umum</span>
+                    </div>
+                    <h4>PHBS di Rumah Tangga — 10 Indikator yang Wajib Diterapkan</h4>
+                    <p>Perilaku Hidup Bersih dan Sehat (PHBS) mudah dilakukan jika kamu tahu caranya.</p>
+                    <div class="video-meta">
+                        <i class="fab fa-tiktok"></i> @kemenkes_ri
+                        <span>•</span>
+                        <i class="fas fa-clock"></i> ±50 detik
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /tiktok-grid -->
+    </div><!-- /section-tiktok -->
+
+    <!-- ══ POSTER EDUKASI ══ -->
+    <div id="section-poster" class="content-section" data-cats="semua tbc hiv hepatitis umum">
+        <div class="section-head" style="margin-top:44px">
+            <div class="s-icon po"><i class="fas fa-image"></i></div>
+            <div>
+                <h3>Poster Edukasi Kesehatan</h3>
+                <p>Klik poster untuk detail lengkap dan cetak / bagikan ke WhatsApp</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="poster-grid">
+
+            <!-- POSTER 1: TBC -->
+            <div class="poster-card fade-in delay-1" data-cat="tbc" onclick="openModal('tbc')">
+                <div class="poster-visual tbc-bg">
+                    <span class="p-icon">🫁</span>
+                    <h3>KENALI & CEGAH TBC</h3>
+                    <p>Batuk 2 minggu? Jangan anggap remeh. Segera periksa ke Puskesmas.</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-tbc" style="margin-bottom:8px">TBC</span>
+                    </div>
+                    <h4>Poster Edukasi TBC – Gejala & Pencegahan</h4>
+                    <p>Informasi lengkap tentang TBC: gejala, penularan, dan cara mencegahnya.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('tbc')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSTER 2: HIV -->
+            <div class="poster-card fade-in delay-2" data-cat="hiv" onclick="openModal('hiv')">
+                <div class="poster-visual hiv-bg">
+                    <span class="p-icon">🛡️</span>
+                    <h3>STOP STIGMA HIV</h3>
+                    <p>HIV tidak menular lewat jabat tangan. Dukung ODHA dengan penuh empati.</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-hiv" style="margin-bottom:8px">HIV</span>
+                    </div>
+                    <h4>Poster Edukasi HIV – Fakta & Pencegahan</h4>
+                    <p>Luruskan mitos HIV dan pelajari cara pencegahan yang benar.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('hiv')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSTER 3: Hepatitis -->
+            <div class="poster-card fade-in delay-3" data-cat="hepatitis" onclick="openModal('hep')">
+                <div class="poster-visual hep-bg">
+                    <span class="p-icon">🫀</span>
+                    <h3>LINDUNGI HATI ANDA</h3>
+                    <p>Vaksin Hepatitis B tersedia gratis di Puskesmas. Lindungi keluargamu sekarang.</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-hep" style="margin-bottom:8px">Hepatitis</span>
+                    </div>
+                    <h4>Poster Edukasi Hepatitis B & C</h4>
+                    <p>Pentingnya vaksinasi dan deteksi dini Hepatitis B & C untuk kesehatan hati.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('hep')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSTER 4: Cuci Tangan -->
+            <div class="poster-card fade-in delay-4" data-cat="umum" onclick="openModal('cuci')">
+                <div class="poster-visual cuci-bg">
+                    <span class="p-icon">🙌</span>
+                    <h3>6 LANGKAH CUCI TANGAN</h3>
+                    <p>Cuci tangan pakai sabun selama minimal 20 detik. Lakukan setiap saat!</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-umum" style="margin-bottom:8px">PHBS</span>
+                    </div>
+                    <h4>Poster 6 Langkah Cuci Tangan WHO</h4>
+                    <p>Cara mencuci tangan yang benar sesuai standar WHO untuk cegah penularan penyakit.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('cuci')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSTER 5: Gizi Seimbang -->
+            <div class="poster-card fade-in delay-5" data-cat="umum" onclick="openModal('gizi')">
+                <div class="poster-visual gizi-bg">
+                    <span class="p-icon">🥗</span>
+                    <h3>GIZI SEIMBANG</h3>
+                    <p>Makan beragam, perbanyak sayur-buah, batasi gula-garam-lemak.</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-umum" style="margin-bottom:8px">Gizi</span>
+                    </div>
+                    <h4>Poster Gizi Seimbang & Isi Piringku</h4>
+                    <p>Panduan pola makan sehat sesuai pedoman "Isi Piringku" dari Kemenkes RI.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('gizi')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSTER 6: KIA -->
+            <div class="poster-card fade-in delay-6" data-cat="umum" onclick="openModal('ibu')">
+                <div class="poster-visual ibu-bg">
+                    <span class="p-icon">🤱</span>
+                    <h3>KESEHATAN IBU & ANAK</h3>
+                    <p>Periksa kehamilan minimal 6x. Imunisasi dasar lengkap melindungi bayi Anda.</p>
+                </div>
+                <div class="poster-body-info">
+                    <div>
+                        <span class="video-tag tag-umum" style="margin-bottom:8px">KIA</span>
+                    </div>
+                    <h4>Poster Kesehatan Ibu & Anak (KIA)</h4>
+                    <p>Panduan ANC (periksa kehamilan) dan imunisasi dasar lengkap untuk bayi.</p>
+                    <div class="poster-actions">
+                        <button class="p-btn" onclick="event.stopPropagation(); openModal('ibu')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        <button class="p-btn primary" onclick="event.stopPropagation(); window.print()">
+                            <i class="fas fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /poster-grid -->
+    </div><!-- /section-poster -->
+
+</div><!-- /section-wrap -->
+
+<!-- ══ MODAL POSTER DETAIL ══ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box" id="modal-box">
+        <!-- Content injected by JS -->
+    </div>
+</div>
+
+<script>
+/* ── FILTER ── */
+function filterContent(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('[data-cat]').forEach(el => {
+        if (cat === 'semua' || el.dataset.cat === cat) {
+            el.style.display = '';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
+
+/* ── POSTER MODAL DATA ── */
+const POSTERS = {
+    tbc: {
+        bgClass: 'tbc-bg',
+        icon: '🫁',
+        title: 'KENALI & CEGAH TUBERKULOSIS (TBC)',
+        sections: [
+            {
+                title: 'Apa itu TBC?',
+                items: [
+                    'Infeksi bakteri Mycobacterium tuberculosis yang terutama menyerang paru-paru',
+                    'Bisa menular melalui udara saat penderita batuk, bersin, atau berbicara',
+                    'Indonesia termasuk negara dengan beban TBC tertinggi ke-2 di dunia'
+                ]
+            },
+            {
+                title: 'Gejala Utama',
+                items: [
+                    'Batuk terus-menerus ≥ 2 minggu (berdahak atau berdarah)',
+                    'Demam tidak tinggi, terutama sore-malam hari',
+                    'Keringat malam berlebih tanpa aktivitas berat',
+                    'Berat badan turun drastis & nafsu makan hilang',
+                    'Sesak napas atau nyeri dada'
+                ]
+            },
+            {
+                title: 'Cara Pencegahan',
+                items: [
+                    'Vaksinasi BCG sejak bayi',
+                    'Ventilasi dan pencahayaan rumah yang baik',
+                    'Etika batuk: tutup mulut dengan tisu atau lengan',
+                    'Pakai masker jika kontak dengan penderita TBC',
+                    'Tuntaskan pengobatan OAT minimal 6 bulan'
+                ]
+            }
+        ],
+        chips: ['💉 Vaksin BCG', '😷 Pakai masker', '🏥 Obat 6 bulan', '☀️ Sinar matahari', '🌬️ Ventilasi baik']
+    },
+    hiv: {
+        bgClass: 'hiv-bg',
+        icon: '🛡️',
+        title: 'STOP STIGMA HIV — FAKTA & PENCEGAHAN',
+        sections: [
+            {
+                title: 'Apa itu HIV?',
+                items: [
+                    'Human Immunodeficiency Virus yang menyerang sistem kekebalan tubuh',
+                    'AIDS adalah stadium lanjut HIV di mana imun sudah sangat lemah',
+                    'Dengan ARV, ODHA bisa hidup normal dan sehat'
+                ]
+            },
+            {
+                title: 'HIV TIDAK menular melalui',
+                items: [
+                    'Jabat tangan, pelukan, atau bersentuhan kulit biasa',
+                    'Makan/minum bersama atau berbagi peralatan makan',
+                    'Gigitan nyamuk atau serangga lainnya',
+                    'Bersin, batuk, atau air liur'
+                ]
+            },
+            {
+                title: 'Cara Pencegahan',
+                items: [
+                    'Setia pada satu pasangan dan hindari seks bebas',
+                    'Gunakan kondom dengan benar dan konsisten',
+                    'Hindari penggunaan narkoba suntik / jarum bersama',
+                    'Lakukan tes HIV secara berkala — gratis di Puskesmas',
+                    'Ibu hamil dengan HIV wajib ikut program PMTCT'
+                ]
+            }
+        ],
+        chips: ['❤️ Setia pasangan', '🩺 Tes HIV rutin', '💊 ARV gratis', '🚫 No jarum bersama', '🤝 Dukung ODHA']
+    },
+    hep: {
+        bgClass: 'hep-bg',
+        icon: '🫀',
+        title: 'LINDUNGI HATI — CEGAH HEPATITIS B & C',
+        sections: [
+            {
+                title: 'Apa itu Hepatitis B & C?',
+                items: [
+                    'Infeksi virus yang meradangkan organ hati (liver)',
+                    'Hepatitis B kronis bisa menyebabkan sirosis & kanker hati',
+                    'Indonesia memiliki ~28 juta penderita Hepatitis B'
+                ]
+            },
+            {
+                title: 'Gejala yang Perlu Diwaspadai',
+                items: [
+                    'Mata dan kulit berwarna kuning (jaundice)',
+                    'Urin berwarna gelap seperti teh pekat',
+                    'Nyeri perut kanan atas (area hati)',
+                    'Mual, muntah, dan kelelahan ekstrem',
+                    'Sering tanpa gejala bertahun-tahun!'
+                ]
+            },
+            {
+                title: 'Pencegahan',
+                items: [
+                    'Vaksinasi Hepatitis B lengkap 3 dosis (gratis untuk bayi)',
+                    'Tidak berbagi jarum suntik, silet, atau alat cukur',
+                    'Gunakan alat tindik/tato yang steril dan sekali pakai',
+                    'Ibu hamil wajib skrining Hepatitis B — lindungi bayi',
+                    'Hindari konsumsi alkohol berlebih'
+                ]
+            }
+        ],
+        chips: ['💉 Vaksin 3 dosis', '🩸 Jarum steril', '🏥 Skrining gratis', '🚫 Hindari alkohol', '🤱 Lindungi bayi']
+    },
+    cuci: {
+        bgClass: 'cuci-bg',
+        icon: '🙌',
+        title: '6 LANGKAH CUCI TANGAN BENAR (WHO)',
+        sections: [
+            {
+                title: 'Langkah-langkah',
+                items: [
+                    'Langkah 1: Basahi tangan & sabuni telapak ke telapak',
+                    'Langkah 2: Gosok punggung tangan & sela jari (bergantian)',
+                    'Langkah 3: Gosok telapak ke telapak dengan jari saling bertautan',
+                    'Langkah 4: Gosok punggung jari ke telapak (posisi mengunci)',
+                    'Langkah 5: Gosok ibu jari secara memutar (bergantian)',
+                    'Langkah 6: Gosok ujung jari ke telapak secara memutar'
+                ]
+            },
+            {
+                title: 'Kapan Harus Cuci Tangan?',
+                items: [
+                    'Sebelum dan sesudah makan',
+                    'Setelah dari toilet / WC',
+                    'Setelah menyentuh benda di tempat umum',
+                    'Setelah batuk, bersin, atau membuang ingus',
+                    'Setelah memegang hewan atau sampah'
+                ]
+            }
+        ],
+        chips: ['⏱️ 20 detik', '🧼 Pakai sabun', '💧 Air mengalir', '🖐️ Seluruh permukaan']
+    },
+    gizi: {
+        bgClass: 'gizi-bg',
+        icon: '🥗',
+        title: 'GIZI SEIMBANG — ISI PIRINGKU',
+        sections: [
+            {
+                title: 'Komposisi Isi Piringku (sekali makan)',
+                items: [
+                    '½ piring: sayuran & buah-buahan (aneka warna)',
+                    '¼ piring: karbohidrat (nasi, ubi, jagung, roti)',
+                    '¼ piring: protein (ikan, telur, tempe, tahu, daging)',
+                    'Minum air putih 8 gelas per hari',
+                    'Batasi gula <50g, garam <5g, lemak <67g per hari'
+                ]
+            },
+            {
+                title: 'Tips Pola Makan Sehat',
+                items: [
+                    'Makan 3 kali sehari dengan porsi teratur',
+                    'Pilih makanan yang diolah dengan sehat (kukus/rebus)',
+                    'Perbanyak sumber protein nabati (tempe, tahu, kacang)',
+                    'Kurangi makanan ultra-proses, fast food, dan minuman manis',
+                    'Sarapan pagi penting untuk energi dan konsentrasi'
+                ]
+            }
+        ],
+        chips: ['🥦 Sayur ½ piring', '🍚 Karbo ¼', '🐟 Protein ¼', '💧 8 gelas air', '🚫 Batasi gula']
+    },
+    ibu: {
+        bgClass: 'ibu-bg',
+        icon: '🤱',
+        title: 'KESEHATAN IBU & ANAK (KIA)',
+        sections: [
+            {
+                title: 'Pemeriksaan Kehamilan (ANC)',
+                items: [
+                    'Minimal 6 kali selama kehamilan (standar baru Kemenkes)',
+                    'Trimester 1: 2x periksa (1 kali dengan dokter)',
+                    'Trimester 2: 1x periksa',
+                    'Trimester 3: 3x periksa (1 kali dengan dokter)',
+                    'Skrining HIV, Hepatitis B, dan sifilis wajib dilakukan'
+                ]
+            },
+            {
+                title: 'Imunisasi Dasar Lengkap Bayi',
+                items: [
+                    'Lahir: HB0 (Hepatitis B) dan Polio 0',
+                    '1 bulan: BCG dan Polio 1',
+                    '2 bulan: DPT-HB-Hib 1, Polio 2, PCV 1, Rotavirus 1',
+                    '3 bulan: DPT-HB-Hib 2, Polio 3, PCV 2, Rotavirus 2',
+                    '4 bulan: DPT-HB-Hib 3, Polio 4, IPV, Rotavirus 3',
+                    '9 bulan: Campak-Rubela (MR)',
+                    'Semua imunisasi GRATIS di Puskesmas!'
+                ]
+            }
+        ],
+        chips: ['🏥 ANC 6x gratis', '💉 Imunisasi gratis', '🩸 Skrining ibu hamil', '🤰 Tablet tambah darah', '👶 ASI eksklusif']
+    }
+};
+
+function openModal(key) {
+    const d = POSTERS[key];
+    if (!d) return;
+
+    let sectionsHtml = '';
+    d.sections.forEach(s => {
+        sectionsHtml += `<div class="mc-title">${s.title}</div>
+        <ul>${s.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    });
+
+    let chipsHtml = d.chips.map(c => `<span class="m-chip">${c}</span>`).join('');
+
+    document.getElementById('modal-box').innerHTML = `
+        <div class="modal-close">
+            <button onclick="closeModal()" aria-label="Tutup"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-poster-visual ${d.bgClass}">
+            <div class="mp-icon">${d.icon}</div>
+            <h2>${d.title}</h2>
+        </div>
+        <div class="modal-content">
+            ${sectionsHtml}
+            <div class="mc-title" style="margin-top:16px">Poin Kunci</div>
+            <div class="chip-row">${chipsHtml}</div>
+            <button class="modal-dl-btn" onclick="window.print()">
+                <i class="fas fa-print"></i> Cetak / Simpan sebagai PDF
+            </button>
+        </div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal-overlay')) {
+        document.getElementById('modal-overlay').classList.remove('open');
+    }
+}
+
+// ESC to close modal
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>
