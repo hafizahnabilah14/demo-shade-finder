@@ -17,1091 +17,382 @@
             --text:          #1a2e2b;
             --text-muted:    #5a7470;
             --border:        #c8dbd9;
- 
-            /* Disease accent colours */
-            --tbc:   #e53935;
-            --tbc-l: #ffebee;
-            --tbc-m: #ffcdd2;
-            --hiv:   #6a1b9a;
-            --hiv-l: #f3e5f5;
-            --hiv-m: #e1bee7;
-            --hep:   #e65100;
-            --hep-l: #fff3e0;
-            --hep-m: #ffe0b2;
-            --jiwa:   #1565c0;
-            --jiwa-l: #e3f2fd;
-            --jiwa-m: #bbdefb;
+            --tbc:   #e53935; --tbc-l: #ffebee; --tbc-m: #ffcdd2;
+            --hiv:   #6a1b9a; --hiv-l: #f3e5f5; --hiv-m: #e1bee7;
+            --hep:   #e65100; --hep-l: #fff3e0; --hep-m: #ffe0b2;
+            --jiwa:  #1565c0; --jiwa-l: #e3f2fd; --jiwa-m: #bbdefb;
+            --anak:  #2e7d32; --anak-l: #e8f5e9; --anak-m: #c8e6c9;
         }
- 
         * { box-sizing: border-box; margin: 0; padding: 0; }
- 
         html { scroll-behavior: smooth; }
- 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
- 
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
         /* ─── HEADER ─── */
-        .site-header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 900;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .site-header .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        .site-header .brand-text h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4em;
-            color: var(--white);
-            font-weight: 900;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-        .site-header .brand-text p {
-            font-size: 0.65em;
-            color: rgba(255,255,255,0.75);
-            margin-top: 2px;
-        }
-        .back-btn {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255,255,255,0.15);
-            color: var(--white);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.82em;
-            font-weight: 600;
-            transition: background 0.2s;
-            border: 1px solid rgba(255,255,255,0.25);
-        }
+        .site-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 900; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .site-header .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .site-header .brand-text h1 { font-family: 'Montserrat', sans-serif; font-size: 1.4em; color: var(--white); font-weight: 900; letter-spacing: 2px; line-height: 1; }
+        .site-header .brand-text p { font-size: 0.65em; color: rgba(255,255,255,0.75); margin-top: 2px; }
+        .back-btn { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.15); color: var(--white); text-decoration: none; padding: 8px 16px; border-radius: 50px; font-size: 0.82em; font-weight: 600; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.25); }
         .back-btn:hover { background: rgba(255,255,255,0.25); }
- 
-        /* ─── SUB NAV (disease tabs) ─── */
-        .disease-nav {
-            background: var(--white);
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-            overflow-x: auto;
-        }
-        .disease-tab {
-            flex: 1;
-            max-width: 200px;
-            padding: 16px 20px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 0.85em;
-            font-weight: 600;
-            color: var(--text-muted);
-            border-bottom: 3px solid transparent;
-            transition: all 0.25s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        .disease-tab i { font-size: 1.1em; }
+
+        /* ─── DISEASE TABS ─── */
+        .disease-nav { background: var(--white); display: flex; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.07); overflow-x: auto; }
+        .disease-tab { flex: 1; max-width: 180px; padding: 14px 16px; text-align: center; cursor: pointer; font-size: 0.82em; font-weight: 600; color: var(--text-muted); border-bottom: 3px solid transparent; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
+        .disease-tab i { font-size: 1.05em; }
         .disease-tab.active-tbc  { color: var(--tbc);  border-color: var(--tbc);  background: var(--tbc-l); }
         .disease-tab.active-hiv  { color: var(--hiv);  border-color: var(--hiv);  background: var(--hiv-l); }
         .disease-tab.active-hep  { color: var(--hep);  border-color: var(--hep);  background: var(--hep-l); }
         .disease-tab.active-jiwa { color: var(--jiwa); border-color: var(--jiwa); background: var(--jiwa-l); }
-        .disease-tab:not(.active-tbc):not(.active-hiv):not(.active-hep):not(.active-jiwa):hover { background: var(--bg); }
- 
+        .disease-tab.active-anak { color: var(--anak); border-color: var(--anak); background: var(--anak-l); }
+        .disease-tab:not([class*="active"]):hover { background: var(--bg); }
+
         /* ─── MAIN LAYOUT ─── */
-        .main-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 30px 20px 60px;
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 24px;
-            align-items: start;
-        }
- 
-        /* ─── POSTER EDUKASI (left panel) ─── */
-        .poster-panel {
-            position: sticky;
-            top: 80px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-            transition: all 0.4s ease;
-        }
- 
-        .poster-header {
-            padding: 20px 22px 16px;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-        .poster-header::before {
-            content: '';
-            position: absolute;
-            right: -20px; top: -20px;
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-        }
-        .poster-header::after {
-            content: '';
-            position: absolute;
-            right: 20px; bottom: -30px;
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-        }
-        .poster-header .disease-icon {
-            font-size: 2.5em;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .poster-header h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4em;
-            font-weight: 900;
-            letter-spacing: 1px;
-            line-height: 1.1;
-        }
-        .poster-header .tagline {
-            font-size: 0.78em;
-            opacity: 0.85;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
- 
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; }
+
+        /* ─── POSTER PANEL ─── */
+        .poster-panel { position: sticky; top: 80px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.12); }
+        .poster-header { padding: 20px 22px 16px; color: var(--white); position: relative; overflow: hidden; }
+        .poster-header::before { content: ''; position: absolute; right: -20px; top: -20px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+        .poster-header::after { content: ''; position: absolute; right: 20px; bottom: -30px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+        .poster-header .disease-icon { font-size: 2.5em; margin-bottom: 8px; display: block; }
+        .poster-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4em; font-weight: 900; letter-spacing: 1px; line-height: 1.1; }
+        .poster-header .tagline { font-size: 0.78em; opacity: 0.85; margin-top: 6px; line-height: 1.4; }
         .poster-tbc  .poster-header { background: linear-gradient(135deg, #b71c1c, var(--tbc)); }
         .poster-hiv  .poster-header { background: linear-gradient(135deg, #4a148c, var(--hiv)); }
         .poster-hep  .poster-header { background: linear-gradient(135deg, #bf360c, var(--hep)); }
         .poster-jiwa .poster-header { background: linear-gradient(135deg, #0d47a1, var(--jiwa)); }
- 
-        .poster-body {
-            background: var(--white);
-            padding: 20px;
-        }
- 
-        .poster-section-title {
-            font-size: 0.7em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin: 0 0 10px;
-        }
- 
-        .fact-card {
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 10px;
-        }
+        .poster-anak .poster-header { background: linear-gradient(135deg, #1b5e20, var(--anak)); }
+        .poster-body { background: var(--white); padding: 20px; }
+        .poster-section-title { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 0 0 10px; }
+        .fact-card { border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
         .fact-card.tbc-c  { background: var(--tbc-l);  border-left: 4px solid var(--tbc); }
         .fact-card.hiv-c  { background: var(--hiv-l);  border-left: 4px solid var(--hiv); }
         .fact-card.hep-c  { background: var(--hep-l);  border-left: 4px solid var(--hep); }
         .fact-card.jiwa-c { background: var(--jiwa-l); border-left: 4px solid var(--jiwa); }
- 
-        .fact-card .fact-label {
-            font-size: 0.72em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
+        .fact-card.anak-c { background: var(--anak-l); border-left: 4px solid var(--anak); }
+        .fact-card .fact-label { font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         .fact-card.tbc-c  .fact-label { color: var(--tbc); }
         .fact-card.hiv-c  .fact-label { color: var(--hiv); }
         .fact-card.hep-c  .fact-label { color: var(--hep); }
         .fact-card.jiwa-c .fact-label { color: var(--jiwa); }
- 
-        .fact-card ul {
-            list-style: none;
-            padding: 0;
-        }
-        .fact-card ul li {
-            font-size: 0.8em;
-            color: var(--text);
-            line-height: 1.5;
-            padding: 2px 0;
-            display: flex;
-            gap: 7px;
-            align-items: flex-start;
-        }
-        .fact-card ul li::before {
-            content: '•';
-            font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
+        .fact-card.anak-c .fact-label { color: var(--anak); }
+        .fact-card ul { list-style: none; padding: 0; }
+        .fact-card ul li { font-size: 0.8em; color: var(--text); line-height: 1.5; padding: 2px 0; display: flex; gap: 7px; align-items: flex-start; }
+        .fact-card ul li::before { content: '•'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
         .fact-card.tbc-c  ul li::before { color: var(--tbc); }
         .fact-card.hiv-c  ul li::before { color: var(--hiv); }
         .fact-card.hep-c  ul li::before { color: var(--hep); }
         .fact-card.jiwa-c ul li::before { color: var(--jiwa); }
- 
-        .stat-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-        .stat-box {
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-        }
-        .stat-box.tbc-c  { background: var(--tbc-l); }
-        .stat-box.hiv-c  { background: var(--hiv-l); }
-        .stat-box.hep-c  { background: var(--hep-l); }
-        .stat-box.jiwa-c { background: var(--jiwa-l); }
-        .stat-box .stat-num {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4em;
-            font-weight: 900;
-            line-height: 1;
-        }
-        .stat-box.tbc-c  .stat-num { color: var(--tbc); }
-        .stat-box.hiv-c  .stat-num { color: var(--hiv); }
-        .stat-box.hep-c  .stat-num { color: var(--hep); }
-        .stat-box.jiwa-c .stat-num { color: var(--jiwa); }
-        .stat-box .stat-label {
-            font-size: 0.7em;
-            color: var(--text-muted);
-            line-height: 1.3;
-            margin-top: 4px;
-        }
- 
+        .fact-card.anak-c ul li::before { color: var(--anak); }
+        .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+        .stat-box { border-radius: 12px; padding: 12px; text-align: center; }
+        .stat-box.tbc-c  { background: var(--tbc-l); }  .stat-box.tbc-c  .stat-num { color: var(--tbc); }
+        .stat-box.hiv-c  { background: var(--hiv-l); }  .stat-box.hiv-c  .stat-num { color: var(--hiv); }
+        .stat-box.hep-c  { background: var(--hep-l); }  .stat-box.hep-c  .stat-num { color: var(--hep); }
+        .stat-box.jiwa-c { background: var(--jiwa-l); } .stat-box.jiwa-c .stat-num { color: var(--jiwa); }
+        .stat-box.anak-c { background: var(--anak-l); } .stat-box.anak-c .stat-num { color: var(--anak); }
+        .stat-box .stat-num { font-family: 'Montserrat', sans-serif; font-size: 1.4em; font-weight: 900; line-height: 1; }
+        .stat-box .stat-label { font-size: 0.7em; color: var(--text-muted); line-height: 1.3; margin-top: 4px; }
         .divider { height: 1px; background: var(--border); margin: 14px 0; }
- 
-        .prevention-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .chip {
-            font-size: 0.72em;
-            font-weight: 600;
-            padding: 5px 11px;
-            border-radius: 50px;
-        }
+        .prevention-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { font-size: 0.72em; font-weight: 600; padding: 5px 11px; border-radius: 50px; }
         .chip.tbc-c  { background: var(--tbc-m);  color: #7f0000; }
         .chip.hiv-c  { background: var(--hiv-m);  color: #38006b; }
         .chip.hep-c  { background: var(--hep-m);  color: #7f2900; }
         .chip.jiwa-c { background: var(--jiwa-m); color: #0d3c7a; }
- 
-        /* ─── QUIZ PANEL (right panel) ─── */
-        .quiz-panel {
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.07);
-            overflow: hidden;
-        }
- 
-        .quiz-top-bar {
-            padding: 20px 28px 16px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .quiz-top-bar h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.05em;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-        .quiz-disclaimer {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 0.72em;
-            color: var(--text-muted);
-            background: var(--bg);
-            padding: 6px 12px;
-            border-radius: 50px;
-        }
- 
-        /* Progress steps */
-        .progress-wrap {
-            padding: 22px 28px 10px;
-        }
-        .progress-bar-track {
-            height: 6px;
-            background: var(--bg);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.4s ease;
-        }
+        .chip.anak-c { background: var(--anak-m); color: #1b5e20; }
+
+        /* ─── QUIZ PANEL ─── */
+        .quiz-panel { background: var(--white); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.07); overflow: hidden; }
+        .quiz-top-bar { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .quiz-top-bar h3 { font-family: 'Montserrat', sans-serif; font-size: 1.05em; font-weight: 800; letter-spacing: 0.5px; }
+        .quiz-disclaimer { display: flex; align-items: center; gap: 7px; font-size: 0.72em; color: var(--text-muted); background: var(--bg); padding: 6px 12px; border-radius: 50px; }
+        .progress-wrap { padding: 22px 28px 10px; }
+        .progress-bar-track { height: 6px; background: var(--bg); border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
+        .progress-bar-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
         .progress-bar-fill.tbc-f  { background: var(--tbc); }
         .progress-bar-fill.hiv-f  { background: var(--hiv); }
         .progress-bar-fill.hep-f  { background: var(--hep); }
         .progress-bar-fill.jiwa-f { background: var(--jiwa); }
- 
-        .progress-steps {
-            display: flex;
-            justify-content: space-between;
-        }
-        .pstep {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.65em;
-            color: var(--text-muted);
-        }
-        .pstep-dot {
-            width: 26px; height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85em;
-            font-weight: 700;
-            border: 2px solid var(--border);
-            background: var(--white);
-            color: var(--text-muted);
-            transition: all 0.3s;
-        }
+        .progress-bar-fill.anak-f { background: var(--anak); }
+        .progress-steps { display: flex; justify-content: space-between; }
+        .pstep { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.65em; color: var(--text-muted); }
+        .pstep-dot { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: 700; border: 2px solid var(--border); background: var(--white); color: var(--text-muted); transition: all 0.3s; }
         .pstep-dot.done-tbc    { background: var(--tbc);  border-color: var(--tbc);  color: #fff; }
         .pstep-dot.done-hiv    { background: var(--hiv);  border-color: var(--hiv);  color: #fff; }
         .pstep-dot.done-hep    { background: var(--hep);  border-color: var(--hep);  color: #fff; }
         .pstep-dot.done-jiwa   { background: var(--jiwa); border-color: var(--jiwa); color: #fff; }
+        .pstep-dot.done-anak   { background: var(--anak); border-color: var(--anak); color: #fff; }
         .pstep-dot.active-tbc  { background: var(--tbc-l);  border-color: var(--tbc);  color: var(--tbc); }
         .pstep-dot.active-hiv  { background: var(--hiv-l);  border-color: var(--hiv);  color: var(--hiv); }
         .pstep-dot.active-hep  { background: var(--hep-l);  border-color: var(--hep);  color: var(--hep); }
         .pstep-dot.active-jiwa { background: var(--jiwa-l); border-color: var(--jiwa); color: var(--jiwa); }
- 
-        /* Question area */
+        .pstep-dot.active-anak { background: var(--anak-l); border-color: var(--anak); color: var(--anak); }
         .question-area { padding: 10px 28px 24px; }
- 
-        .q-card {
-            border: 1.5px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-            animation: fadeSlide 0.3s ease;
-        }
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
- 
-        .q-number {
-            font-size: 0.72em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-        }
-        .q-number.tbc-c  { color: var(--tbc); }
-        .q-number.hiv-c  { color: var(--hiv); }
-        .q-number.hep-c  { color: var(--hep); }
-        .q-number.jiwa-c { color: var(--jiwa); }
- 
-        .q-text {
-            font-size: 1em;
-            font-weight: 600;
-            line-height: 1.55;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-        .q-hint {
-            font-size: 0.8em;
-            color: var(--text-muted);
-            font-style: italic;
-            line-height: 1.45;
-            margin-bottom: 20px;
-        }
- 
-        .answer-opts {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .ans-btn {
-            flex: 1;
-            min-width: 90px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            background: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            color: var(--text);
-        }
+        .q-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 22px; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .q-number { font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+        .q-number.tbc-c  { color: var(--tbc); } .q-number.hiv-c  { color: var(--hiv); }
+        .q-number.hep-c  { color: var(--hep); } .q-number.jiwa-c { color: var(--jiwa); }
+        .q-number.anak-c { color: var(--anak); }
+        .q-text { font-size: 1em; font-weight: 600; line-height: 1.55; color: var(--text); margin-bottom: 6px; }
+        .q-hint { font-size: 0.8em; color: var(--text-muted); font-style: italic; line-height: 1.45; margin-bottom: 20px; }
+        .answer-opts { display: flex; gap: 10px; flex-wrap: wrap; }
+        .ans-btn { flex: 1; min-width: 90px; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.85em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 7px; color: var(--text); }
         .ans-btn:hover { background: var(--bg); transform: translateY(-1px); }
- 
         .ans-btn.sel-tbc  { background: var(--tbc-l);  border-color: var(--tbc);  color: var(--tbc); }
         .ans-btn.sel-hiv  { background: var(--hiv-l);  border-color: var(--hiv);  color: var(--hiv); }
         .ans-btn.sel-hep  { background: var(--hep-l);  border-color: var(--hep);  color: var(--hep); }
         .ans-btn.sel-jiwa { background: var(--jiwa-l); border-color: var(--jiwa); color: var(--jiwa); }
- 
-        /* Nav buttons */
-        .q-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 28px 28px;
-            gap: 12px;
-        }
-        .nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 22px;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            border: 2px solid var(--border);
-            background: var(--white);
-            color: var(--text);
-            transition: all 0.2s;
-        }
+        .ans-btn.sel-anak { background: var(--anak-l); border-color: var(--anak); color: var(--anak); }
+        .q-nav { display: flex; justify-content: space-between; align-items: center; padding: 0 28px 28px; gap: 12px; }
+        .nav-btn { display: flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.85em; font-weight: 600; cursor: pointer; border: 2px solid var(--border); background: var(--white); color: var(--text); transition: all 0.2s; }
         .nav-btn:hover:not(:disabled) { background: var(--bg); }
         .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
         .nav-btn.primary-tbc  { background: var(--tbc);  border-color: var(--tbc);  color: #fff; }
         .nav-btn.primary-hiv  { background: var(--hiv);  border-color: var(--hiv);  color: #fff; }
         .nav-btn.primary-hep  { background: var(--hep);  border-color: var(--hep);  color: #fff; }
         .nav-btn.primary-jiwa { background: var(--jiwa); border-color: var(--jiwa); color: #fff; }
+        .nav-btn.primary-anak { background: var(--anak); border-color: var(--anak); color: #fff; }
         .nav-btn.primary-tbc:hover:not(:disabled)  { background: #b71c1c; }
         .nav-btn.primary-hiv:hover:not(:disabled)  { background: #4a148c; }
         .nav-btn.primary-hep:hover:not(:disabled)  { background: #bf360c; }
         .nav-btn.primary-jiwa:hover:not(:disabled) { background: #0d47a1; }
- 
-        /* ─── RESULT AREA ─── */
-        .result-panel {
-            padding: 28px;
-            display: none;
-            animation: fadeSlide 0.4s ease;
-        }
-        .result-header {
-            text-align: center;
-            padding: 28px 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
+        .nav-btn.primary-anak:hover:not(:disabled) { background: #1b5e20; }
+
+        /* ─── JIWA SUB-PILIHAN ─── */
+        .jiwa-selector { padding: 24px 28px; }
+        .jiwa-selector h4 { font-family: 'Montserrat', sans-serif; font-size: 0.95em; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+        .jiwa-selector p { font-size: 0.8em; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
+        .jiwa-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .jiwa-choice-btn { padding: 18px 16px; border-radius: 16px; border: 2px solid var(--border); background: var(--white); cursor: pointer; text-align: center; transition: all 0.2s; font-family: 'Poppins', sans-serif; }
+        .jiwa-choice-btn:hover { border-color: var(--jiwa); background: var(--jiwa-l); transform: translateY(-2px); }
+        .jiwa-choice-btn .jc-icon { font-size: 2.2em; margin-bottom: 8px; display: block; }
+        .jiwa-choice-btn .jc-title { font-size: 0.9em; font-weight: 700; color: var(--text); display: block; margin-bottom: 4px; }
+        .jiwa-choice-btn .jc-sub { font-size: 0.72em; color: var(--text-muted); line-height: 1.4; }
+
+        /* ─── RESULT ─── */
+        .result-panel { padding: 28px; display: none; animation: fadeSlide 0.4s ease; }
+        .result-header { text-align: center; padding: 28px 20px; border-radius: 16px; margin-bottom: 20px; }
         .result-header .result-icon { font-size: 3em; margin-bottom: 10px; }
         .result-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5em; font-weight: 900; }
         .result-header p { font-size: 0.88em; margin-top: 8px; line-height: 1.55; }
- 
-        .result-low  { background: #e8f5e9; }
-        .result-med  { background: #fff8e1; }
-        .result-high { background: #ffebee; }
-        .result-low  h2 { color: #1b5e20; }
-        .result-med  h2 { color: #e65100; }
-        .result-high h2 { color: #b71c1c; }
-        .result-low  p  { color: #2e7d32; }
-        .result-med  p  { color: #bf360c; }
-        .result-high p  { color: #c62828; }
- 
-        .badge-risk {
-            display: inline-block;
-            padding: 5px 18px;
-            border-radius: 50px;
-            font-size: 0.75em;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
+        .result-low  { background: #e8f5e9; } .result-low  h2 { color: #1b5e20; } .result-low  p { color: #2e7d32; }
+        .result-med  { background: #fff8e1; } .result-med  h2 { color: #e65100; } .result-med  p { color: #bf360c; }
+        .result-high { background: #ffebee; } .result-high h2 { color: #b71c1c; } .result-high p { color: #c62828; }
+        .badge-risk { display: inline-block; padding: 5px 18px; border-radius: 50px; font-size: 0.75em; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
         .badge-low  { background: #a5d6a7; color: #1b5e20; }
         .badge-med  { background: #ffcc80; color: #e65100; }
         .badge-high { background: #ef9a9a; color: #b71c1c; }
- 
-        .result-details {
-            background: var(--bg);
-            border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-        .result-details h4 {
-            font-size: 0.85em;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .answer-summary {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .ans-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.82em;
-            line-height: 1.45;
-        }
-        .ans-pill {
-            flex-shrink: 0;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.78em;
-            font-weight: 700;
-        }
-        .pill-ya     { background: #ffcdd2; color: #b71c1c; }
-        .pill-tidak  { background: #c8e6c9; color: #1b5e20; }
-        .pill-tdktahu{ background: #e3f2fd; color: #0d47a1; }
- 
-        .result-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .act-btn {
-            flex: 1;
-            min-width: 140px;
-            padding: 13px 20px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            background: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
+        .result-details { background: var(--bg); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+        .result-details h4 { font-size: 0.85em; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .answer-summary { display: flex; flex-direction: column; gap: 8px; }
+        .ans-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.82em; line-height: 1.45; }
+        .ans-pill { flex-shrink: 0; padding: 3px 10px; border-radius: 20px; font-size: 0.78em; font-weight: 700; }
+        .pill-ya      { background: #ffcdd2; color: #b71c1c; }
+        .pill-tidak   { background: #c8e6c9; color: #1b5e20; }
+        .pill-tdktahu { background: #e3f2fd; color: #0d47a1; }
+        .result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .act-btn { flex: 1; min-width: 140px; padding: 13px 20px; border-radius: 12px; border: 2px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.85em; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text); text-decoration: none; transition: all 0.2s; }
         .act-btn:hover { background: var(--bg); transform: translateY(-1px); }
         .act-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
         .act-btn.primary:hover { background: var(--primary-dark); }
         .act-btn.print-btn { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
- 
+
         /* ─── IDENTITY FORM ─── */
-        .identity-panel {
-            padding: 24px 28px 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        .identity-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        .identity-header .id-icon {
-            width: 40px; height: 40px;
-            background: var(--primary-light);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.1em;
-            flex-shrink: 0;
-        }
-        .identity-header h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95em; font-weight: 800;
-            color: var(--text);
-        }
+        .identity-panel { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); }
+        .identity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .identity-header .id-icon { width: 40px; height: 40px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.1em; flex-shrink: 0; }
+        .identity-header h4 { font-family: 'Montserrat', sans-serif; font-size: 0.95em; font-weight: 800; color: var(--text); }
         .identity-header p { font-size: 0.74em; color: var(--text-muted); margin-top: 2px; }
- 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .form-group { display: flex; flex-direction: column; gap: 5px; }
         .form-group.full { grid-column: 1 / -1; }
-        .form-group label {
-            font-size: 0.74em;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
+        .form-group label { font-size: 0.74em; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
         .form-group label .req { color: var(--tbc); margin-left: 3px; }
-        .form-group input, .form-group select {
-            padding: 10px 14px;
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85em;
-            color: var(--text);
-            background: var(--white);
-            transition: border-color 0.2s, box-shadow 0.2s;
-            outline: none;
-            width: 100%;
-        }
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,121,107,0.12);
-        }
-        .form-group input.error { border-color: var(--tbc); box-shadow: 0 0 0 3px rgba(229,57,53,0.1); }
+        .form-group input, .form-group select { padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 0.85em; color: var(--text); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; width: 100%; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,121,107,0.12); }
+        .form-group input.error, .form-group select.error { border-color: var(--tbc); box-shadow: 0 0 0 3px rgba(229,57,53,0.1); }
         .form-group .error-msg { font-size: 0.72em; color: var(--tbc); display: none; }
         .form-group .error-msg.show { display: block; }
- 
-        /* umur auto-hitung hint */
-        .umur-hint {
-            font-size: 0.72em;
-            color: var(--primary);
-            font-weight: 600;
-            margin-top: 3px;
-            min-height: 16px;
-        }
- 
-        .form-start-btn {
-            width: 100%;
-            margin-top: 16px;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--primary), #00897b);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 14px rgba(0,121,107,0.3);
-        }
-        .form-start-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,121,107,0.35); }
-        .form-start-btn:active { transform: translateY(0); }
- 
-        /* submission toast */
-        .toast {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #1b5e20; color: #fff;
-            padding: 14px 22px; border-radius: 14px;
-            font-size: 0.85em; font-weight: 600;
-            display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            z-index: 9999;
-            transform: translateY(100px); opacity: 0;
-            transition: all 0.4s ease;
-        }
+        .umur-hint { font-size: 0.72em; color: var(--primary); font-weight: 600; margin-top: 3px; min-height: 16px; }
+        .form-start-btn { width: 100%; margin-top: 16px; padding: 14px; background: linear-gradient(135deg, var(--primary), #00897b); color: #fff; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.9em; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s; box-shadow: 0 4px 14px rgba(0,121,107,0.3); }
+        .form-start-btn:hover { transform: translateY(-1px); }
+
+        /* ─── TOAST ─── */
+        .toast { position: fixed; bottom: 30px; right: 30px; background: #1b5e20; color: #fff; padding: 14px 22px; border-radius: 14px; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 9999; transform: translateY(100px); opacity: 0; transition: all 0.4s ease; }
         .toast.show { transform: translateY(0); opacity: 1; }
         .toast.error-toast { background: #b71c1c; }
- 
-        @media (max-width: 600px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: 1; }
-        }
-        .scale-opts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        .scale-btn {
-            padding: 11px 10px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            background: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.78em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-            color: var(--text);
-            line-height: 1.3;
-        }
+
+        /* ─── SCALE (Jiwa) ─── */
+        .scale-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .scale-btn { padding: 11px 10px; border-radius: 12px; border: 2px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.78em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; color: var(--text); line-height: 1.3; }
         .scale-btn:hover { background: var(--bg); transform: translateY(-1px); }
         .scale-btn.sel-jiwa { background: var(--jiwa-l); border-color: var(--jiwa); color: var(--jiwa); }
-        .scale-btn .score-badge {
-            display: block;
-            font-size: 1.3em;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            margin-bottom: 3px;
-            color: var(--text-muted);
-        }
+        .scale-btn .score-badge { display: block; font-size: 1.3em; font-family: 'Montserrat', sans-serif; font-weight: 900; margin-bottom: 3px; color: var(--text-muted); }
         .scale-btn.sel-jiwa .score-badge { color: var(--jiwa); }
- 
-        /* PHQ/GAD label separator */
-        .scale-group-label {
-            font-size: 0.7em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--jiwa);
-            background: var(--jiwa-l);
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-bottom: 14px;
-        }
- 
-        /* ─── PRINT STYLES ─── */
-        @media print {
-            .site-header, .disease-nav, .poster-panel, .q-nav, .result-actions, .bpjs-banner { display: none !important; }
-            .main-container { grid-template-columns: 1fr; }
-            body { background: white; }
-        }
- 
+        .scale-group-label { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--jiwa); background: var(--jiwa-l); display: inline-block; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; }
+
         /* ─── RESPONSIVE ─── */
-        @media (max-width: 820px) {
-            .main-container { grid-template-columns: 1fr; }
-            .poster-panel { position: static; }
-            .scale-opts { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 820px) { .main-container { grid-template-columns: 1fr; } .poster-panel { position: static; } }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .form-group.full { grid-column: 1; } .jiwa-choice-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════════
+           ─── PRINT STYLES — HANYA HASIL SKRINING ───
+           ══════════════════════════════════════════
+           Sembunyikan semua kecuali hasil skrining + identitas */
+        @media print {
+            /* Sembunyikan semua elemen yang tidak perlu */
+            .site-header,
+            .disease-nav,
+            .poster-panel,
+            .identity-panel,
+            .q-nav,
+            .result-actions,
+            .jiwa-selector,
+            .bpjs-section,
+            .toast,
+            body > div:last-of-type { display: none !important; }
+
+            /* Layout jadi satu kolom penuh */
+            .main-container { grid-template-columns: 1fr !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+            body { background: white !important; font-size: 12pt; }
+            .quiz-panel { box-shadow: none !important; border-radius: 0 !important; }
+
+            /* Tampilkan blok identitas khusus print */
+            .print-identity-block { display: block !important; }
+
+            /* Tampilkan result panel */
+            .result-panel { display: block !important; padding: 0 !important; }
+            .result-actions { display: none !important; }
+            .quiz-top-bar { border-bottom: 1px solid #ccc !important; }
         }
+
+        /* Blok identitas untuk print — tersembunyi di layar, muncul saat print */
+        .print-identity-block {
+            display: none;
+            border: 1.5px solid #c8dbd9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 28px;
+            background: #f0f4f3;
+        }
+        .print-identity-block h4 { font-family: 'Montserrat', sans-serif; font-size: 0.95em; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; border-bottom: 1px solid #c8dbd9; padding-bottom: 8px; }
+        .print-identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+        .print-row { font-size: 0.82em; color: var(--text); }
+        .print-row span { font-weight: 700; color: var(--primary-dark); }
+        .print-logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--primary); }
+        .print-logo-row .print-title { font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 900; color: var(--primary-dark); }
+        .print-logo-row .print-subtitle { font-size: 0.75em; color: var(--text-muted); }
     </style>
 </head>
 <body>
- 
-<!-- ══ HEADER ══ -->
+
 <header class="site-header">
     <a href="index.html" class="brand">
-        <div class="brand-text">
-            <h1>SIDAYU</h1>
-            <p>Puskesmas Dirgahayu</p>
-        </div>
+        <div class="brand-text"><h1>SIDAYU</h1><p>Puskesmas Dirgahayu</p></div>
     </a>
-    <a href="index.html" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Kembali ke Beranda
-    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
 </header>
- 
-<!-- ══ DISEASE TABS ══ -->
+
 <div class="disease-nav">
-    <div class="disease-tab active-tbc" id="tab-tbc" onclick="switchDisease('tbc')">
-        <i class="fas fa-lungs"></i> TBC
-    </div>
-    <div class="disease-tab" id="tab-hiv" onclick="switchDisease('hiv')">
-        <i class="fas fa-shield-virus"></i> HIV / AIDS
-    </div>
-    <div class="disease-tab" id="tab-hep" onclick="switchDisease('hep')">
-        <i class="fas fa-heartbeat"></i> Hepatitis
-    </div>
-    <div class="disease-tab" id="tab-jiwa" onclick="switchDisease('jiwa')">
-        <i class="fas fa-brain"></i> Kesehatan Jiwa
-    </div>
+    <div class="disease-tab active-tbc" id="tab-tbc" onclick="switchDisease('tbc')"><i class="fas fa-lungs"></i> TBC</div>
+    <div class="disease-tab" id="tab-hiv" onclick="switchDisease('hiv')"><i class="fas fa-shield-virus"></i> HIV / AIDS</div>
+    <div class="disease-tab" id="tab-hep" onclick="switchDisease('hep')"><i class="fas fa-heartbeat"></i> Hepatitis</div>
+    <div class="disease-tab" id="tab-jiwa" onclick="switchDisease('jiwa')"><i class="fas fa-brain"></i> Kes. Jiwa</div>
+    <div class="disease-tab" id="tab-anak" onclick="switchDisease('anak')"><i class="fas fa-child"></i> Skrining Anak</div>
 </div>
- 
-<!-- ══ MAIN CONTENT ══ -->
+
 <div class="main-container">
- 
-    <!-- LEFT: POSTER EDUKASI -->
+
+    <!-- ══ POSTER KIRI ══ -->
     <aside class="poster-panel" id="poster-panel">
-        <!-- Poster TBC -->
+
+        <!-- TBC -->
         <div id="poster-tbc" class="poster-tbc">
-            <div class="poster-header">
-                <span class="disease-icon">🫁</span>
-                <h2>TUBERKULOSIS<br>(TBC / TB)</h2>
-                <p class="tagline">Penyakit infeksi bakteri yang menyerang paru-paru dan dapat menular melalui udara.</p>
-            </div>
+            <div class="poster-header"><span class="disease-icon">🫁</span><h2>TUBERKULOSIS (TBC)</h2><p class="tagline">Penyakit infeksi bakteri yang menyerang paru-paru dan dapat menular melalui udara.</p></div>
             <div class="poster-body">
-                <div class="stat-row">
-                    <div class="stat-box tbc-c">
-                        <div class="stat-num" style="color:var(--tbc)">1 juta+</div>
-                        <div class="stat-label">kasus baru di Indonesia per tahun</div>
-                    </div>
-                    <div class="stat-box tbc-c">
-                        <div class="stat-num" style="color:var(--tbc)">95%</div>
-                        <div class="stat-label">bisa sembuh dengan pengobatan rutin</div>
-                    </div>
-                </div>
- 
+                <div class="stat-row"><div class="stat-box tbc-c"><div class="stat-num">1 juta+</div><div class="stat-label">kasus baru di Indonesia per tahun</div></div><div class="stat-box tbc-c"><div class="stat-num">95%</div><div class="stat-label">bisa sembuh dengan pengobatan rutin</div></div></div>
                 <p class="poster-section-title">Gejala Utama</p>
-                <div class="fact-card tbc-c">
-                    <ul>
-                        <li>Batuk berdahak lebih dari 2 minggu</li>
-                        <li>Batuk disertai darah</li>
-                        <li>Demam dan berkeringat malam hari</li>
-                        <li>Berat badan turun drastis</li>
-                        <li>Mudah lelah dan nafsu makan menurun</li>
-                        <li>Nyeri dada saat bernapas</li>
-                    </ul>
-                </div>
- 
-                <div class="divider"></div>
-                <p class="poster-section-title">Cara Penularan</p>
-                <div class="fact-card tbc-c">
-                    <div class="fact-label">Melalui Udara</div>
-                    <ul>
-                        <li>Droplet saat penderita batuk, bersin, atau berbicara</li>
-                        <li>Berada dalam ruangan tertutup dengan penderita TBC aktif</li>
-                        <li>Sistem imun lemah meningkatkan risiko tertular</li>
-                    </ul>
-                </div>
- 
+                <div class="fact-card tbc-c"><ul><li>Batuk berdahak lebih dari 2 minggu</li><li>Batuk disertai darah</li><li>Demam dan berkeringat malam hari</li><li>Berat badan turun drastis</li><li>Mudah lelah dan nafsu makan menurun</li><li>Nyeri dada saat bernapas</li></ul></div>
                 <div class="divider"></div>
                 <p class="poster-section-title">Pencegahan</p>
-                <div class="prevention-chips">
-                    <span class="chip tbc-c">💉 Vaksin BCG</span>
-                    <span class="chip tbc-c">😷 Pakai masker</span>
-                    <span class="chip tbc-c">🌬️ Ventilasi baik</span>
-                    <span class="chip tbc-c">🍎 Gizi cukup</span>
-                    <span class="chip tbc-c">☀️ Jemur kasur</span>
-                    <span class="chip tbc-c">🏥 Obati tuntas</span>
-                </div>
- 
+                <div class="prevention-chips"><span class="chip tbc-c">💉 Vaksin BCG</span><span class="chip tbc-c">😷 Pakai masker</span><span class="chip tbc-c">🌬️ Ventilasi baik</span><span class="chip tbc-c">🍎 Gizi cukup</span><span class="chip tbc-c">🏥 Obati tuntas</span></div>
                 <div class="divider"></div>
-                <p class="poster-section-title">Pengobatan</p>
-                <div class="fact-card tbc-c">
-                    <div class="fact-label">Program OAT (Obat Anti TBC)</div>
-                    <ul>
-                        <li>Pengobatan rutin minimal <strong>6 bulan</strong></li>
-                        <li>Gratis di seluruh Puskesmas</li>
-                        <li>Jangan hentikan obat meski merasa membaik</li>
-                        <li>Didampingi PMO (Pengawas Minum Obat)</li>
-                    </ul>
-                </div>
+                <div class="fact-card tbc-c"><div class="fact-label">Program OAT (Obat Anti TBC)</div><ul><li>Pengobatan rutin minimal <strong>6 bulan</strong></li><li>Gratis di seluruh Puskesmas</li><li>Jangan hentikan obat meski membaik</li></ul></div>
             </div>
         </div>
- 
-        <!-- Poster HIV -->
+
+        <!-- HIV -->
         <div id="poster-hiv" class="poster-hiv" style="display:none">
-            <div class="poster-header">
-                <span class="disease-icon">🛡️</span>
-                <h2>HIV / AIDS</h2>
-                <p class="tagline">Virus yang melemahkan sistem kekebalan tubuh. Dapat dicegah dan dikendalikan dengan pengobatan ARV.</p>
-            </div>
+            <div class="poster-header"><span class="disease-icon">🛡️</span><h2>HIV / AIDS</h2><p class="tagline">Virus yang melemahkan sistem kekebalan tubuh. Dapat dicegah dan dikendalikan dengan ARV.</p></div>
             <div class="poster-body">
-                <div class="stat-row">
-                    <div class="stat-box hiv-c">
-                        <div class="stat-num" style="color:var(--hiv)">530rb+</div>
-                        <div class="stat-label">ODHA di Indonesia (estimasi)</div>
-                    </div>
-                    <div class="stat-box hiv-c">
-                        <div class="stat-num" style="color:var(--hiv)">ARV</div>
-                        <div class="stat-label">obat pengendali yang tersedia gratis</div>
-                    </div>
-                </div>
- 
-                <p class="poster-section-title">Gejala & Tahapan</p>
-                <div class="fact-card hiv-c">
-                    <div class="fact-label">Fase Akut (2–4 minggu pertama)</div>
-                    <ul>
-                        <li>Demam, nyeri tenggorokan, ruam kulit</li>
-                        <li>Pembengkakan kelenjar getah bening</li>
-                        <li>Nyeri otot dan sendi</li>
-                    </ul>
-                </div>
-                <div class="fact-card hiv-c">
-                    <div class="fact-label">Fase Laten (bisa bertahun-tahun)</div>
-                    <ul>
-                        <li>Sering tidak ada gejala jelas</li>
-                        <li>Virus tetap aktif dan bisa menular</li>
-                        <li>Penting untuk tes HIV secara berkala</li>
-                    </ul>
-                </div>
- 
-                <div class="divider"></div>
-                <p class="poster-section-title">Cara Penularan</p>
-                <div class="fact-card hiv-c">
-                    <ul>
-                        <li>Hubungan seksual tanpa pengaman</li>
-                        <li>Berbagi jarum suntik</li>
-                        <li>Transfusi darah yang terinfeksi</li>
-                        <li>Ibu ke anak saat kehamilan/persalinan/menyusui</li>
-                    </ul>
-                </div>
- 
+                <div class="stat-row"><div class="stat-box hiv-c"><div class="stat-num">530rb+</div><div class="stat-label">ODHA di Indonesia (estimasi)</div></div><div class="stat-box hiv-c"><div class="stat-num">ARV</div><div class="stat-label">obat pengendali tersedia gratis</div></div></div>
+                <div class="fact-card hiv-c"><div class="fact-label">Cara Penularan</div><ul><li>Hubungan seksual tanpa pengaman</li><li>Berbagi jarum suntik</li><li>Transfusi darah yang terinfeksi</li><li>Ibu ke anak saat kehamilan/persalinan</li></ul></div>
                 <div class="divider"></div>
                 <p class="poster-section-title">HIV Tidak Menular Melalui</p>
-                <div class="prevention-chips">
-                    <span class="chip hiv-c">🤝 Jabat tangan</span>
-                    <span class="chip hiv-c">🍽️ Makan bersama</span>
-                    <span class="chip hiv-c">🦟 Gigitan nyamuk</span>
-                    <span class="chip hiv-c">🚿 Kolam renang</span>
-                </div>
- 
+                <div class="prevention-chips"><span class="chip hiv-c">🤝 Jabat tangan</span><span class="chip hiv-c">🍽️ Makan bersama</span><span class="chip hiv-c">🦟 Gigitan nyamuk</span></div>
                 <div class="divider"></div>
-                <p class="poster-section-title">Pencegahan</p>
-                <div class="fact-card hiv-c">
-                    <div class="fact-label">Strategi ABCDE</div>
-                    <ul>
-                        <li><strong>A</strong>bstinence – menghindari seks bebas</li>
-                        <li><strong>B</strong>e faithful – setia pada pasangan</li>
-                        <li><strong>C</strong>ondom – gunakan kondom</li>
-                        <li><strong>D</strong>rug no – hindari narkoba suntik</li>
-                        <li><strong>E</strong>ducation – tingkatkan pengetahuan</li>
-                    </ul>
-                </div>
+                <div class="fact-card hiv-c"><div class="fact-label">Strategi ABCDE</div><ul><li><strong>A</strong>bstinence – hindari seks bebas</li><li><strong>B</strong>e faithful – setia pasangan</li><li><strong>C</strong>ondom – gunakan kondom</li><li><strong>D</strong>rug no – hindari narkoba suntik</li><li><strong>E</strong>ducation – tingkatkan pengetahuan</li></ul></div>
             </div>
         </div>
- 
-        <!-- Poster Hepatitis -->
+
+        <!-- Hepatitis -->
         <div id="poster-hep" class="poster-hep" style="display:none">
-            <div class="poster-header">
-                <span class="disease-icon">🫀</span>
-                <h2>HEPATITIS B & C</h2>
-                <p class="tagline">Infeksi virus pada hati yang bisa menjadi kronis dan menyebabkan sirosis atau kanker hati.</p>
-            </div>
+            <div class="poster-header"><span class="disease-icon">🫀</span><h2>HEPATITIS B & C</h2><p class="tagline">Infeksi virus pada hati yang bisa menjadi kronis dan menyebabkan sirosis atau kanker hati.</p></div>
             <div class="poster-body">
-                <div class="stat-row">
-                    <div class="stat-box hep-c">
-                        <div class="stat-num" style="color:var(--hep)">28 juta</div>
-                        <div class="stat-label">penderita Hepatitis B di Indonesia</div>
-                    </div>
-                    <div class="stat-box hep-c">
-                        <div class="stat-num" style="color:var(--hep)">Vaksin</div>
-                        <div class="stat-label">Hep B tersedia & efektif 95%</div>
-                    </div>
-                </div>
- 
-                <p class="poster-section-title">Jenis & Gejala</p>
-                <div class="fact-card hep-c">
-                    <div class="fact-label">Gejala Umum</div>
-                    <ul>
-                        <li>Kulit dan mata menguning (jaundice)</li>
-                        <li>Urin berwarna gelap seperti teh</li>
-                        <li>Nyeri perut kanan atas (area hati)</li>
-                        <li>Mual, muntah, kehilangan nafsu makan</li>
-                        <li>Kelelahan ekstrem</li>
-                        <li>Demam ringan</li>
-                    </ul>
-                </div>
- 
+                <div class="stat-row"><div class="stat-box hep-c"><div class="stat-num">28 juta</div><div class="stat-label">penderita Hepatitis B di Indonesia</div></div><div class="stat-box hep-c"><div class="stat-num">Vaksin</div><div class="stat-label">Hep B efektif 95%</div></div></div>
+                <div class="fact-card hep-c"><div class="fact-label">Gejala Umum</div><ul><li>Kulit dan mata menguning (jaundice)</li><li>Urin berwarna gelap seperti teh</li><li>Nyeri perut kanan atas</li><li>Mual, muntah, kelelahan ekstrem</li></ul></div>
                 <div class="divider"></div>
-                <p class="poster-section-title">Cara Penularan</p>
-                <div class="fact-card hep-c">
-                    <div class="fact-label">Hepatitis B</div>
-                    <ul>
-                        <li>Kontak darah/cairan tubuh terinfeksi</li>
-                        <li>Hubungan seksual tanpa pengaman</li>
-                        <li>Ibu ke bayi saat persalinan</li>
-                        <li>Penggunaan jarum suntik bersama</li>
-                    </ul>
-                </div>
-                <div class="fact-card hep-c" style="margin-top:8px">
-                    <div class="fact-label">Hepatitis C</div>
-                    <ul>
-                        <li>Terutama melalui darah (jarum suntik)</li>
-                        <li>Transfusi darah tidak tersaring</li>
-                        <li>Belum ada vaksin — pencegahan sangat penting</li>
-                    </ul>
-                </div>
- 
-                <div class="divider"></div>
-                <p class="poster-section-title">Pencegahan</p>
-                <div class="prevention-chips">
-                    <span class="chip hep-c">💉 Vaksin Hep B</span>
-                    <span class="chip hep-c">🩸 Jarum steril</span>
-                    <span class="chip hep-c">😷 Kondom</span>
-                    <span class="chip hep-c">🔪 Alat cukur sendiri</span>
-                    <span class="chip hep-c">🏥 Tes rutin</span>
-                </div>
+                <div class="prevention-chips"><span class="chip hep-c">💉 Vaksin Hep B</span><span class="chip hep-c">🩸 Jarum steril</span><span class="chip hep-c">🏥 Skrining rutin</span></div>
             </div>
         </div>
- 
-        <!-- Poster Kesehatan Jiwa -->
+
+        <!-- Kesehatan Jiwa -->
         <div id="poster-jiwa" class="poster-jiwa" style="display:none">
-            <div class="poster-header">
-                <span class="disease-icon">🧠</span>
-                <h2>KESEHATAN JIWA</h2>
-                <p class="tagline">Kesehatan mental sama pentingnya dengan kesehatan fisik. Kenali tanda-tanda dan jangan ragu mencari bantuan.</p>
-            </div>
+            <div class="poster-header"><span class="disease-icon">🧠</span><h2>KESEHATAN JIWA</h2><p class="tagline">Kesehatan mental sama pentingnya dengan kesehatan fisik. Kenali tanda-tanda sejak dini.</p></div>
             <div class="poster-body">
-                <div class="stat-row">
-                    <div class="stat-box jiwa-c">
-                        <div class="stat-num" style="color:var(--jiwa)">1 dari 5</div>
-                        <div class="stat-label">orang Indonesia alami gangguan jiwa</div>
-                    </div>
-                    <div class="stat-box jiwa-c">
-                        <div class="stat-num" style="color:var(--jiwa)">70%</div>
-                        <div class="stat-label">tidak mendapat penanganan yang tepat</div>
-                    </div>
-                </div>
- 
-                <p class="poster-section-title">Apa itu Depresi & Anxietas?</p>
-                <div class="fact-card jiwa-c">
-                    <div class="fact-label">PHQ-2 — Skrining Depresi</div>
-                    <ul>
-                        <li>Perasaan murung, sedih, atau putus asa yang terus-menerus</li>
-                        <li>Kehilangan minat atau kesenangan dalam aktivitas sehari-hari</li>
-                        <li>Bukan kelemahan — ini kondisi medis yang bisa diobati</li>
-                    </ul>
-                </div>
-                <div class="fact-card jiwa-c">
-                    <div class="fact-label">GAD-2 — Skrining Kecemasan</div>
-                    <ul>
-                        <li>Rasa gugup, cemas, atau gelisah yang berlebihan</li>
-                        <li>Sulit mengendalikan rasa khawatir tentang berbagai hal</li>
-                        <li>Mempengaruhi kemampuan bekerja dan bersosialisasi</li>
-                    </ul>
-                </div>
- 
+                <div class="stat-row"><div class="stat-box jiwa-c"><div class="stat-num">1 dari 5</div><div class="stat-label">orang Indonesia alami gangguan jiwa</div></div><div class="stat-box jiwa-c"><div class="stat-num">70%</div><div class="stat-label">tidak mendapat penanganan tepat</div></div></div>
+                <div class="fact-card jiwa-c"><div class="fact-label">PHQ-2 — Skrining Depresi (Dewasa)</div><ul><li>Merasa murung, sedih, atau putus asa</li><li>Kehilangan minat/semangat beraktivitas</li></ul></div>
+                <div class="fact-card jiwa-c"><div class="fact-label">GAD-2 — Skrining Kecemasan (Dewasa)</div><ul><li>Gugup, cemas, atau gelisah berlebihan</li><li>Sulit mengendalikan rasa khawatir</li></ul></div>
+                <div class="fact-card jiwa-c"><div class="fact-label">SDQ — Skrining Kesehatan Jiwa Anak</div><ul><li>Perilaku, emosi, dan hubungan sosial anak</li><li>Diisi oleh orang tua / wali</li><li>Untuk anak usia 4–17 tahun</li></ul></div>
                 <div class="divider"></div>
-                <p class="poster-section-title">Tanda Perlu Bantuan Segera</p>
-                <div class="fact-card jiwa-c">
-                    <ul>
-                        <li>Pikiran untuk menyakiti diri sendiri atau orang lain</li>
-                        <li>Tidak bisa tidur atau terlalu banyak tidur berminggu-minggu</li>
-                        <li>Tidak mampu melakukan aktivitas sehari-hari sama sekali</li>
-                        <li>Menyalahgunakan alkohol atau obat-obatan sebagai pelarian</li>
-                    </ul>
-                </div>
- 
+                <div class="prevention-chips"><span class="chip jiwa-c">🗣️ Bicara ke orang dipercaya</span><span class="chip jiwa-c">🏥 Konsultasi nakes</span><span class="chip jiwa-c">📞 119 ext 8</span></div>
+            </div>
+        </div>
+
+        <!-- Skrining Anak -->
+        <div id="poster-anak" class="poster-anak" style="display:none">
+            <div class="poster-header"><span class="disease-icon">👧</span><h2>SKRINING KESEHATAN ANAK</h2><p class="tagline">Deteksi dini masalah kesehatan pada anak usia 7–10 tahun. Diisi oleh orang tua atau wali.</p></div>
+            <div class="poster-body">
+                <div class="stat-row"><div class="stat-box anak-c"><div class="stat-num">7–10</div><div class="stat-label">tahun usia emas deteksi dini</div></div><div class="stat-box anak-c"><div class="stat-num">Gratis</div><div class="stat-label">pemeriksaan lanjutan di Puskesmas</div></div></div>
+                <p class="poster-section-title">Yang Dinilai</p>
+                <div class="fact-card anak-c"><div class="fact-label">Tumbuh Kembang</div><ul><li>Status gizi dan pertumbuhan fisik</li><li>Perkembangan motorik dan kognitif</li><li>Kemampuan bicara dan belajar</li></ul></div>
+                <div class="fact-card anak-c"><div class="fact-label">Kesehatan Umum</div><ul><li>Keluhan fisik berulang (sakit kepala, perut)</li><li>Pola tidur dan nafsu makan</li><li>Riwayat vaksinasi dan imunisasi</li></ul></div>
+                <div class="fact-card anak-c"><div class="fact-label">Perilaku & Emosi</div><ul><li>Interaksi sosial dengan teman sebaya</li><li>Perilaku di sekolah dan rumah</li><li>Tanda-tanda kecemasan atau depresi anak</li></ul></div>
                 <div class="divider"></div>
-                <p class="poster-section-title">Cara Menjaga Kesehatan Jiwa</p>
-                <div class="prevention-chips">
-                    <span class="chip jiwa-c">🗣️ Cerita ke orang dipercaya</span>
-                    <span class="chip jiwa-c">🏃 Olahraga rutin</span>
-                    <span class="chip jiwa-c">😴 Tidur cukup</span>
-                    <span class="chip jiwa-c">🧘 Relaksasi</span>
-                    <span class="chip jiwa-c">🏥 Konsultasi nakes</span>
-                    <span class="chip jiwa-c">📵 Batasi media sosial</span>
-                </div>
- 
-                <div class="divider"></div>
-                <p class="poster-section-title">Layanan Kesehatan Jiwa</p>
-                <div class="fact-card jiwa-c">
-                    <div class="fact-label">Tersedia di Puskesmas Dirgahayu</div>
-                    <ul>
-                        <li>Konsultasi dengan dokter atau psikolog terlatih</li>
-                        <li>Layanan rujukan ke RSJ bila diperlukan</li>
-                        <li>Hotline Sehat Jiwa: <strong>119 ext 8</strong></li>
-                        <li>Semua layanan dijamin kerahasiaannya</li>
-                    </ul>
-                </div>
+                <div class="prevention-chips"><span class="chip anak-c">📋 Diisi orang tua</span><span class="chip anak-c">🏥 Tindak lanjut gratis</span><span class="chip anak-c">👨‍⚕️ Konsultasi dokter</span></div>
             </div>
         </div>
     </aside>
- 
-    <!-- RIGHT: QUIZ PANEL -->
+
+    <!-- ══ QUIZ PANEL KANAN ══ -->
     <section class="quiz-panel" id="quiz-panel">
- 
-        <!-- ══ FORM IDENTITAS DIRI ══ -->
+
+        <!-- FORM IDENTITAS -->
         <div class="identity-panel" id="identity-panel">
             <div class="identity-header">
                 <div class="id-icon"><i class="fas fa-user-edit"></i></div>
                 <div>
                     <h4>Data Identitas Peserta Skrining</h4>
-                    <p>Isi data diri terlebih dahulu sebelum memulai skrining. Data tersimpan otomatis ke sistem.</p>
+                    <p>Isi data diri terlebih dahulu. Data tersimpan otomatis ke sistem dan disertakan pada hasil cetak.</p>
                 </div>
             </div>
             <div class="form-grid">
                 <div class="form-group full">
                     <label>Nama Lengkap <span class="req">*</span></label>
-                    <input type="text" id="f-nama" placeholder="Contoh: Budi Santoso" autocomplete="name">
-                    <span class="error-msg" id="err-nama">Nama wajib diisi</span>
+                    <input type="text" id="f-nama" placeholder="Contoh: Budi Santoso">
+                    <span class="error-msg" id="err-nama">Nama wajib diisi (min. 2 karakter)</span>
                 </div>
                 <div class="form-group">
                     <label>Tanggal Lahir <span class="req">*</span></label>
@@ -1137,716 +428,212 @@
                 <div class="form-group">
                     <label>Nomor HP / WhatsApp <span class="req">*</span></label>
                     <input type="tel" id="f-nohp" placeholder="Contoh: 08123456789" maxlength="15">
-                    <span class="error-msg" id="err-nohp">Nomor HP wajib diisi</span>
+                    <span class="error-msg" id="err-nohp">Nomor HP minimal 8 angka</span>
                 </div>
             </div>
             <button class="form-start-btn" onclick="submitIdentityAndStart()">
                 <i class="fas fa-play-circle"></i> Simpan & Mulai Skrining
             </button>
         </div>
- 
+
+        <!-- SUB-PILIHAN JIWA (Dewasa / Anak) — muncul khusus tab jiwa -->
+        <div class="jiwa-selector" id="jiwa-selector" style="display:none;">
+            <h4>Pilih Jenis Skrining Kesehatan Jiwa</h4>
+            <p>Skrining kesehatan jiwa tersedia untuk dua kelompok. Pilih sesuai kebutuhan.</p>
+            <div class="jiwa-choice-grid">
+                <button class="jiwa-choice-btn" onclick="pilihJiwa('dewasa')">
+                    <span class="jc-icon">🧑</span>
+                    <span class="jc-title">Dewasa</span>
+                    <span class="jc-sub">PHQ-2 & GAD-2<br>Usia 18 tahun ke atas</span>
+                </button>
+                <button class="jiwa-choice-btn" onclick="pilihJiwa('anak')">
+                    <span class="jc-icon">👧</span>
+                    <span class="jc-title">Anak</span>
+                    <span class="jc-sub">SDQ (Strengths & Difficulties)<br>Usia 4–17 tahun, diisi orang tua</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Blok identitas khusus PRINT (tersembunyi di layar) -->
+        <div class="print-identity-block" id="print-identity-block">
+            <div class="print-logo-row">
+                <div>
+                    <div class="print-title">SIDAYU — Puskesmas Dirgahayu</div>
+                    <div class="print-subtitle">Sistem Informasi Digital & Layanan Terpadu</div>
+                </div>
+            </div>
+            <h4>Data Identitas Peserta Skrining</h4>
+            <div class="print-identity-grid" id="print-identity-grid">
+                <!-- diisi JS -->
+            </div>
+        </div>
+
         <div class="quiz-top-bar" id="quiz-top-bar" style="display:none;">
             <h3 id="quiz-title">Skrining TBC</h3>
-            <div class="quiz-disclaimer">
-                <i class="fas fa-info-circle"></i>
-                Bukan pengganti diagnosis dokter
-            </div>
+            <div class="quiz-disclaimer"><i class="fas fa-info-circle"></i> Bukan pengganti diagnosis dokter</div>
         </div>
- 
-        <!-- Progress -->
         <div class="progress-wrap" id="progress-wrap" style="display:none;">
-            <div class="progress-bar-track">
-                <div class="progress-bar-fill tbc-f" id="progress-fill" style="width:0%"></div>
-            </div>
+            <div class="progress-bar-track"><div class="progress-bar-fill tbc-f" id="progress-fill" style="width:0%"></div></div>
             <div class="progress-steps" id="progress-steps"></div>
         </div>
- 
-        <!-- Questions -->
         <div class="question-area" id="question-area" style="display:none;"></div>
- 
-        <!-- Nav Buttons -->
         <div class="q-nav" id="q-nav" style="display:none;">
-            <button class="nav-btn" id="btn-prev" onclick="prevStep()">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </button>
-            <button class="nav-btn primary-tbc" id="btn-next" onclick="nextStep()">
-                Lanjut <i class="fas fa-arrow-right"></i>
-            </button>
+            <button class="nav-btn" id="btn-prev" onclick="prevStep()"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <button class="nav-btn primary-tbc" id="btn-next" onclick="nextStep()">Lanjut <i class="fas fa-arrow-right"></i></button>
         </div>
- 
-        <!-- Result -->
         <div class="result-panel" id="result-panel"></div>
- 
     </section>
 </div>
- 
-<!-- Toast Notifikasi -->
-<div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toast-msg">Data berhasil disimpan!</span>
-</div>
- 
-<!-- ══ BPJS SKRINING RESMI ══ -->
-<div style="max-width:1100px;margin:0 auto;padding:0 20px 50px;">
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Data berhasil disimpan!</span></div>
+
+<!-- BPJS Banner — diberi class agar bisa disembunyikan saat print -->
+<div class="bpjs-section" style="max-width:1100px;margin:0 auto;padding:0 20px 50px;">
     <div style="background:linear-gradient(135deg,#004d8c 0%,#0077cc 50%,#1a9be0 100%);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:0 10px 40px rgba(0,90,158,0.25);flex-wrap:wrap;">
         <div style="background:rgba(255,255,255,0.15);border-radius:16px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:2em;flex-shrink:0;">🩺</div>
         <div style="flex:1;min-width:200px;">
             <div style="font-size:0.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:6px;">WEB SKRINING RESMI</div>
-            <h3 style="font-family:'Montserrat',sans-serif;font-size:1.2em;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:0.5px;">Skrining Kesehatan BPJS Kesehatan</h3>
-            <p style="font-size:0.82em;color:rgba(255,255,255,0.85);line-height:1.55;">Lakukan skrining kesehatan lengkap secara online melalui portal resmi BPJS Kesehatan — tersedia untuk seluruh peserta JKN. Meliputi skrining diabetes, hipertensi, kolesterol, dan penyakit kronis lainnya.</p>
+            <h3 style="font-family:'Montserrat',sans-serif;font-size:1.2em;font-weight:900;color:#fff;margin-bottom:6px;">Skrining Kesehatan BPJS Kesehatan</h3>
+            <p style="font-size:0.82em;color:rgba(255,255,255,0.85);line-height:1.55;">Lakukan skrining kesehatan lengkap secara online melalui portal resmi BPJS Kesehatan — tersedia untuk seluruh peserta JKN.</p>
         </div>
-        <a href="https://share.google/Q6QxG7OSsGIBmCiqT" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#005a9e;text-decoration:none;padding:14px 24px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:0.88em;font-weight:700;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:all 0.2s;flex-shrink:0;"
-           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.2)'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'">
+        <a href="https://share.google/Q6QxG7OSsGIBmCiqT" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#005a9e;text-decoration:none;padding:14px 24px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:0.88em;font-weight:700;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.15);flex-shrink:0;">
             <i class="fas fa-external-link-alt"></i> Buka Web Skrining BPJS
         </a>
     </div>
 </div>
- 
-<!-- ══ SCRIPT ══ -->
+
 <script>
-// ══════════════════════════════════════════════════
-// GANTI URL INI dengan Web App URL dari Google Apps Script kamu
-// (lihat panduan Tahap 3 di atas)
+// ══ GANTI URL INI ══
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4H8qtWx4TKyXPYwNehftZWYaps9bTVRuGTbrf2kCuL8BAXsZONjsHwS9hmh8n_rJT/exec';
-// ══════════════════════════════════════════════════
- 
-// Identitas peserta (diisi dari form)
+
+// Label skala jiwa — DIDEKLARASIKAN SATU KALI DI SINI
+const SCALE_LABELS     = ['Tidak sama sekali', '< 1 minggu', '> 1 minggu', 'Hampir setiap hari'];
+const SDQ_FREQ_LABELS  = ['Tidak Benar', 'Agak Benar', 'Benar'];
+
 let identitas = {};
- 
+let currentDisease = 'tbc';
+let jiwaMode = '';   // 'dewasa' atau 'anak' — khusus tab jiwa
+let step = 0;
+let answers = {};
+
 const DATA = {
     tbc: {
-        label: 'TBC',
-        color: 'tbc',
-        title: 'Skrining TBC',
+        label: 'TBC', color: 'tbc', title: 'Skrining TBC',
         questions: [
-            {
-                q: 'Apakah Anda mengalami batuk terus-menerus selama 2 minggu atau lebih?',
-                hint: 'Termasuk batuk berdahak, batuk kering, atau batuk berdarah.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda mengalami demam yang tidak terlalu tinggi atau keringat malam berlebih?',
-                hint: 'Keringat malam sering terjadi bahkan saat cuaca tidak panas.',
-                weight: 2
-            },
-            {
-                q: 'Apakah berat badan Anda turun drastis tanpa alasan jelas dalam 1 bulan terakhir?',
-                hint: 'Penurunan >5% berat badan dalam satu bulan tanpa diet khusus.',
-                weight: 1
-            },
-            {
-                q: 'Apakah Anda pernah kontak erat atau tinggal serumah dengan penderita TBC yang terdiagnosis?',
-                hint: 'Kontak setiap hari selama >8 jam per hari dalam 3 bulan terakhir.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda merasa mudah lelah dan kehilangan nafsu makan belakangan ini?',
-                hint: 'Kelelahan kronis meski sudah beristirahat cukup.',
-                weight: 1
-            },
-            {
-                q: 'Apakah Anda memiliki kondisi yang melemahkan imun seperti diabetes, HIV, atau mengonsumsi obat imunosupresan?',
-                hint: 'Kondisi ini meningkatkan risiko tertular dan mengembangkan TBC aktif.',
-                weight: 1
-            },
+            { q: 'Apakah Anda mengalami batuk terus-menerus selama 2 minggu atau lebih?', hint: 'Termasuk batuk berdahak, batuk kering, atau batuk berdarah.', weight: 2 },
+            { q: 'Apakah Anda mengalami demam tidak terlalu tinggi atau keringat malam berlebih?', hint: 'Keringat malam sering terjadi bahkan saat cuaca tidak panas.', weight: 2 },
+            { q: 'Apakah berat badan Anda turun drastis tanpa alasan jelas dalam 1 bulan terakhir?', hint: 'Penurunan >5% berat badan dalam satu bulan tanpa diet khusus.', weight: 1 },
+            { q: 'Apakah Anda pernah kontak erat atau tinggal serumah dengan penderita TBC?', hint: 'Kontak setiap hari selama >8 jam per hari dalam 3 bulan terakhir.', weight: 2 },
+            { q: 'Apakah Anda merasa mudah lelah dan kehilangan nafsu makan belakangan ini?', hint: 'Kelelahan kronis meski sudah beristirahat cukup.', weight: 1 },
+            { q: 'Apakah Anda memiliki kondisi yang melemahkan imun (diabetes, HIV, imunosupresan)?', hint: 'Kondisi ini meningkatkan risiko tertular dan mengembangkan TBC aktif.', weight: 1 },
         ],
         thresholds: { low: 2, med: 4 }
     },
     hiv: {
-        label: 'HIV',
-        color: 'hiv',
-        title: 'Skrining HIV / AIDS',
+        label: 'HIV', color: 'hiv', title: 'Skrining HIV / AIDS',
         questions: [
-            {
-                q: 'Apakah Anda pernah melakukan hubungan seksual tanpa pengaman (kondom) dalam 1 tahun terakhir?',
-                hint: 'Termasuk dengan pasangan baru atau berganti pasangan.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda mengalami demam berulang, nyeri tenggorokan, atau pembengkakan kelenjar getah bening?',
-                hint: 'Terutama bila berlangsung lebih dari 2 minggu tanpa penyebab jelas.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda pernah menggunakan jarum suntik bersama atau mendapat transfusi darah?',
-                hint: 'Termasuk riwayat penggunaan narkoba suntik atau tindik/tato tidak steril.',
-                weight: 3
-            },
-            {
-                q: 'Apakah Anda sering mengalami infeksi berulang seperti sariawan, infeksi kulit, atau infeksi jamur?',
-                hint: 'Infeksi oportunistik bisa menjadi tanda sistem imun yang melemah.',
-                weight: 2
-            },
-            {
-                q: 'Apakah berat badan Anda turun >10% dalam waktu singkat tanpa alasan jelas?',
-                hint: 'Penurunan berat badan mendadak merupakan salah satu tanda HIV stadium lanjut.',
-                weight: 1
-            },
-            {
-                q: 'Apakah pasangan Anda pernah didiagnosis HIV atau berisiko tinggi terpapar HIV?',
-                hint: 'Pengetahuan tentang status HIV pasangan penting untuk pencegahan.',
-                weight: 2
-            },
+            { q: 'Apakah Anda pernah melakukan hubungan seksual tanpa pengaman dalam 1 tahun terakhir?', hint: 'Termasuk dengan pasangan baru atau berganti pasangan.', weight: 2 },
+            { q: 'Apakah Anda mengalami demam berulang, nyeri tenggorokan, atau pembengkakan kelenjar getah bening?', hint: 'Terutama bila berlangsung lebih dari 2 minggu tanpa penyebab jelas.', weight: 2 },
+            { q: 'Apakah Anda pernah menggunakan jarum suntik bersama atau mendapat transfusi darah?', hint: 'Termasuk riwayat penggunaan narkoba suntik atau tindik/tato tidak steril.', weight: 3 },
+            { q: 'Apakah Anda sering mengalami infeksi berulang (sariawan, infeksi kulit, infeksi jamur)?', hint: 'Infeksi oportunistik bisa menjadi tanda sistem imun yang melemah.', weight: 2 },
+            { q: 'Apakah berat badan Anda turun >10% dalam waktu singkat tanpa alasan jelas?', hint: 'Penurunan berat badan mendadak merupakan salah satu tanda HIV stadium lanjut.', weight: 1 },
+            { q: 'Apakah pasangan Anda pernah didiagnosis HIV atau berisiko tinggi terpapar HIV?', hint: 'Pengetahuan tentang status HIV pasangan penting untuk pencegahan.', weight: 2 },
         ],
         thresholds: { low: 2, med: 5 }
     },
     hep: {
-        label: 'Hepatitis',
-        color: 'hep',
-        title: 'Skrining Hepatitis B & C',
+        label: 'Hepatitis', color: 'hep', title: 'Skrining Hepatitis B & C',
         questions: [
-            {
-                q: 'Apakah Anda pernah mendapatkan vaksinasi Hepatitis B lengkap (3 dosis)?',
-                hint: 'Vaksin Hepatitis B biasanya diberikan saat bayi (0, 2, 3, 4 bulan) atau program catch-up.',
-                weight: -1, // protektif
-                isProtective: true
-            },
-            {
-                q: 'Apakah Anda pernah mengalami mata atau kulit berwarna kekuningan (jaundice)?',
-                hint: 'Perubahan warna kuning pada bagian putih mata atau kulit.',
-                weight: 3
-            },
-            {
-                q: 'Apakah Anda merasa nyeri atau tidak nyaman di perut kanan atas secara berulang?',
-                hint: 'Area hati berada di bawah tulang rusuk sisi kanan.',
-                weight: 2
-            },
-            {
-                q: 'Apakah ada anggota keluarga inti (ayah, ibu, saudara) yang pernah didiagnosis Hepatitis B atau C?',
-                hint: 'Hepatitis B dapat menular dari ibu ke anak saat persalinan.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda pernah mendapat transfusi darah, tindik, atau tato dalam kondisi tidak steril?',
-                hint: 'Alat tidak steril berisiko menularkan virus Hepatitis B dan C.',
-                weight: 2
-            },
-            {
-                q: 'Apakah Anda sering merasa mual, kelelahan ekstrem, atau urin berwarna gelap seperti teh?',
-                hint: 'Urin gelap dan kelelahan bisa menjadi tanda gangguan fungsi hati.',
-                weight: 2
-            },
+            { q: 'Apakah Anda pernah mendapatkan vaksinasi Hepatitis B lengkap (3 dosis)?', hint: 'Vaksin Hepatitis B biasanya diberikan saat bayi atau program catch-up.', weight: -1, isProtective: true },
+            { q: 'Apakah Anda pernah mengalami mata atau kulit berwarna kekuningan (jaundice)?', hint: 'Perubahan warna kuning pada bagian putih mata atau kulit.', weight: 3 },
+            { q: 'Apakah Anda merasa nyeri atau tidak nyaman di perut kanan atas secara berulang?', hint: 'Area hati berada di bawah tulang rusuk sisi kanan.', weight: 2 },
+            { q: 'Apakah ada anggota keluarga inti yang pernah didiagnosis Hepatitis B atau C?', hint: 'Hepatitis B dapat menular dari ibu ke anak saat persalinan.', weight: 2 },
+            { q: 'Apakah Anda pernah mendapat transfusi darah, tindik, atau tato tidak steril?', hint: 'Alat tidak steril berisiko menularkan virus Hepatitis B dan C.', weight: 2 },
+            { q: 'Apakah Anda sering merasa mual, kelelahan ekstrem, atau urin berwarna gelap seperti teh?', hint: 'Urin gelap dan kelelahan bisa menjadi tanda gangguan fungsi hati.', weight: 2 },
         ],
         thresholds: { low: 2, med: 4 }
     },
-    jiwa: {
-        label: 'Kesehatan Jiwa',
-        color: 'jiwa',
-        title: 'Skrining Kesehatan Jiwa (PHQ-)',
-        isScale: true,  // uses 0-3 Likert scale, not ya/tidak
-        questions: [
-            {
-                q: 'Dalam 2 minggu terakhir, seberapa sering Anda kurang/tidak bersemangat dalam melakukan kegiatan sehari-hari?',
-                hint: 'Contoh: tidak ingin melakukan hobi, pekerjaan, atau aktivitas yang biasanya menyenangkan.',
-                group: 'PHQ-2 (Skrining Depresi)'
-            },
-            {
-                q: 'Dalam 2 minggu terakhir, seberapa sering Anda merasa murung, tertekan, atau putus asa?',
-                hint: 'Perasaan sedih yang mendalam, seperti tidak ada harapan untuk ke depannya.',
-                group: 'PHQ-2 (Skrining Depresi)'
-            },
-            {
-                q: 'Dalam 2 minggu terakhir, seberapa sering Anda merasa gugup, cemas, atau gelisah?',
-                hint: 'Rasa cemas yang berlebihan, terus-menerus, atau tanpa alasan yang jelas.',
-                group: 'GAD-2 (Skrining Kecemasan)'
-            },
-            {
-                q: 'Dalam 2 minggu terakhir, seberapa sering Anda tidak mampu mengendalikan rasa khawatir?',
-                hint: 'Kekhawatiran yang sulit dihentikan meski sudah mencoba, mengganggu tidur atau aktivitas.',
-                group: 'GAD-2 (Skrining Kecemasan)'
-            },
-        ],
-        // Scale: 0=Tidak sama sekali, 1=<1 minggu, 2=>1 minggu, 3=Hampir setiap hari
+
+    // ── JIWA DEWASA (PHQ-2 + GAD-2) ──
+    jiwa_dewasa: {
+        label: 'Kesehatan Jiwa – Dewasa', color: 'jiwa', title: 'Skrining Jiwa Dewasa (PHQ-2 & GAD-2)',
+        isScale: true,
         scaleOptions: [
             { val: 0, label: 'Tidak sama sekali' },
             { val: 1, label: 'Kurang dari 1 minggu' },
             { val: 2, label: 'Lebih dari 1 minggu' },
             { val: 3, label: 'Hampir setiap hari' },
         ],
-        // PHQ-2: q[0]+q[1], GAD-2: q[2]+q[3]. Threshold ≥3 = perlu perhatian
-        thresholds: { low: 2, med: 4 } // total 0-12; low<3, med<6, high≥6
+        questions: [
+            { q: 'Dalam 2 minggu terakhir, seberapa sering Anda kurang/tidak bersemangat dalam melakukan kegiatan sehari-hari?', hint: 'Contoh: tidak ingin melakukan hobi, pekerjaan, atau aktivitas yang biasanya menyenangkan.', group: 'PHQ-2 (Skrining Depresi)' },
+            { q: 'Dalam 2 minggu terakhir, seberapa sering Anda merasa murung, tertekan, atau putus asa?', hint: 'Perasaan sedih yang mendalam, seperti tidak ada harapan untuk ke depannya.', group: 'PHQ-2 (Skrining Depresi)' },
+            { q: 'Dalam 2 minggu terakhir, seberapa sering Anda merasa gugup, cemas, atau gelisah?', hint: 'Rasa cemas yang berlebihan, terus-menerus, atau tanpa alasan yang jelas.', group: 'GAD-2 (Skrining Kecemasan)' },
+            { q: 'Dalam 2 minggu terakhir, seberapa sering Anda tidak mampu mengendalikan rasa khawatir?', hint: 'Kekhawatiran yang sulit dihentikan meski sudah mencoba, mengganggu tidur atau aktivitas.', group: 'GAD-2 (Skrining Kecemasan)' },
+        ],
+        thresholds: { low: 2, med: 5 }
+    },
+
+    // ── JIWA ANAK (SDQ — diisi orang tua) ──
+    jiwa_anak: {
+        label: 'Kesehatan Jiwa – Anak', color: 'jiwa', title: 'Skrining Jiwa Anak – SDQ (Diisi Orang Tua)',
+        isSDQ: true,
+        sdqOptions: [
+            { val: 0, label: 'Tidak Benar' },
+            { val: 1, label: 'Agak Benar' },
+            { val: 2, label: 'Benar' },
+        ],
+        questions: [
+            { q: 'Anak saya sering mengeluh sakit kepala, sakit perut, atau sakit-sakit lainnya.', hint: 'Contoh: sering sakit kepala sebelum sekolah atau saat stres.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya memiliki banyak kekhawatiran atau sering tampak khawatir.', hint: 'Misalnya khawatir tentang nilai, teman, atau masalah keluarga.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya sering tidak bahagia, murung, atau mudah menangis.', hint: 'Suasana hati yang sering terlihat sedih tanpa alasan yang jelas.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya mudah gugup dalam situasi baru atau mudah kehilangan kepercayaan diri.', hint: 'Misalnya takut bertemu orang baru atau mencoba hal baru.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya memiliki banyak ketakutan dan mudah takut.', hint: 'Misalnya takut gelap, sendirian, atau situasi umum lainnya.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya sering bertengkar dengan anak lain atau mengintimidasi mereka.', hint: 'Termasuk perilaku agresif verbal atau fisik kepada teman sebaya.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya umumnya patuh, biasanya melakukan apa yang diminta orang dewasa.', hint: 'Kepatuhan terhadap aturan orang tua, guru, atau orang dewasa lain.', group: 'Masalah Perilaku', isReverse: true },
+            { q: 'Anak saya sering berbohong atau berbuat curang.', hint: 'Misalnya berbohong tentang tugas sekolah atau keberadaannya.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya mencuri dari rumah, sekolah, atau tempat lain.', hint: 'Termasuk mengambil milik teman atau anggota keluarga tanpa izin.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya berperilaku baik dengan orang dewasa.', hint: 'Sopan dan hormat kepada guru, orang tua, dan orang dewasa lainnya.', group: 'Masalah Perilaku', isReverse: true },
+            { q: 'Anak saya cukup tenang, tidak terlalu aktif, dan mudah memusatkan perhatian.', hint: 'Kemampuan duduk tenang dan fokus saat belajar atau bermain.', group: 'Hiperaktivitas', isReverse: true },
+            { q: 'Anak saya gelisah, terlalu aktif, tidak bisa lama diam.', hint: 'Selalu bergerak, sulit duduk diam, atau sangat aktif secara berlebihan.', group: 'Hiperaktivitas', isReverse: false },
+            { q: 'Anak saya mudah teralihkan perhatiannya, sulit berkonsentrasi.', hint: 'Perhatian mudah berpindah saat belajar atau saat mengerjakan tugas.', group: 'Hiperaktivitas', isReverse: false },
+            { q: 'Anak saya menyelesaikan pekerjaan, perhatiannya baik dan panjang.', hint: 'Mampu menyelesaikan tugas atau permainan dari awal sampai selesai.', group: 'Hiperaktivitas', isReverse: true },
+            { q: 'Anak saya biasanya disukai oleh anak-anak lain.', hint: 'Diterima dan disenangi dalam kelompok teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Anak saya lebih suka sendirian daripada bersama anak-anak lain.', hint: 'Lebih memilih bermain sendiri daripada bermain bersama teman.', group: 'Masalah Teman Sebaya', isReverse: false },
+            { q: 'Setidaknya ada satu teman baik.', hint: 'Memiliki teman dekat yang bisa diajak berbicara atau bermain.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Secara umum, anak saya disukai oleh orang-orang seusianya.', hint: 'Diterima dengan baik dalam lingkungan sosialnya.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Anak saya sering diganggu atau diperolok-olok oleh anak-anak lain.', hint: 'Menjadi korban ejekan, intimidasi, atau penindasan oleh teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: false },
+            { q: 'Anak saya lebih baik dengan orang dewasa daripada anak-anak lain.', hint: 'Merasa lebih nyaman bergaul dengan orang dewasa daripada teman seusianya.', group: 'Masalah Teman Sebaya', isReverse: false },
+        ],
+        thresholds: { low: 15, med: 19 }  // total 0–40; normal <16, borderline 16–19, abnormal ≥20
+    },
+
+    // ── SKRINING ANAK UMUM (7–10 tahun) ──
+    anak: {
+        label: 'Skrining Anak (7–10 tahun)', color: 'anak', title: 'Skrining Kesehatan Anak (7–10 Tahun)',
+        isAnak: true,
+        questions: [
+            { q: 'Apakah anak sering mengeluh sakit kepala, pusing, atau nyeri perut berulang (lebih dari 2x dalam sebulan)?', hint: 'Keluhan fisik berulang bisa menjadi tanda stres atau masalah kesehatan yang perlu diperiksa.', weight: 2 },
+            { q: 'Apakah nafsu makan anak menurun drastis atau anak sangat pilih-pilih makanan sehingga berat badannya tidak bertambah?', hint: 'Gangguan nafsu makan pada anak bisa menghambat pertumbuhan dan perkembangan.', weight: 2 },
+            { q: 'Apakah anak sering batuk lebih dari 2 minggu, pilek terus-menerus, atau sering sesak napas?', hint: 'Keluhan pernapasan berulang perlu diperiksa untuk mengesampingkan TBC anak atau asma.', weight: 2 },
+            { q: 'Apakah anak tampak pucat, mudah lelah, atau tidak bersemangat saat bermain?', hint: 'Bisa menjadi tanda anemia (kurang darah) atau masalah kesehatan lainnya.', weight: 2 },
+            { q: 'Apakah anak pernah mendapatkan vaksinasi lengkap sesuai jadwal (BCG, Polio, DPT, Campak, dll)?', hint: 'Imunisasi lengkap melindungi anak dari berbagai penyakit menular berbahaya.', weight: -1, isProtective: true },
+            { q: 'Apakah anak memiliki kebiasaan mencuci tangan sebelum makan dan setelah dari toilet?', hint: 'Kebiasaan cuci tangan yang baik mencegah diare dan infeksi usus.', weight: -1, isProtective: true },
+            { q: 'Apakah anak sering mengalami gangguan tidur (sulit tidur, sering terbangun malam, atau mimpi buruk)?', hint: 'Gangguan tidur pada anak bisa mempengaruhi konsentrasi, pertumbuhan, dan kesehatan mental.', weight: 1 },
+            { q: 'Apakah anak mengalami kesulitan belajar atau konsentrasi di sekolah dibanding teman seusianya?', hint: 'Perlu dievaluasi apakah ada gangguan penglihatan, pendengaran, atau masalah belajar lainnya.', weight: 2 },
+            { q: 'Apakah anak mengalami gangguan penglihatan (sering memicingkan mata, sering mendekat ke layar TV/gadget, atau tidak bisa melihat tulisan jauh)?', hint: 'Gangguan refraksi atau mata minus sering tidak terdeteksi dan mempengaruhi belajar anak.', weight: 2 },
+            { q: 'Apakah berat badan dan tinggi badan anak sesuai dengan grafik pertumbuhan (KMS/buku KIA)?', hint: 'Status gizi yang baik penting untuk tumbuh kembang optimal anak.', weight: -1, isProtective: true },
+        ],
+        thresholds: { low: 2, med: 4 }
     }
 };
- 
-let currentDisease = 'tbc';
-let step = 0;
-let answers = {};
- 
-function switchDisease(key) {
-    currentDisease = key;
-    step = 0;
-    answers = {};
-    identitas = {};
- 
-    // Update tabs
-    ['tbc','hiv','hep','jiwa'].forEach(d => {
-        const tab = document.getElementById('tab-' + d);
-        tab.className = 'disease-tab';
-        if (d === key) tab.className += ' active-' + d;
-    });
- 
-    // Show correct poster
-    ['tbc','hiv','hep','jiwa'].forEach(d => {
-        document.getElementById('poster-' + d).style.display = d === key ? 'block' : 'none';
-    });
- 
-    // Reset to identity form
-    document.getElementById('identity-panel').style.display = 'block';
-    document.getElementById('quiz-top-bar').style.display = 'none';
-    document.getElementById('result-panel').style.display = 'none';
-    document.getElementById('result-panel').innerHTML = '';
-    document.getElementById('question-area').style.display = 'none';
-    document.getElementById('q-nav').style.display = 'none';
-    document.getElementById('progress-wrap').style.display = 'none';
- 
-    // Reset form errors
-    ['nama','tgl','alamat','pekerjaan','nohp'].forEach(f => {
-        const el = document.getElementById('f-' + f);
-        if (el) el.classList.remove('error');
-        const err = document.getElementById('err-' + f);
-        if (err) err.classList.remove('show');
-    });
- 
-    // Update progress fill color
-    const fill = document.getElementById('progress-fill');
-    fill.className = 'progress-bar-fill ' + key + '-f';
- 
-    document.getElementById('quiz-title').textContent = DATA[key].title;
-}
- 
-function render() {
-    const d = DATA[currentDisease];
-    const total = d.questions.length;
-    const pct = (step / total) * 100;
- 
-    // Progress bar
-    document.getElementById('progress-fill').style.width = pct + '%';
- 
-    // Steps
-    let stepsHtml = '';
-    for (let i = 0; i < total; i++) {
-        let dotClass = 'pstep-dot';
-        let inner = (i + 1);
-        if (i < step) {
-            dotClass += ' done-' + currentDisease;
-            inner = '<i class="fas fa-check" style="font-size:10px"></i>';
-        } else if (i === step) {
-            dotClass += ' active-' + currentDisease;
-        }
-        stepsHtml += `<div class="pstep"><div class="${dotClass}">${inner}</div></div>`;
-    }
-    document.getElementById('progress-steps').innerHTML = stepsHtml;
- 
-    // Question
-    const q = d.questions[step];
-    const c = currentDisease;
-    const cur = answers[step];
- 
-    let optsHtml = '';
- 
-    if (d.isScale) {
-        // ── 4-option Likert scale for jiwa ──
-        const groupLabel = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
-        optsHtml = `${groupLabel}<div class="scale-opts">` +
-            d.scaleOptions.map(o => {
-                const selClass = cur === o.val ? ' sel-jiwa' : '';
-                return `<button class="scale-btn${selClass}" onclick="setAnswer(${o.val})">
-                    <span class="score-badge">${o.val}</span>
-                    ${o.label}
-                </button>`;
-            }).join('') +
-        `</div>`;
-    } else {
-        // ── Ya/Tidak/Tidak Tahu ──
-        const opts = [
-            { val: 'ya',      label: 'Ya',         icon: 'fas fa-check-circle' },
-            { val: 'tidak',   label: 'Tidak',      icon: 'fas fa-times-circle' },
-            { val: 'tdktahu', label: 'Tidak Tahu', icon: 'fas fa-question-circle' }
-        ];
-        optsHtml = `<div class="answer-opts">` +
-            opts.map(o => {
-                const selClass = cur === o.val ? ' sel-' + c : '';
-                return `<button class="ans-btn${selClass}" onclick="setAnswer('${o.val}')">
-                    <i class="${o.icon}"></i> ${o.label}
-                </button>`;
-            }).join('') +
-        `</div>`;
-    }
- 
-    document.getElementById('question-area').innerHTML = `
-        <div class="q-card">
-            <div class="q-number ${c}-c">Pertanyaan ${step + 1} dari ${total}</div>
-            <div class="q-text">${q.q}</div>
-            <div class="q-hint"><i class="fas fa-lightbulb" style="margin-right:5px"></i>${q.hint}</div>
-            ${optsHtml}
-        </div>
-    `;
- 
-    // Buttons
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    btnPrev.disabled = (step === 0);
- 
-    const isLast = step === total - 1;
-    btnNext.className = 'nav-btn primary-' + c;
-    btnNext.disabled = (cur === undefined);
-    btnNext.innerHTML = isLast
-        ? 'Lihat Hasil <i class="fas fa-chart-bar"></i>'
-        : 'Lanjut <i class="fas fa-arrow-right"></i>';
-}
- 
-function setAnswer(val) {
-    answers[step] = val;
-    render();
-}
- 
-function nextStep() {
-    if (answers[step] === undefined) return;
-    const total = DATA[currentDisease].questions.length;
-    if (step < total - 1) {
-        step++;
-        render();
-    } else {
-        showResult();
-    }
-}
- 
-function prevStep() {
-    if (step > 0) { step--; render(); }
-}
- 
-function calcScore() {
-    const d = DATA[currentDisease];
-    let score = 0;
-    if (d.isScale) {
-        // Jiwa: sum of numeric Likert values (0-3 each, total 0-12)
-        d.questions.forEach((q, i) => {
-            score += (answers[i] !== undefined ? Number(answers[i]) : 0);
-        });
-    } else {
-        d.questions.forEach((q, i) => {
-            if (answers[i] === 'ya') {
-                score += q.isProtective ? 0 : (q.weight || 1);
-            } else if (answers[i] === 'tdktahu') {
-                score += q.isProtective ? 0 : 0.5;
-            }
-            if (q.isProtective && answers[i] === 'tidak') score += 1;
-        });
-    }
-    return score;
-}
- 
-function showResult() {
-    const d = DATA[currentDisease];
-    const score = calcScore();
 
-    let level, title, desc, saran, icon;
-
-    // SCALE LABELS (cukup satu kali)
-    const scaleLabels = [
-        'Tidak sama sekali',
-        '< 1 minggu',
-        '> 1 minggu',
-        'Hampir setiap hari'
-    ];
-
-    if (d.isScale) {
-
-        const phqScore =
-            (answers[0] !== undefined ? Number(answers[0]) : 0) +
-            (answers[1] !== undefined ? Number(answers[1]) : 0);
-
-        const gadScore =
-            (answers[2] !== undefined ? Number(answers[2]) : 0) +
-            (answers[3] !== undefined ? Number(answers[3]) : 0);
-
-        const totalScore = phqScore + gadScore;
-
-        if (totalScore <= 2) {
-
-            level = 'low';
-            icon = '✅';
-
-            title = 'Tidak Ada Indikasi Gangguan';
-
-            desc = `
-                Skor total Anda:
-                <strong>${totalScore}/12</strong>
-                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
-                Tidak ditemukan tanda-tanda depresi atau kecemasan yang bermakna saat ini.
-            `;
-
-            saran =
-                'Pertahankan keseimbangan hidup Anda. Lakukan skrining ulang jika kondisi berubah.';
-
-        } else if (totalScore <= 5) {
-
-            level = 'med';
-            icon = '⚠️';
-
-            title = 'Gejala Ringan — Perlu Diperhatikan';
-
-            desc = `
-                Skor total Anda:
-                <strong>${totalScore}/12</strong>
-                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
-                Terdapat beberapa gejala yang perlu diperhatikan.
-            `;
-
-            saran =
-                'Disarankan berkonsultasi dengan petugas kesehatan jiwa di Puskesmas Dirgahayu.';
-
-        } else {
-
-            level = 'high';
-            icon = '🔴';
-
-            title = 'Gejala Signifikan — Segera Konsultasi';
-
-            desc = `
-                Skor total Anda:
-                <strong>${totalScore}/12</strong>
-                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
-                Ditemukan gejala yang memerlukan perhatian profesional.
-            `;
-
-            saran =
-                'Segera temui dokter atau konselor di Puskesmas Dirgahayu.';
-        }
-
-    } else {
-
-        if (score <= d.thresholds.low) {
-
-            level = 'low';
-            icon = '✅';
-
-            title = 'Risiko Rendah';
-
-            desc = `
-                Berdasarkan jawaban Anda,
-                tidak ditemukan indikator risiko yang signifikan untuk ${d.label}.
-            `;
-
-            saran =
-                'Pertahankan gaya hidup sehat dan lakukan skrining rutin.';
-
-        } else if (score <= d.thresholds.med) {
-
-            level = 'med';
-            icon = '⚠️';
-
-            title = 'Risiko Sedang';
-
-            desc =
-                'Terdapat beberapa faktor risiko yang perlu diperhatikan.';
-
-            saran =
-                'Disarankan melakukan pemeriksaan lebih lanjut di Puskesmas.';
-
-        } else {
-
-            level = 'high';
-            icon = '🔴';
-
-            title = 'Risiko Tinggi';
-
-            desc =
-                'Ditemukan beberapa indikator risiko yang signifikan.';
-
-            saran =
-                'Segera datang ke Puskesmas Dirgahayu untuk pemeriksaan.';
-        }
-    }
-
-    // RINGKASAN JAWABAN
-    let summaryHtml = '';
-
-    d.questions.forEach((q, i) => {
-
-        const a = answers[i];
-
-        let pillClass, pillLabel;
-
-        if (d.isScale) {
-
-            const val = Number(a);
-
-            const colors = [
-                'pill-tidak',
-                'pill-tdktahu',
-                'pill-tdktahu',
-                'pill-ya'
-            ];
-
-            pillClass = colors[val] || 'pill-tdktahu';
-
-            pillLabel =
-                scaleLabels[val] !== undefined
-                    ? `${val} – ${scaleLabels[val]}`
-                    : '-';
-
-        } else {
-
-            pillClass =
-                a === 'ya'
-                    ? 'pill-ya'
-                    : a === 'tidak'
-                    ? 'pill-tidak'
-                    : 'pill-tdktahu';
-
-            pillLabel =
-                a === 'ya'
-                    ? 'Ya'
-                    : a === 'tidak'
-                    ? 'Tidak'
-                    : 'Tidak Tahu';
-        }
-
-        summaryHtml += `
-            <div class="ans-row">
-                <span class="ans-pill ${pillClass}" style="white-space:nowrap">
-                    ${pillLabel}
-                </span>
-                <span>${q.q}</span>
-            </div>
-        `;
-    });
-
-    const disclaimerNote = d.isScale
-        ? `
-            Skrining PHQ-2 & GAD-2 bersifat
-            <strong>informatif</strong>,
-            bukan alat diagnosis.
-        `
-        : `
-            Hasil skrining ini
-            <strong>bukan diagnosis medis</strong>.
-        `;
-
-    const resultHtml = `
-        <div class="result-header result-${level}">
-            <div class="result-icon">${icon}</div>
-
-            <span class="badge-risk badge-${level}">
-                ${title}
-            </span>
-
-            <h2>${title}</h2>
-
-            <p>
-                ${desc}
-                <br><br>
-                <strong>${saran}</strong>
-            </p>
-        </div>
-
-        <div class="result-details">
-            <h4>
-                <i class="fas fa-list-check"></i>
-                Ringkasan Jawaban Anda
-            </h4>
-
-            <div class="answer-summary">
-                ${summaryHtml}
-            </div>
-        </div>
-
-        <div style="
-            background:var(--primary-light);
-            border-radius:14px;
-            padding:16px;
-            margin-bottom:20px;
-            border-left:4px solid var(--primary)
-        ">
-            <p style="
-                font-size:0.82em;
-                color:var(--primary-dark);
-                line-height:1.6
-            ">
-                <i class="fas fa-info-circle"></i>
-                <strong>Penting:</strong>
-                ${disclaimerNote}
-            </p>
-        </div>
-
-        <div class="result-actions">
-
-            <button class="act-btn" onclick="restartQuiz()">
-                <i class="fas fa-redo"></i>
-                Ulangi Skrining
-            </button>
-
-            <button class="act-btn print-btn" onclick="window.print()">
-                <i class="fas fa-print"></i>
-                Cetak / Simpan PDF
-            </button>
-
-            <a href="index.html" class="act-btn primary">
-                <i class="fas fa-home"></i>
-                Kembali ke Beranda
-            </a>
-
-        </div>
-    `;
-
-    document.getElementById('question-area').style.display = 'none';
-    document.getElementById('q-nav').style.display = 'none';
-
-    const rp = document.getElementById('result-panel');
-
-    rp.innerHTML = resultHtml;
-    rp.style.display = 'block';
-
-    document.getElementById('progress-fill').style.width = '100%';
-    document.getElementById('progress-wrap').style.display = 'block';
-
-    // KIRIM KE SHEETS
-    const detailLines = d.questions.map((q, i) => {
-
-        const a = answers[i];
-
-        const jawaban = d.isScale
-            ? (scaleLabels[Number(a)] || a)
-            : (a === 'ya'
-                ? 'Ya'
-                : a === 'tidak'
-                ? 'Tidak'
-                : 'Tidak Tahu');
-
-        return `P${i + 1}: ${jawaban}`;
-    });
-
-    kirimKeSheets(title, detailLines.join(' | '));
-}
- 
-function restartQuiz() {
-    step = 0;
-    answers = {};
-    identitas = {};
-    document.getElementById('result-panel').style.display = 'none';
-    document.getElementById('result-panel').innerHTML = '';
-    document.getElementById('identity-panel').style.display = 'block';
-    document.getElementById('quiz-top-bar').style.display = 'none';
-    document.getElementById('question-area').style.display = 'none';
-    document.getElementById('q-nav').style.display = 'none';
-    document.getElementById('progress-wrap').style.display = 'none';
-    // Reset umur hint
-    document.getElementById('f-umur').value = '';
-    document.getElementById('umur-hint').textContent = '';
-}
- 
-// ── Hitung umur otomatis dari tanggal lahir ──
+/* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
-    // Set max date to today
     document.getElementById('f-tgl').max = new Date().toISOString().split('T')[0];
- 
     document.getElementById('f-tgl').addEventListener('change', function() {
-        const tgl = new Date(this.value);
-        const today = new Date();
         if (!this.value) { document.getElementById('f-umur').value = ''; document.getElementById('umur-hint').textContent = ''; return; }
+        const tgl = new Date(this.value); const today = new Date();
         let umur = today.getFullYear() - tgl.getFullYear();
         const m = today.getMonth() - tgl.getMonth();
         if (m < 0 || (m === 0 && today.getDate() < tgl.getDate())) umur--;
@@ -1854,94 +641,301 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('umur-hint').textContent = '✓ Usia terdeteksi otomatis';
     });
 });
- 
-// ── Validasi & mulai skrining ──
+
+/* ── Validasi & mulai ── */
 function submitIdentityAndStart() {
     const fields = [
         { id: 'f-nama',      err: 'err-nama',      check: v => v.trim().length >= 2 },
         { id: 'f-tgl',       err: 'err-tgl',       check: v => v !== '' },
         { id: 'f-alamat',    err: 'err-alamat',    check: v => v.trim().length >= 3 },
         { id: 'f-pekerjaan', err: 'err-pekerjaan', check: v => v !== '' },
-        { id: 'f-nohp',      err: 'err-nohp',      check: v => /^[0-9]{9,15}$/.test(v.replace(/\s/g,'')) },
+        { id: 'f-nohp',      err: 'err-nohp',      check: v => v.trim().replace(/[\s\-\+]/g,'').length >= 8 },
     ];
- 
-    let valid = true;
+    let valid = true, firstError = null;
     fields.forEach(f => {
-        const el = document.getElementById(f.id);
-        const errEl = document.getElementById(f.err);
-        if (!f.check(el.value)) {
-            el.classList.add('error');
-            errEl.classList.add('show');
-            valid = false;
-        } else {
-            el.classList.remove('error');
-            errEl.classList.remove('show');
-        }
+        const el = document.getElementById(f.id), err = document.getElementById(f.err);
+        if (!f.check(el.value)) { el.classList.add('error'); err.classList.add('show'); if (!firstError) firstError = el; valid = false; }
+        else { el.classList.remove('error'); err.classList.remove('show'); }
     });
-    if (!valid) return;
- 
-    // Simpan identitas
+    if (!valid) { if (firstError) firstError.focus(); return; }
+
     identitas = {
-        nama:         document.getElementById('f-nama').value.trim(),
+        nama: document.getElementById('f-nama').value.trim(),
         tanggalLahir: document.getElementById('f-tgl').value,
-        umur:         document.getElementById('f-umur').value,
-        alamat:       document.getElementById('f-alamat').value.trim(),
-        pekerjaan:    document.getElementById('f-pekerjaan').value,
-        noHp:         document.getElementById('f-nohp').value.trim(),
+        umur: document.getElementById('f-umur').value,
+        alamat: document.getElementById('f-alamat').value.trim(),
+        pekerjaan: document.getElementById('f-pekerjaan').value,
+        noHp: document.getElementById('f-nohp').value.trim(),
     };
- 
-    // Tampilkan skrining
+
+    // Update blok identitas print
+    document.getElementById('print-identity-grid').innerHTML = `
+        <div class="print-row"><span>Nama:</span> ${identitas.nama}</div>
+        <div class="print-row"><span>Tgl Lahir:</span> ${identitas.tanggalLahir}</div>
+        <div class="print-row"><span>Umur:</span> ${identitas.umur}</div>
+        <div class="print-row"><span>No HP:</span> ${identitas.noHp}</div>
+        <div class="print-row full" style="grid-column:1/-1"><span>Alamat:</span> ${identitas.alamat}</div>
+        <div class="print-row"><span>Pekerjaan:</span> ${identitas.pekerjaan}</div>
+        <div class="print-row"><span>Tanggal Skrining:</span> ${new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'})}</div>
+    `;
+
     document.getElementById('identity-panel').style.display = 'none';
-    document.getElementById('quiz-top-bar').style.display = 'flex';
-    document.getElementById('question-area').style.display = 'block';
-    document.getElementById('q-nav').style.display = 'flex';
+
+    // Jika jiwa, tampilkan sub-pilihan; jika tidak, langsung ke soal
+    if (currentDisease === 'jiwa') {
+        document.getElementById('jiwa-selector').style.display = 'block';
+    } else {
+        startQuiz();
+    }
+}
+
+function pilihJiwa(mode) {
+    jiwaMode = mode;
+    currentDisease = mode === 'dewasa' ? 'jiwa_dewasa' : 'jiwa_anak';
+    document.getElementById('jiwa-selector').style.display = 'none';
+    document.getElementById('quiz-title').textContent = DATA[currentDisease].title;
+    document.getElementById('progress-fill').className = 'progress-bar-fill jiwa-f';
+    startQuiz();
+}
+
+function startQuiz() {
+    step = 0; answers = {};
+    document.getElementById('quiz-top-bar').style.display  = 'flex';
     document.getElementById('progress-wrap').style.display = 'block';
+    document.getElementById('question-area').style.display = 'block';
+    document.getElementById('q-nav').style.display         = 'flex';
     render();
 }
- 
-// ── Kirim data ke Google Sheets ──
-function kirimKeSheets(hasilSkrining, detailJawaban) {
-    if (!SCRIPT_URL || SCRIPT_URL.includes('GANTI')) {
-        showToast('⚠️ URL Google Script belum diisi di kode HTML', true);
-        return;
+
+/* ── Switch penyakit ── */
+function switchDisease(key) {
+    currentDisease = key; step = 0; answers = {}; identitas = {}; jiwaMode = '';
+
+    ['tbc','hiv','hep','jiwa','anak'].forEach(d => {
+        document.getElementById('tab-' + d).className = 'disease-tab' + (d === key ? ' active-' + d : '');
+        document.getElementById('poster-' + d).style.display = d === key ? 'block' : 'none';
+    });
+
+    document.getElementById('identity-panel').style.display  = 'block';
+    document.getElementById('jiwa-selector').style.display   = 'none';
+    document.getElementById('quiz-top-bar').style.display    = 'none';
+    document.getElementById('result-panel').style.display    = 'none';
+    document.getElementById('result-panel').innerHTML        = '';
+    document.getElementById('question-area').style.display   = 'none';
+    document.getElementById('q-nav').style.display           = 'none';
+    document.getElementById('progress-wrap').style.display   = 'none';
+
+    ['nama','tgl','alamat','pekerjaan','nohp'].forEach(f => {
+        const el = document.getElementById('f-' + f), er = document.getElementById('err-' + f);
+        if (el) el.classList.remove('error'); if (er) er.classList.remove('show');
+    });
+
+    document.getElementById('progress-fill').className = 'progress-bar-fill ' + key + '-f';
+    document.getElementById('quiz-title').textContent  = DATA[key] ? DATA[key].title : '';
+}
+
+/* ── Render pertanyaan ── */
+function render() {
+    const d = DATA[currentDisease]; if (!d) return;
+    const total = d.questions.length;
+    document.getElementById('progress-fill').style.width = (step / total * 100) + '%';
+
+    let stepsHtml = '';
+    for (let i = 0; i < total; i++) {
+        let cls = 'pstep-dot', inner = (i + 1);
+        if (i < step)       { cls += ' done-'   + d.color; inner = '<i class="fas fa-check" style="font-size:10px"></i>'; }
+        else if (i === step){ cls += ' active-' + d.color; }
+        stepsHtml += `<div class="pstep"><div class="${cls}">${inner}</div></div>`;
     }
-    const payload = {
-        ...identitas,
-        jenisskrining: DATA[currentDisease].label,
-        hasilSkrining,
-        detailJawaban
-    };
-    fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    .then(() => showToast('✅ Data skrining berhasil disimpan ke sistem!', false))
-    .catch(() => showToast('⚠️ Gagal menyimpan data. Periksa koneksi internet.', true));
+    document.getElementById('progress-steps').innerHTML = stepsHtml;
+
+    const q = d.questions[step], c = d.color, cur = answers[step];
+    let optsHtml = '';
+
+    if (d.isScale) {
+        // PHQ-2/GAD-2
+        const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
+        optsHtml = gl + `<div class="scale-opts">` + d.scaleOptions.map(o => {
+            const sel = cur === o.val ? ' sel-jiwa' : '';
+            return `<button class="scale-btn${sel}" onclick="setAnswer(${o.val})"><span class="score-badge">${o.val}</span>${o.label}</button>`;
+        }).join('') + `</div>`;
+    } else if (d.isSDQ) {
+        // SDQ — 3 pilihan
+        const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
+        optsHtml = gl + `<div class="answer-opts">` + d.sdqOptions.map(o => {
+            const sel = cur === o.val ? ' sel-jiwa' : '';
+            return `<button class="ans-btn${sel}" onclick="setAnswer(${o.val})">${o.label}</button>`;
+        }).join('') + `</div>`;
+    } else if (d.isAnak) {
+        // Anak — Ya/Tidak
+        const opts = [{ val:'ya', label:'Ya', icon:'fas fa-check-circle'}, {val:'tidak', label:'Tidak', icon:'fas fa-times-circle'}];
+        optsHtml = `<div class="answer-opts">` + opts.map(o => {
+            const sel = cur === o.val ? ' sel-anak' : '';
+            return `<button class="ans-btn${sel}" onclick="setAnswer('${o.val}')"><i class="${o.icon}"></i> ${o.label}</button>`;
+        }).join('') + `</div>`;
+    } else {
+        // Ya/Tidak/Tidak Tahu
+        const opts = [{val:'ya',label:'Ya',icon:'fas fa-check-circle'},{val:'tidak',label:'Tidak',icon:'fas fa-times-circle'},{val:'tdktahu',label:'Tidak Tahu',icon:'fas fa-question-circle'}];
+        optsHtml = `<div class="answer-opts">` + opts.map(o => {
+            const sel = cur === o.val ? ' sel-' + c : '';
+            return `<button class="ans-btn${sel}" onclick="setAnswer('${o.val}')"><i class="${o.icon}"></i> ${o.label}</button>`;
+        }).join('') + `</div>`;
+    }
+
+    document.getElementById('question-area').innerHTML = `
+        <div class="q-card">
+            <div class="q-number ${c}-c">Pertanyaan ${step+1} dari ${total}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="q-hint"><i class="fas fa-lightbulb" style="margin-right:5px"></i>${q.hint}</div>
+            ${optsHtml}
+        </div>`;
+
+    const btnPrev = document.getElementById('btn-prev'), btnNext = document.getElementById('btn-next');
+    btnPrev.disabled = (step === 0);
+    btnNext.className = 'nav-btn primary-' + c;
+    btnNext.disabled  = (cur === undefined);
+    btnNext.innerHTML = step === total-1 ? 'Lihat Hasil <i class="fas fa-chart-bar"></i>' : 'Lanjut <i class="fas fa-arrow-right"></i>';
 }
- 
-// ── Toast notifikasi ──
-function showToast(msg, isError = false) {
-    const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toast-msg');
-    toastMsg.textContent = msg;
-    toast.className = 'toast' + (isError ? ' error-toast' : '');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
+
+function setAnswer(val) { answers[step] = val; render(); }
+function nextStep() { if (answers[step] === undefined) return; const t = DATA[currentDisease].questions.length; if (step < t-1) { step++; render(); } else showResult(); }
+function prevStep() { if (step > 0) { step--; render(); } }
+
+/* ── Hitung skor ── */
+function calcScore() {
+    const d = DATA[currentDisease]; let score = 0;
+    if (d.isScale) {
+        d.questions.forEach((q,i) => { score += (answers[i] !== undefined ? Number(answers[i]) : 0); });
+    } else if (d.isSDQ) {
+        d.questions.forEach((q,i) => {
+            const v = answers[i] !== undefined ? Number(answers[i]) : 0;
+            score += q.isReverse ? (2 - v) : v;
+        });
+    } else {
+        d.questions.forEach((q,i) => {
+            if (answers[i] === 'ya') score += q.isProtective ? 0 : (q.weight||1);
+            if (answers[i] === 'tidak' && q.isProtective) score += 1;
+            if (answers[i] === 'tdktahu' && !q.isProtective) score += 0.5;
+        });
+    }
+    return score;
 }
- 
-// Init — tampilkan identity panel, sembunyikan kuis
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('progress-wrap').style.display = 'none';
+
+/* ── Tampilkan hasil ── */
+function showResult() {
+    const d = DATA[currentDisease]; const score = calcScore();
+    let level, title, desc, saran, icon;
+
+    if (d.isScale) {
+        const phq = (Number(answers[0])||0) + (Number(answers[1])||0);
+        const gad = (Number(answers[2])||0) + (Number(answers[3])||0);
+        const tot = phq + gad;
+        if (tot <= 2) { level='low'; icon='✅'; title='Tidak Ada Indikasi Gangguan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Tidak ditemukan tanda depresi atau kecemasan bermakna.`; saran='Pertahankan keseimbangan hidup. Skrining ulang jika kondisi berubah.'; }
+        else if (tot <= 5) { level='med'; icon='⚠️'; title='Gejala Ringan — Perlu Diperhatikan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Terdapat beberapa gejala yang perlu diperhatikan.`; saran='Disarankan konsultasi ke petugas kesehatan jiwa di Puskesmas Dirgahayu.'; }
+        else { level='high'; icon='🔴'; title='Gejala Signifikan — Segera Konsultasi'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Ditemukan gejala yang memerlukan perhatian profesional.`; saran='Segera temui dokter/konselor di Puskesmas. Hotline Sehat Jiwa: <strong>119 ext 8</strong> (24 jam, gratis).'; }
+    } else if (d.isSDQ) {
+        if (score <= d.thresholds.low) { level='low'; icon='✅'; title='Normal'; desc=`Skor SDQ: <strong>${score}/40</strong>. Tidak ditemukan masalah emosi atau perilaku yang signifikan pada anak.`; saran='Pertahankan pola asuh yang positif. Lakukan skrining rutin setiap tahun.'; }
+        else if (score <= d.thresholds.med) { level='med'; icon='⚠️'; title='Borderline — Perlu Dipantau'; desc=`Skor SDQ: <strong>${score}/40</strong>. Terdapat beberapa indikator yang perlu mendapat perhatian lebih.`; saran='Disarankan konsultasi dengan dokter anak atau psikolog di Puskesmas Dirgahayu.'; }
+        else { level='high'; icon='🔴'; title='Abnormal — Segera Konsultasi'; desc=`Skor SDQ: <strong>${score}/40</strong>. Ditemukan masalah emosi/perilaku yang memerlukan penanganan profesional.`; saran='Segera konsultasikan ke dokter anak atau psikolog. Puskesmas Dirgahayu menyediakan layanan rujukan.'; }
+    } else {
+        if (score <= d.thresholds.low) { level='low'; icon='✅'; title='Risiko Rendah'; desc=`Tidak ditemukan indikator risiko signifikan untuk ${d.label}.`; saran='Pertahankan gaya hidup sehat. Lakukan skrining rutin setahun sekali.'; }
+        else if (score <= d.thresholds.med) { level='med'; icon='⚠️'; title='Risiko Sedang'; desc='Terdapat beberapa faktor risiko yang perlu diperhatikan.'; saran='Disarankan konsultasi ke Puskesmas Dirgahayu untuk pemeriksaan lebih lanjut.'; }
+        else { level='high'; icon='🔴'; title='Risiko Tinggi'; desc='Ditemukan beberapa indikator risiko yang signifikan.'; saran='Segera datang ke Puskesmas Dirgahayu. Layanan tersedia setiap hari kerja.'; }
+    }
+
+    // Ringkasan jawaban
+    let summaryHtml = '';
+    d.questions.forEach((q, i) => {
+        const a = answers[i]; let pillClass, pillLabel;
+        if (d.isScale) {
+            const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-tdktahu','pill-ya'];
+            pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SCALE_LABELS[v]!==undefined ? `${v} – ${SCALE_LABELS[v]}` : '-';
+        } else if (d.isSDQ) {
+            const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-ya'];
+            pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SDQ_FREQ_LABELS[v]!==undefined ? SDQ_FREQ_LABELS[v] : '-';
+        } else {
+            pillClass = a==='ya'?'pill-ya':a==='tidak'?'pill-tidak':'pill-tdktahu';
+            pillLabel = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
+        }
+        summaryHtml += `<div class="ans-row"><span class="ans-pill ${pillClass}" style="white-space:nowrap">${pillLabel}</span><span>${q.q}</span></div>`;
+    });
+
+    const badgeLabel = level==='low'?(d.isScale||d.isSDQ?'Normal / Tidak Ada Indikasi':'Risiko Rendah'):level==='med'?(d.isSDQ?'Borderline':d.isScale?'Gejala Ringan':'Risiko Sedang'):(d.isSDQ?'Abnormal':d.isScale?'Gejala Signifikan':'Risiko Tinggi');
+    const disclaimer = (d.isScale||d.isSDQ) ? 'Hasil skrining ini bersifat <strong>informatif</strong>, bukan alat diagnosis klinis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.' : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Diperlukan pemeriksaan oleh tenaga medis profesional.';
+
     document.getElementById('question-area').style.display = 'none';
     document.getElementById('q-nav').style.display = 'none';
-});
+    document.getElementById('progress-wrap').style.display = 'none';
+
+    const rp = document.getElementById('result-panel');
+    rp.innerHTML = `
+        <div class="result-header result-${level}">
+            <div class="result-icon">${icon}</div>
+            <span class="badge-risk badge-${level}">${badgeLabel}</span>
+            <h2>${title}</h2>
+            <p>${desc}<br><br><strong>${saran}</strong></p>
+        </div>
+        <div class="result-details">
+            <h4><i class="fas fa-list-check" style="margin-right:6px"></i>Ringkasan Jawaban</h4>
+            <div class="answer-summary">${summaryHtml}</div>
+        </div>
+        <div style="background:var(--primary-light);border-radius:14px;padding:16px;margin-bottom:20px;border-left:4px solid var(--primary)">
+            <p style="font-size:0.82em;color:var(--primary-dark);line-height:1.6"><i class="fas fa-info-circle" style="margin-right:6px"></i><strong>Penting:</strong> ${disclaimer}</p>
+        </div>
+        <div class="result-actions">
+            <button class="act-btn" onclick="restartQuiz()"><i class="fas fa-redo"></i> Ulangi Skrining</button>
+            <button class="act-btn print-btn" onclick="window.print()"><i class="fas fa-print"></i> Cetak / Simpan PDF</button>
+            <a href="index.html" class="act-btn primary"><i class="fas fa-home"></i> Kembali ke Beranda</a>
+        </div>`;
+    rp.style.display = 'block';
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('progress-wrap').style.display = 'block';
+
+    // Kirim ke Google Sheets
+    const detailLines = d.questions.map((q,i) => {
+        const a = answers[i];
+        let jw;
+        if (d.isScale) jw = SCALE_LABELS[Number(a)]||String(a);
+        else if (d.isSDQ) jw = SDQ_FREQ_LABELS[Number(a)]||String(a);
+        else jw = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
+        return `P${i+1}: ${jw}`;
+    });
+    kirimKeSheets(title, detailLines.join(' | '));
+}
+
+/* ── Restart ── */
+function restartQuiz() {
+    step = 0; answers = {}; identitas = {}; jiwaMode = '';
+    currentDisease = currentDisease.startsWith('jiwa') ? 'jiwa' : currentDisease;
+    document.getElementById('result-panel').style.display   = 'none';
+    document.getElementById('result-panel').innerHTML       = '';
+    document.getElementById('identity-panel').style.display = 'block';
+    document.getElementById('jiwa-selector').style.display  = 'none';
+    document.getElementById('quiz-top-bar').style.display   = 'none';
+    document.getElementById('question-area').style.display  = 'none';
+    document.getElementById('q-nav').style.display          = 'none';
+    document.getElementById('progress-wrap').style.display  = 'none';
+    document.getElementById('f-umur').value = '';
+    document.getElementById('umur-hint').textContent = '';
+}
+
+/* ── Kirim ke Sheets ── */
+function kirimKeSheets(hasilSkrining, detailJawaban) {
+    if (!SCRIPT_URL || SCRIPT_URL.includes('GANTI')) { showToast('⚠️ URL Google Script belum diisi', true); return; }
+    const payload = { ...identitas, jenisskrining: DATA[currentDisease].label, hasilSkrining, detailJawaban };
+    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(() => showToast('✅ Data skrining berhasil disimpan!', false))
+    .catch(() => showToast('⚠️ Gagal menyimpan data. Periksa koneksi.', true));
+}
+
+/* ── Toast ── */
+function showToast(msg, isError=false) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    t.className = 'toast' + (isError?' error-toast':'');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 4000);
+}
 </script>
 </body>
 </html>
- 
-
-
-
-
