@@ -446,10 +446,15 @@
                     <span class="jc-title">Dewasa</span>
                     <span class="jc-sub">PHQ-2 & GAD-2<br>Usia 18 tahun ke atas</span>
                 </button>
-                <button class="jiwa-choice-btn" onclick="pilihJiwa('anak')">
-                    <span class="jc-icon">👧</span>
-                    <span class="jc-title">Anak</span>
-                    <span class="jc-sub">SDQ (Strengths & Difficulties)<br>Usia 4–17 tahun, diisi orang tua</span>
+                <button class="jiwa-choice-btn" onclick="pilihJiwa('mmys_remaja')">
+                    <span class="jc-icon">🧑‍🎓</span>
+                    <span class="jc-title">MMYS V.1 (Remaja 10–18 Tahun)</span>
+                    <span class="jc-sub">Diisi mandiri oleh anak/remaja</span>
+                </button>
+                <button class="jiwa-choice-btn" onclick="pilihJiwa('mmys_anak')">
+                    <span class="jc-icon">👦</span>
+                    <span class="jc-title">MMYS V.1 (Anak 7–9 Tahun)</span>
+                    <span class="jc-sub">Diisi oleh orang tua/pengasuh</span>
                 </button>
             </div>
         </div>
@@ -555,9 +560,9 @@ const DATA = {
         thresholds: { low: 2, med: 4 }
     },
 
-    // ── JIWA DEWASA (PHQ-2 + GAD-2) ──
+    // ── JIWA DEWASA (PHQ-4) ──
     jiwa_dewasa: {
-        label: 'Kesehatan Jiwa – Dewasa', color: 'jiwa', title: 'Skrining Jiwa Dewasa (PHQ-2 & GAD-2)',
+        label: 'Kesehatan Jiwa – Dewasa', color: 'jiwa', title: 'Skrining Jiwa Dewasa (PHQ-4)',
         isScale: true,
         scaleOptions: [
             { val: 0, label: 'Tidak sama sekali' },
@@ -574,38 +579,34 @@ const DATA = {
         thresholds: { low: 2, med: 5 }
     },
 
-    // ── JIWA ANAK (SDQ — diisi orang tua) ──
-    jiwa_anak: {
-        label: 'Kesehatan Jiwa – Anak', color: 'jiwa', title: 'Skrining Jiwa Anak – SDQ (Diisi Orang Tua)',
-        isSDQ: true,
-        sdqOptions: [
-            { val: 0, label: 'Tidak Benar' },
-            { val: 1, label: 'Agak Benar' },
-            { val: 2, label: 'Benar' },
-        ],
+    // ── JIWA ANAK (MMYS V.1 7-9 Tahun) ──
+    jiwa_mmys_anak: {
+        label: 'MMYS V.1 – Anak (7-9 Tahun)', color: 'jiwa', title: 'Skrining Jiwa Anak MMYS V.1 (Diisi Orang Tua/Pengasuh)',
+        isMMYS: true,
         questions: [
-            { q: 'Anak saya sering mengeluh sakit kepala, sakit perut, atau sakit-sakit lainnya.', hint: 'Contoh: sering sakit kepala sebelum sekolah atau saat stres.', group: 'Gejala Emosional', isReverse: false },
-            { q: 'Anak saya memiliki banyak kekhawatiran atau sering tampak khawatir.', hint: 'Misalnya khawatir tentang nilai, teman, atau masalah keluarga.', group: 'Gejala Emosional', isReverse: false },
-            { q: 'Anak saya sering tidak bahagia, murung, atau mudah menangis.', hint: 'Suasana hati yang sering terlihat sedih tanpa alasan yang jelas.', group: 'Gejala Emosional', isReverse: false },
-            { q: 'Anak saya mudah gugup dalam situasi baru atau mudah kehilangan kepercayaan diri.', hint: 'Misalnya takut bertemu orang baru atau mencoba hal baru.', group: 'Gejala Emosional', isReverse: false },
-            { q: 'Anak saya memiliki banyak ketakutan dan mudah takut.', hint: 'Misalnya takut gelap, sendirian, atau situasi umum lainnya.', group: 'Gejala Emosional', isReverse: false },
-            { q: 'Anak saya sering bertengkar dengan anak lain atau mengintimidasi mereka.', hint: 'Termasuk perilaku agresif verbal atau fisik kepada teman sebaya.', group: 'Masalah Perilaku', isReverse: false },
-            { q: 'Anak saya umumnya patuh, biasanya melakukan apa yang diminta orang dewasa.', hint: 'Kepatuhan terhadap aturan orang tua, guru, atau orang dewasa lain.', group: 'Masalah Perilaku', isReverse: true },
-            { q: 'Anak saya sering berbohong atau berbuat curang.', hint: 'Misalnya berbohong tentang tugas sekolah atau keberadaannya.', group: 'Masalah Perilaku', isReverse: false },
-            { q: 'Anak saya mencuri dari rumah, sekolah, atau tempat lain.', hint: 'Termasuk mengambil milik teman atau anggota keluarga tanpa izin.', group: 'Masalah Perilaku', isReverse: false },
-            { q: 'Anak saya berperilaku baik dengan orang dewasa.', hint: 'Sopan dan hormat kepada guru, orang tua, dan orang dewasa lainnya.', group: 'Masalah Perilaku', isReverse: true },
-            { q: 'Anak saya cukup tenang, tidak terlalu aktif, dan mudah memusatkan perhatian.', hint: 'Kemampuan duduk tenang dan fokus saat belajar atau bermain.', group: 'Hiperaktivitas', isReverse: true },
-            { q: 'Anak saya gelisah, terlalu aktif, tidak bisa lama diam.', hint: 'Selalu bergerak, sulit duduk diam, atau sangat aktif secara berlebihan.', group: 'Hiperaktivitas', isReverse: false },
-            { q: 'Anak saya mudah teralihkan perhatiannya, sulit berkonsentrasi.', hint: 'Perhatian mudah berpindah saat belajar atau saat mengerjakan tugas.', group: 'Hiperaktivitas', isReverse: false },
-            { q: 'Anak saya menyelesaikan pekerjaan, perhatiannya baik dan panjang.', hint: 'Mampu menyelesaikan tugas atau permainan dari awal sampai selesai.', group: 'Hiperaktivitas', isReverse: true },
-            { q: 'Anak saya biasanya disukai oleh anak-anak lain.', hint: 'Diterima dan disenangi dalam kelompok teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: true },
-            { q: 'Anak saya lebih suka sendirian daripada bersama anak-anak lain.', hint: 'Lebih memilih bermain sendiri daripada bermain bersama teman.', group: 'Masalah Teman Sebaya', isReverse: false },
-            { q: 'Setidaknya ada satu teman baik.', hint: 'Memiliki teman dekat yang bisa diajak berbicara atau bermain.', group: 'Masalah Teman Sebaya', isReverse: true },
-            { q: 'Secara umum, anak saya disukai oleh orang-orang seusianya.', hint: 'Diterima dengan baik dalam lingkungan sosialnya.', group: 'Masalah Teman Sebaya', isReverse: true },
-            { q: 'Anak saya sering diganggu atau diperolok-olok oleh anak-anak lain.', hint: 'Menjadi korban ejekan, intimidasi, atau penindasan oleh teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: false },
-            { q: 'Anak saya lebih baik dengan orang dewasa daripada anak-anak lain.', hint: 'Merasa lebih nyaman bergaul dengan orang dewasa daripada teman seusianya.', group: 'Masalah Teman Sebaya', isReverse: false },
+            { q: 'Dalam 2 minggu terakhir, anak sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Berdasarkan pengamatan perilaku sehari-hari anak.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, anak berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Berdasarkan penuturan atau tindakan protektif anak berlebih.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, anak sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi.', hint: 'Anak gelisah di malam hari atau buyar fokusnya.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, anak sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.', hint: 'Anak terlihat murung atau gampang menangis tanpa alasan.', group: 'Skala B Depresi' },
+            { q: 'Dalam 2 minggu terakhir, anak tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya dia suka.', hint: 'Kehilangan minat mendadak pada mainan atau rutinitas kesukaannya.', group: 'Skala B Depresi' },
+            { q: 'Dalam 2 minggu terakhir, anak merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.', hint: 'Keluhan fisik kelesuan tubuh dan sulit konsentrasi.', group: 'Skala B Depresi' }
         ],
-        thresholds: { low: 15, med: 19 }  // total 0–40; normal <16, borderline 16–19, abnormal ≥20
+        thresholds: { low: 1, med: 3 }
+    },
+
+    // ── SKRINING REMAJA (MMYS V.1, 10-18 Tahun) ──
+    jiwa_mmys_remaja: {
+        label: 'MMYS V.1 – Remaja (10-18 Tahun)', color: 'jiwa', title: 'Skrining Jiwa Remaja MMYS V.1 (Diisi Mandiri)',
+        isMMYS: true,
+        questions: [
+            { q: 'Dalam 2 minggu terakhir, Saya sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Perasaan tidak tenang dari dalam diri.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, Saya berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Overthinking atau cemas berlebih terhadap masa depan.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, Saya sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi.', hint: 'Pikiran mengganggu kualitas istirahat dan kegiatan belajar Anda.', group: 'Skala A Anxietas' },
+            { q: 'Dalam 2 minggu terakhir, Saya sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.', hint: 'Perasaan murung yang kosong tanpa pemicu spesifik.', group: 'Skala B Depresi' },
+            { q: 'Dalam 2 minggu terakhir, Saya tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya saya suka.', hint: 'Kehilangan antusiasme terhadap hobi atau aktivitas harian.', group: 'Skala B Depresi' },
+            { q: 'Dalam 2 minggu terakhir, Saya merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.', hint: 'Merasa lelah sepanjang waktu meski tidak beraktivitas berat.', group: 'Skala B Depresi' }
+        ],
+        thresholds: { low: 1, med: 3 }
     },
 
     // ── SKRINING ANAK UMUM (7–10 tahun) ──
