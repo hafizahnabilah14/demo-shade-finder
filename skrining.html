@@ -17,7 +17,7 @@
             --text:          #1a2e2b;
             --text-muted:    #5a7470;
             --border:        #c8dbd9;
-
+ 
             /* Disease accent colours */
             --tbc:   #e53935;
             --tbc-l: #ffebee;
@@ -32,18 +32,18 @@
             --jiwa-l: #e3f2fd;
             --jiwa-m: #bbdefb;
         }
-
+ 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
         html { scroll-behavior: smooth; }
-
+ 
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
         }
-
+ 
         /* ─── HEADER ─── */
         .site-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
@@ -90,7 +90,7 @@
             border: 1px solid rgba(255,255,255,0.25);
         }
         .back-btn:hover { background: rgba(255,255,255,0.25); }
-
+ 
         /* ─── SUB NAV (disease tabs) ─── */
         .disease-nav {
             background: var(--white);
@@ -123,7 +123,7 @@
         .disease-tab.active-hep  { color: var(--hep);  border-color: var(--hep);  background: var(--hep-l); }
         .disease-tab.active-jiwa { color: var(--jiwa); border-color: var(--jiwa); background: var(--jiwa-l); }
         .disease-tab:not(.active-tbc):not(.active-hiv):not(.active-hep):not(.active-jiwa):hover { background: var(--bg); }
-
+ 
         /* ─── MAIN LAYOUT ─── */
         .main-container {
             max-width: 1100px;
@@ -134,7 +134,7 @@
             gap: 24px;
             align-items: start;
         }
-
+ 
         /* ─── POSTER EDUKASI (left panel) ─── */
         .poster-panel {
             position: sticky;
@@ -144,7 +144,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.12);
             transition: all 0.4s ease;
         }
-
+ 
         .poster-header {
             padding: 20px 22px 16px;
             color: var(--white);
@@ -185,17 +185,17 @@
             margin-top: 6px;
             line-height: 1.4;
         }
-
+ 
         .poster-tbc  .poster-header { background: linear-gradient(135deg, #b71c1c, var(--tbc)); }
         .poster-hiv  .poster-header { background: linear-gradient(135deg, #4a148c, var(--hiv)); }
         .poster-hep  .poster-header { background: linear-gradient(135deg, #bf360c, var(--hep)); }
         .poster-jiwa .poster-header { background: linear-gradient(135deg, #0d47a1, var(--jiwa)); }
-
+ 
         .poster-body {
             background: var(--white);
             padding: 20px;
         }
-
+ 
         .poster-section-title {
             font-size: 0.7em;
             font-weight: 700;
@@ -204,7 +204,7 @@
             color: var(--text-muted);
             margin: 0 0 10px;
         }
-
+ 
         .fact-card {
             border-radius: 12px;
             padding: 12px 14px;
@@ -214,7 +214,7 @@
         .fact-card.hiv-c  { background: var(--hiv-l);  border-left: 4px solid var(--hiv); }
         .fact-card.hep-c  { background: var(--hep-l);  border-left: 4px solid var(--hep); }
         .fact-card.jiwa-c { background: var(--jiwa-l); border-left: 4px solid var(--jiwa); }
-
+ 
         .fact-card .fact-label {
             font-size: 0.72em;
             font-weight: 700;
@@ -226,7 +226,7 @@
         .fact-card.hiv-c  .fact-label { color: var(--hiv); }
         .fact-card.hep-c  .fact-label { color: var(--hep); }
         .fact-card.jiwa-c .fact-label { color: var(--jiwa); }
-
+ 
         .fact-card ul {
             list-style: none;
             padding: 0;
@@ -250,7 +250,7 @@
         .fact-card.hiv-c  ul li::before { color: var(--hiv); }
         .fact-card.hep-c  ul li::before { color: var(--hep); }
         .fact-card.jiwa-c ul li::before { color: var(--jiwa); }
-
+ 
         .stat-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -282,9 +282,9 @@
             line-height: 1.3;
             margin-top: 4px;
         }
-
+ 
         .divider { height: 1px; background: var(--border); margin: 14px 0; }
-
+ 
         .prevention-chips {
             display: flex;
             flex-wrap: wrap;
@@ -300,7 +300,7 @@
         .chip.hiv-c  { background: var(--hiv-m);  color: #38006b; }
         .chip.hep-c  { background: var(--hep-m);  color: #7f2900; }
         .chip.jiwa-c { background: var(--jiwa-m); color: #0d3c7a; }
-
+ 
         /* ─── QUIZ PANEL (right panel) ─── */
         .quiz-panel {
             background: var(--white);
@@ -308,7 +308,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.07);
             overflow: hidden;
         }
-
+ 
         .quiz-top-bar {
             padding: 20px 28px 16px;
             border-bottom: 1px solid var(--border);
@@ -334,7 +334,7 @@
             padding: 6px 12px;
             border-radius: 50px;
         }
-
+ 
         /* Progress steps */
         .progress-wrap {
             padding: 22px 28px 10px;
@@ -355,7 +355,7 @@
         .progress-bar-fill.hiv-f  { background: var(--hiv); }
         .progress-bar-fill.hep-f  { background: var(--hep); }
         .progress-bar-fill.jiwa-f { background: var(--jiwa); }
-
+ 
         .progress-steps {
             display: flex;
             justify-content: space-between;
@@ -389,10 +389,10 @@
         .pstep-dot.active-hiv  { background: var(--hiv-l);  border-color: var(--hiv);  color: var(--hiv); }
         .pstep-dot.active-hep  { background: var(--hep-l);  border-color: var(--hep);  color: var(--hep); }
         .pstep-dot.active-jiwa { background: var(--jiwa-l); border-color: var(--jiwa); color: var(--jiwa); }
-
+ 
         /* Question area */
         .question-area { padding: 10px 28px 24px; }
-
+ 
         .q-card {
             border: 1.5px solid var(--border);
             border-radius: 16px;
@@ -403,7 +403,7 @@
             from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
+ 
         .q-number {
             font-size: 0.72em;
             font-weight: 700;
@@ -415,7 +415,7 @@
         .q-number.hiv-c  { color: var(--hiv); }
         .q-number.hep-c  { color: var(--hep); }
         .q-number.jiwa-c { color: var(--jiwa); }
-
+ 
         .q-text {
             font-size: 1em;
             font-weight: 600;
@@ -430,7 +430,7 @@
             line-height: 1.45;
             margin-bottom: 20px;
         }
-
+ 
         .answer-opts {
             display: flex;
             gap: 10px;
@@ -455,12 +455,12 @@
             color: var(--text);
         }
         .ans-btn:hover { background: var(--bg); transform: translateY(-1px); }
-
+ 
         .ans-btn.sel-tbc  { background: var(--tbc-l);  border-color: var(--tbc);  color: var(--tbc); }
         .ans-btn.sel-hiv  { background: var(--hiv-l);  border-color: var(--hiv);  color: var(--hiv); }
         .ans-btn.sel-hep  { background: var(--hep-l);  border-color: var(--hep);  color: var(--hep); }
         .ans-btn.sel-jiwa { background: var(--jiwa-l); border-color: var(--jiwa); color: var(--jiwa); }
-
+ 
         /* Nav buttons */
         .q-nav {
             display: flex;
@@ -494,7 +494,7 @@
         .nav-btn.primary-hiv:hover:not(:disabled)  { background: #4a148c; }
         .nav-btn.primary-hep:hover:not(:disabled)  { background: #bf360c; }
         .nav-btn.primary-jiwa:hover:not(:disabled) { background: #0d47a1; }
-
+ 
         /* ─── RESULT AREA ─── */
         .result-panel {
             padding: 28px;
@@ -510,7 +510,7 @@
         .result-header .result-icon { font-size: 3em; margin-bottom: 10px; }
         .result-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5em; font-weight: 900; }
         .result-header p { font-size: 0.88em; margin-top: 8px; line-height: 1.55; }
-
+ 
         .result-low  { background: #e8f5e9; }
         .result-med  { background: #fff8e1; }
         .result-high { background: #ffebee; }
@@ -520,7 +520,7 @@
         .result-low  p  { color: #2e7d32; }
         .result-med  p  { color: #bf360c; }
         .result-high p  { color: #c62828; }
-
+ 
         .badge-risk {
             display: inline-block;
             padding: 5px 18px;
@@ -534,7 +534,7 @@
         .badge-low  { background: #a5d6a7; color: #1b5e20; }
         .badge-med  { background: #ffcc80; color: #e65100; }
         .badge-high { background: #ef9a9a; color: #b71c1c; }
-
+ 
         .result-details {
             background: var(--bg);
             border-radius: 14px;
@@ -571,7 +571,7 @@
         .pill-ya     { background: #ffcdd2; color: #b71c1c; }
         .pill-tidak  { background: #c8e6c9; color: #1b5e20; }
         .pill-tdktahu{ background: #e3f2fd; color: #0d47a1; }
-
+ 
         .result-actions {
             display: flex;
             gap: 10px;
@@ -600,8 +600,118 @@
         .act-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
         .act-btn.primary:hover { background: var(--primary-dark); }
         .act-btn.print-btn { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
-
-        /* ─── JIWA 4-OPTION SCALE ─── */
+ 
+        /* ─── IDENTITY FORM ─── */
+        .identity-panel {
+            padding: 24px 28px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .identity-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .identity-header .id-icon {
+            width: 40px; height: 40px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 1.1em;
+            flex-shrink: 0;
+        }
+        .identity-header h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95em; font-weight: 800;
+            color: var(--text);
+        }
+        .identity-header p { font-size: 0.74em; color: var(--text-muted); margin-top: 2px; }
+ 
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 0.74em;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .form-group label .req { color: var(--tbc); margin-left: 3px; }
+        .form-group input, .form-group select {
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85em;
+            color: var(--text);
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            width: 100%;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,121,107,0.12);
+        }
+        .form-group input.error { border-color: var(--tbc); box-shadow: 0 0 0 3px rgba(229,57,53,0.1); }
+        .form-group .error-msg { font-size: 0.72em; color: var(--tbc); display: none; }
+        .form-group .error-msg.show { display: block; }
+ 
+        /* umur auto-hitung hint */
+        .umur-hint {
+            font-size: 0.72em;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 3px;
+            min-height: 16px;
+        }
+ 
+        .form-start-btn {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), #00897b);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0,121,107,0.3);
+        }
+        .form-start-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,121,107,0.35); }
+        .form-start-btn:active { transform: translateY(0); }
+ 
+        /* submission toast */
+        .toast {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #1b5e20; color: #fff;
+            padding: 14px 22px; border-radius: 14px;
+            font-size: 0.85em; font-weight: 600;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transform: translateY(100px); opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error-toast { background: #b71c1c; }
+ 
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: 1; }
+        }
         .scale-opts {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -632,7 +742,7 @@
             color: var(--text-muted);
         }
         .scale-btn.sel-jiwa .score-badge { color: var(--jiwa); }
-
+ 
         /* PHQ/GAD label separator */
         .scale-group-label {
             font-size: 0.7em;
@@ -646,14 +756,14 @@
             border-radius: 20px;
             margin-bottom: 14px;
         }
-
+ 
         /* ─── PRINT STYLES ─── */
         @media print {
             .site-header, .disease-nav, .poster-panel, .q-nav, .result-actions, .bpjs-banner { display: none !important; }
             .main-container { grid-template-columns: 1fr; }
             body { background: white; }
         }
-
+ 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 820px) {
             .main-container { grid-template-columns: 1fr; }
@@ -663,7 +773,7 @@
     </style>
 </head>
 <body>
-
+ 
 <!-- ══ HEADER ══ -->
 <header class="site-header">
     <a href="index.html" class="brand">
@@ -676,7 +786,7 @@
         <i class="fas fa-arrow-left"></i> Kembali ke Beranda
     </a>
 </header>
-
+ 
 <!-- ══ DISEASE TABS ══ -->
 <div class="disease-nav">
     <div class="disease-tab active-tbc" id="tab-tbc" onclick="switchDisease('tbc')">
@@ -692,10 +802,10 @@
         <i class="fas fa-brain"></i> Kesehatan Jiwa
     </div>
 </div>
-
+ 
 <!-- ══ MAIN CONTENT ══ -->
 <div class="main-container">
-
+ 
     <!-- LEFT: POSTER EDUKASI -->
     <aside class="poster-panel" id="poster-panel">
         <!-- Poster TBC -->
@@ -716,7 +826,7 @@
                         <div class="stat-label">bisa sembuh dengan pengobatan rutin</div>
                     </div>
                 </div>
-
+ 
                 <p class="poster-section-title">Gejala Utama</p>
                 <div class="fact-card tbc-c">
                     <ul>
@@ -728,7 +838,7 @@
                         <li>Nyeri dada saat bernapas</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Cara Penularan</p>
                 <div class="fact-card tbc-c">
@@ -739,7 +849,7 @@
                         <li>Sistem imun lemah meningkatkan risiko tertular</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Pencegahan</p>
                 <div class="prevention-chips">
@@ -750,7 +860,7 @@
                     <span class="chip tbc-c">☀️ Jemur kasur</span>
                     <span class="chip tbc-c">🏥 Obati tuntas</span>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Pengobatan</p>
                 <div class="fact-card tbc-c">
@@ -764,7 +874,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- Poster HIV -->
         <div id="poster-hiv" class="poster-hiv" style="display:none">
             <div class="poster-header">
@@ -783,7 +893,7 @@
                         <div class="stat-label">obat pengendali yang tersedia gratis</div>
                     </div>
                 </div>
-
+ 
                 <p class="poster-section-title">Gejala & Tahapan</p>
                 <div class="fact-card hiv-c">
                     <div class="fact-label">Fase Akut (2–4 minggu pertama)</div>
@@ -801,7 +911,7 @@
                         <li>Penting untuk tes HIV secara berkala</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Cara Penularan</p>
                 <div class="fact-card hiv-c">
@@ -812,7 +922,7 @@
                         <li>Ibu ke anak saat kehamilan/persalinan/menyusui</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">HIV Tidak Menular Melalui</p>
                 <div class="prevention-chips">
@@ -821,7 +931,7 @@
                     <span class="chip hiv-c">🦟 Gigitan nyamuk</span>
                     <span class="chip hiv-c">🚿 Kolam renang</span>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Pencegahan</p>
                 <div class="fact-card hiv-c">
@@ -836,7 +946,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- Poster Hepatitis -->
         <div id="poster-hep" class="poster-hep" style="display:none">
             <div class="poster-header">
@@ -855,7 +965,7 @@
                         <div class="stat-label">Hep B tersedia & efektif 95%</div>
                     </div>
                 </div>
-
+ 
                 <p class="poster-section-title">Jenis & Gejala</p>
                 <div class="fact-card hep-c">
                     <div class="fact-label">Gejala Umum</div>
@@ -868,7 +978,7 @@
                         <li>Demam ringan</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Cara Penularan</p>
                 <div class="fact-card hep-c">
@@ -888,7 +998,7 @@
                         <li>Belum ada vaksin — pencegahan sangat penting</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Pencegahan</p>
                 <div class="prevention-chips">
@@ -900,7 +1010,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- Poster Kesehatan Jiwa -->
         <div id="poster-jiwa" class="poster-jiwa" style="display:none">
             <div class="poster-header">
@@ -919,7 +1029,7 @@
                         <div class="stat-label">tidak mendapat penanganan yang tepat</div>
                     </div>
                 </div>
-
+ 
                 <p class="poster-section-title">Apa itu Depresi & Anxietas?</p>
                 <div class="fact-card jiwa-c">
                     <div class="fact-label">PHQ-2 — Skrining Depresi</div>
@@ -937,7 +1047,7 @@
                         <li>Mempengaruhi kemampuan bekerja dan bersosialisasi</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Tanda Perlu Bantuan Segera</p>
                 <div class="fact-card jiwa-c">
@@ -948,7 +1058,7 @@
                         <li>Menyalahgunakan alkohol atau obat-obatan sebagai pelarian</li>
                     </ul>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Cara Menjaga Kesehatan Jiwa</p>
                 <div class="prevention-chips">
@@ -959,7 +1069,7 @@
                     <span class="chip jiwa-c">🏥 Konsultasi nakes</span>
                     <span class="chip jiwa-c">📵 Batasi media sosial</span>
                 </div>
-
+ 
                 <div class="divider"></div>
                 <p class="poster-section-title">Layanan Kesehatan Jiwa</p>
                 <div class="fact-card jiwa-c">
@@ -974,31 +1084,88 @@
             </div>
         </div>
     </aside>
-
+ 
     <!-- RIGHT: QUIZ PANEL -->
     <section class="quiz-panel" id="quiz-panel">
-
-        <div class="quiz-top-bar">
+ 
+        <!-- ══ FORM IDENTITAS DIRI ══ -->
+        <div class="identity-panel" id="identity-panel">
+            <div class="identity-header">
+                <div class="id-icon"><i class="fas fa-user-edit"></i></div>
+                <div>
+                    <h4>Data Identitas Peserta Skrining</h4>
+                    <p>Isi data diri terlebih dahulu sebelum memulai skrining. Data tersimpan otomatis ke sistem.</p>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="form-group full">
+                    <label>Nama Lengkap <span class="req">*</span></label>
+                    <input type="text" id="f-nama" placeholder="Contoh: Budi Santoso" autocomplete="name">
+                    <span class="error-msg" id="err-nama">Nama wajib diisi</span>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Lahir <span class="req">*</span></label>
+                    <input type="date" id="f-tgl" max="">
+                    <span class="error-msg" id="err-tgl">Tanggal lahir wajib diisi</span>
+                </div>
+                <div class="form-group">
+                    <label>Umur</label>
+                    <input type="text" id="f-umur" placeholder="Otomatis terisi" readonly style="background:var(--bg);color:var(--primary);font-weight:600;">
+                    <span class="umur-hint" id="umur-hint"></span>
+                </div>
+                <div class="form-group full">
+                    <label>Alamat Lengkap <span class="req">*</span></label>
+                    <input type="text" id="f-alamat" placeholder="Contoh: Jl. Merdeka No.10, Dirgahayu">
+                    <span class="error-msg" id="err-alamat">Alamat wajib diisi</span>
+                </div>
+                <div class="form-group">
+                    <label>Pekerjaan <span class="req">*</span></label>
+                    <select id="f-pekerjaan">
+                        <option value="">-- Pilih --</option>
+                        <option>Pegawai Negeri (ASN)</option>
+                        <option>Pegawai Swasta</option>
+                        <option>Wiraswasta / Pengusaha</option>
+                        <option>Petani / Nelayan</option>
+                        <option>Ibu Rumah Tangga</option>
+                        <option>Pelajar / Mahasiswa</option>
+                        <option>Pensiunan</option>
+                        <option>Tidak Bekerja</option>
+                        <option>Lainnya</option>
+                    </select>
+                    <span class="error-msg" id="err-pekerjaan">Pekerjaan wajib dipilih</span>
+                </div>
+                <div class="form-group">
+                    <label>Nomor HP / WhatsApp <span class="req">*</span></label>
+                    <input type="tel" id="f-nohp" placeholder="Contoh: 08123456789" maxlength="15">
+                    <span class="error-msg" id="err-nohp">Nomor HP wajib diisi</span>
+                </div>
+            </div>
+            <button class="form-start-btn" onclick="submitIdentityAndStart()">
+                <i class="fas fa-play-circle"></i> Simpan & Mulai Skrining
+            </button>
+        </div>
+ 
+        <div class="quiz-top-bar" id="quiz-top-bar" style="display:none;">
             <h3 id="quiz-title">Skrining TBC</h3>
             <div class="quiz-disclaimer">
                 <i class="fas fa-info-circle"></i>
                 Bukan pengganti diagnosis dokter
             </div>
         </div>
-
+ 
         <!-- Progress -->
-        <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-wrap" id="progress-wrap" style="display:none;">
             <div class="progress-bar-track">
                 <div class="progress-bar-fill tbc-f" id="progress-fill" style="width:0%"></div>
             </div>
             <div class="progress-steps" id="progress-steps"></div>
         </div>
-
+ 
         <!-- Questions -->
-        <div class="question-area" id="question-area"></div>
-
+        <div class="question-area" id="question-area" style="display:none;"></div>
+ 
         <!-- Nav Buttons -->
-        <div class="q-nav" id="q-nav">
+        <div class="q-nav" id="q-nav" style="display:none;">
             <button class="nav-btn" id="btn-prev" onclick="prevStep()">
                 <i class="fas fa-arrow-left"></i> Kembali
             </button>
@@ -1006,13 +1173,19 @@
                 Lanjut <i class="fas fa-arrow-right"></i>
             </button>
         </div>
-
+ 
         <!-- Result -->
         <div class="result-panel" id="result-panel"></div>
-
+ 
     </section>
 </div>
-
+ 
+<!-- Toast Notifikasi -->
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Data berhasil disimpan!</span>
+</div>
+ 
 <!-- ══ BPJS SKRINING RESMI ══ -->
 <div style="max-width:1100px;margin:0 auto;padding:0 20px 50px;">
     <div style="background:linear-gradient(135deg,#004d8c 0%,#0077cc 50%,#1a9be0 100%);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:0 10px 40px rgba(0,90,158,0.25);flex-wrap:wrap;">
@@ -1030,9 +1203,18 @@
         </a>
     </div>
 </div>
-
+ 
 <!-- ══ SCRIPT ══ -->
 <script>
+// ══════════════════════════════════════════════════
+// GANTI URL INI dengan Web App URL dari Google Apps Script kamu
+// (lihat panduan Tahap 3 di atas)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4H8qtWx4TKyXPYwNehftZWYaps9bTVRuGTbrf2kCuL8BAXsZONjsHwS9hmh8n_rJT/exec';
+// ══════════════════════════════════════════════════
+ 
+// Identitas peserta (diisi dari form)
+let identitas = {};
+ 
 const DATA = {
     tbc: {
         label: 'TBC',
@@ -1152,7 +1334,7 @@ const DATA = {
     jiwa: {
         label: 'Kesehatan Jiwa',
         color: 'jiwa',
-        title: 'Skrining Kesehatan Jiwa (PHQ-2 & GAD-2)',
+        title: 'Skrining Kesehatan Jiwa (PHQ-4)',
         isScale: true,  // uses 0-3 Likert scale, not ya/tidak
         questions: [
             {
@@ -1187,52 +1369,61 @@ const DATA = {
         thresholds: { low: 2, med: 4 } // total 0-12; low<3, med<6, high≥6
     }
 };
-
+ 
 let currentDisease = 'tbc';
 let step = 0;
 let answers = {};
-
+ 
 function switchDisease(key) {
     currentDisease = key;
     step = 0;
     answers = {};
-
+    identitas = {};
+ 
     // Update tabs
     ['tbc','hiv','hep','jiwa'].forEach(d => {
         const tab = document.getElementById('tab-' + d);
         tab.className = 'disease-tab';
         if (d === key) tab.className += ' active-' + d;
     });
-
+ 
     // Show correct poster
     ['tbc','hiv','hep','jiwa'].forEach(d => {
         document.getElementById('poster-' + d).style.display = d === key ? 'block' : 'none';
     });
-
-    // Reset quiz
+ 
+    // Reset to identity form
+    document.getElementById('identity-panel').style.display = 'block';
+    document.getElementById('quiz-top-bar').style.display = 'none';
     document.getElementById('result-panel').style.display = 'none';
     document.getElementById('result-panel').innerHTML = '';
-    document.getElementById('question-area').style.display = 'block';
-    document.getElementById('q-nav').style.display = 'flex';
-    document.getElementById('progress-wrap').style.display = 'block';
-
+    document.getElementById('question-area').style.display = 'none';
+    document.getElementById('q-nav').style.display = 'none';
+    document.getElementById('progress-wrap').style.display = 'none';
+ 
+    // Reset form errors
+    ['nama','tgl','alamat','pekerjaan','nohp'].forEach(f => {
+        const el = document.getElementById('f-' + f);
+        if (el) el.classList.remove('error');
+        const err = document.getElementById('err-' + f);
+        if (err) err.classList.remove('show');
+    });
+ 
     // Update progress fill color
     const fill = document.getElementById('progress-fill');
     fill.className = 'progress-bar-fill ' + key + '-f';
-
+ 
     document.getElementById('quiz-title').textContent = DATA[key].title;
-
-    render();
 }
-
+ 
 function render() {
     const d = DATA[currentDisease];
     const total = d.questions.length;
     const pct = (step / total) * 100;
-
+ 
     // Progress bar
     document.getElementById('progress-fill').style.width = pct + '%';
-
+ 
     // Steps
     let stepsHtml = '';
     for (let i = 0; i < total; i++) {
@@ -1247,14 +1438,14 @@ function render() {
         stepsHtml += `<div class="pstep"><div class="${dotClass}">${inner}</div></div>`;
     }
     document.getElementById('progress-steps').innerHTML = stepsHtml;
-
+ 
     // Question
     const q = d.questions[step];
     const c = currentDisease;
     const cur = answers[step];
-
+ 
     let optsHtml = '';
-
+ 
     if (d.isScale) {
         // ── 4-option Likert scale for jiwa ──
         const groupLabel = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
@@ -1283,7 +1474,7 @@ function render() {
             }).join('') +
         `</div>`;
     }
-
+ 
     document.getElementById('question-area').innerHTML = `
         <div class="q-card">
             <div class="q-number ${c}-c">Pertanyaan ${step + 1} dari ${total}</div>
@@ -1292,12 +1483,12 @@ function render() {
             ${optsHtml}
         </div>
     `;
-
+ 
     // Buttons
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
     btnPrev.disabled = (step === 0);
-
+ 
     const isLast = step === total - 1;
     btnNext.className = 'nav-btn primary-' + c;
     btnNext.disabled = (cur === undefined);
@@ -1305,12 +1496,12 @@ function render() {
         ? 'Lihat Hasil <i class="fas fa-chart-bar"></i>'
         : 'Lanjut <i class="fas fa-arrow-right"></i>';
 }
-
+ 
 function setAnswer(val) {
     answers[step] = val;
     render();
 }
-
+ 
 function nextStep() {
     if (answers[step] === undefined) return;
     const total = DATA[currentDisease].questions.length;
@@ -1321,11 +1512,11 @@ function nextStep() {
         showResult();
     }
 }
-
+ 
 function prevStep() {
     if (step > 0) { step--; render(); }
 }
-
+ 
 function calcScore() {
     const d = DATA[currentDisease];
     let score = 0;
@@ -1346,19 +1537,19 @@ function calcScore() {
     }
     return score;
 }
-
+ 
 function showResult() {
     const d = DATA[currentDisease];
     const score = calcScore();
-
+ 
     let level, title, desc, saran, icon;
-
+ 
     if (d.isScale) {
         // PHQ-2 + GAD-2 scoring
         const phqScore = (answers[0] !== undefined ? Number(answers[0]) : 0) + (answers[1] !== undefined ? Number(answers[1]) : 0);
         const gadScore = (answers[2] !== undefined ? Number(answers[2]) : 0) + (answers[3] !== undefined ? Number(answers[3]) : 0);
         const totalScore = phqScore + gadScore;
-
+ 
         if (totalScore <= 2) {
             level = 'low'; icon = '✅';
             title = 'Tidak Ada Indikasi Gangguan';
@@ -1393,7 +1584,7 @@ function showResult() {
             saran = 'Segera datang ke Puskesmas Dirgahayu untuk pemeriksaan dan penanganan. Layanan tersedia setiap hari kerja.';
         }
     }
-
+ 
     // Build answer summary
     const scaleLabels = ['Tidak sama sekali','< 1 minggu','> 1 minggu','Hampir setiap hari'];
     let summaryHtml = '';
@@ -1416,12 +1607,12 @@ function showResult() {
             </div>
         `;
     });
-
+ 
     const c = currentDisease;
     const disclaimerNote = d.isScale
         ? 'Skrining PHQ-2 & GAD-2 bersifat <strong>informatif</strong>, bukan alat diagnosis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.'
         : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Hasilnya hanya sebagai panduan awal. Untuk memastikan status kesehatan Anda, diperlukan pemeriksaan fisik dan laboratorium oleh tenaga medis profesional.';
-
+ 
     const resultHtml = `
         <div class="result-header result-${level}">
             <div class="result-icon">${icon}</div>
@@ -1429,19 +1620,19 @@ function showResult() {
             <h2>${title}</h2>
             <p>${desc}<br><br><strong>${saran}</strong></p>
         </div>
-
+ 
         <div class="result-details">
             <h4><i class="fas fa-list-check" style="margin-right:6px"></i>Ringkasan Jawaban Anda</h4>
             <div class="answer-summary">${summaryHtml}</div>
         </div>
-
+ 
         <div style="background:var(--primary-light);border-radius:14px;padding:16px;margin-bottom:20px;border-left:4px solid var(--primary)">
             <p style="font-size:0.82em;color:var(--primary-dark);line-height:1.6">
                 <i class="fas fa-info-circle" style="margin-right:6px"></i>
                 <strong>Penting:</strong> ${disclaimerNote}
             </p>
         </div>
-
+ 
         <div class="result-actions">
             <button class="act-btn" onclick="restartQuiz()">
                 <i class="fas fa-redo"></i> Ulangi Skrining
@@ -1454,32 +1645,151 @@ function showResult() {
             </a>
         </div>
     `;
-
+ 
     document.getElementById('question-area').style.display = 'none';
     document.getElementById('q-nav').style.display = 'none';
     document.getElementById('progress-wrap').style.display = 'none';
-
+ 
     const rp = document.getElementById('result-panel');
     rp.innerHTML = resultHtml;
     rp.style.display = 'block';
-
+ 
     // Fill progress to 100%
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('progress-wrap').style.display = 'block';
+ 
+    // ── Kirim data ke Google Sheets ──
+    const scaleLabels = ['Tidak sama sekali','< 1 minggu','> 1 minggu','Hampir setiap hari'];
+    const detailLines = d.questions.map((q, i) => {
+        const a = answers[i];
+        const jawaban = d.isScale
+            ? (scaleLabels[Number(a)] || a)
+            : (a === 'ya' ? 'Ya' : a === 'tidak' ? 'Tidak' : 'Tidak Tahu');
+        return `P${i+1}: ${jawaban}`;
+    });
+    kirimKeSheets(title, detailLines.join(' | '));
 }
-
+ 
 function restartQuiz() {
     step = 0;
     answers = {};
+    identitas = {};
     document.getElementById('result-panel').style.display = 'none';
     document.getElementById('result-panel').innerHTML = '';
+    document.getElementById('identity-panel').style.display = 'block';
+    document.getElementById('quiz-top-bar').style.display = 'none';
+    document.getElementById('question-area').style.display = 'none';
+    document.getElementById('q-nav').style.display = 'none';
+    document.getElementById('progress-wrap').style.display = 'none';
+    // Reset umur hint
+    document.getElementById('f-umur').value = '';
+    document.getElementById('umur-hint').textContent = '';
+}
+ 
+// ── Hitung umur otomatis dari tanggal lahir ──
+document.addEventListener('DOMContentLoaded', () => {
+    // Set max date to today
+    document.getElementById('f-tgl').max = new Date().toISOString().split('T')[0];
+ 
+    document.getElementById('f-tgl').addEventListener('change', function() {
+        const tgl = new Date(this.value);
+        const today = new Date();
+        if (!this.value) { document.getElementById('f-umur').value = ''; document.getElementById('umur-hint').textContent = ''; return; }
+        let umur = today.getFullYear() - tgl.getFullYear();
+        const m = today.getMonth() - tgl.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < tgl.getDate())) umur--;
+        document.getElementById('f-umur').value = umur + ' tahun';
+        document.getElementById('umur-hint').textContent = '✓ Usia terdeteksi otomatis';
+    });
+});
+ 
+// ── Validasi & mulai skrining ──
+function submitIdentityAndStart() {
+    const fields = [
+        { id: 'f-nama',      err: 'err-nama',      check: v => v.trim().length >= 2 },
+        { id: 'f-tgl',       err: 'err-tgl',       check: v => v !== '' },
+        { id: 'f-alamat',    err: 'err-alamat',    check: v => v.trim().length >= 3 },
+        { id: 'f-pekerjaan', err: 'err-pekerjaan', check: v => v !== '' },
+        { id: 'f-nohp',      err: 'err-nohp',      check: v => /^[0-9]{9,15}$/.test(v.replace(/\s/g,'')) },
+    ];
+ 
+    let valid = true;
+    fields.forEach(f => {
+        const el = document.getElementById(f.id);
+        const errEl = document.getElementById(f.err);
+        if (!f.check(el.value)) {
+            el.classList.add('error');
+            errEl.classList.add('show');
+            valid = false;
+        } else {
+            el.classList.remove('error');
+            errEl.classList.remove('show');
+        }
+    });
+    if (!valid) return;
+ 
+    // Simpan identitas
+    identitas = {
+        nama:         document.getElementById('f-nama').value.trim(),
+        tanggalLahir: document.getElementById('f-tgl').value,
+        umur:         document.getElementById('f-umur').value,
+        alamat:       document.getElementById('f-alamat').value.trim(),
+        pekerjaan:    document.getElementById('f-pekerjaan').value,
+        noHp:         document.getElementById('f-nohp').value.trim(),
+    };
+ 
+    // Tampilkan skrining
+    document.getElementById('identity-panel').style.display = 'none';
+    document.getElementById('quiz-top-bar').style.display = 'flex';
     document.getElementById('question-area').style.display = 'block';
     document.getElementById('q-nav').style.display = 'flex';
+    document.getElementById('progress-wrap').style.display = 'block';
     render();
 }
-
-// Init
-render();
+ 
+// ── Kirim data ke Google Sheets ──
+function kirimKeSheets(hasilSkrining, detailJawaban) {
+    if (!SCRIPT_URL || SCRIPT_URL.includes('GANTI')) {
+        showToast('⚠️ URL Google Script belum diisi di kode HTML', true);
+        return;
+    }
+    const payload = {
+        ...identitas,
+        jenisskrining: DATA[currentDisease].label,
+        hasilSkrining,
+        detailJawaban
+    };
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(() => showToast('✅ Data skrining berhasil disimpan ke sistem!', false))
+    .catch(() => showToast('⚠️ Gagal menyimpan data. Periksa koneksi internet.', true));
+}
+ 
+// ── Toast notifikasi ──
+function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    toastMsg.textContent = msg;
+    toast.className = 'toast' + (isError ? ' error-toast' : '');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+}
+ 
+// Init — tampilkan identity panel, sembunyikan kuis
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('progress-wrap').style.display = 'none';
+    document.getElementById('question-area').style.display = 'none';
+    document.getElementById('q-nav').style.display = 'none';
+});
 </script>
 </body>
 </html>
+ 
+
+
+
+
