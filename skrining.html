@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skrining Mandiri – SIDAYU Puskesmas Dirgahayu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=800;900&family=Poppins:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -201,7 +201,6 @@
 
         /* ─── IDENTITY FORM ─── */
         .identity-panel { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); }
-        .identity-panel { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); }
         .identity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
         .identity-header .id-icon { width: 40px; height: 40px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.1em; flex-shrink: 0; }
         .identity-header h4 { font-family: 'Montserrat', sans-serif; font-size: 0.95em; font-weight: 800; color: var(--text); }
@@ -240,8 +239,10 @@
 
         /* ══════════════════════════════════════════
            ─── PRINT STYLES — HANYA HASIL SKRINING ───
-           ══════════════════════════════════════════ */
+           ══════════════════════════════════════════
+           Sembunyikan semua kecuali hasil skrining + identitas */
         @media print {
+            /* Sembunyikan semua elemen yang tidak perlu */
             .site-header,
             .disease-nav,
             .poster-panel,
@@ -253,17 +254,21 @@
             .toast,
             body > div:last-of-type { display: none !important; }
 
+            /* Layout jadi satu kolom penuh */
             .main-container { grid-template-columns: 1fr !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
             body { background: white !important; font-size: 12pt; }
             .quiz-panel { box-shadow: none !important; border-radius: 0 !important; }
 
+            /* Tampilkan blok identitas khusus print */
             .print-identity-block { display: block !important; }
 
+            /* Tampilkan result panel */
             .result-panel { display: block !important; padding: 0 !important; }
             .result-actions { display: none !important; }
             .quiz-top-bar { border-bottom: 1px solid #ccc !important; }
         }
 
+        /* Blok identitas untuk print — tersembunyi di layar, muncul saat print */
         .print-identity-block {
             display: none;
             border: 1.5px solid #c8dbd9;
@@ -300,8 +305,10 @@
 
 <div class="main-container">
 
+    <!-- ══ POSTER KIRI ══ -->
     <aside class="poster-panel" id="poster-panel">
 
+        <!-- TBC -->
         <div id="poster-tbc" class="poster-tbc">
             <div class="poster-header"><span class="disease-icon">🫁</span><h2>TUBERKULOSIS (TBC)</h2><p class="tagline">Penyakit infeksi bakteri yang menyerang paru-paru dan dapat menular melalui udara.</p></div>
             <div class="poster-body">
@@ -316,6 +323,7 @@
             </div>
         </div>
 
+        <!-- HIV -->
         <div id="poster-hiv" class="poster-hiv" style="display:none">
             <div class="poster-header"><span class="disease-icon">🛡️</span><h2>HIV / AIDS</h2><p class="tagline">Virus yang melemahkan sistem kekebalan tubuh. Dapat dicegah dan dikendalikan dengan ARV.</p></div>
             <div class="poster-body">
@@ -325,10 +333,11 @@
                 <p class="poster-section-title">HIV Tidak Menular Melalui</p>
                 <div class="prevention-chips"><span class="chip hiv-c">🤝 Jabat tangan</span><span class="chip hiv-c">🍽️ Makan bersama</span><span class="chip hiv-c">🦟 Gigitan nyamuk</span></div>
                 <div class="divider"></div>
-                <div class="fact-card hiv-c"><div class="fact-label">Strategi ABCDE</div><ul><li><strong>A</strong>bstinence – hindari seks bebas</li><li><strong>B</strong>e faithful – setia pasangan</li><li><strong>C</strong>ondom – gunakan kondom</li><li><strong>D</strong>rug no – hindari narkoba suntik</li><li><strong>E</strong>education – tingkatkan pengetahuan</li></ul></div>
+                <div class="fact-card hiv-c"><div class="fact-label">Strategi ABCDE</div><ul><li><strong>A</strong>bstinence – hindari seks bebas</li><li><strong>B</strong>e faithful – setia pasangan</li><li><strong>C</strong>ondom – gunakan kondom</li><li><strong>D</strong>rug no – hindari narkoba suntik</li><li><strong>E</strong>ducation – tingkatkan pengetahuan</li></ul></div>
             </div>
         </div>
 
+        <!-- Hepatitis -->
         <div id="poster-hep" class="poster-hep" style="display:none">
             <div class="poster-header"><span class="disease-icon">🫀</span><h2>HEPATITIS B & C</h2><p class="tagline">Infeksi virus pada hati yang bisa menjadi kronis dan menyebabkan sirosis atau kanker hati.</p></div>
             <div class="poster-body">
@@ -339,19 +348,20 @@
             </div>
         </div>
 
+        <!-- Kesehatan Jiwa -->
         <div id="poster-jiwa" class="poster-jiwa" style="display:none">
             <div class="poster-header"><span class="disease-icon">🧠</span><h2>KESEHATAN JIWA</h2><p class="tagline">Kesehatan mental sama pentingnya dengan kesehatan fisik. Kenali tanda-tanda sejak dini.</p></div>
             <div class="poster-body">
                 <div class="stat-row"><div class="stat-box jiwa-c"><div class="stat-num">1 dari 5</div><div class="stat-label">orang Indonesia alami gangguan jiwa</div></div><div class="stat-box jiwa-c"><div class="stat-num">70%</div><div class="stat-label">tidak mendapat penanganan tepat</div></div></div>
                 <div class="fact-card jiwa-c"><div class="fact-label">PHQ-2 — Skrining Depresi (Dewasa)</div><ul><li>Merasa murung, sedih, atau putus asa</li><li>Kehilangan minat/semangat beraktivitas</li></ul></div>
                 <div class="fact-card jiwa-c"><div class="fact-label">GAD-2 — Skrining Kecemasan (Dewasa)</div><ul><li>Gugup, cemas, atau gelisah berlebihan</li><li>Sulit mengendalikan rasa khawatir</li></ul></div>
-                <div class="fact-card jiwa-c"><div class="fact-label">MMYS V.1 — Skrining Jiwa Anak & Remaja</div><ul><li>Mendeteksi dini gejala kecemasan dan depresi</li><li>Tersedia untuk kelompok usia 7–9 tahun & 10–18 tahun</li></ul></div>
                 <div class="fact-card jiwa-c"><div class="fact-label">SDQ — Skrining Kesehatan Jiwa Anak</div><ul><li>Perilaku, emosi, dan hubungan sosial anak</li><li>Diisi oleh orang tua / wali</li><li>Untuk anak usia 4–17 tahun</li></ul></div>
                 <div class="divider"></div>
                 <div class="prevention-chips"><span class="chip jiwa-c">🗣️ Bicara ke orang dipercaya</span><span class="chip jiwa-c">🏥 Konsultasi nakes</span><span class="chip jiwa-c">📞 119 ext 8</span></div>
             </div>
         </div>
 
+        <!-- Skrining Anak -->
         <div id="poster-anak" class="poster-anak" style="display:none">
             <div class="poster-header"><span class="disease-icon">👧</span><h2>SKRINING KESEHATAN ANAK</h2><p class="tagline">Deteksi dini masalah kesehatan pada anak usia 7–10 tahun. Diisi oleh orang tua atau wali.</p></div>
             <div class="poster-body">
@@ -366,8 +376,10 @@
         </div>
     </aside>
 
+    <!-- ══ QUIZ PANEL KANAN ══ -->
     <section class="quiz-panel" id="quiz-panel">
 
+        <!-- FORM IDENTITAS -->
         <div class="identity-panel" id="identity-panel">
             <div class="identity-header">
                 <div class="id-icon"><i class="fas fa-user-edit"></i></div>
@@ -424,28 +436,25 @@
             </button>
         </div>
 
+        <!-- SUB-PILIHAN JIWA (Dewasa / Anak) — muncul khusus tab jiwa -->
         <div class="jiwa-selector" id="jiwa-selector" style="display:none;">
             <h4>Pilih Jenis Skrining Kesehatan Jiwa</h4>
-            <p>Skrining kesehatan jiwa tersedia untuk beberapa kelompok. Pilih sesuai kebutuhan.</p>
+            <p>Skrining kesehatan jiwa tersedia untuk dua kelompok. Pilih sesuai kebutuhan.</p>
             <div class="jiwa-choice-grid">
                 <button class="jiwa-choice-btn" onclick="pilihJiwa('dewasa')">
                     <span class="jc-icon">🧑</span>
-                    <span class="jc-title">Dewasa (PHQ-2 & GAD-2)</span>
-                    <span class="jc-sub">Usia 18 tahun ke atas</span>
+                    <span class="jc-title">Dewasa</span>
+                    <span class="jc-sub">PHQ-2 & GAD-2<br>Usia 18 tahun ke atas</span>
                 </button>
-                <button class="jiwa-choice-btn" onclick="pilihJiwa('mmys_anak')">
-                    <span class="jc-icon">👦</span>
-                    <span class="jc-title">MMYS V.1 (Anak 7–9 Tahun)</span>
-                    <span class="jc-sub">Diisi oleh orang tua/pengasuh</span>
-                </button>
-                <button class="jiwa-choice-btn" onclick="pilihJiwa('mmys_remaja')">
-                    <span class="jc-icon">🧑‍🎓</span>
-                    <span class="jc-title">MMYS V.1 (Remaja 10–18 Tahun)</span>
-                    <span class="jc-sub">Diisi mandiri oleh anak/remaja</span>
+                <button class="jiwa-choice-btn" onclick="pilihJiwa('anak')">
+                    <span class="jc-icon">👧</span>
+                    <span class="jc-title">Anak</span>
+                    <span class="jc-sub">SDQ (Strengths & Difficulties)<br>Usia 4–17 tahun, diisi orang tua</span>
                 </button>
             </div>
         </div>
 
+        <!-- Blok identitas khusus PRINT (tersembunyi di layar) -->
         <div class="print-identity-block" id="print-identity-block">
             <div class="print-logo-row">
                 <div>
@@ -455,7 +464,8 @@
             </div>
             <h4>Data Identitas Peserta Skrining</h4>
             <div class="print-identity-grid" id="print-identity-grid">
-                </div>
+                <!-- diisi JS -->
+            </div>
         </div>
 
         <div class="quiz-top-bar" id="quiz-top-bar" style="display:none;">
@@ -475,8 +485,10 @@
     </section>
 </div>
 
+<!-- Toast -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Data berhasil disimpan!</span></div>
 
+<!-- BPJS Banner — diberi class agar bisa disembunyikan saat print -->
 <div class="bpjs-section" style="max-width:1100px;margin:0 auto;padding:0 20px 50px;">
     <div style="background:linear-gradient(135deg,#004d8c 0%,#0077cc 50%,#1a9be0 100%);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:0 10px 40px rgba(0,90,158,0.25);flex-wrap:wrap;">
         <div style="background:rgba(255,255,255,0.15);border-radius:16px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:2em;flex-shrink:0;">🩺</div>
@@ -495,14 +507,13 @@
 // ══ GANTI URL INI ══
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4H8qtWx4TKyXPYwNehftZWYaps9bTVRuGTbrf2kCuL8BAXsZONjsHwS9hmh8n_rJT/exec';
 
-// Label skala jiwa
+// Label skala jiwa — DIDEKLARASIKAN SATU KALI DI SINI
 const SCALE_LABELS     = ['Tidak sama sekali', '< 1 minggu', '> 1 minggu', 'Hampir setiap hari'];
 const SDQ_FREQ_LABELS  = ['Tidak Benar', 'Agak Benar', 'Benar'];
-const MMYS_LABELS      = ['Tidak', 'Ya']; // Mapping respons biner untuk MMYS
 
 let identitas = {};
 let currentDisease = 'tbc';
-let jiwaMode = '';   // 'dewasa', 'mmys_anak', 'mmys_remaja', atau 'anak'
+let jiwaMode = '';   // 'dewasa' atau 'anak' — khusus tab jiwa
 let step = 0;
 let answers = {};
 
@@ -539,7 +550,7 @@ const DATA = {
             { q: 'Apakah Anda merasa nyeri atau tidak nyaman di perut kanan atas secara berulang?', hint: 'Area hati berada di bawah tulang rusuk sisi kanan.', weight: 2 },
             { q: 'Apakah ada anggota keluarga inti yang pernah didiagnosis Hepatitis B atau C?', hint: 'Hepatitis B dapat menular dari ibu ke anak saat persalinan.', weight: 2 },
             { q: 'Apakah Anda pernah mendapat transfusi darah, tindik, atau tato tidak steril?', hint: 'Alat tidak steril berisiko menularkan virus Hepatitis B dan C.', weight: 2 },
-            { q: 'Apakah Anda sering merasa mual, kelelahan ekstrem, atau urin berwarna gelap seperti teh?', hint: 'Urin gelap and kelelahan bisa menjadi tanda gangguan fungsi hati.', weight: 2 },
+            { q: 'Apakah Anda sering merasa mual, kelelahan ekstrem, atau urin berwarna gelap seperti teh?', hint: 'Urin gelap dan kelelahan bisa menjadi tanda gangguan fungsi hati.', weight: 2 },
         ],
         thresholds: { low: 2, med: 4 }
     },
@@ -563,34 +574,38 @@ const DATA = {
         thresholds: { low: 2, med: 5 }
     },
 
-    // ── JIWA MMYS V.1 ANAK (7-9 Tahun) ──
-    jiwa_mmys_anak: {
-        label: 'MMYS V.1 – Anak (7-9 Tahun)', color: 'jiwa', title: 'Skrining Jiwa Anak MMYS V.1 (Diisi Orang Tua/Pengasuh)',
-        isMMYS: true,
-        questions: [
-            { q: 'Dalam 2 minggu terakhir, anak sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Berdasarkan pengamatan perilaku sehari-hari anak.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, anak berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Berdasarkan penuturan atau tindakan protektif anak berlebih.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, anak sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi.', hint: 'Anak gelisah di malam hari atau buyar fokusnya.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, anak sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.', hint: 'Anak terlihat murung atau gampang menangis tanpa alasan.', group: 'Skala B Depresi' },
-            { q: 'Dalam 2 minggu terakhir, anak tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya dia suka.', hint: 'Kehilangan minat mendadak pada mainan atau rutinitas kesukaannya.', group: 'Skala B Depresi' },
-            { q: 'Dalam 2 minggu terakhir, anak merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.', hint: 'Keluhan fisik kelesuan tubuh dan sulit konsentrasi.', group: 'Skala B Depresi' }
+    // ── JIWA ANAK (SDQ — diisi orang tua) ──
+    jiwa_anak: {
+        label: 'Kesehatan Jiwa – Anak', color: 'jiwa', title: 'Skrining Jiwa Anak – SDQ (Diisi Orang Tua)',
+        isSDQ: true,
+        sdqOptions: [
+            { val: 0, label: 'Tidak Benar' },
+            { val: 1, label: 'Agak Benar' },
+            { val: 2, label: 'Benar' },
         ],
-        thresholds: { low: 1, med: 3 }
-    },
-
-    // ── JIWA MMYS V.1 REMAJA (10-18 Tahun) ──
-    jiwa_mmys_remaja: {
-        label: 'MMYS V.1 – Remaja (10-18 Tahun)', color: 'jiwa', title: 'Skrining Jiwa Remaja MMYS V.1 (Diisi Mandiri)',
-        isMMYS: true,
         questions: [
-            { q: 'Dalam 2 minggu terakhir, Saya sering merasa khawatir atau tidak tenang, tegang, deg-degan dan gelisah terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Perasaan tidak tenang dari dalam diri.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, Saya berpikir berlebihan dan tidak bisa mengendalikan diri, terutama terhadap hal-hal negatif atau yang belum tentu terjadi.', hint: 'Overthinking atau cemas berlebih terhadap masa depan.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, Saya sulit tidur dan berkonsentrasi terutama saat memikirkan hal-hal negatif yang belum tentu terjadi.', hint: 'Pikiran mengganggu kualitas istirahat dan kegiatan belajar Anda.', group: 'Skala A Anxietas' },
-            { q: 'Dalam 2 minggu terakhir, Saya sering merasa sedih atau tertekan padahal tidak ada penyebab yang jelas.', hint: 'Perasaan murung yang kosong tanpa pemicu spesifik.', group: 'Skala B Depresi' },
-            { q: 'Dalam 2 minggu terakhir, Saya tidak tertarik lagi dengan kegiatan atau hal-hal yang biasanya saya suka.', hint: 'Kehilangan antusiasme terhadap hobi atau aktivitas harian.', group: 'Skala B Depresi' },
-            { q: 'Dalam 2 minggu terakhir, Saya merasa sering capek, sulit tidur, dan sulit fokus saat belajar atau melakukan kegiatan.', hint: 'Merasa lelah sepanjang waktu meski tidak beraktivitas berat.', group: 'Skala B Depresi' }
+            { q: 'Anak saya sering mengeluh sakit kepala, sakit perut, atau sakit-sakit lainnya.', hint: 'Contoh: sering sakit kepala sebelum sekolah atau saat stres.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya memiliki banyak kekhawatiran atau sering tampak khawatir.', hint: 'Misalnya khawatir tentang nilai, teman, atau masalah keluarga.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya sering tidak bahagia, murung, atau mudah menangis.', hint: 'Suasana hati yang sering terlihat sedih tanpa alasan yang jelas.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya mudah gugup dalam situasi baru atau mudah kehilangan kepercayaan diri.', hint: 'Misalnya takut bertemu orang baru atau mencoba hal baru.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya memiliki banyak ketakutan dan mudah takut.', hint: 'Misalnya takut gelap, sendirian, atau situasi umum lainnya.', group: 'Gejala Emosional', isReverse: false },
+            { q: 'Anak saya sering bertengkar dengan anak lain atau mengintimidasi mereka.', hint: 'Termasuk perilaku agresif verbal atau fisik kepada teman sebaya.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya umumnya patuh, biasanya melakukan apa yang diminta orang dewasa.', hint: 'Kepatuhan terhadap aturan orang tua, guru, atau orang dewasa lain.', group: 'Masalah Perilaku', isReverse: true },
+            { q: 'Anak saya sering berbohong atau berbuat curang.', hint: 'Misalnya berbohong tentang tugas sekolah atau keberadaannya.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya mencuri dari rumah, sekolah, atau tempat lain.', hint: 'Termasuk mengambil milik teman atau anggota keluarga tanpa izin.', group: 'Masalah Perilaku', isReverse: false },
+            { q: 'Anak saya berperilaku baik dengan orang dewasa.', hint: 'Sopan dan hormat kepada guru, orang tua, dan orang dewasa lainnya.', group: 'Masalah Perilaku', isReverse: true },
+            { q: 'Anak saya cukup tenang, tidak terlalu aktif, dan mudah memusatkan perhatian.', hint: 'Kemampuan duduk tenang dan fokus saat belajar atau bermain.', group: 'Hiperaktivitas', isReverse: true },
+            { q: 'Anak saya gelisah, terlalu aktif, tidak bisa lama diam.', hint: 'Selalu bergerak, sulit duduk diam, atau sangat aktif secara berlebihan.', group: 'Hiperaktivitas', isReverse: false },
+            { q: 'Anak saya mudah teralihkan perhatiannya, sulit berkonsentrasi.', hint: 'Perhatian mudah berpindah saat belajar atau saat mengerjakan tugas.', group: 'Hiperaktivitas', isReverse: false },
+            { q: 'Anak saya menyelesaikan pekerjaan, perhatiannya baik dan panjang.', hint: 'Mampu menyelesaikan tugas atau permainan dari awal sampai selesai.', group: 'Hiperaktivitas', isReverse: true },
+            { q: 'Anak saya biasanya disukai oleh anak-anak lain.', hint: 'Diterima dan disenangi dalam kelompok teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Anak saya lebih suka sendirian daripada bersama anak-anak lain.', hint: 'Lebih memilih bermain sendiri daripada bermain bersama teman.', group: 'Masalah Teman Sebaya', isReverse: false },
+            { q: 'Setidaknya ada satu teman baik.', hint: 'Memiliki teman dekat yang bisa diajak berbicara atau bermain.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Secara umum, anak saya disukai oleh orang-orang seusianya.', hint: 'Diterima dengan baik dalam lingkungan sosialnya.', group: 'Masalah Teman Sebaya', isReverse: true },
+            { q: 'Anak saya sering diganggu atau diperolok-olok oleh anak-anak lain.', hint: 'Menjadi korban ejekan, intimidasi, atau penindasan oleh teman sebaya.', group: 'Masalah Teman Sebaya', isReverse: false },
+            { q: 'Anak saya lebih baik dengan orang dewasa daripada anak-anak lain.', hint: 'Merasa lebih nyaman bergaul dengan orang dewasa daripada teman seusianya.', group: 'Masalah Teman Sebaya', isReverse: false },
         ],
-        thresholds: { low: 1, med: 3 }
+        thresholds: { low: 15, med: 19 }  // total 0–40; normal <16, borderline 16–19, abnormal ≥20
     },
 
     // ── SKRINING ANAK UMUM (7–10 tahun) ──
@@ -676,11 +691,7 @@ function submitIdentityAndStart() {
 
 function pilihJiwa(mode) {
     jiwaMode = mode;
-    if (mode === 'dewasa') currentDisease = 'jiwa_dewasa';
-    else if (mode === 'mmys_anak') currentDisease = 'jiwa_mmys_anak';
-    else if (mode === 'mmys_remaja') currentDisease = 'jiwa_mmys_remaja';
-    else currentDisease = 'jiwa_anak';
-
+    currentDisease = mode === 'dewasa' ? 'jiwa_dewasa' : 'jiwa_anak';
     document.getElementById('jiwa-selector').style.display = 'none';
     document.getElementById('quiz-title').textContent = DATA[currentDisease].title;
     document.getElementById('progress-fill').className = 'progress-bar-fill jiwa-f';
@@ -748,14 +759,6 @@ function render() {
             const sel = cur === o.val ? ' sel-jiwa' : '';
             return `<button class="scale-btn${sel}" onclick="setAnswer(${o.val})"><span class="score-badge">${o.val}</span>${o.label}</button>`;
         }).join('') + `</div>`;
-    } else if (d.isMMYS) {
-        // MMYS V.1 — Ya/Tidak dengan bobot nilai (Ya = 1, Tidak = 0)
-        const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
-        const opts = [{ val: 1, label: 'Ya', icon: 'fas fa-check-circle' }, { val: 0, label: 'Tidak', icon: 'fas fa-times-circle' }];
-        optsHtml = gl + `<div class="answer-opts">` + opts.map(o => {
-            const sel = cur === o.val ? ' sel-jiwa' : '';
-            return `<button class="ans-btn${sel}" onclick="setAnswer(${o.val})"><i class="${o.icon}"></i> ${o.label}</button>`;
-        }).join('') + `</div>`;
     } else if (d.isSDQ) {
         // SDQ — 3 pilihan
         const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
@@ -801,7 +804,7 @@ function prevStep() { if (step > 0) { step--; render(); } }
 /* ── Hitung skor ── */
 function calcScore() {
     const d = DATA[currentDisease]; let score = 0;
-    if (d.isScale || d.isMMYS) {
+    if (d.isScale) {
         d.questions.forEach((q,i) => { score += (answers[i] !== undefined ? Number(answers[i]) : 0); });
     } else if (d.isSDQ) {
         d.questions.forEach((q,i) => {
@@ -830,12 +833,6 @@ function showResult() {
         if (tot <= 2) { level='low'; icon='✅'; title='Tidak Ada Indikasi Gangguan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Tidak ditemukan tanda depresi atau kecemasan bermakna.`; saran='Pertahankan keseimbangan hidup. Skrining ulang jika kondisi berubah.'; }
         else if (tot <= 5) { level='med'; icon='⚠️'; title='Gejala Ringan — Perlu Diperhatikan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Terdapat beberapa gejala yang perlu diperhatikan.`; saran='Disarankan konsultasi ke petugas kesehatan jiwa di Puskesmas Dirgahayu.'; }
         else { level='high'; icon='🔴'; title='Gejala Signifikan — Segera Konsultasi'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Ditemukan gejala yang memerlukan perhatian profesional.`; saran='Segera temui dokter/konselor di Puskesmas. Hotline Sehat Jiwa: <strong>119 ext 8</strong> (24 jam, gratis).'; }
-    } else if (d.isMMYS) {
-        // Logika evaluasi instrumen Mini MindHEAR Youth Scale V.1 (Total maks: 6)
-        // Skor 0-1 Normal, Skor 2 Perlu Pemantauan, Skor >=3 Indikasi Gejala Bermakna
-        if (score <= d.thresholds.low) { level='low'; icon='✅'; title='Hasil Skrining: Normal'; desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Kondisi psikologis anak/remaja berada dalam batas normal saat ini.`; saran='Pertahankan komunikasi terbuka serta pola asuh suportif bersama anak.'; }
-        else if (score <= d.thresholds.med) { level='med'; icon='⚠️'; title='Hasil Skrining: Perlu Pemantauan'; desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Ditemukan beberapa gejala kecemasan atau depresi ringan.`; saran='Lakukan evaluasi berkala dan konsultasikan ke guru BK atau layanan konseling Puskesmas Dirgahayu.'; }
-        else { level='high'; icon='🔴'; title='Hasil Skrining: Indikasi Gangguan'; desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Terdapat indikasi kuat gejala kecemasan atau depresi yang bermakna.`; saran='Sangat disarankan segera berkonsultasi dengan psikolog atau dokter di Puskesmas Dirgahayu untuk penanganan awal.'; }
     } else if (d.isSDQ) {
         if (score <= d.thresholds.low) { level='low'; icon='✅'; title='Normal'; desc=`Skor SDQ: <strong>${score}/40</strong>. Tidak ditemukan masalah emosi atau perilaku yang signifikan pada anak.`; saran='Pertahankan pola asuh yang positif. Lakukan skrining rutin setiap tahun.'; }
         else if (score <= d.thresholds.med) { level='med'; icon='⚠️'; title='Borderline — Perlu Dipantau'; desc=`Skor SDQ: <strong>${score}/40</strong>. Terdapat beberapa indikator yang perlu mendapat perhatian lebih.`; saran='Disarankan konsultasi dengan dokter anak atau psikolog di Puskesmas Dirgahayu.'; }
@@ -853,10 +850,6 @@ function showResult() {
         if (d.isScale) {
             const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-tdktahu','pill-ya'];
             pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SCALE_LABELS[v]!==undefined ? `${v} – ${SCALE_LABELS[v]}` : '-';
-        } else if (d.isMMYS) {
-            const v = Number(a);
-            pillClass = v === 1 ? 'pill-ya' : 'pill-tidak';
-            pillLabel = MMYS_LABELS[v] !== undefined ? MMYS_LABELS[v] : '-';
         } else if (d.isSDQ) {
             const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-ya'];
             pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SDQ_FREQ_LABELS[v]!==undefined ? SDQ_FREQ_LABELS[v] : '-';
@@ -864,11 +857,11 @@ function showResult() {
             pillClass = a==='ya'?'pill-ya':a==='tidak'?'pill-tidak':'pill-tdktahu';
             pillLabel = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
         }
-        summaryHtml += `<div class="ans-row"><span class="ans-pill ${pillClass}" style="white-space:nowrap">${pillLabel}</span><span><strong>[${q.group || d.label}]</strong> ${q.q}</span></div>`;
+        summaryHtml += `<div class="ans-row"><span class="ans-pill ${pillClass}" style="white-space:nowrap">${pillLabel}</span><span>${q.q}</span></div>`;
     });
 
-    const badgeLabel = level==='low'?(d.isScale||d.isSDQ||d.isMMYS?'Normal / Tidak Ada Indikasi':'Risiko Rendah'):level==='med'?(d.isSDQ?'Borderline':d.isScale||d.isMMYS?'Gejala Ringan / Pemantauan':'Risiko Sedang'):(d.isSDQ?'Abnormal':d.isScale||d.isMMYS?'Gejala Signifikan':'Risiko Tinggi');
-    const disclaimer = (d.isScale||d.isSDQ||d.isMMYS) ? 'Hasil skrining ini bersifat <strong>informatif</strong>, bukan alat diagnosis klinis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.' : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Diperlukan pemeriksaan oleh tenaga medis profesional.';
+    const badgeLabel = level==='low'?(d.isScale||d.isSDQ?'Normal / Tidak Ada Indikasi':'Risiko Rendah'):level==='med'?(d.isSDQ?'Borderline':d.isScale?'Gejala Ringan':'Risiko Sedang'):(d.isSDQ?'Abnormal':d.isScale?'Gejala Signifikan':'Risiko Tinggi');
+    const disclaimer = (d.isScale||d.isSDQ) ? 'Hasil skrining ini bersifat <strong>informatif</strong>, bukan alat diagnosis klinis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.' : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Diperlukan pemeriksaan oleh tenaga medis profesional.';
 
     document.getElementById('question-area').style.display = 'none';
     document.getElementById('q-nav').style.display = 'none';
@@ -903,7 +896,6 @@ function showResult() {
         const a = answers[i];
         let jw;
         if (d.isScale) jw = SCALE_LABELS[Number(a)]||String(a);
-        else if (d.isMMYS) jw = MMYS_LABELS[Number(a)]||String(a);
         else if (d.isSDQ) jw = SDQ_FREQ_LABELS[Number(a)]||String(a);
         else jw = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
         return `P${i+1}: ${jw}`;
@@ -916,7 +908,7 @@ function restartQuiz() {
     step = 0; answers = {}; identitas = {}; jiwaMode = '';
     currentDisease = currentDisease.startsWith('jiwa') ? 'jiwa' : currentDisease;
     document.getElementById('result-panel').style.display   = 'none';
-    document.getElementById('result-panel').innerHTML        = '';
+    document.getElementById('result-panel').innerHTML       = '';
     document.getElementById('identity-panel').style.display = 'block';
     document.getElementById('jiwa-selector').style.display  = 'none';
     document.getElementById('quiz-top-bar').style.display   = 'none';
