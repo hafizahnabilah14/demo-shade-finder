@@ -512,13 +512,14 @@
 // ══ GANTI URL INI ══
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4H8qtWx4TKyXPYwNehftZWYaps9bTVRuGTbrf2kCuL8BAXsZONjsHwS9hmh8n_rJT/exec';
 
-// Label skala jiwa — DIDEKLARASIKAN SATU KALI DI SINI
+// Label skala jiwa
 const SCALE_LABELS     = ['Tidak sama sekali', '< 1 minggu', '> 1 minggu', 'Hampir setiap hari'];
 const SDQ_FREQ_LABELS  = ['Tidak Benar', 'Agak Benar', 'Benar'];
+const MMYS_LABELS      = ['Tidak', 'Ya']; 
 
 let identitas = {};
 let currentDisease = 'tbc';
-let jiwaMode = '';   // 'dewasa' atau 'anak' — khusus tab jiwa
+let jiwaMode = '';   // 'dewasa', 'mmys_anak', atau 'mmys_remaja'
 let step = 0;
 let answers = {};
 
@@ -579,7 +580,7 @@ const DATA = {
         thresholds: { low: 2, med: 5 }
     },
 
-    // ── JIWA ANAK (MMYS V.1 7-9 Tahun) ──
+    // ── JIWA MMYS V.1 ANAK (7-9 Tahun) ──
     jiwa_mmys_anak: {
         label: 'MMYS V.1 – Anak (7-9 Tahun)', color: 'jiwa', title: 'Skrining Jiwa Anak MMYS V.1 (Diisi Orang Tua/Pengasuh)',
         isMMYS: true,
@@ -682,7 +683,6 @@ function submitIdentityAndStart() {
 
     document.getElementById('identity-panel').style.display = 'none';
 
-    // Jika jiwa, tampilkan sub-pilihan; jika tidak, langsung ke soal
     if (currentDisease === 'jiwa') {
         document.getElementById('jiwa-selector').style.display = 'block';
     } else {
@@ -692,7 +692,15 @@ function submitIdentityAndStart() {
 
 function pilihJiwa(mode) {
     jiwaMode = mode;
-    currentDisease = mode === 'dewasa' ? 'jiwa_dewasa' : 'jiwa_anak';
+    // PENGONDISIAN YANG BENAR SESUAI KEY DATA
+    if (mode === 'dewasa') {
+        currentDisease = 'jiwa_dewasa';
+    } else if (mode === 'mmys_anak') {
+        currentDisease = 'jiwa_mmys_anak';
+    } else if (mode === 'mmys_remaja') {
+        currentDisease = 'jiwa_mmys_remaja';
+    }
+    
     document.getElementById('jiwa-selector').style.display = 'none';
     document.getElementById('quiz-title').textContent = DATA[currentDisease].title;
     document.getElementById('progress-fill').className = 'progress-bar-fill jiwa-f';
@@ -754,28 +762,32 @@ function render() {
     let optsHtml = '';
 
     if (d.isScale) {
-        // PHQ-2/GAD-2
         const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
         optsHtml = gl + `<div class="scale-opts">` + d.scaleOptions.map(o => {
             const sel = cur === o.val ? ' sel-jiwa' : '';
             return `<button class="scale-btn${sel}" onclick="setAnswer(${o.val})"><span class="score-badge">${o.val}</span>${o.label}</button>`;
         }).join('') + `</div>`;
+    } else if (d.isMMYS) {
+        // PERBAIKAN: Handler render untuk pilihan Ya (1) / Tidak (0) biner pada MMYS
+        const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
+        const mOpts = [{val: 1, label: 'Ya', icon: 'fas fa-check-circle'}, {val: 0, label: 'Tidak', icon: 'fas fa-times-circle'}];
+        optsHtml = gl + `<div class="answer-opts">` + mOpts.map(o => {
+            const sel = cur === o.val ? ' sel-jiwa' : '';
+            return `<button class="ans-btn${sel}" onclick="setAnswer(${o.val})"><i class="${o.icon}"></i> ${o.label}</button>`;
+        }).join('') + `</div>`;
     } else if (d.isSDQ) {
-        // SDQ — 3 pilihan
         const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
         optsHtml = gl + `<div class="answer-opts">` + d.sdqOptions.map(o => {
             const sel = cur === o.val ? ' sel-jiwa' : '';
             return `<button class="ans-btn${sel}" onclick="setAnswer(${o.val})">${o.label}</button>`;
         }).join('') + `</div>`;
     } else if (d.isAnak) {
-        // Anak — Ya/Tidak
         const opts = [{ val:'ya', label:'Ya', icon:'fas fa-check-circle'}, {val:'tidak', label:'Tidak', icon:'fas fa-times-circle'}];
         optsHtml = `<div class="answer-opts">` + opts.map(o => {
             const sel = cur === o.val ? ' sel-anak' : '';
             return `<button class="ans-btn${sel}" onclick="setAnswer('${o.val}')"><i class="${o.icon}"></i> ${o.label}</button>`;
         }).join('') + `</div>`;
     } else {
-        // Ya/Tidak/Tidak Tahu
         const opts = [{val:'ya',label:'Ya',icon:'fas fa-check-circle'},{val:'tidak',label:'Tidak',icon:'fas fa-times-circle'},{val:'tdktahu',label:'Tidak Tahu',icon:'fas fa-question-circle'}];
         optsHtml = `<div class="answer-opts">` + opts.map(o => {
             const sel = cur === o.val ? ' sel-' + c : '';
@@ -805,7 +817,8 @@ function prevStep() { if (step > 0) { step--; render(); } }
 /* ── Hitung skor ── */
 function calcScore() {
     const d = DATA[currentDisease]; let score = 0;
-    if (d.isScale) {
+    // PERBAIKAN: MMYS juga melakukan akumulasi penambahan nilai angka langsung (0 atau 1)
+    if (d.isScale || d.isMMYS) {
         d.questions.forEach((q,i) => { score += (answers[i] !== undefined ? Number(answers[i]) : 0); });
     } else if (d.isSDQ) {
         d.questions.forEach((q,i) => {
@@ -834,6 +847,21 @@ function showResult() {
         if (tot <= 2) { level='low'; icon='✅'; title='Tidak Ada Indikasi Gangguan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Tidak ditemukan tanda depresi atau kecemasan bermakna.`; saran='Pertahankan keseimbangan hidup. Skrining ulang jika kondisi berubah.'; }
         else if (tot <= 5) { level='med'; icon='⚠️'; title='Gejala Ringan — Perlu Diperhatikan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Terdapat beberapa gejala yang perlu diperhatikan.`; saran='Disarankan konsultasi ke petugas kesehatan jiwa di Puskesmas Dirgahayu.'; }
         else { level='high'; icon='🔴'; title='Gejala Signifikan — Segera Konsultasi'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Ditemukan gejala yang memerlukan perhatian profesional.`; saran='Segera temui dokter/konselor di Puskesmas. Hotline Sehat Jiwa: <strong>119 ext 8</strong> (24 jam, gratis).'; }
+    } else if (d.isMMYS) {
+        // PERBAIKAN: Penentuan batas ambang bahaya skor untuk MMYS V.1 (Maksimal skor = 6)
+        if (score <= d.thresholds.low) { 
+            level='low'; icon='✅'; title='Hasil Skrining: Normal'; 
+            desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Kondisi psikologis terpantau stabil dan berada dalam batas normal.`; 
+            saran='Pertahankan komunikasi yang sehat dan terbuka di lingkungan keluarga.'; 
+        } else if (score <= d.thresholds.med) { 
+            level='med'; icon='⚠️'; title='Hasil Skrining: Perlu Pemantauan'; 
+            desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Terdeteksi adanya indikasi awal gejala kecemasan atau stres ringan.`; 
+            saran='Disarankan melakukan konseling berkala dengan psikolog/petugas medis di Puskesmas Dirgahayu.'; 
+        } else { 
+            level='high'; icon='🔴'; title='Hasil Skrining: Indikasi Gangguan'; 
+            desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Ditemukan kluster gejala kecemasan atau depresi yang cukup signifikan.`; 
+            saran='Sangat disarankan segera menjadwalkan pemeriksaan klinis tatap muka ke poli kesehatan jiwa Puskesmas Dirgahayu.'; 
+        }
     } else if (d.isSDQ) {
         if (score <= d.thresholds.low) { level='low'; icon='✅'; title='Normal'; desc=`Skor SDQ: <strong>${score}/40</strong>. Tidak ditemukan masalah emosi atau perilaku yang signifikan pada anak.`; saran='Pertahankan pola asuh yang positif. Lakukan skrining rutin setiap tahun.'; }
         else if (score <= d.thresholds.med) { level='med'; icon='⚠️'; title='Borderline — Perlu Dipantau'; desc=`Skor SDQ: <strong>${score}/40</strong>. Terdapat beberapa indikator yang perlu mendapat perhatian lebih.`; saran='Disarankan konsultasi dengan dokter anak atau psikolog di Puskesmas Dirgahayu.'; }
@@ -851,6 +879,10 @@ function showResult() {
         if (d.isScale) {
             const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-tdktahu','pill-ya'];
             pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SCALE_LABELS[v]!==undefined ? `${v} – ${SCALE_LABELS[v]}` : '-';
+        } else if (d.isMMYS) {
+            // PERBAIKAN: Menampilkan teks "Ya" / "Tidak" pada ringkasan cetak MMYS
+            pillClass = a === 1 ? 'pill-ya' : 'pill-tidak';
+            pillLabel = a === 1 ? 'Ya' : 'Tidak';
         } else if (d.isSDQ) {
             const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-ya'];
             pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SDQ_FREQ_LABELS[v]!==undefined ? SDQ_FREQ_LABELS[v] : '-';
@@ -861,8 +893,8 @@ function showResult() {
         summaryHtml += `<div class="ans-row"><span class="ans-pill ${pillClass}" style="white-space:nowrap">${pillLabel}</span><span>${q.q}</span></div>`;
     });
 
-    const badgeLabel = level==='low'?(d.isScale||d.isSDQ?'Normal / Tidak Ada Indikasi':'Risiko Rendah'):level==='med'?(d.isSDQ?'Borderline':d.isScale?'Gejala Ringan':'Risiko Sedang'):(d.isSDQ?'Abnormal':d.isScale?'Gejala Signifikan':'Risiko Tinggi');
-    const disclaimer = (d.isScale||d.isSDQ) ? 'Hasil skrining ini bersifat <strong>informatif</strong>, bukan alat diagnosis klinis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.' : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Diperlukan pemeriksaan oleh tenaga medis profesional.';
+    const badgeLabel = level==='low'?(d.isScale||d.isSDQ||d.isMMYS?'Normal / Tidak Ada Indikasi':'Risiko Rendah'):level==='med'?(d.isSDQ?'Borderline':d.isScale||d.isMMYS?'Gejala Ringan':'Risiko Sedang'):(d.isSDQ?'Abnormal':d.isScale||d.isMMYS?'Gejala Signifikan':'Risiko Tinggi');
+    const disclaimer = (d.isScale||d.isSDQ||d.isMMYS) ? 'Hasil skrining ini bersifat <strong>informatif</strong>, bukan alat diagnosis klinis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.' : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Diperlukan pemeriksaan oleh tenaga medis profesional.';
 
     document.getElementById('question-area').style.display = 'none';
     document.getElementById('q-nav').style.display = 'none';
@@ -897,6 +929,7 @@ function showResult() {
         const a = answers[i];
         let jw;
         if (d.isScale) jw = SCALE_LABELS[Number(a)]||String(a);
+        else if (d.isMMYS) jw = a === 1 ? 'Ya' : 'Tidak';
         else if (d.isSDQ) jw = SDQ_FREQ_LABELS[Number(a)]||String(a);
         else jw = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
         return `P${i+1}: ${jw}`;
@@ -909,7 +942,7 @@ function restartQuiz() {
     step = 0; answers = {}; identitas = {}; jiwaMode = '';
     currentDisease = currentDisease.startsWith('jiwa') ? 'jiwa' : currentDisease;
     document.getElementById('result-panel').style.display   = 'none';
-    document.getElementById('result-panel').innerHTML       = '';
+    document.getElementById('result-panel').innerHTML        = '';
     document.getElementById('identity-panel').style.display = 'block';
     document.getElementById('jiwa-selector').style.display  = 'none';
     document.getElementById('quiz-top-bar').style.display   = 'none';
@@ -938,5 +971,6 @@ function showToast(msg, isError=false) {
     setTimeout(()=>t.classList.remove('show'), 4000);
 }
 </script>
+
 </body>
 </html>
