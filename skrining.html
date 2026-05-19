@@ -1334,7 +1334,7 @@ const DATA = {
     jiwa: {
         label: 'Kesehatan Jiwa',
         color: 'jiwa',
-        title: 'Skrining Kesehatan Jiwa (PHQ-4)',
+        title: 'Skrining Kesehatan Jiwa (PHQ-)',
         isScale: true,  // uses 0-3 Likert scale, not ya/tidak
         questions: [
             {
@@ -1541,132 +1541,284 @@ function calcScore() {
 function showResult() {
     const d = DATA[currentDisease];
     const score = calcScore();
- 
+
     let level, title, desc, saran, icon;
- 
+
+    // SCALE LABELS (cukup satu kali)
+    const scaleLabels = [
+        'Tidak sama sekali',
+        '< 1 minggu',
+        '> 1 minggu',
+        'Hampir setiap hari'
+    ];
+
     if (d.isScale) {
-        // PHQ-2 + GAD-2 scoring
-        const phqScore = (answers[0] !== undefined ? Number(answers[0]) : 0) + (answers[1] !== undefined ? Number(answers[1]) : 0);
-        const gadScore = (answers[2] !== undefined ? Number(answers[2]) : 0) + (answers[3] !== undefined ? Number(answers[3]) : 0);
+
+        const phqScore =
+            (answers[0] !== undefined ? Number(answers[0]) : 0) +
+            (answers[1] !== undefined ? Number(answers[1]) : 0);
+
+        const gadScore =
+            (answers[2] !== undefined ? Number(answers[2]) : 0) +
+            (answers[3] !== undefined ? Number(answers[3]) : 0);
+
         const totalScore = phqScore + gadScore;
- 
+
         if (totalScore <= 2) {
-            level = 'low'; icon = '✅';
+
+            level = 'low';
+            icon = '✅';
+
             title = 'Tidak Ada Indikasi Gangguan';
-            desc = `Skor total Anda: <strong>${totalScore}/12</strong> (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6). Tidak ditemukan tanda-tanda depresi atau kecemasan yang bermakna saat ini.`;
-            saran = 'Pertahankan keseimbangan hidup Anda. Lakukan skrining ulang jika kondisi berubah.';
+
+            desc = `
+                Skor total Anda:
+                <strong>${totalScore}/12</strong>
+                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
+                Tidak ditemukan tanda-tanda depresi atau kecemasan yang bermakna saat ini.
+            `;
+
+            saran =
+                'Pertahankan keseimbangan hidup Anda. Lakukan skrining ulang jika kondisi berubah.';
+
         } else if (totalScore <= 5) {
-            level = 'med'; icon = '⚠️';
+
+            level = 'med';
+            icon = '⚠️';
+
             title = 'Gejala Ringan — Perlu Diperhatikan';
-            desc = `Skor total Anda: <strong>${totalScore}/12</strong> (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6). Terdapat beberapa gejala yang perlu diperhatikan.`;
-            saran = 'Disarankan berkonsultasi dengan petugas kesehatan jiwa di Puskesmas Dirgahayu. Jangan simpan sendiri perasaan Anda.';
+
+            desc = `
+                Skor total Anda:
+                <strong>${totalScore}/12</strong>
+                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
+                Terdapat beberapa gejala yang perlu diperhatikan.
+            `;
+
+            saran =
+                'Disarankan berkonsultasi dengan petugas kesehatan jiwa di Puskesmas Dirgahayu.';
+
         } else {
-            level = 'high'; icon = '🔴';
+
+            level = 'high';
+            icon = '🔴';
+
             title = 'Gejala Signifikan — Segera Konsultasi';
-            desc = `Skor total Anda: <strong>${totalScore}/12</strong> (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6). Ditemukan gejala yang memerlukan perhatian profesional.`;
-            saran = 'Segera temui dokter atau konselor di Puskesmas Dirgahayu. Hubungi Hotline Sehat Jiwa: <strong>119 ext 8</strong> (24 jam, gratis).';
+
+            desc = `
+                Skor total Anda:
+                <strong>${totalScore}/12</strong>
+                (PHQ-2: ${phqScore}/6 | GAD-2: ${gadScore}/6).
+                Ditemukan gejala yang memerlukan perhatian profesional.
+            `;
+
+            saran =
+                'Segera temui dokter atau konselor di Puskesmas Dirgahayu.';
         }
+
     } else {
+
         if (score <= d.thresholds.low) {
-            level = 'low'; icon = '✅';
+
+            level = 'low';
+            icon = '✅';
+
             title = 'Risiko Rendah';
-            desc = `Berdasarkan jawaban Anda, tidak ditemukan indikator risiko yang signifikan untuk ${d.label}.`;
-            saran = 'Pertahankan gaya hidup sehat. Lakukan skrining rutin setahun sekali atau jika muncul gejala baru.';
+
+            desc = `
+                Berdasarkan jawaban Anda,
+                tidak ditemukan indikator risiko yang signifikan untuk ${d.label}.
+            `;
+
+            saran =
+                'Pertahankan gaya hidup sehat dan lakukan skrining rutin.';
+
         } else if (score <= d.thresholds.med) {
-            level = 'med'; icon = '⚠️';
+
+            level = 'med';
+            icon = '⚠️';
+
             title = 'Risiko Sedang';
-            desc = `Terdapat beberapa faktor risiko yang perlu diperhatikan. Sebaiknya lakukan pemeriksaan lebih lanjut.`;
-            saran = 'Disarankan segera berkonsultasi dengan tenaga kesehatan di Puskesmas Dirgahayu untuk pemeriksaan lebih lanjut.';
+
+            desc =
+                'Terdapat beberapa faktor risiko yang perlu diperhatikan.';
+
+            saran =
+                'Disarankan melakukan pemeriksaan lebih lanjut di Puskesmas.';
+
         } else {
-            level = 'high'; icon = '🔴';
+
+            level = 'high';
+            icon = '🔴';
+
             title = 'Risiko Tinggi';
-            desc = `Ditemukan beberapa indikator risiko yang signifikan. Jangan tunda untuk berkonsultasi.`;
-            saran = 'Segera datang ke Puskesmas Dirgahayu untuk pemeriksaan dan penanganan. Layanan tersedia setiap hari kerja.';
+
+            desc =
+                'Ditemukan beberapa indikator risiko yang signifikan.';
+
+            saran =
+                'Segera datang ke Puskesmas Dirgahayu untuk pemeriksaan.';
         }
     }
- 
-    // Build answer summary
-    const scaleLabels = ['Tidak sama sekali','< 1 minggu','> 1 minggu','Hampir setiap hari'];
+
+    // RINGKASAN JAWABAN
     let summaryHtml = '';
+
     d.questions.forEach((q, i) => {
+
         const a = answers[i];
+
         let pillClass, pillLabel;
+
         if (d.isScale) {
+
             const val = Number(a);
-            const colors = ['pill-tidak','pill-tdktahu','pill-tdktahu','pill-ya'];
+
+            const colors = [
+                'pill-tidak',
+                'pill-tdktahu',
+                'pill-tdktahu',
+                'pill-ya'
+            ];
+
             pillClass = colors[val] || 'pill-tdktahu';
-            pillLabel = scaleLabels[val] !== undefined ? `${val} – ${scaleLabels[val]}` : '-';
+
+            pillLabel =
+                scaleLabels[val] !== undefined
+                    ? `${val} – ${scaleLabels[val]}`
+                    : '-';
+
         } else {
-            pillClass = a === 'ya' ? 'pill-ya' : a === 'tidak' ? 'pill-tidak' : 'pill-tdktahu';
-            pillLabel = a === 'ya' ? 'Ya' : a === 'tidak' ? 'Tidak' : 'Tidak Tahu';
+
+            pillClass =
+                a === 'ya'
+                    ? 'pill-ya'
+                    : a === 'tidak'
+                    ? 'pill-tidak'
+                    : 'pill-tdktahu';
+
+            pillLabel =
+                a === 'ya'
+                    ? 'Ya'
+                    : a === 'tidak'
+                    ? 'Tidak'
+                    : 'Tidak Tahu';
         }
+
         summaryHtml += `
             <div class="ans-row">
-                <span class="ans-pill ${pillClass}" style="white-space:nowrap">${pillLabel}</span>
+                <span class="ans-pill ${pillClass}" style="white-space:nowrap">
+                    ${pillLabel}
+                </span>
                 <span>${q.q}</span>
             </div>
         `;
     });
- 
-    const c = currentDisease;
+
     const disclaimerNote = d.isScale
-        ? 'Skrining PHQ-2 & GAD-2 bersifat <strong>informatif</strong>, bukan alat diagnosis. Hanya profesional kesehatan jiwa yang dapat menegakkan diagnosis.'
-        : 'Hasil skrining ini <strong>bukan diagnosis medis</strong>. Hasilnya hanya sebagai panduan awal. Untuk memastikan status kesehatan Anda, diperlukan pemeriksaan fisik dan laboratorium oleh tenaga medis profesional.';
- 
+        ? `
+            Skrining PHQ-2 & GAD-2 bersifat
+            <strong>informatif</strong>,
+            bukan alat diagnosis.
+        `
+        : `
+            Hasil skrining ini
+            <strong>bukan diagnosis medis</strong>.
+        `;
+
     const resultHtml = `
         <div class="result-header result-${level}">
             <div class="result-icon">${icon}</div>
-            <span class="badge-risk badge-${level}">${level === 'low' ? (d.isScale ? 'Tidak Ada Indikasi' : 'Risiko Rendah') : level === 'med' ? (d.isScale ? 'Gejala Ringan' : 'Risiko Sedang') : (d.isScale ? 'Gejala Signifikan' : 'Risiko Tinggi')}</span>
+
+            <span class="badge-risk badge-${level}">
+                ${title}
+            </span>
+
             <h2>${title}</h2>
-            <p>${desc}<br><br><strong>${saran}</strong></p>
-        </div>
- 
-        <div class="result-details">
-            <h4><i class="fas fa-list-check" style="margin-right:6px"></i>Ringkasan Jawaban Anda</h4>
-            <div class="answer-summary">${summaryHtml}</div>
-        </div>
- 
-        <div style="background:var(--primary-light);border-radius:14px;padding:16px;margin-bottom:20px;border-left:4px solid var(--primary)">
-            <p style="font-size:0.82em;color:var(--primary-dark);line-height:1.6">
-                <i class="fas fa-info-circle" style="margin-right:6px"></i>
-                <strong>Penting:</strong> ${disclaimerNote}
+
+            <p>
+                ${desc}
+                <br><br>
+                <strong>${saran}</strong>
             </p>
         </div>
- 
+
+        <div class="result-details">
+            <h4>
+                <i class="fas fa-list-check"></i>
+                Ringkasan Jawaban Anda
+            </h4>
+
+            <div class="answer-summary">
+                ${summaryHtml}
+            </div>
+        </div>
+
+        <div style="
+            background:var(--primary-light);
+            border-radius:14px;
+            padding:16px;
+            margin-bottom:20px;
+            border-left:4px solid var(--primary)
+        ">
+            <p style="
+                font-size:0.82em;
+                color:var(--primary-dark);
+                line-height:1.6
+            ">
+                <i class="fas fa-info-circle"></i>
+                <strong>Penting:</strong>
+                ${disclaimerNote}
+            </p>
+        </div>
+
         <div class="result-actions">
+
             <button class="act-btn" onclick="restartQuiz()">
-                <i class="fas fa-redo"></i> Ulangi Skrining
+                <i class="fas fa-redo"></i>
+                Ulangi Skrining
             </button>
+
             <button class="act-btn print-btn" onclick="window.print()">
-                <i class="fas fa-print"></i> Cetak / Simpan PDF
+                <i class="fas fa-print"></i>
+                Cetak / Simpan PDF
             </button>
+
             <a href="index.html" class="act-btn primary">
-                <i class="fas fa-home"></i> Kembali ke Beranda
+                <i class="fas fa-home"></i>
+                Kembali ke Beranda
             </a>
+
         </div>
     `;
- 
+
     document.getElementById('question-area').style.display = 'none';
     document.getElementById('q-nav').style.display = 'none';
-    document.getElementById('progress-wrap').style.display = 'none';
- 
+
     const rp = document.getElementById('result-panel');
+
     rp.innerHTML = resultHtml;
     rp.style.display = 'block';
- 
-    // Fill progress to 100%
+
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('progress-wrap').style.display = 'block';
- 
-    // ── Kirim data ke Google Sheets ──
-    const scaleLabels = ['Tidak sama sekali','< 1 minggu','> 1 minggu','Hampir setiap hari'];
+
+    // KIRIM KE SHEETS
     const detailLines = d.questions.map((q, i) => {
+
         const a = answers[i];
+
         const jawaban = d.isScale
             ? (scaleLabels[Number(a)] || a)
-            : (a === 'ya' ? 'Ya' : a === 'tidak' ? 'Tidak' : 'Tidak Tahu');
-        return `P${i+1}: ${jawaban}`;
+            : (a === 'ya'
+                ? 'Ya'
+                : a === 'tidak'
+                ? 'Tidak'
+                : 'Tidak Tahu');
+
+        return `P${i + 1}: ${jawaban}`;
     });
+
     kirimKeSheets(title, detailLines.join(' | '));
 }
  
