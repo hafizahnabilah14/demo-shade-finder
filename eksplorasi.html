@@ -18,273 +18,161 @@
             --text:         #1a2e2b;
             --text-muted:   #5a7470;
             --border:       #d0e4e1;
-            --card-shadow:  0 8px 32px rgba(0,77,64,0.10);
+            --shadow:       0 6px 28px rgba(0,77,64,0.09);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); }
 
         /* ── HEADER ── */
-        .site-header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            padding: 14px 28px;
-            display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; z-index: 900;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-        }
+        .site-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 900; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand h1 { font-family: 'Montserrat', sans-serif; font-size: 1.4em; color: #fff; font-weight: 900; letter-spacing: 2px; line-height: 1; }
         .brand p { font-size: 0.63em; color: rgba(255,255,255,0.75); margin-top: 2px; }
-        .back-btn {
-            display: flex; align-items: center; gap: 7px;
-            background: rgba(255,255,255,0.15); color: #fff; text-decoration: none;
-            padding: 8px 18px; border-radius: 50px; font-size: 0.82em; font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s;
-        }
+        .back-btn { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; padding: 8px 18px; border-radius: 50px; font-size: 0.82em; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s; }
         .back-btn:hover { background: rgba(255,255,255,0.28); }
 
         /* ── SUB-NAV ── */
-        .subnav {
-            background: var(--white);
-            display: flex; justify-content: center; gap: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07); overflow-x: auto;
-        }
-        .subnav a {
-            padding: 14px 22px; text-decoration: none;
-            font-size: 0.83em; font-weight: 600; color: var(--text-muted);
-            border-bottom: 3px solid transparent; white-space: nowrap;
-            display: flex; align-items: center; gap: 7px;
-            transition: all 0.2s;
-        }
-        .subnav a:hover, .subnav a.active {
-            color: var(--primary); border-color: var(--primary);
-        }
+        .subnav { background: var(--white); display: flex; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.07); overflow-x: auto; }
+        .subnav a { padding: 13px 18px; text-decoration: none; font-size: 0.8em; font-weight: 600; color: var(--text-muted); border-bottom: 3px solid transparent; white-space: nowrap; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+        .subnav a:hover, .subnav a.active { color: var(--primary); border-color: var(--primary); }
 
-        /* ── HERO BANNER ── */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #00897b 60%, #26a69a 100%);
-            padding: 52px 28px 70px;
-            text-align: center; color: #fff;
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-            position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px; padding: 6px 18px;
-            font-size: 0.78em; font-weight: 600; letter-spacing: 1px; margin-bottom: 18px;
-        }
-        .hero h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2em; font-weight: 900; letter-spacing: 1px; line-height: 1.1; margin-bottom: 12px; }
-        .hero p { font-size: 0.95em; opacity: 0.88; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, #00897b 60%, #26a69a 100%); padding: 50px 28px 68px; text-align: center; color: #fff; clip-path: polygon(0 0,100% 0,100% 88%,0 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23ffffff' fill-opacity='0.04'/%3E%3C/svg%3E"); }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; padding: 6px 18px; font-size: 0.78em; font-weight: 600; letter-spacing: 1px; margin-bottom: 16px; }
+        .hero h2 { font-family: 'Montserrat', sans-serif; font-size: 2em; font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+        .hero p { font-size: 0.92em; opacity: 0.88; max-width: 500px; margin: 0 auto; line-height: 1.65; }
 
         /* ── LAYOUT ── */
-        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px 70px; }
-        .section { margin-top: 50px; }
-        .section-head {
-            display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
-        }
-        .section-head .s-icon {
-            width: 48px; height: 48px; border-radius: 14px;
-            background: var(--primary-light); color: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2em; flex-shrink: 0;
-        }
-        .section-head h3 { font-family: 'Montserrat', sans-serif; font-size: 1.25em; font-weight: 900; letter-spacing: 0.5px; }
-        .section-head p { font-size: 0.8em; color: var(--text-muted); margin-top: 3px; }
-        .section-divider { height: 3px; background: linear-gradient(90deg, var(--primary), transparent); border-radius: 4px; margin-bottom: 26px; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 22px 70px; }
+        .section { margin-top: 48px; }
+        .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+        .section-head .s-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.15em; flex-shrink: 0; }
+        .section-head h3 { font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 900; }
+        .section-head p { font-size: 0.78em; color: var(--text-muted); margin-top: 2px; }
+        .section-divider { height: 3px; background: linear-gradient(90deg, var(--primary), transparent); border-radius: 4px; margin-bottom: 24px; }
 
-        /* ── PROFIL CARD ── */
-        .profil-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-        }
-        .profil-card {
-            background: var(--white); border-radius: 18px;
-            padding: 24px 28px; box-shadow: var(--card-shadow);
-            border-left: 5px solid var(--primary);
-            transition: transform 0.2s;
-        }
-        .profil-card:hover { transform: translateY(-3px); }
-        .profil-card .pc-label { font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 6px; }
-        .profil-card .pc-val { font-size: 1em; font-weight: 600; color: var(--text); line-height: 1.5; }
-        .profil-card .pc-icon { font-size: 1.6em; color: var(--primary); margin-bottom: 10px; }
+        /* ── PROFIL ── */
+        .profil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+        .profil-card { background: var(--white); border-radius: 16px; padding: 20px 24px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
         .profil-card.accent { border-left-color: var(--secondary); }
+        .profil-card .pc-icon { font-size: 1.5em; color: var(--primary); margin-bottom: 8px; }
         .profil-card.accent .pc-icon { color: var(--secondary-dk); }
+        .profil-card .pc-label { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 5px; }
+        .profil-card .pc-val { font-size: 0.92em; font-weight: 600; line-height: 1.5; }
+
+        /* ── STATISTIK SDM ── */
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 24px; }
+        .stat-box { background: var(--white); border-radius: 14px; padding: 16px 14px; text-align: center; box-shadow: var(--shadow); }
+        .stat-box .sb-num { font-family: 'Montserrat', sans-serif; font-size: 2em; font-weight: 900; color: var(--primary); line-height: 1; }
+        .stat-box .sb-label { font-size: 0.72em; color: var(--text-muted); margin-top: 5px; line-height: 1.4; font-weight: 500; }
+
+        /* ── TABEL SDM ── */
+        .tabel-wrap { background: var(--white); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; }
+        .tabel-toolbar { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .tabel-toolbar h4 { font-family: 'Montserrat', sans-serif; font-size: 0.92em; font-weight: 800; }
+        .search-box { display: flex; align-items: center; gap: 8px; background: var(--bg); border-radius: 50px; padding: 7px 14px; font-size: 0.82em; border: 1px solid var(--border); }
+        .search-box input { border: none; background: transparent; outline: none; font-family: 'Poppins', sans-serif; font-size: 0.92em; width: 200px; color: var(--text); }
+        .filter-row { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-btn { padding: 5px 14px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.75em; font-weight: 600; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .tabel-scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8em; }
+        thead tr { background: var(--primary-dark); color: #fff; }
+        thead th { padding: 11px 14px; text-align: left; font-weight: 700; font-size: 0.78em; letter-spacing: 0.5px; white-space: nowrap; }
+        tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+        tbody tr:hover { background: var(--primary-light); }
+        tbody tr.hidden-row { display: none; }
+        tbody td { padding: 9px 14px; vertical-align: middle; }
+        tbody td:first-child { font-weight: 700; color: var(--text-muted); text-align: center; }
+        .badge-status { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 0.78em; font-weight: 700; white-space: nowrap; }
+        .bs-pns    { background: #e8f5e9; color: #2e7d32; }
+        .bs-pppk   { background: #e3f2fd; color: #1565c0; }
+        .bs-cpns   { background: #fff3e0; color: #e65100; }
+        .bs-tugsus { background: #f3e5f5; color: #6a1b9a; }
+        .bs-tks    { background: #fce4ec; color: #c2185b; }
+        .bs-thl    { background: #f1f8e9; color: #558b2f; }
+        .badge-sex { display: inline-block; width: 24px; height: 24px; border-radius: 50%; font-size: 0.7em; font-weight: 700; text-align: center; line-height: 24px; }
+        .sex-l { background: #bbdefb; color: #1565c0; }
+        .sex-p { background: #fce4ec; color: #c2185b; }
+        .tabel-footer { padding: 12px 20px; background: var(--bg); font-size: 0.78em; color: var(--text-muted); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 
         /* ── JAM OPERASIONAL ── */
-        .jam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-        .jam-card {
-            background: var(--white); border-radius: 16px; padding: 18px 20px;
-            box-shadow: var(--card-shadow); text-align: center;
-            transition: transform 0.2s;
-        }
-        .jam-card:hover { transform: translateY(-2px); }
+        .jam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 13px; }
+        .jam-card { background: var(--white); border-radius: 15px; padding: 18px 18px; box-shadow: var(--shadow); text-align: center; }
         .jam-card.tutup { opacity: 0.55; }
-        .jam-day { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
-        .jam-time {
-            font-family: 'Montserrat', sans-serif; font-size: 1.15em; font-weight: 900;
-            color: var(--primary); line-height: 1.2;
-        }
+        .jam-day { font-size: 0.78em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 7px; }
+        .jam-time { font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 900; color: var(--primary); line-height: 1.2; }
         .jam-card.tutup .jam-time { color: #b0bec5; }
-        .jam-status {
-            display: inline-block; margin-top: 8px; padding: 3px 12px;
-            border-radius: 50px; font-size: 0.7em; font-weight: 700;
-        }
-        .status-buka { background: #e8f5e9; color: #2e7d32; }
-        .status-tutup { background: #f5f5f5; color: #9e9e9e; }
+        .jam-status { display: inline-block; margin-top: 7px; padding: 3px 12px; border-radius: 50px; font-size: 0.7em; font-weight: 700; }
+        .status-buka    { background: #e8f5e9; color: #2e7d32; }
+        .status-tutup   { background: #f5f5f5; color: #9e9e9e; }
         .status-darurat { background: #fff3e0; color: #e65100; }
 
         /* ── PETA ── */
-        .map-wrap {
-            background: var(--white); border-radius: 20px; overflow: hidden;
-            box-shadow: var(--card-shadow); position: relative;
-        }
-        .map-info-bar {
-            background: var(--primary-dark); color: #fff;
-            padding: 14px 24px;
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-        }
+        .map-wrap { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+        .map-info-bar { background: var(--primary-dark); color: #fff; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
         .map-info-bar .mi-left { display: flex; align-items: center; gap: 12px; }
         .map-info-bar .mi-left i { font-size: 1.3em; color: var(--secondary); }
-        .map-info-bar h4 { font-size: 0.92em; font-weight: 700; }
-        .map-info-bar p { font-size: 0.75em; opacity: 0.8; margin-top: 2px; }
-        .map-open-btn {
-            display: inline-flex; align-items: center; gap: 7px;
-            background: var(--secondary); color: var(--primary-dark);
-            padding: 8px 18px; border-radius: 50px;
-            font-size: 0.82em; font-weight: 700; text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .map-open-btn:hover { opacity: 0.85; }
+        .map-info-bar h4 { font-size: 0.9em; font-weight: 700; }
+        .map-info-bar p { font-size: 0.74em; opacity: 0.8; margin-top: 2px; }
+        .map-open-btn { display: inline-flex; align-items: center; gap: 7px; background: var(--secondary); color: var(--primary-dark); padding: 8px 18px; border-radius: 50px; font-size: 0.82em; font-weight: 700; text-decoration: none; }
         .map-frame-wrap { height: 400px; }
         .map-frame-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
 
         /* ── BAGAN ORGANISASI ── */
-        .org-wrap {
-            background: var(--white); border-radius: 20px; padding: 32px;
-            box-shadow: var(--card-shadow); overflow-x: auto;
-        }
-        .org-chart {
-            display: flex; flex-direction: column; align-items: center; gap: 0;
-            min-width: 700px;
-        }
+        .org-wrap { background: var(--white); border-radius: 20px; padding: 30px 28px; box-shadow: var(--shadow); overflow-x: auto; }
+        .org-chart { display: flex; flex-direction: column; align-items: center; min-width: 800px; }
+        .org-box { border-radius: 12px; padding: 10px 16px; text-align: center; font-size: 0.78em; font-weight: 600; min-width: 140px; max-width: 175px; box-shadow: 0 3px 12px rgba(0,0,0,0.08); border: 2px solid transparent; }
+        .org-box .ob-role  { font-size: 0.68em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.72; margin-bottom: 4px; }
+        .org-box .ob-name  { font-size: 0.88em; font-weight: 700; line-height: 1.3; }
+        .org-box .ob-nip   { font-size: 0.65em; margin-top: 3px; opacity: 0.6; }
+        .ob-kepala { background: var(--primary-dark); color: #fff; }
+        .ob-tu     { background: var(--primary); color: #fff; }
+        .ob-koord  { background: #1a237e; color: #fff; }
+        .ob-unit   { background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary); }
+        .ob-mutu   { background: #fff3e0; color: #bf360c; border-color: #ffcc80; }
+        .ob-sp     { background: #f3e5f5; color: #4a148c; border-color: #ce93d8; }
+        .ob-prog   { background: var(--white); color: var(--text); border-color: var(--border); }
+        .v-line { width: 2px; height: 26px; background: var(--border); }
+        .h-connector { position: absolute; top: 0; left: 8%; right: 8%; height: 2px; background: var(--border); }
+        .col-top { width: 2px; height: 26px; background: var(--border); margin: 0 auto; }
+        .org-cols { display: flex; width: 100%; position: relative; }
+        .org-col  { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 8px; }
+        .org-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .org-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.73em; color: var(--text-muted); }
+        .org-legend-dot { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; }
 
-        /* Node styles */
-        .org-node {
-            display: flex; flex-direction: column; align-items: center;
-        }
-        .org-box {
-            border-radius: 14px; padding: 12px 20px; text-align: center;
-            font-size: 0.82em; font-weight: 600; min-width: 150px; max-width: 180px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.09); position: relative;
-            border: 2px solid transparent; transition: transform 0.2s;
-            cursor: default;
-        }
-        .org-box:hover { transform: translateY(-2px); }
-        .org-box .ob-title { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 5px; opacity: 0.75; }
-        .org-box .ob-name { font-size: 0.9em; font-weight: 700; line-height: 1.3; }
-        .org-box .ob-nip  { font-size: 0.68em; margin-top: 4px; opacity: 0.6; }
+        /* ── FASILITAS ── */
+        .fasilitas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 13px; }
+        .fasilitas-card { background: var(--white); border-radius: 14px; padding: 18px 14px; box-shadow: var(--shadow); text-align: center; }
+        .fasilitas-card .fc-icon { font-size: 2em; margin-bottom: 8px; }
+        .fasilitas-card h4 { font-size: 0.8em; font-weight: 700; line-height: 1.35; }
+        .fasilitas-card p { font-size: 0.7em; color: var(--text-muted); margin-top: 3px; }
 
-        /* Color variants */
-        .ob-kepala    { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
-        .ob-kabag     { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .ob-unit      { background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary); }
-        .ob-staff     { background: var(--white); color: var(--text); border-color: var(--border); }
-        .ob-komite    { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
-        .ob-sp        { background: #f3e5f5; color: #6a1b9a; border-color: #ce93d8; }
-
-        /* Connector lines */
-        .org-line-v { width: 2px; height: 28px; background: var(--border); }
-        .org-line-h-wrap {
-            display: flex; align-items: flex-start; gap: 0;
-            position: relative;
-        }
-        .org-line-h-wrap::before {
-            content: '';
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            height: 2px;
-            background: var(--border);
-            width: calc(100% - 80px);
-        }
-        .org-col {
-            display: flex; flex-direction: column; align-items: center;
-            padding: 0 12px;
-        }
-        .org-col-line-top { width: 2px; height: 28px; background: var(--border); }
-
-        /* Row layouts */
-        .org-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
-        .org-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; }
-        .org-row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 100%; }
-        .org-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; width: 100%; }
-
-        .org-section-label {
-            font-size: 0.68em; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1.5px; color: var(--text-muted);
-            background: var(--bg); padding: 3px 12px; border-radius: 50px;
-            margin: 20px 0 12px; align-self: center;
-        }
-
-        /* ── KONTAK & SOSMED ── */
-        .kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-        .kontak-card {
-            background: var(--white); border-radius: 18px; padding: 22px 24px;
-            box-shadow: var(--card-shadow); display: flex; align-items: flex-start;
-            gap: 16px; text-decoration: none; color: var(--text);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .kontak-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,77,64,0.14); }
-        .kontak-icon {
-            width: 52px; height: 52px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5em; flex-shrink: 0;
-        }
+        /* ── KONTAK ── */
+        .kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .kontak-card { background: var(--white); border-radius: 16px; padding: 20px 22px; box-shadow: var(--shadow); display: flex; align-items: flex-start; gap: 15px; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+        .kontak-card:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,77,64,0.14); }
+        .kontak-icon { width: 50px; height: 50px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.4em; flex-shrink: 0; }
         .ki-wa    { background: #e8f5e9; color: #2e7d32; }
         .ki-ig    { background: #fce4ec; color: #c2185b; }
         .ki-email { background: var(--primary-light); color: var(--primary-dark); }
         .ki-phone { background: #fff3e0; color: #e65100; }
-        .ki-web   { background: #e8eaf6; color: #3949ab; }
-        .kontak-info h4 { font-size: 0.92em; font-weight: 700; margin-bottom: 4px; }
-        .kontak-info p { font-size: 0.78em; color: var(--text-muted); line-height: 1.5; }
-        .kontak-info .k-link { font-size: 0.78em; color: var(--primary); font-weight: 600; margin-top: 6px; display: block; }
-
-        /* ── FASILITAS ── */
-        .fasilitas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-        .fasilitas-card {
-            background: var(--white); border-radius: 16px; padding: 20px 16px;
-            box-shadow: var(--card-shadow); text-align: center;
-            transition: transform 0.2s;
-        }
-        .fasilitas-card:hover { transform: translateY(-3px); }
-        .fasilitas-card .fc-icon { font-size: 2em; margin-bottom: 10px; }
-        .fasilitas-card h4 { font-size: 0.82em; font-weight: 700; color: var(--text); line-height: 1.35; }
-        .fasilitas-card p { font-size: 0.72em; color: var(--text-muted); margin-top: 4px; }
+        .ki-maps  { background: #ffebee; color: #b71c1c; }
+        .kontak-info h4 { font-size: 0.9em; font-weight: 700; margin-bottom: 3px; }
+        .kontak-info p { font-size: 0.76em; color: var(--text-muted); line-height: 1.5; }
+        .kontak-info .k-link { font-size: 0.76em; color: var(--primary); font-weight: 600; margin-top: 5px; display: block; word-break: break-all; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-            .profil-grid { grid-template-columns: 1fr; }
-            .hero h2 { font-size: 1.6em; }
-            .org-wrap { padding: 20px 14px; }
-        }
-        @media (max-width: 560px) {
-            .jam-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        /* fade-in animation */
-        .fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.5s ease forwards; }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.12s; }
-        .d3 { animation-delay: 0.18s; } .d4 { animation-delay: 0.24s; }
-        .d5 { animation-delay: 0.30s; } .d6 { animation-delay: 0.36s; }
+        @media (max-width: 768px) { .hero h2 { font-size: 1.5em; } .org-wrap { padding: 18px 12px; } }
+        @media (max-width: 560px) { .jam-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
+<!-- HEADER -->
 <header class="site-header">
     <a href="index.html" class="brand">
         <div><h1>SIDAYU</h1><p>Puskesmas Dirgahayu</p></div>
@@ -292,579 +180,627 @@
     <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
 </header>
 
-<!-- ══ SUB-NAV ══ -->
+<!-- SUB-NAV -->
 <nav class="subnav">
-    <a href="#profil"     class="active"><i class="fas fa-building"></i> Profil</a>
-    <a href="#jam">       <i class="fas fa-clock"></i> Jam Operasional</a>
-    <a href="#peta">      <i class="fas fa-map-marker-alt"></i> Lokasi</a>
+    <a href="#profil"    class="active"><i class="fas fa-building"></i> Profil</a>
+    <a href="#sdm">      <i class="fas fa-users"></i> Data SDM</a>
+    <a href="#jam">      <i class="fas fa-clock"></i> Jam Operasional</a>
+    <a href="#peta">     <i class="fas fa-map-marker-alt"></i> Lokasi</a>
     <a href="#organisasi"><i class="fas fa-sitemap"></i> Organisasi</a>
-    <a href="#fasilitas"> <i class="fas fa-hospital"></i> Fasilitas</a>
-    <a href="#kontak">    <i class="fas fa-address-book"></i> Kontak</a>
+    <a href="#fasilitas"><i class="fas fa-hospital"></i> Fasilitas</a>
+    <a href="#kontak">   <i class="fas fa-address-book"></i> Kontak</a>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-badge"><i class="fas fa-star"></i> E-BRANDING PUSKESMAS</div>
-    <h2>Puskesmas Dirgahayu<br>Kotabaru</h2>
-    <p>Mengenal lebih dekat fasilitas, struktur organisasi, jam layanan, dan cara menghubungi kami.</p>
+    <h2>Puskesmas Dirgahayu<br>Kab. Kotabaru</h2>
+    <p>Kecamatan Pulau Laut Utara — Kabupaten Kotabaru, Kalimantan Selatan</p>
 </section>
 
 <div class="container">
 
-    <!-- ══════════════════════════════
-         1. PROFIL PUSKESMAS
-    ══════════════════════════════ -->
+    <!-- ══ 1. PROFIL ══ -->
     <section class="section" id="profil">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-building"></i></div>
-            <div>
-                <h3>Profil Puskesmas</h3>
-                <p>Data identitas dan informasi resmi Puskesmas Dirgahayu</p>
-            </div>
+            <div><h3>Profil Puskesmas</h3><p>Data identitas resmi Puskesmas Dirgahayu Tahun 2026</p></div>
         </div>
         <div class="section-divider"></div>
-
         <div class="profil-grid">
-            <div class="profil-card fade-in d1">
+            <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-hospital-alt"></i></div>
                 <div class="pc-label">Nama Fasilitas</div>
                 <div class="pc-val">Puskesmas Dirgahayu</div>
             </div>
-            <div class="profil-card fade-in d2">
+            <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="pc-label">Alamat</div>
-                <div class="pc-val">Jl. Yakut No.39, Desa Dirgahayu, Kabupaten Kotabaru, Kalimantan Selatan</div>
+                <div class="pc-label">Kecamatan / Kabupaten</div>
+                <div class="pc-val">Kecamatan Pulau Laut Utara — Kabupaten Kotabaru, Kalimantan Selatan</div>
             </div>
-            <div class="profil-card fade-in d3">
+            <div class="profil-card">
+                <div class="pc-icon"><i class="fas fa-user-md"></i></div>
+                <div class="pc-label">Plt. Kepala Puskesmas</div>
+                <div class="pc-val">dr. Gunawan Wibisono<br><small style="color:var(--text-muted);font-size:0.85em">NIP: 19790413 200903 1 004</small></div>
+            </div>
+            <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-layer-group"></i></div>
-                <div class="pc-label">Tipe Puskesmas</div>
-                <div class="pc-val">Puskesmas Rawat Inap — UPTD Dinas Kesehatan Kabupaten Kotabaru</div>
+                <div class="pc-label">Tipe</div>
+                <div class="pc-val">Puskesmas Rawat Inap — UPTD Dinas Kesehatan Kab. Kotabaru</div>
             </div>
-            <div class="profil-card fade-in d4">
+            <div class="profil-card accent">
+                <div class="pc-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="pc-label">Tahun Data</div>
+                <div class="pc-val">2026</div>
+            </div>
+            <div class="profil-card accent">
                 <div class="pc-icon"><i class="fas fa-users"></i></div>
-                <div class="pc-label">Wilayah Kerja</div>
-                <div class="pc-val">Desa Dirgahayu &amp; sekitar, Kabupaten Kotabaru</div>
-            </div>
-            <div class="profil-card accent fade-in d5">
-                <div class="pc-icon"><i class="fas fa-award"></i></div>
-                <div class="pc-label">Akreditasi</div>
-                <div class="pc-val">Terakreditasi — Kementerian Kesehatan RI</div>
-            </div>
-            <div class="profil-card accent fade-in d6">
-                <div class="pc-icon"><i class="fas fa-stethoscope"></i></div>
-                <div class="pc-label">Kepala Puskesmas</div>
-                <div class="pc-val">dr. [Nama Kepala Puskesmas]<br><span style="font-size:0.85em;color:var(--text-muted)">NIP: — (isi sesuai data resmi)</span></div>
+                <div class="pc-label">Total Tenaga Kesehatan</div>
+                <div class="pc-val">88 Orang (PNS, PPPK, CPNS, TUGSUS, THL, TKS)</div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════
-         2. JAM OPERASIONAL
-    ══════════════════════════════ -->
+    <!-- ══ 2. DATA SDM ══ -->
+    <section class="section" id="sdm">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-users"></i></div>
+            <div><h3>Data Kepegawaian SDM</h3><p>Daftar seluruh tenaga kesehatan Puskesmas Dirgahayu Tahun 2026</p></div>
+        </div>
+        <div class="section-divider"></div>
+
+        <!-- Statistik ringkas -->
+        <div class="stat-row">
+            <div class="stat-box"><div class="sb-num">88</div><div class="sb-label">Total Pegawai</div></div>
+            <div class="stat-box"><div class="sb-num">40</div><div class="sb-label">PNS</div></div>
+            <div class="stat-box"><div class="sb-num">7</div><div class="sb-label">PPPK</div></div>
+            <div class="stat-box"><div class="sb-num">18</div><div class="sb-label">CPNS</div></div>
+            <div class="stat-box"><div class="sb-num">11</div><div class="sb-label">TUGSUS</div></div>
+            <div class="stat-box"><div class="sb-num">2</div><div class="sb-label">THL</div></div>
+            <div class="stat-box"><div class="sb-num">2</div><div class="sb-label">TKS</div></div>
+            <div class="stat-box"><div class="sb-num">9</div><div class="sb-label">Dokter & Drg</div></div>
+        </div>
+
+        <!-- Tabel -->
+        <div class="tabel-wrap">
+            <div class="tabel-toolbar">
+                <h4><i class="fas fa-table" style="margin-right:7px;color:var(--primary)"></i>Tabel Data Kepegawaian 2026</h4>
+                <div class="search-box">
+                    <i class="fas fa-search" style="color:var(--text-muted)"></i>
+                    <input type="text" id="searchInput" placeholder="Cari nama, jabatan, unit..." oninput="filterTable()">
+                </div>
+            </div>
+            <div class="filter-row">
+                <button class="filter-btn active" onclick="setFilter('semua',this)">Semua</button>
+                <button class="filter-btn" onclick="setFilter('PNS',this)">PNS</button>
+                <button class="filter-btn" onclick="setFilter('CPNS',this)">CPNS</button>
+                <button class="filter-btn" onclick="setFilter('PPPK',this)">PPPK</button>
+                <button class="filter-btn" onclick="setFilter('TUGSUS',this)">TUGSUS</button>
+                <button class="filter-btn" onclick="setFilter('THL',this)">THL</button>
+                <button class="filter-btn" onclick="setFilter('TKS',this)">TKS</button>
+            </div>
+            <div class="tabel-scroll">
+                <table id="tabelSDM">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Pendidikan</th>
+                            <th>Pangkat/Gol</th>
+                            <th>Unit/Kedudukan</th>
+                            <th>Status</th>
+                            <th>L/P</th>
+                            <th>No HP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelBody">
+<!-- DATA AKAN DIISI OLEH JAVASCRIPT -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabel-footer">
+                <span id="rowCount">Menampilkan 88 dari 88 pegawai</span>
+                <span style="color:var(--text-muted)">Data Kepegawaian Puskesmas Dirgahayu — Tahun 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ 3. JAM OPERASIONAL ══ -->
     <section class="section" id="jam">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-clock"></i></div>
-            <div>
-                <h3>Jam Operasional</h3>
-                <p>Jadwal layanan Puskesmas Dirgahayu</p>
-            </div>
+            <div><h3>Jam Operasional</h3><p>Jadwal layanan Puskesmas Dirgahayu setiap harinya</p></div>
         </div>
         <div class="section-divider"></div>
-
         <div class="jam-grid">
-            <div class="jam-card fade-in d1">
-                <div class="jam-day">Senin</div>
-                <div class="jam-time">07.30 – 14.00</div>
-                <span class="jam-status status-buka">Buka</span>
-            </div>
-            <div class="jam-card fade-in d2">
-                <div class="jam-day">Selasa</div>
-                <div class="jam-time">07.30 – 14.00</div>
-                <span class="jam-status status-buka">Buka</span>
-            </div>
-            <div class="jam-card fade-in d3">
-                <div class="jam-day">Rabu</div>
-                <div class="jam-time">07.30 – 14.00</div>
-                <span class="jam-status status-buka">Buka</span>
-            </div>
-            <div class="jam-card fade-in d4">
-                <div class="jam-day">Kamis</div>
-                <div class="jam-time">07.30 – 14.00</div>
-                <span class="jam-status status-buka">Buka</span>
-            </div>
-            <div class="jam-card fade-in d5">
-                <div class="jam-day">Jumat</div>
-                <div class="jam-time">07.30 – 11.00</div>
-                <span class="jam-status status-buka">Buka</span>
-            </div>
-            <div class="jam-card fade-in d6">
-                <div class="jam-day">Sabtu</div>
-                <div class="jam-time">Tutup</div>
-                <span class="jam-status status-tutup">Tutup</span>
-            </div>
-            <div class="jam-card tutup fade-in">
-                <div class="jam-day">Minggu</div>
-                <div class="jam-time">Tutup</div>
-                <span class="jam-status status-tutup">Libur</span>
-            </div>
-            <div class="jam-card fade-in">
-                <div class="jam-day">UGD / Darurat</div>
-                <div class="jam-time">24 Jam</div>
-                <span class="jam-status status-darurat">Selalu Buka</span>
-            </div>
+            <div class="jam-card"><div class="jam-day">Senin</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card"><div class="jam-day">Selasa</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card"><div class="jam-day">Rabu</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card"><div class="jam-day">Kamis</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card"><div class="jam-day">Jumat</div><div class="jam-time">07.30 – 11.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card"><div class="jam-day">Sabtu</div><div class="jam-time">07.30 – 12.00</div><span class="jam-status status-buka">Buka</span></div>
+            <div class="jam-card tutup"><div class="jam-day">Minggu</div><div class="jam-time">Tutup</div><span class="jam-status status-tutup">Libur</span></div>
+            <div class="jam-card"><div class="jam-day">UGD / Darurat</div><div class="jam-time">24 Jam</div><span class="jam-status status-darurat">Selalu Buka</span></div>
         </div>
-
-        <!-- Catatan -->
-        <div style="background:var(--primary-light);border-radius:14px;padding:16px 20px;margin-top:16px;border-left:4px solid var(--primary);font-size:0.83em;color:var(--primary-dark);line-height:1.6;">
-            <i class="fas fa-info-circle" style="margin-right:6px"></i>
-            <strong>Catatan:</strong> Jam layanan dapat berubah pada hari libur nasional dan kegiatan khusus. Untuk keperluan darurat di luar jam operasional, layanan UGD tetap tersedia 24 jam.
-            Layanan rawat inap tersedia selama 24 jam.
+        <div style="background:var(--primary-light);border-radius:13px;padding:15px 20px;margin-top:15px;border-left:4px solid var(--primary);font-size:0.82em;color:var(--primary-dark);line-height:1.65;">
+            <i class="fas fa-info-circle" style="margin-right:6px"></i><strong>Catatan:</strong> Jam layanan dapat berubah pada hari libur nasional. Layanan UGD dan Rawat Inap tersedia 24 jam setiap hari.
         </div>
     </section>
 
-    <!-- ══════════════════════════════
-         3. LOKASI / PETA
-    ══════════════════════════════ -->
+    <!-- ══ 4. PETA ══ -->
     <section class="section" id="peta">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-                <h3>Lokasi Puskesmas</h3>
-                <p>Temukan kami di Google Maps</p>
-            </div>
+            <div><h3>Lokasi Puskesmas</h3><p>Temukan kami di Google Maps</p></div>
         </div>
         <div class="section-divider"></div>
-
-        <div class="map-wrap fade-in">
+        <div class="map-wrap">
             <div class="map-info-bar">
                 <div class="mi-left">
                     <i class="fas fa-map-pin"></i>
                     <div>
                         <h4>Puskesmas Dirgahayu — Kotabaru</h4>
-                        <p>Jl. Dirgahayu, Kabupaten Kotabaru, Kalimantan Selatan</p>
+                        <p>Kecamatan Pulau Laut Utara, Kabupaten Kotabaru, Kalimantan Selatan</p>
                     </div>
                 </div>
-                <!--
-                    CARA GANTI LINK MAPS:
-                    Ganti href di bawah dengan link Google Maps Puskesmas Dirgahayu.
-                    Link yang diberikan: https://share.google/4Hs2GW8MvzzMpl2SJ
-                -->
                 <a href="https://share.google/4Hs2GW8MvzzMpl2SJ" target="_blank" rel="noopener" class="map-open-btn">
-                    <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+                    <i class="fas fa-external-link-alt"></i> Buka Google Maps
                 </a>
             </div>
-
             <!--
-                ══════════════════════════════════════════════════
-                CARA EMBED GOOGLE MAPS (iframe):
-                1. Buka https://maps.google.com
+                ══ CARA EMBED PETA ══
+                1. Buka maps.google.com
                 2. Cari "Puskesmas Dirgahayu Kotabaru"
-                3. Klik tombol "Bagikan" → "Sematkan peta"
-                4. Salin kode <iframe src="..."> yang muncul
-                5. Tempel di sini menggantikan iframe di bawah
-                   (ganti hanya bagian src="..." nya saja)
-
-                Contoh format URL embed:
-                https://www.google.com/maps/embed?pb=!1m18!...
-
-                Sementara ini menggunakan link share sebagai fallback.
-                ══════════════════════════════════════════════════
+                3. Klik Bagikan → Sematkan Peta
+                4. Salin URL dari src="..." pada iframe yang muncul
+                5. Tempel menggantikan src di bawah ini
             -->
             <div class="map-frame-wrap">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.12345!2d116.2!3d-2.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPuskesmas+Dirgahayu+Kotabaru!5e0!3m2!1sid!2sid!4v1234567890"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127837.234!2d116.196!3d-3.286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de47e7cedc13a55%3A0x5043d0f5f8e3e7c!2sPuskesmas+Dirgahayu!5e0!3m2!1sid!2sid!4v1680000000000"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                     title="Lokasi Puskesmas Dirgahayu">
                 </iframe>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════
-         4. BAGAN ORGANISASI
-    ══════════════════════════════ -->
+    <!-- ══ 5. BAGAN ORGANISASI ══ -->
     <section class="section" id="organisasi">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-sitemap"></i></div>
-            <div>
-                <h3>Struktur Organisasi</h3>
-                <p>Bagan organisasi resmi Puskesmas Dirgahayu</p>
-            </div>
+            <div><h3>Struktur Organisasi</h3><p>Bagan organisasi Puskesmas Dirgahayu berdasarkan data kepegawaian 2026</p></div>
         </div>
         <div class="section-divider"></div>
-
-        <div class="org-wrap fade-in">
+        <div class="org-wrap">
             <div class="org-chart">
 
-                <!-- KEPALA PUSKESMAS -->
-                <div class="org-node">
+                <!-- PLT. KEPALA -->
+                <div style="display:flex;flex-direction:column;align-items:center;">
                     <div class="org-box ob-kepala">
-                        <div class="ob-title">Kepala Puskesmas</div>
-                        <div class="ob-name">dr. [Nama Kepala]</div>
-                        <div class="ob-nip">NIP: —</div>
+                        <div class="ob-role">Plt. Kepala Puskesmas</div>
+                        <div class="ob-name">dr. Gunawan Wibisono</div>
+                        <div class="ob-nip">NIP: 19790413 200903 1 004</div>
                     </div>
-                    <div class="org-line-v"></div>
+                    <div class="v-line"></div>
                 </div>
 
-                <!-- LEVEL 2: Komite + KA Subbag TU -->
-                <div style="width:100%;display:flex;justify-content:center;margin-bottom:0;">
-                    <div style="display:flex;gap:0;align-items:flex-start;position:relative;width:90%;">
-                        <!-- horizontal connector -->
-                        <div style="position:absolute;top:0;left:16.5%;right:16.5%;height:2px;background:var(--border);z-index:0;"></div>
-
-                        <!-- Komite (kiri) -->
-                        <div class="org-col" style="flex:1">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-komite">
-                                <div class="ob-title">Komite Mutu</div>
-                                <div class="ob-name">[Nama PJ]</div>
+                <!-- LEVEL 2 — 3 KOLOM -->
+                <div style="width:100%;position:relative;margin-bottom:0;">
+                    <div style="position:absolute;top:0;left:17%;right:17%;height:2px;background:var(--border);z-index:0;"></div>
+                    <div class="org-cols">
+                        <div class="org-col">
+                            <div class="col-top"></div>
+                            <div class="org-box ob-mutu">
+                                <div class="ob-role">Komite Mutu</div>
+                                <div class="ob-name">H. Muhammad Furqan, S.Kep.,Ners</div>
+                                <div class="ob-nip">NIP: 19730909 199403 1 005</div>
                             </div>
                         </div>
-
-                        <!-- KA Subbag TU (tengah) -->
-                        <div class="org-col" style="flex:1">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-kabag">
-                                <div class="ob-title">Ka. Subbag Tata Usaha</div>
-                                <div class="ob-name">[Nama Ka. TU]</div>
-                                <div class="ob-nip">NIP: —</div>
+                        <div class="org-col">
+                            <div class="col-top"></div>
+                            <div class="org-box ob-tu">
+                                <div class="ob-role">Ka. Subbag Tata Usaha</div>
+                                <div class="ob-name">Syarifah Norjanatun Nikmah</div>
+                                <div class="ob-nip">NIP: 19691215 199203 2 008</div>
                             </div>
                         </div>
-
-                        <!-- SP Mutu (kanan) -->
-                        <div class="org-col" style="flex:1">
-                            <div class="org-col-line-top"></div>
+                        <div class="org-col">
+                            <div class="col-top"></div>
                             <div class="org-box ob-sp">
-                                <div class="ob-title">SP UKM Esensial</div>
-                                <div class="ob-name">[Nama PJ]</div>
+                                <div class="ob-role">Koord. Bidan</div>
+                                <div class="ob-name">Dewi Arianti, S.Tr.Bdn</div>
+                                <div class="ob-nip">NIP: 19840919 200604 2 008</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Connector ke bawah dari Subbag TU -->
-                <div style="width:2px;height:28px;background:var(--border);margin-left:0;align-self:center;"></div>
+                <div class="v-line" style="margin-top:0;"></div>
 
-                <!-- LEVEL 3: Sub-sub unit -->
-                <div class="org-section-label">Unit Pelayanan & Program</div>
+                <!-- LABEL -->
+                <div style="font-size:0.68em;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);background:var(--bg);padding:3px 14px;border-radius:50px;margin:10px 0 14px;">Unit Pelayanan & Program</div>
 
+                <!-- LEVEL 3 — 5 UNIT -->
                 <div style="width:100%;position:relative;">
                     <div style="position:absolute;top:0;left:10%;right:10%;height:2px;background:var(--border);"></div>
-                    <div class="org-row-5" style="padding-top:2px;">
+                    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%;padding-top:0;">
                         <div class="org-col">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-unit">
-                                <div class="ob-title">Unit</div>
-                                <div class="ob-name">Pelayanan Umum & Gawat Darurat</div>
+                            <div class="col-top"></div>
+                            <div class="org-box ob-unit" style="min-width:120px;max-width:160px;">
+                                <div class="ob-role">Poli Umum</div>
+                                <div class="ob-name">dr. Hj. Siti Aisyah</div>
+                                <div class="ob-nip">NIP: 19750518 200903 2 002</div>
                             </div>
                         </div>
                         <div class="org-col">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-unit">
-                                <div class="ob-title">Unit</div>
-                                <div class="ob-name">KIA / KB & Imunisasi</div>
+                            <div class="col-top"></div>
+                            <div class="org-box ob-unit" style="min-width:120px;max-width:160px;">
+                                <div class="ob-role">Poli Gigi</div>
+                                <div class="ob-name">drg. Reni Dian Anggraeni</div>
+                                <div class="ob-nip">NIP: 19810330 200803 2 001</div>
                             </div>
                         </div>
                         <div class="org-col">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-unit">
-                                <div class="ob-title">Unit</div>
-                                <div class="ob-name">Farmasi & Laboratorium</div>
+                            <div class="col-top"></div>
+                            <div class="org-box ob-unit" style="min-width:120px;max-width:160px;">
+                                <div class="ob-role">Farmasi</div>
+                                <div class="ob-name">Flaviana Stovia.V.S, S.Si.,Apt</div>
+                                <div class="ob-nip">NIP: 19730526 200604 2 002</div>
                             </div>
                         </div>
                         <div class="org-col">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-unit">
-                                <div class="ob-title">Unit</div>
-                                <div class="ob-name">Gizi & Kesehatan Lingkungan</div>
+                            <div class="col-top"></div>
+                            <div class="org-box ob-unit" style="min-width:120px;max-width:160px;">
+                                <div class="ob-role">KIA / KB</div>
+                                <div class="ob-name">Hj. Wahdiyah, S.Keb.Bdn</div>
+                                <div class="ob-nip">NIP: 19700312 199101 2 001</div>
                             </div>
                         </div>
                         <div class="org-col">
-                            <div class="org-col-line-top"></div>
-                            <div class="org-box ob-unit">
-                                <div class="ob-title">Unit</div>
-                                <div class="ob-name">Promosi Kesehatan & Jiwa</div>
+                            <div class="col-top"></div>
+                            <div class="org-box ob-unit" style="min-width:120px;max-width:160px;">
+                                <div class="ob-role">Laboratorium</div>
+                                <div class="ob-name">Yeyen Romalina M H, S.ST</div>
+                                <div class="ob-nip">NIP: 19871014 200903 2 003</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div style="margin-top:20px;width:100%;">
-                    <div style="position:absolute;display:none"></div>
-                    <div class="org-section-label">Pengelola Program Prioritas</div>
-                    <div class="org-row-4" style="margin-top:12px;">
-                        <div class="org-col">
-                            <div class="org-box ob-staff">
-                                <div class="ob-title">Program</div>
-                                <div class="ob-name">P2P — TBC, HIV, Hepatitis</div>
-                            </div>
-                        </div>
-                        <div class="org-col">
-                            <div class="org-box ob-staff">
-                                <div class="ob-title">Program</div>
-                                <div class="ob-name">Surveilans & Epidemiologi</div>
-                            </div>
-                        </div>
-                        <div class="org-col">
-                            <div class="org-box ob-staff">
-                                <div class="ob-title">Program</div>
-                                <div class="ob-name">PTM — Hipertensi, Diabetes</div>
-                            </div>
-                        </div>
-                        <div class="org-col">
-                            <div class="org-box ob-staff">
-                                <div class="ob-title">Program</div>
-                                <div class="ob-name">Kesehatan Jiwa & NAPZA</div>
-                            </div>
-                        </div>
+                <!-- LABEL PROGRAM -->
+                <div style="font-size:0.68em;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);background:var(--bg);padding:3px 14px;border-radius:50px;margin:18px 0 14px;">Program Prioritas & Penunjang</div>
+
+                <!-- LEVEL 4 — PROGRAM -->
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;">
+                    <div class="org-box ob-prog" style="min-width:0;">
+                        <div class="ob-role">P2P — TBC/HIV/Hepatitis</div>
+                        <div class="ob-name">Fauzianor, SKM</div>
+                        <div class="ob-nip">Promkes</div>
+                    </div>
+                    <div class="org-box ob-prog" style="min-width:0;">
+                        <div class="ob-role">Gizi & Nutrisionis</div>
+                        <div class="ob-name">Conivera Catur B.G.P, S.Gz</div>
+                        <div class="ob-nip">Poli Gizi</div>
+                    </div>
+                    <div class="org-box ob-prog" style="min-width:0;">
+                        <div class="ob-role">Kesehatan Lingkungan</div>
+                        <div class="ob-name">Taty Mesrati, AMd</div>
+                        <div class="ob-nip">Kesling</div>
+                    </div>
+                    <div class="org-box ob-prog" style="min-width:0;">
+                        <div class="ob-role">Promkes / Jiwa / PKPR</div>
+                        <div class="ob-name">Hj. Mariyana, AM.Keb</div>
+                        <div class="ob-nip">PKPR</div>
                     </div>
                 </div>
 
             </div><!-- /org-chart -->
 
-            <!-- Keterangan warna -->
-            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid var(--border);">
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary-dark);"></div> Pimpinan
-                </div>
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary);"></div> Ka. Subbag / Koordinator
-                </div>
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary-light);border:1px solid var(--primary)"></div> Unit Pelayanan
-                </div>
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:#fff3e0;border:1px solid #ffcc80"></div> Komite Mutu
-                </div>
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:#f3e5f5;border:1px solid #ce93d8"></div> SP UKM
-                </div>
-                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
-                    <div style="width:16px;height:16px;border-radius:5px;background:var(--white);border:1px solid var(--border)"></div> Program / Staff
-                </div>
-                <div style="flex:1;text-align:right;font-size:0.72em;color:var(--text-muted)">
-                    <i class="fas fa-info-circle"></i> Nama dan jabatan dapat disesuaikan dengan data resmi Puskesmas
-                </div>
+            <!-- Legenda -->
+            <div class="org-legend">
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--primary-dark);"></div> Pimpinan</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--primary);"></div> Tata Usaha / Admin</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#1a237e;"></div> Koordinator</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--primary-light);border:1px solid var(--primary)"></div> Unit Pelayanan</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#fff3e0;border:1px solid #ffcc80"></div> Komite Mutu</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#f3e5f5;border:1px solid #ce93d8"></div> Koordinator Bidan</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--white);border:1px solid var(--border)"></div> Program / Penunjang</div>
+                <div style="flex:1;text-align:right;font-size:0.7em;color:var(--text-muted);"><i class="fas fa-info-circle"></i> Berdasarkan Data Kepegawaian Puskesmas Dirgahayu Tahun 2026</div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════
-         5. FASILITAS
-    ══════════════════════════════ -->
+    <!-- ══ 6. FASILITAS ══ -->
     <section class="section" id="fasilitas">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-hospital"></i></div>
-            <div>
-                <h3>Fasilitas Layanan</h3>
-                <p>Fasilitas yang tersedia di Puskesmas Dirgahayu</p>
-            </div>
+            <div><h3>Fasilitas Layanan</h3><p>Fasilitas yang tersedia di Puskesmas Dirgahayu</p></div>
         </div>
         <div class="section-divider"></div>
-
         <div class="fasilitas-grid">
-            <div class="fasilitas-card fade-in d1">
-                <div class="fc-icon">🏥</div>
-                <h4>Rawat Inap</h4>
-                <p>Tempat tidur rawat inap 24 jam</p>
-            </div>
-            <div class="fasilitas-card fade-in d2">
-                <div class="fc-icon">🚑</div>
-                <h4>UGD / Gawat Darurat</h4>
-                <p>Pelayanan darurat 24 jam</p>
-            </div>
-            <div class="fasilitas-card fade-in d3">
-                <div class="fc-icon">🩺</div>
-                <h4>Poli Umum</h4>
-                <p>Pemeriksaan kesehatan umum</p>
-            </div>
-            <div class="fasilitas-card fade-in d4">
-                <div class="fc-icon">🤱</div>
-                <h4>KIA / KB</h4>
-                <p>Kesehatan Ibu, Anak & KB</p>
-            </div>
-            <div class="fasilitas-card fade-in d5">
-                <div class="fc-icon">💊</div>
-                <h4>Farmasi</h4>
-                <p>Apotek dan pelayanan obat</p>
-            </div>
-            <div class="fasilitas-card fade-in d6">
-                <div class="fc-icon">🔬</div>
-                <h4>Laboratorium</h4>
-                <p>Pemeriksaan darah, urin, dahak</p>
-            </div>
-            <div class="fasilitas-card fade-in d1">
-                <div class="fc-icon">🦷</div>
-                <h4>Poli Gigi</h4>
-                <p>Pemeriksaan & perawatan gigi</p>
-            </div>
-            <div class="fasilitas-card fade-in d2">
-                <div class="fc-icon">🧠</div>
-                <h4>Kesehatan Jiwa</h4>
-                <p>Konsultasi & layanan keswa</p>
-            </div>
-            <div class="fasilitas-card fade-in d3">
-                <div class="fc-icon">🥗</div>
-                <h4>Konseling Gizi</h4>
-                <p>Konsultasi gizi & tumbuh kembang</p>
-            </div>
-            <div class="fasilitas-card fade-in d4">
-                <div class="fc-icon">💉</div>
-                <h4>Imunisasi</h4>
-                <p>Vaksinasi bayi, anak & dewasa</p>
-            </div>
-            <div class="fasilitas-card fade-in d5">
-                <div class="fc-icon">🌿</div>
-                <h4>Kesehatan Lingkungan</h4>
-                <p>Inspeksi & promosi kesling</p>
-            </div>
-            <div class="fasilitas-card fade-in d6">
-                <div class="fc-icon">♿</div>
-                <h4>Akses Difabel</h4>
-                <p>Fasilitas ramah disabilitas</p>
-            </div>
+            <div class="fasilitas-card"><div class="fc-icon">🏥</div><h4>Rawat Inap</h4><p>24 jam</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🚑</div><h4>UGD Darurat</h4><p>24 jam</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🩺</div><h4>Poli Umum</h4><p>Pelayanan umum</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🦷</div><h4>Poli Gigi</h4><p>Perawatan gigi</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🤱</div><h4>KIA / KB</h4><p>Kesehatan Ibu & Anak</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">💊</div><h4>Farmasi</h4><p>Apotek & obat</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🔬</div><h4>Laboratorium</h4><p>Pemeriksaan lab</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🥗</div><h4>Poli Gizi</h4><p>Konseling gizi</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🧠</div><h4>Kesehatan Jiwa</h4><p>PKPR & Keswa</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">💉</div><h4>Imunisasi</h4><p>Vaksinasi lengkap</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🌿</div><h4>Kesling</h4><p>Sanitasi & kesling</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">📋</div><h4>Rekam Medis</h4><p>Administrasi pasien</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🏡</div><h4>Bidan Desa</h4><p>7 desa wilayah kerja</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🏢</div><h4>Pustu Stagen</h4><p>Puskesmas pembantu</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">♿</div><h4>Akses Difabel</h4><p>Ramah disabilitas</p></div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════
-         6. KONTAK & SOSIAL MEDIA
-    ══════════════════════════════ -->
+    <!-- ══ 7. KONTAK & SOSMED ══ -->
     <section class="section" id="kontak">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-address-book"></i></div>
-            <div>
-                <h3>Kontak & Media Sosial</h3>
-                <p>Hubungi atau ikuti kami di berbagai platform</p>
-            </div>
+            <div><h3>Kontak & Media Sosial</h3><p>Hubungi atau ikuti kami di berbagai platform</p></div>
         </div>
         <div class="section-divider"></div>
-
         <div class="kontak-grid">
 
-            <!-- WhatsApp -->
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="kontak-card fade-in d1">
-                <!--
-                    CARA GANTI NOMOR WA:
-                    Ganti "6281234567890" dengan nomor WhatsApp Puskesmas
-                    Format: 62 + nomor tanpa 0 di depan
-                    Contoh: 082312345678 → 6282312345678
-                    Link: https://wa.me/6282312345678
-                -->
+            <!-- WhatsApp — GANTI NOMOR -->
+            <a href="https://wa.me/6281351090323" target="_blank" rel="noopener" class="kontak-card">
                 <div class="kontak-icon ki-wa"><i class="fab fa-whatsapp"></i></div>
                 <div class="kontak-info">
-                    <h4>WhatsApp</h4>
-                    <p>Konsultasi & informasi layanan</p>
-                    <span class="k-link">+62 812-XXXX-XXXX</span>
-                    <!-- Ganti dengan nomor WA resmi Puskesmas -->
+                    <h4>WhatsApp Puskesmas</h4>
+                    <p>Konsultasi & informasi layanan kesehatan</p>
+                    <!--
+                        CARA GANTI NOMOR WA:
+                        Ganti "6281351090323" → 62 + nomor tanpa angka 0 di depan
+                        Contoh: 0813... → 62813...
+                        Juga ganti teks di bawah ini
+                    -->
+                    <span class="k-link">+62 813-5109-0323</span>
                 </div>
             </a>
 
-            <!-- Instagram -->
-            <a href="https://instagram.com/puskesmas_dirgahayu" target="_blank" rel="noopener" class="kontak-card fade-in d2">
-                <!--
-                    CARA GANTI INSTAGRAM:
-                    Ganti "puskesmas.dirgahayu" dengan username Instagram resmi
-                    Link: https://instagram.com/[username]
-                -->
+            <!-- Instagram — GANTI USERNAME -->
+            <a href="https://instagram.com/puskesmas_dirgahayu" target="_blank" rel="noopener" class="kontak-card">
                 <div class="kontak-icon ki-ig"><i class="fab fa-instagram"></i></div>
                 <div class="kontak-info">
                     <h4>Instagram</h4>
-                    <p>Informasi & edukasi kesehatan</p>
+                    <p>Informasi & edukasi kesehatan terbaru</p>
+                    <!--
+                        CARA GANTI INSTAGRAM:
+                        Ganti "puskesmas_dirgahayu" dengan username IG resmi
+                        Link: https://instagram.com/[username_ig_resmi]
+                    -->
                     <span class="k-link">@puskesmas_dirgahayu</span>
-                    <!-- Ganti dengan username IG resmi -->
                 </div>
             </a>
 
-            <!-- Email -->
-            <a href="mailto:puskesmasdirgahayu99@gmail.com" class="kontak-card fade-in d3">
-                <!--
-                    CARA GANTI EMAIL:
-                    Ganti alamat email di href="mailto:..." dan teks di bawah
-                    dengan email resmi Puskesmas Dirgahayu
-                -->
+            <!-- Email — GANTI EMAIL -->
+            <a href="mailto:puskesmasdirgahayu99@gmail.com" class="kontak-card">
                 <div class="kontak-icon ki-email"><i class="fas fa-envelope"></i></div>
                 <div class="kontak-info">
                     <h4>Email Resmi</h4>
-                    <p>Surat & korespondensi resmi</p>
+                    <p>Surat & korespondensi resmi instansi</p>
+                    <!--
+                        CARA GANTI EMAIL:
+                        Ganti "puskesmasdirgahayu@kotabarukab.go.id"
+                        dengan email resmi Puskesmas Dirgahayu
+                    -->
                     <span class="k-link">puskesmasdirgahayu99@gmail.com</span>
-                    <!-- Ganti dengan email resmi -->
                 </div>
             </a>
 
-            <!-- Telepon -->
-            <a href="tel:+625161234567" class="kontak-card fade-in d4">
-                <!--
-                    CARA GANTI NOMOR TELEPON:
-                    Ganti "+625161234567" dengan nomor telepon Puskesmas
-                    dan teks di bawah
-                -->
+            <!-- Telepon — GANTI NOMOR TELP -->
+            <a href="tel:+62518000000" class="kontak-card">
                 <div class="kontak-icon ki-phone"><i class="fas fa-phone"></i></div>
                 <div class="kontak-info">
-                    <h4>Telepon</h4>
+                    <h4>Telepon Kantor</h4>
                     <p>Hubungi langsung kantor Puskesmas</p>
-                    <span class="k-link">(0518) XXX-XXXX</span>
-                    <!-- Ganti dengan nomor telepon resmi -->
+                    <!--
+                        CARA GANTI TELEPON:
+                        Ganti nomor di href="tel:..." dan teks di bawah
+                        dengan nomor telepon resmi Puskesmas
+                    -->
+                    <span class="k-link">(0518) XXX-XXXX — isi nomor resmi</span>
                 </div>
             </a>
 
             <!-- Google Maps -->
-            <a href="https://maps.app.goo.gl/1f5Xg5c6Nfy3fQoC7" target="_blank" rel="noopener" class="kontak-card fade-in d5">
-                <div class="kontak-icon" style="background:#fce4ec;color:#c2185b;"><i class="fas fa-map-marker-alt"></i></div>
+            <a href="https://maps.app.goo.gl/1f5Xg5c6Nfy3fQoC7" target="_blank" rel="noopener" class="kontak-card">
+                <div class="kontak-icon ki-maps"><i class="fas fa-map-marker-alt"></i></div>
                 <div class="kontak-info">
-                    <h4>Lokasi di Google Maps</h4>
+                    <h4>Lokasi Google Maps</h4>
                     <p>Petunjuk arah ke Puskesmas Dirgahayu</p>
                     <span class="k-link">Buka Google Maps →</span>
                 </div>
             </a>
 
-            <!-- Darurat -->
-            <div class="kontak-card fade-in d6" style="border:2px solid #ffcc80;background:#fff8e1;cursor:default;">
-                <div class="kontak-icon" style="background:#fff3e0;color:#e65100;font-size:1.4em;"><i class="fas fa-ambulance"></i></div>
+            <!-- UGD -->
+            <div class="kontak-card" style="border:2px solid #ffcc80;background:#fffde7;cursor:default;">
+                <div class="kontak-icon" style="background:#fff3e0;color:#e65100;"><i class="fas fa-ambulance"></i></div>
                 <div class="kontak-info">
-                    <h4>Darurat UGD (24 Jam)</h4>
-                    <p>Pelayanan gawat darurat tersedia sepanjang waktu</p>
+                    <h4>UGD — 24 Jam</h4>
+                    <p>Pelayanan gawat darurat tersedia sepanjang waktu tanpa terkecuali</p>
                     <span class="k-link" style="color:var(--secondary-dk);">Datang langsung ke UGD</span>
                 </div>
             </div>
 
         </div>
 
-        <!-- Hotline Kesehatan Nasional -->
-        <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:18px;padding:22px 28px;margin-top:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:#fff;">
-            <div style="font-size:2.2em;">📞</div>
-            <div style="flex:1;min-width:200px;">
-                <div style="font-size:0.72em;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-bottom:4px;">Hotline Kesehatan Nasional</div>
-                <div style="font-family:'Montserrat',sans-serif;font-size:1.1em;font-weight:900;">119 ext 8 — Hotline Kesehatan Jiwa</div>
-                <div style="font-size:0.8em;opacity:0.85;margin-top:4px;">Tersedia 24 jam, 7 hari seminggu, gratis</div>
+        <!-- Hotline nasional -->
+        <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:16px;padding:22px 28px;margin-top:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:#fff;">
+            <div style="font-size:2em;">📞</div>
+            <div style="flex:1;min-width:180px;">
+                <div style="font-size:0.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-bottom:4px;">Hotline Kesehatan Nasional</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:1.05em;font-weight:900;">119 ext 8 — Hotline Kesehatan Jiwa</div>
+                <div style="font-size:0.78em;opacity:0.85;margin-top:3px;">Tersedia 24 jam, 7 hari seminggu, gratis</div>
             </div>
-            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;font-family:'Montserrat',sans-serif;font-size:1.4em;font-weight:900;letter-spacing:2px;">119 ext 8</div>
+            <div style="background:rgba(255,255,255,0.18);border-radius:12px;padding:12px 22px;font-family:'Montserrat',sans-serif;font-size:1.3em;font-weight:900;letter-spacing:2px;">119 ext 8</div>
         </div>
     </section>
 
 </div><!-- /container -->
 
-<footer style="text-align:center;padding:40px;color:var(--primary);font-size:0.88em;border-top:1px solid var(--border);margin-top:20px;">
-    <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kotabaru, Kalimantan Selatan</p>
+<footer style="text-align:center;padding:36px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);margin-top:20px;">
+    <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kec. Pulau Laut Utara, Kab. Kotabaru, Kalimantan Selatan</p>
 </footer>
 
 <script>
-// Auto-tandai link subnav aktif berdasarkan scroll
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.subnav a');
+/* ── DATA SDM ── */
+const pegawai = [
+    [1,"dr. Gunawan Wibisono","19790413 200903 1 004","S-1 Kedokteran","Kepala Puskesmas / Dokter","Pembina / IV a","Plt. Kepala Puskesmas","PNS","L","081351090323"],
+    [2,"Syarifah Norjanatun Nikmah","19691215 199203 2 008","D-I Gizi (SPAG)","Pengadministrasi Perkantoran","Penata / III c","Tata Usaha","PNS","P","082126031488"],
+    [3,"Flaviana Stovia.V.S, S.Si.,Apt","19730526 200604 2 002","S-1 Apoteker","Apoteker","Pembina Muda / IV b","Farmasi","PNS","P","08121585785"],
+    [4,"drg. Reni Dian Anggraeni","19810330 200803 2 001","S-1 Kedokteran Gigi","Dokter Gigi","Pembina Muda / IV b","Poli Gigi","PNS","P","081351533327"],
+    [5,"dr. Hj. Siti Aisyah","19750518 200903 2 002","S-1 Kedokteran","Dokter","Pembina Muda / IV b","Poli Umum","PNS","P","081918051975"],
+    [6,"H. Muhammad Furqan, S.Kep.,Ners","19730909 199403 1 005","S-1 Keperawatan Ners","Perawat","Pembina / IV a","Poli Umum","PNS","L","081348083345"],
+    [7,"drg. Dian Sari","19750913 200903 2 004","S-1 Kedokteran Gigi","Dokter Gigi","Pembina / IV a","Poli Gigi","PNS","P","082153586418"],
+    [8,"Hj. Mariyana, AM.Keb","19710526 199101 2 002","D-III Kebidanan","Bidan","Penata Tk I / III d","PKPR","PNS","P","082217882892"],
+    [9,"Tetei Keteneng, AM.Keb","19691106 199002 2 001","D-III Kebidanan","Bidan","Penata Tk I / III d","MTBS","PNS","P","081351015060"],
+    [10,"Fauzianor, SKM","19850309 200903 1 003","S-1 Kesehatan Masyarakat","Penyuluh Kesehatan Masyarakat","Pembina / IV a","Promkes","PNS","L","081251165940"],
+    [11,"Hj. Wahdiyah, S.Keb.Bdn","19700312 199101 2 001","S-1 Kebidanan Profesi","Bidan","Penata Tk I / III d","KIA","PNS","P","081349464865"],
+    [12,"Tuti Kurniati, S.Kep.,Ns.","19830905 200501 2 010","S-1 Keperawatan Ners","Perawat","Penata Tk I / III d","MTBS","PNS","P","081256712001"],
+    [13,"Aji Khairahdani Iskandar, S.Kep.Ners","19900420 201403 1 004","S-1 Keperawatan Ners","Perawat","Penata Tk I / III d","Poli Umum","PNS","L","082255451644"],
+    [14,"Hj. Syahriah, AM.Gz","19711114 199203 2 007","D-III Gizi","Pengolah Data dan Informasi","Penata / III c","Loket","PNS","P","081250910815"],
+    [15,"Hj. Dewi Agustina, S.S.T.Keb.Bdn","19710807 199101 2 002","S-1 Kebidanan","Bidan","Penata Tk I / III d","Bidan Desa Sungai Taib","PNS","P","08125171293"],
+    [16,"Badiatul Hijriah, AM.Keb","19730825 199302 2 005","D-III Kebidanan","Bidan","Penata Tk I / III C","Bidan Desa Gunung Ulin","PNS","P","081349545911"],
+    [17,"Mardiana, AM.Keb","19700503 199002 2 001","D-III Kebidanan","Bidan","Penata Tk I / III d","Bidan Desa Dirgahayu","PNS","P","085345434554"],
+    [18,"Hj. Nurita Andriyani, S.Kep.Ners","19850918 200903 2 007","S-1 Keperawatan Ners","Perawat","Penata / III c","MTBS","PNS","P","081254031709"],
+    [19,"Novita Wati, S.Kep.Ners","19841128 200903 2 008","S-1 Keperawatan Ners","Perawat","Penata / III c","Poli Umum","PNS","P","082211847060"],
+    [20,"Satsiwi Wahyu Widi Handayani, S.Keb.,Bdn","19810923 200501 2 012","D-IV Kebidanan Profesi","Bidan","Penata / III c","Bidan Desa Megasari","PNS","P","08115001342"],
+    [21,"Susi Fitriyah, S.Keb.,Bdn","19800414 200312 2 004","D-IV Kebidanan Profesi","Bidan","Penata / III c","KIA","PNS","P","081348037133"],
+    [22,"Dewi Arianti, S.Tr.Bdn","19840919 200604 2 008","D-IV Kebidanan Profesi","Bidan","Penata Tk I / III d","Bidan Koordinator","PNS","P","081349504500"],
+    [23,"Yeyen Romalina M H, S.ST","19871014 200903 2 003","D-IV Analis Kesehatan","Pranata Laboratorium Kesehatan","Penata / III c","Laboratorium","PNS","P","081348693887"],
+    [24,"Taty Mesrati, AMd","19780613 200903 2 003","D-III Kesehatan Lingkungan","Tenaga Sanitasi Lingkungan","Penata / III c","Kesling","PNS","P","081351315959"],
+    [25,"Hj. Rena Herlena, S.S.T.Keb,Bdn","19770107 200312 2 007","S-1 Kebidanan Profesi","Bidan","Penata / III c","Bidan Desa Sebelimbingan","PNS","P","081348083343"],
+    [26,"Eka Fitriani, S.Tr.Keb, Bdn","19870221 201001 2 008","D-IV Kebidanan Profesi","Bidan","Penata / III c","Imunisasi","PNS","P","081227800022"],
+    [27,"Rika Susanti, S.Farm., Apt","19861025 200903 2 010","S-1 Apoteker","Apoteker","Penata / III c","Farmasi","PNS","P","085247477947"],
+    [28,"Isda Herlina, S.ST, Bdn","19880208 201001 2 005","S-1 Kebidanan Profesi","Bidan","Penata / III c","Imunisasi","PNS","P","085345701407"],
+    [29,"Rahmaniah, S.Tr.Keb","19890107 201101 2 005","D-IV Kebidanan","Bidan","Penata Muda Tk I / III b","KIA","PNS","P","082158984744"],
+    [30,"Melinda Afriliyana, S.Farm., Apt","19890402 201101 2 003","S-1 Apoteker","Apoteker","Penata / III c","Farmasi","PNS","P","083820659887"],
+    [31,"Susrini, A.Md.Keb","19890623 201101 2 005","D-III Kebidanan","Bidan","Penata Muda Tk I / III b","Imunisasi","PNS","P","082217464417"],
+    [32,"Liny Maulida, S.Tr.Kes","19920923 201403 2 001","D-IV Analis Kesehatan","Pranata Laboratorium Kesehatan","Penata Muda Tk I / III b","Laboratorium","PNS","P","082210806987"],
+    [33,"Erwin Sutisna, AMKg","19761208 200604 1 012","D-III Keperawatan Gigi","Terapis Gigi dan Mulut","Penata Muda / III a","Poli Gigi","PNS","L","081250550057"],
+    [34,"Farida Roostanti, AMd.KL","19790202 201001 2 008","D-III Kesehatan Lingkungan","Tenaga Sanitasi Lingkungan","Penata Muda TK I / III b","Kesling","PNS","P","085751525953"],
+    [35,"Conivera Catur B.G.P, S.Gz","19940613 201903 2015","S-1 Gizi","Nutrisionis","Penata Muda Tk I / III b","Poli Gizi","PNS","P","082148079976"],
+    [36,"Pathul Janah, AMK","19761117 201001 2 004","D-III Keperawatan","Perawat","Penata Muda Tk I / III b","Poli Umum","PNS","P","082114122562"],
+    [37,"Siti Hadizah, A.Md.Kes","19770404 200604 2 005","D-III Analis Kesehatan","Pranata Laboratorium Kesehatan","Pengatur Tk I / II d","Laboratorium","PNS","P","081348255089"],
+    [38,"Rizqi Amalia, S.Keb","19900926 201705 2 001","S-1 Kebidanan","Bidan","Penata Muda / III a","Bidan Desa Semayap","PNS","P","081258022748"],
+    [39,"Hotmauli Sirait, S.Tr.Keb","19790630 201904 2 001","D-IV Kebidanan","Bidan","Pengatur Tk I / II d","KIA","PNS","P","08125137060"],
+    [40,"Hamsani, A.Md.Kg","19900101 201403 1 004","D-III Keperawatan Gigi","Terapis Gigi dan Mulut","Penata Muda / III a","Poli Gigi","PNS","L","085248555212"],
+    [41,"Nurul Husna, SKM","19930702 202421 2 027","S-1 Kesehatan Masyarakat","Penyuluh Kesehatan Masyarakat","Kelas IX","Promkes","PPPK","P","081253592487"],
+    [42,"Joko Santoso, AMK","19730409 202521 1 039","D-III Keperawatan","Perawat","—","Pustu Stagen","PPPK PW","L","085931929473"],
+    [43,"Norhasanah","19760314 202521 2 027","SMA","Operator Layanan Operasional","—","Loket","PPPK PW","P","081214583557"],
+    [44,"Diah Fatma Sari Andin, SKM","19900823 202521 2 091","S-1 Kesehatan Masyarakat","Penyuluh Kesehatan Masyarakat","—","Promkes","PPPK PW","P","085232377287"],
+    [45,"Eva Agustina Indah, Amd.Keb","19910810 202521 2 152","D-IV Kebidanan","Bidan","—","Bidan Desa Semayap","PPPK PW","P","082137520304"],
+    [46,"Sri Rukmayanti, AM.Keb","6302.440.06.051.24","D-IV Kebidanan","Bidan","Dis. Gol. III","Bidan Desa Gunung Ulin","TUGSUS","P","081334240600"],
+    [47,"Lutfiah Rahma Dinda, S.Tr.Gz","6302.440.05.021.24","D-IV Gizi","Nutrisionis","Dis. Gol. III","Poli Gizi","TUGSUS","P","082157944172"],
+    [48,"Amalia Yuana, A.Md.Kes","6302.440.08.016.24","D-III Kesehatan Lingkungan","Tenaga Sanitasi Lingkungan","Dis. Gol. II","Kesling","TUGSUS","P","085821718849"],
+    [49,"Aulia Nadila Mahfuza, S.Farm","6302.440.04.046.24","S-1 Farmasi","Apoteker","Dis. Gol. III","Tata Usaha","TUGSUS","P","081228910972"],
+    [50,"Dwi Indah Febriani, A.Md.Kes","6302.440.10.004.24","D-III Rekam Medik","Rekam Medis","Dis. Gol. II","Rekam Medis","TUGSUS","P","085248554599"],
+    [51,"Corina Ratu Pebriyanti, S.Tr.Keb","19970212 202521 2 107","D-IV Kebidanan","Bidan","—","PKPR","PPPK PW","P","087815134523"],
+    [52,"Ridhatin Nisa","20250067","SMA","Pramu Kebersihan","Dis. Gol. I","Loket","THL","P","085821089866"],
+    [53,"M. Hijaz Yamani","20250051","SMA","Supir Ambulance","Dis. Gol. I","Loket","THL","L","083159204744"],
+    [54,"Rahmawati, AMK","6302.440.07.100.25","D-III Keperawatan","Perawat","Dis. Gol. II","Poli Umum","TUGSUS","P","082293475784"],
+    [55,"Reni Dwi Susanti, SE","19920324 202521 2 007","S-1 Ekonomi","Penata Layanan Operasional","—","Tata Usaha","PPPK PW","P","085156403601"],
+    [56,"M. Ahya Fachrurraji, S.Tr.Kes","6302.440.08.026.25","D-IV Kesehatan Lingkungan","Tenaga Sanitasi Lingkungan","Dis. Gol. III","Kesling","TUGSUS","L","081238241221"],
+    [57,"Maydina Khairunisa","—","SMA","Pendaftaran","—","Loket","TKS","P","0882021453276"],
+    [58,"Nur Livia Ananda","—","SMA","Pendaftaran","—","Loket","TKS","P","087714722637"],
+    [59,"Nurul Amalia, S.Gz","19930926 202521 2 084","S-1 Gizi","Nutrisionis","—","Poli Gizi","PPPK PW","P","081256877717"],
+    [60,"Ariska Ramadhani, SKM","6302.440.09.065.24","S-1 Kesehatan Masyarakat","Penyuluh Kesehatan Masyarakat","Dis. Gol. III","Promkes","TUGSUS","P","082353142329"],
+    [61,"Susanti, S.Kep.,Ns","19920722 202504 2 003","S-1 Keperawatan Ners","Perawat","Penata Muda Tk I / III b","Poli Umum","CPNS","P","082254984848"],
+    [62,"Reno Ariyandi, S.Kep.,Ners","19921211 202504 1 004","S-1 Keperawatan Ners","Perawat","Penata Muda Tk I / III b","Poli Umum","CPNS","L","081288115711"],
+    [63,"Ns. Muhammad Abror Sulaiman, S.Tr.Kep","19980714 202504 1 008","D-IV Keperawatan Ners","Perawat","Penata Muda Tk I / III b","Poli Umum","CPNS","L","081936761661"],
+    [64,"apt. Firda Aulia S, S.Farm","19950917 202504 2 003","S-1 Apoteker","Apoteker","Penata Muda Tk I / III b","Farmasi","CPNS","P","085776120089"],
+    [65,"Lutfia Rahmi, SKM","19980718 202504 2 008","S-1 Kesehatan Masyarakat","Penyuluh Kesehatan Masyarakat","Penata Muda / III a","Promkes","CPNS","P","083150199542"],
+    [66,"Paridah, S.Si.T","19930527 202504 2 005","S-1 Kebidanan","Bidan","Penata Muda / III a","Bidan Desa Rampa","CPNS","P","081256054699"],
+    [67,"Ayu Ainul Azizah, S.Tr.Keb","19950328 202504 2 003","S-1 Kebidanan","Bidan","Penata Muda / III a","Bidan Desa Gunung Sari","CPNS","P","081290331362"],
+    [68,"Riska Herusanti, SST","19920127 202504 2 002","S-1 Kebidanan","Bidan","Penata Muda / III a","Bidan Desa Stagen","CPNS","P","082152222120"],
+    [69,"Nur Hikmah, S.Tr.Gz","20000507 202504 2 005","D-IV Gizi dan Dietetika","Nutrisionis","Penata Muda / III a","Poli Gizi","CPNS","P","085787794901"],
+    [70,"Syarifah Zaitun, A.Md.Keb","19901127 202504 2 002","D-III Kebidanan","Bidan","Pengatur / II c","Bidan Desa Megasari","CPNS","P","085820282273"],
+    [71,"Dewi Astuti, A.Md.Keb","19940806 202504 2 006","D-III Kebidanan","Bidan","Pengatur / II c","KIA","CPNS","P","081347773246"],
+    [72,"Resti Dwi Cahyanti, AM.Keb","19921015 202504 2 002","D-III Kebidanan","Bidan","Pengatur / II c","Bidan Desa Sebelimbingan","CPNS","P","081253981515"],
+    [73,"Jariah Norisma, A.Md.Keb","19970904 202504 2 004","D-III Kebidanan","Bidan","Pengatur / II c","Bidan Desa Dirgahayu","CPNS","P","082253266916"],
+    [74,"Arinda Sistya Ningrum, A.Md.RMIK","20020602 202504 2 003","D-III Rekam Medik","Rekam Medis","Pengatur / II c","Rekam Medis","CPNS","P","085816140287"],
+    [75,"Nor Halimatus Sa'diah, A.Md.Kes","19970823 202504 2 007","D-III Rekam Medik","Rekam Medis","Pengatur / II c","Rekam Medis","CPNS","P","081257972312"],
+    [76,"Dita Nafatiara Selnia, A.Md.Kes","20001106 202504 2 008","D-III Analis Kesehatan","Pranata Laboratorium Kesehatan","Pengatur / II c","Laboratorium","CPNS","P","082357657278"],
+    [77,"Shabrina Dewi Ramadhani, A.Md.AK","20021116 202504 2 004","D-III Analis Kesehatan","Pranata Laboratorium Kesehatan","Pengatur / II c","Laboratorium","CPNS","P","083142356614"],
+    [78,"Muhammad Ikhsan Rifani","19961225 202504 1 004","SMA","Operator Layanan Kesehatan","Pengatur Muda / II a","Tata Usaha","CPNS","L","08128976483"],
+    [79,"dr. Gusti Khalida Rizma Rosa'dy","6302.440.01.022.25","S-1 Kedokteran","Dokter","Dis. Gol. III","Poli Umum","TUGSUS","P","081216640241"],
+    [80,"dr. Suminarti","19870901 201412 2 001","S-1 Kedokteran","Dokter","Penata Tingkat I / III d","Poli Umum","PNS","P","085251624557"],
+    [81,"Hj. Hartinah, S.S.T.Keb","19670128 199002 2 001","S-1 Sains Terapan","Bidan","Pembina Tingkat I / IV b","PKPR","PNS","P","08125043680"],
+    [82,"Dini Roosmita, S.Kep.,Ns","19930401 201903 2 014","S-1 Keperawatan Ners","Perawat","Penata Muda Tk I / III b","Poli Umum","PNS","P","082251308821"],
+    [83,"dr. Djoko Santoso","19790203 201001 1 009","S-1 Kedokteran","Dokter","Pembina / IV a","Poli Umum","PNS","L","081348104886"],
+    [84,"Dwi Ayu Novianty, S.Gz","—","S-1 Gizi","Nutrisionis","—","Poli Gizi","TKS","P","081216640241"],
+    [85,"Nanda Assyifa Nur, S.Tr.Kes","—","D-IV Keperawatan Gigi","Terapis Gigi dan Mulut","—","Poli Gigi","TKS","P","082251105139"],
+    [86,"Hj. Agustini, AM.Keb","19760831 201101 2 001","D-III Kebidanan","Pengolah Data dan Informasi","Pengatur Tk I / II d","Tata Usaha","PNS","P","085796819367"],
+    [87,"Uly Artha Tampubolon, AMKeb","19840920 200903 2 011","S-1 Kebidanan","Bidan","Pengatur Tk I / II d","PKPR","PNS","P","—"],
+    [88,"Suwaibah, S.Keb.,Bdn","19860721 200903 2 009","S-1 Kebidanan Profesi","Bidan","Penata Tingkat I / III d","KIA","PNS","P","—"],
+];
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+const statusClass = {
+    'PNS':'bs-pns', 'CPNS':'bs-cpns', 'PPPK':'bs-pppk',
+    'PPPK PW':'bs-pppk', 'TUGSUS':'bs-tugsus', 'THL':'bs-thl', 'TKS':'bs-tks'
+};
+
+let currentFilter = 'semua';
+
+function renderTable(data) {
+    const tbody = document.getElementById('tabelBody');
+    tbody.innerHTML = data.map(d => {
+        const [no, nama, nip, pend, jabatan, pangkat, unit, status, sex, hp] = d;
+        const sc = statusClass[status] || 'bs-tks';
+        const sexClass = sex === 'L' ? 'sex-l' : 'sex-p';
+        return `<tr data-status="${status}">
+            <td>${no}</td>
+            <td style="font-weight:600;min-width:200px;">${nama}</td>
+            <td style="min-width:180px;">${jabatan}</td>
+            <td style="min-width:160px;">${pend}</td>
+            <td style="min-width:160px;font-size:0.78em;">${pangkat}</td>
+            <td style="min-width:160px;">${unit}</td>
+            <td><span class="badge-status ${sc}">${status}</span></td>
+            <td><span class="badge-sex ${sexClass}">${sex}</span></td>
+            <td style="min-width:130px;font-size:0.82em;">${hp}</td>
+        </tr>`;
+    }).join('');
+    document.getElementById('rowCount').textContent = `Menampilkan ${data.length} dari ${pegawai.length} pegawai`;
+}
+
+function setFilter(val, btn) {
+    currentFilter = val;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+}
+
+function filterTable() { applyFilters(); }
+
+function applyFilters() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = pegawai.filter(d => {
+        const matchFilter = currentFilter === 'semua' || d[7].includes(currentFilter);
+        const matchSearch = !q || d.some(cell => String(cell).toLowerCase().includes(q));
+        return matchFilter && matchSearch;
     });
+    renderTable(filtered);
+}
+
+renderTable(pegawai);
+
+/* ── Subnav active on scroll ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.subnav a');
+window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
     navLinks.forEach(a => {
         a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
     });
 });
 </script>
-
 </body>
 </html>
