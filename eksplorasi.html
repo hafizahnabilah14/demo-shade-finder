@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Branding – SIDAYU Puskesmas Dirgahayu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary:      #00796b;
+            --primary-dark: #004d40;
+            --primary-light:#e0f2f1;
+            --secondary:    #ffb74d;
+            --secondary-dk: #e65100;
+            --white:        #ffffff;
+            --bg:           #f4f7f6;
+            --text:         #1a2e2b;
+            --text-muted:   #5a7470;
+            --border:       #d0e4e1;
+            --card-shadow:  0 8px 32px rgba(0,77,64,0.10);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); }
+
+        /* ── HEADER ── */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 14px 28px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 900;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand h1 { font-family: 'Montserrat', sans-serif; font-size: 1.4em; color: #fff; font-weight: 900; letter-spacing: 2px; line-height: 1; }
+        .brand p { font-size: 0.63em; color: rgba(255,255,255,0.75); margin-top: 2px; }
+        .back-btn {
+            display: flex; align-items: center; gap: 7px;
+            background: rgba(255,255,255,0.15); color: #fff; text-decoration: none;
+            padding: 8px 18px; border-radius: 50px; font-size: 0.82em; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.28); }
+
+        /* ── SUB-NAV ── */
+        .subnav {
+            background: var(--white);
+            display: flex; justify-content: center; gap: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07); overflow-x: auto;
+        }
+        .subnav a {
+            padding: 14px 22px; text-decoration: none;
+            font-size: 0.83em; font-weight: 600; color: var(--text-muted);
+            border-bottom: 3px solid transparent; white-space: nowrap;
+            display: flex; align-items: center; gap: 7px;
+            transition: all 0.2s;
+        }
+        .subnav a:hover, .subnav a.active {
+            color: var(--primary); border-color: var(--primary);
+        }
+
+        /* ── HERO BANNER ── */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #00897b 60%, #26a69a 100%);
+            padding: 52px 28px 70px;
+            text-align: center; color: #fff;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px; padding: 6px 18px;
+            font-size: 0.78em; font-weight: 600; letter-spacing: 1px; margin-bottom: 18px;
+        }
+        .hero h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2em; font-weight: 900; letter-spacing: 1px; line-height: 1.1; margin-bottom: 12px; }
+        .hero p { font-size: 0.95em; opacity: 0.88; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+        /* ── LAYOUT ── */
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px 70px; }
+        .section { margin-top: 50px; }
+        .section-head {
+            display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+        }
+        .section-head .s-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            background: var(--primary-light); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2em; flex-shrink: 0;
+        }
+        .section-head h3 { font-family: 'Montserrat', sans-serif; font-size: 1.25em; font-weight: 900; letter-spacing: 0.5px; }
+        .section-head p { font-size: 0.8em; color: var(--text-muted); margin-top: 3px; }
+        .section-divider { height: 3px; background: linear-gradient(90deg, var(--primary), transparent); border-radius: 4px; margin-bottom: 26px; }
+
+        /* ── PROFIL CARD ── */
+        .profil-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .profil-card {
+            background: var(--white); border-radius: 18px;
+            padding: 24px 28px; box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
+        }
+        .profil-card:hover { transform: translateY(-3px); }
+        .profil-card .pc-label { font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 6px; }
+        .profil-card .pc-val { font-size: 1em; font-weight: 600; color: var(--text); line-height: 1.5; }
+        .profil-card .pc-icon { font-size: 1.6em; color: var(--primary); margin-bottom: 10px; }
+        .profil-card.accent { border-left-color: var(--secondary); }
+        .profil-card.accent .pc-icon { color: var(--secondary-dk); }
+
+        /* ── JAM OPERASIONAL ── */
+        .jam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+        .jam-card {
+            background: var(--white); border-radius: 16px; padding: 18px 20px;
+            box-shadow: var(--card-shadow); text-align: center;
+            transition: transform 0.2s;
+        }
+        .jam-card:hover { transform: translateY(-2px); }
+        .jam-card.tutup { opacity: 0.55; }
+        .jam-day { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
+        .jam-time {
+            font-family: 'Montserrat', sans-serif; font-size: 1.15em; font-weight: 900;
+            color: var(--primary); line-height: 1.2;
+        }
+        .jam-card.tutup .jam-time { color: #b0bec5; }
+        .jam-status {
+            display: inline-block; margin-top: 8px; padding: 3px 12px;
+            border-radius: 50px; font-size: 0.7em; font-weight: 700;
+        }
+        .status-buka { background: #e8f5e9; color: #2e7d32; }
+        .status-tutup { background: #f5f5f5; color: #9e9e9e; }
+        .status-darurat { background: #fff3e0; color: #e65100; }
+
+        /* ── PETA ── */
+        .map-wrap {
+            background: var(--white); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--card-shadow); position: relative;
+        }
+        .map-info-bar {
+            background: var(--primary-dark); color: #fff;
+            padding: 14px 24px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+        }
+        .map-info-bar .mi-left { display: flex; align-items: center; gap: 12px; }
+        .map-info-bar .mi-left i { font-size: 1.3em; color: var(--secondary); }
+        .map-info-bar h4 { font-size: 0.92em; font-weight: 700; }
+        .map-info-bar p { font-size: 0.75em; opacity: 0.8; margin-top: 2px; }
+        .map-open-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--secondary); color: var(--primary-dark);
+            padding: 8px 18px; border-radius: 50px;
+            font-size: 0.82em; font-weight: 700; text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .map-open-btn:hover { opacity: 0.85; }
+        .map-frame-wrap { height: 400px; }
+        .map-frame-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        /* ── BAGAN ORGANISASI ── */
+        .org-wrap {
+            background: var(--white); border-radius: 20px; padding: 32px;
+            box-shadow: var(--card-shadow); overflow-x: auto;
+        }
+        .org-chart {
+            display: flex; flex-direction: column; align-items: center; gap: 0;
+            min-width: 700px;
+        }
+
+        /* Node styles */
+        .org-node {
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .org-box {
+            border-radius: 14px; padding: 12px 20px; text-align: center;
+            font-size: 0.82em; font-weight: 600; min-width: 150px; max-width: 180px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.09); position: relative;
+            border: 2px solid transparent; transition: transform 0.2s;
+            cursor: default;
+        }
+        .org-box:hover { transform: translateY(-2px); }
+        .org-box .ob-title { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 5px; opacity: 0.75; }
+        .org-box .ob-name { font-size: 0.9em; font-weight: 700; line-height: 1.3; }
+        .org-box .ob-nip  { font-size: 0.68em; margin-top: 4px; opacity: 0.6; }
+
+        /* Color variants */
+        .ob-kepala    { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+        .ob-kabag     { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .ob-unit      { background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary); }
+        .ob-staff     { background: var(--white); color: var(--text); border-color: var(--border); }
+        .ob-komite    { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+        .ob-sp        { background: #f3e5f5; color: #6a1b9a; border-color: #ce93d8; }
+
+        /* Connector lines */
+        .org-line-v { width: 2px; height: 28px; background: var(--border); }
+        .org-line-h-wrap {
+            display: flex; align-items: flex-start; gap: 0;
+            position: relative;
+        }
+        .org-line-h-wrap::before {
+            content: '';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            height: 2px;
+            background: var(--border);
+            width: calc(100% - 80px);
+        }
+        .org-col {
+            display: flex; flex-direction: column; align-items: center;
+            padding: 0 12px;
+        }
+        .org-col-line-top { width: 2px; height: 28px; background: var(--border); }
+
+        /* Row layouts */
+        .org-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+        .org-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; }
+        .org-row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 100%; }
+        .org-row-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; width: 100%; }
+
+        .org-section-label {
+            font-size: 0.68em; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-muted);
+            background: var(--bg); padding: 3px 12px; border-radius: 50px;
+            margin: 20px 0 12px; align-self: center;
+        }
+
+        /* ── KONTAK & SOSMED ── */
+        .kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+        .kontak-card {
+            background: var(--white); border-radius: 18px; padding: 22px 24px;
+            box-shadow: var(--card-shadow); display: flex; align-items: flex-start;
+            gap: 16px; text-decoration: none; color: var(--text);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .kontak-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,77,64,0.14); }
+        .kontak-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5em; flex-shrink: 0;
+        }
+        .ki-wa    { background: #e8f5e9; color: #2e7d32; }
+        .ki-ig    { background: #fce4ec; color: #c2185b; }
+        .ki-email { background: var(--primary-light); color: var(--primary-dark); }
+        .ki-phone { background: #fff3e0; color: #e65100; }
+        .ki-web   { background: #e8eaf6; color: #3949ab; }
+        .kontak-info h4 { font-size: 0.92em; font-weight: 700; margin-bottom: 4px; }
+        .kontak-info p { font-size: 0.78em; color: var(--text-muted); line-height: 1.5; }
+        .kontak-info .k-link { font-size: 0.78em; color: var(--primary); font-weight: 600; margin-top: 6px; display: block; }
+
+        /* ── FASILITAS ── */
+        .fasilitas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+        .fasilitas-card {
+            background: var(--white); border-radius: 16px; padding: 20px 16px;
+            box-shadow: var(--card-shadow); text-align: center;
+            transition: transform 0.2s;
+        }
+        .fasilitas-card:hover { transform: translateY(-3px); }
+        .fasilitas-card .fc-icon { font-size: 2em; margin-bottom: 10px; }
+        .fasilitas-card h4 { font-size: 0.82em; font-weight: 700; color: var(--text); line-height: 1.35; }
+        .fasilitas-card p { font-size: 0.72em; color: var(--text-muted); margin-top: 4px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .profil-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 1.6em; }
+            .org-wrap { padding: 20px 14px; }
+        }
+        @media (max-width: 560px) {
+            .jam-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* fade-in animation */
+        .fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.5s ease forwards; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.12s; }
+        .d3 { animation-delay: 0.18s; } .d4 { animation-delay: 0.24s; }
+        .d5 { animation-delay: 0.30s; } .d6 { animation-delay: 0.36s; }
+    </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <div><h1>SIDAYU</h1><p>Puskesmas Dirgahayu</p></div>
+    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+</header>
+
+<!-- ══ SUB-NAV ══ -->
+<nav class="subnav">
+    <a href="#profil"     class="active"><i class="fas fa-building"></i> Profil</a>
+    <a href="#jam">       <i class="fas fa-clock"></i> Jam Operasional</a>
+    <a href="#peta">      <i class="fas fa-map-marker-alt"></i> Lokasi</a>
+    <a href="#organisasi"><i class="fas fa-sitemap"></i> Organisasi</a>
+    <a href="#fasilitas"> <i class="fas fa-hospital"></i> Fasilitas</a>
+    <a href="#kontak">    <i class="fas fa-address-book"></i> Kontak</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero-badge"><i class="fas fa-star"></i> E-BRANDING PUSKESMAS</div>
+    <h2>Puskesmas Dirgahayu<br>Kotabaru</h2>
+    <p>Mengenal lebih dekat fasilitas, struktur organisasi, jam layanan, dan cara menghubungi kami.</p>
+</section>
+
+<div class="container">
+
+    <!-- ══════════════════════════════
+         1. PROFIL PUSKESMAS
+    ══════════════════════════════ -->
+    <section class="section" id="profil">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-building"></i></div>
+            <div>
+                <h3>Profil Puskesmas</h3>
+                <p>Data identitas dan informasi resmi Puskesmas Dirgahayu</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="profil-grid">
+            <div class="profil-card fade-in d1">
+                <div class="pc-icon"><i class="fas fa-hospital-alt"></i></div>
+                <div class="pc-label">Nama Fasilitas</div>
+                <div class="pc-val">Puskesmas Dirgahayu</div>
+            </div>
+            <div class="profil-card fade-in d2">
+                <div class="pc-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="pc-label">Alamat</div>
+                <div class="pc-val">Jl. Yakut No.39, Desa Dirgahayu, Kabupaten Kotabaru, Kalimantan Selatan</div>
+            </div>
+            <div class="profil-card fade-in d3">
+                <div class="pc-icon"><i class="fas fa-layer-group"></i></div>
+                <div class="pc-label">Tipe Puskesmas</div>
+                <div class="pc-val">Puskesmas Rawat Inap — UPTD Dinas Kesehatan Kabupaten Kotabaru</div>
+            </div>
+            <div class="profil-card fade-in d4">
+                <div class="pc-icon"><i class="fas fa-users"></i></div>
+                <div class="pc-label">Wilayah Kerja</div>
+                <div class="pc-val">Desa Dirgahayu &amp; sekitar, Kabupaten Kotabaru</div>
+            </div>
+            <div class="profil-card accent fade-in d5">
+                <div class="pc-icon"><i class="fas fa-award"></i></div>
+                <div class="pc-label">Akreditasi</div>
+                <div class="pc-val">Terakreditasi — Kementerian Kesehatan RI</div>
+            </div>
+            <div class="profil-card accent fade-in d6">
+                <div class="pc-icon"><i class="fas fa-stethoscope"></i></div>
+                <div class="pc-label">Kepala Puskesmas</div>
+                <div class="pc-val">dr. [Nama Kepala Puskesmas]<br><span style="font-size:0.85em;color:var(--text-muted)">NIP: — (isi sesuai data resmi)</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         2. JAM OPERASIONAL
+    ══════════════════════════════ -->
+    <section class="section" id="jam">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-clock"></i></div>
+            <div>
+                <h3>Jam Operasional</h3>
+                <p>Jadwal layanan Puskesmas Dirgahayu</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="jam-grid">
+            <div class="jam-card fade-in d1">
+                <div class="jam-day">Senin</div>
+                <div class="jam-time">07.30 – 14.00</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card fade-in d2">
+                <div class="jam-day">Selasa</div>
+                <div class="jam-time">07.30 – 14.00</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card fade-in d3">
+                <div class="jam-day">Rabu</div>
+                <div class="jam-time">07.30 – 14.00</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card fade-in d4">
+                <div class="jam-day">Kamis</div>
+                <div class="jam-time">07.30 – 14.00</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card fade-in d5">
+                <div class="jam-day">Jumat</div>
+                <div class="jam-time">07.30 – 11.00</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card fade-in d6">
+                <div class="jam-day">Sabtu</div>
+                <div class="jam-time">Tutup</div>
+                <span class="jam-status status-tutup">Tutup</span>
+            </div>
+            <div class="jam-card tutup fade-in">
+                <div class="jam-day">Minggu</div>
+                <div class="jam-time">Tutup</div>
+                <span class="jam-status status-tutup">Libur</span>
+            </div>
+            <div class="jam-card fade-in">
+                <div class="jam-day">UGD / Darurat</div>
+                <div class="jam-time">24 Jam</div>
+                <span class="jam-status status-darurat">Selalu Buka</span>
+            </div>
+        </div>
+
+        <!-- Catatan -->
+        <div style="background:var(--primary-light);border-radius:14px;padding:16px 20px;margin-top:16px;border-left:4px solid var(--primary);font-size:0.83em;color:var(--primary-dark);line-height:1.6;">
+            <i class="fas fa-info-circle" style="margin-right:6px"></i>
+            <strong>Catatan:</strong> Jam layanan dapat berubah pada hari libur nasional dan kegiatan khusus. Untuk keperluan darurat di luar jam operasional, layanan UGD tetap tersedia 24 jam.
+            Layanan rawat inap tersedia selama 24 jam.
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         3. LOKASI / PETA
+    ══════════════════════════════ -->
+    <section class="section" id="peta">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+                <h3>Lokasi Puskesmas</h3>
+                <p>Temukan kami di Google Maps</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="map-wrap fade-in">
+            <div class="map-info-bar">
+                <div class="mi-left">
+                    <i class="fas fa-map-pin"></i>
+                    <div>
+                        <h4>Puskesmas Dirgahayu — Kotabaru</h4>
+                        <p>Jl. Dirgahayu, Kabupaten Kotabaru, Kalimantan Selatan</p>
+                    </div>
+                </div>
+                <!--
+                    CARA GANTI LINK MAPS:
+                    Ganti href di bawah dengan link Google Maps Puskesmas Dirgahayu.
+                    Link yang diberikan: https://share.google/4Hs2GW8MvzzMpl2SJ
+                -->
+                <a href="https://share.google/4Hs2GW8MvzzMpl2SJ" target="_blank" rel="noopener" class="map-open-btn">
+                    <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+                </a>
+            </div>
+
+            <!--
+                ══════════════════════════════════════════════════
+                CARA EMBED GOOGLE MAPS (iframe):
+                1. Buka https://maps.google.com
+                2. Cari "Puskesmas Dirgahayu Kotabaru"
+                3. Klik tombol "Bagikan" → "Sematkan peta"
+                4. Salin kode <iframe src="..."> yang muncul
+                5. Tempel di sini menggantikan iframe di bawah
+                   (ganti hanya bagian src="..." nya saja)
+
+                Contoh format URL embed:
+                https://www.google.com/maps/embed?pb=!1m18!...
+
+                Sementara ini menggunakan link share sebagai fallback.
+                ══════════════════════════════════════════════════
+            -->
+            <div class="map-frame-wrap">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.12345!2d116.2!3d-2.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPuskesmas+Dirgahayu+Kotabaru!5e0!3m2!1sid!2sid!4v1234567890"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Lokasi Puskesmas Dirgahayu">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         4. BAGAN ORGANISASI
+    ══════════════════════════════ -->
+    <section class="section" id="organisasi">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-sitemap"></i></div>
+            <div>
+                <h3>Struktur Organisasi</h3>
+                <p>Bagan organisasi resmi Puskesmas Dirgahayu</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="org-wrap fade-in">
+            <div class="org-chart">
+
+                <!-- KEPALA PUSKESMAS -->
+                <div class="org-node">
+                    <div class="org-box ob-kepala">
+                        <div class="ob-title">Kepala Puskesmas</div>
+                        <div class="ob-name">dr. [Nama Kepala]</div>
+                        <div class="ob-nip">NIP: —</div>
+                    </div>
+                    <div class="org-line-v"></div>
+                </div>
+
+                <!-- LEVEL 2: Komite + KA Subbag TU -->
+                <div style="width:100%;display:flex;justify-content:center;margin-bottom:0;">
+                    <div style="display:flex;gap:0;align-items:flex-start;position:relative;width:90%;">
+                        <!-- horizontal connector -->
+                        <div style="position:absolute;top:0;left:16.5%;right:16.5%;height:2px;background:var(--border);z-index:0;"></div>
+
+                        <!-- Komite (kiri) -->
+                        <div class="org-col" style="flex:1">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-komite">
+                                <div class="ob-title">Komite Mutu</div>
+                                <div class="ob-name">[Nama PJ]</div>
+                            </div>
+                        </div>
+
+                        <!-- KA Subbag TU (tengah) -->
+                        <div class="org-col" style="flex:1">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-kabag">
+                                <div class="ob-title">Ka. Subbag Tata Usaha</div>
+                                <div class="ob-name">[Nama Ka. TU]</div>
+                                <div class="ob-nip">NIP: —</div>
+                            </div>
+                        </div>
+
+                        <!-- SP Mutu (kanan) -->
+                        <div class="org-col" style="flex:1">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-sp">
+                                <div class="ob-title">SP UKM Esensial</div>
+                                <div class="ob-name">[Nama PJ]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connector ke bawah dari Subbag TU -->
+                <div style="width:2px;height:28px;background:var(--border);margin-left:0;align-self:center;"></div>
+
+                <!-- LEVEL 3: Sub-sub unit -->
+                <div class="org-section-label">Unit Pelayanan & Program</div>
+
+                <div style="width:100%;position:relative;">
+                    <div style="position:absolute;top:0;left:10%;right:10%;height:2px;background:var(--border);"></div>
+                    <div class="org-row-5" style="padding-top:2px;">
+                        <div class="org-col">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-unit">
+                                <div class="ob-title">Unit</div>
+                                <div class="ob-name">Pelayanan Umum & Gawat Darurat</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-unit">
+                                <div class="ob-title">Unit</div>
+                                <div class="ob-name">KIA / KB & Imunisasi</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-unit">
+                                <div class="ob-title">Unit</div>
+                                <div class="ob-name">Farmasi & Laboratorium</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-unit">
+                                <div class="ob-title">Unit</div>
+                                <div class="ob-name">Gizi & Kesehatan Lingkungan</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-col-line-top"></div>
+                            <div class="org-box ob-unit">
+                                <div class="ob-title">Unit</div>
+                                <div class="ob-name">Promosi Kesehatan & Jiwa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;width:100%;">
+                    <div style="position:absolute;display:none"></div>
+                    <div class="org-section-label">Pengelola Program Prioritas</div>
+                    <div class="org-row-4" style="margin-top:12px;">
+                        <div class="org-col">
+                            <div class="org-box ob-staff">
+                                <div class="ob-title">Program</div>
+                                <div class="ob-name">P2P — TBC, HIV, Hepatitis</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-box ob-staff">
+                                <div class="ob-title">Program</div>
+                                <div class="ob-name">Surveilans & Epidemiologi</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-box ob-staff">
+                                <div class="ob-title">Program</div>
+                                <div class="ob-name">PTM — Hipertensi, Diabetes</div>
+                            </div>
+                        </div>
+                        <div class="org-col">
+                            <div class="org-box ob-staff">
+                                <div class="ob-title">Program</div>
+                                <div class="ob-name">Kesehatan Jiwa & NAPZA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /org-chart -->
+
+            <!-- Keterangan warna -->
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid var(--border);">
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary-dark);"></div> Pimpinan
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary);"></div> Ka. Subbag / Koordinator
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:var(--primary-light);border:1px solid var(--primary)"></div> Unit Pelayanan
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:#fff3e0;border:1px solid #ffcc80"></div> Komite Mutu
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:#f3e5f5;border:1px solid #ce93d8"></div> SP UKM
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;font-size:0.75em;">
+                    <div style="width:16px;height:16px;border-radius:5px;background:var(--white);border:1px solid var(--border)"></div> Program / Staff
+                </div>
+                <div style="flex:1;text-align:right;font-size:0.72em;color:var(--text-muted)">
+                    <i class="fas fa-info-circle"></i> Nama dan jabatan dapat disesuaikan dengan data resmi Puskesmas
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         5. FASILITAS
+    ══════════════════════════════ -->
+    <section class="section" id="fasilitas">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-hospital"></i></div>
+            <div>
+                <h3>Fasilitas Layanan</h3>
+                <p>Fasilitas yang tersedia di Puskesmas Dirgahayu</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="fasilitas-grid">
+            <div class="fasilitas-card fade-in d1">
+                <div class="fc-icon">🏥</div>
+                <h4>Rawat Inap</h4>
+                <p>Tempat tidur rawat inap 24 jam</p>
+            </div>
+            <div class="fasilitas-card fade-in d2">
+                <div class="fc-icon">🚑</div>
+                <h4>UGD / Gawat Darurat</h4>
+                <p>Pelayanan darurat 24 jam</p>
+            </div>
+            <div class="fasilitas-card fade-in d3">
+                <div class="fc-icon">🩺</div>
+                <h4>Poli Umum</h4>
+                <p>Pemeriksaan kesehatan umum</p>
+            </div>
+            <div class="fasilitas-card fade-in d4">
+                <div class="fc-icon">🤱</div>
+                <h4>KIA / KB</h4>
+                <p>Kesehatan Ibu, Anak & KB</p>
+            </div>
+            <div class="fasilitas-card fade-in d5">
+                <div class="fc-icon">💊</div>
+                <h4>Farmasi</h4>
+                <p>Apotek dan pelayanan obat</p>
+            </div>
+            <div class="fasilitas-card fade-in d6">
+                <div class="fc-icon">🔬</div>
+                <h4>Laboratorium</h4>
+                <p>Pemeriksaan darah, urin, dahak</p>
+            </div>
+            <div class="fasilitas-card fade-in d1">
+                <div class="fc-icon">🦷</div>
+                <h4>Poli Gigi</h4>
+                <p>Pemeriksaan & perawatan gigi</p>
+            </div>
+            <div class="fasilitas-card fade-in d2">
+                <div class="fc-icon">🧠</div>
+                <h4>Kesehatan Jiwa</h4>
+                <p>Konsultasi & layanan keswa</p>
+            </div>
+            <div class="fasilitas-card fade-in d3">
+                <div class="fc-icon">🥗</div>
+                <h4>Konseling Gizi</h4>
+                <p>Konsultasi gizi & tumbuh kembang</p>
+            </div>
+            <div class="fasilitas-card fade-in d4">
+                <div class="fc-icon">💉</div>
+                <h4>Imunisasi</h4>
+                <p>Vaksinasi bayi, anak & dewasa</p>
+            </div>
+            <div class="fasilitas-card fade-in d5">
+                <div class="fc-icon">🌿</div>
+                <h4>Kesehatan Lingkungan</h4>
+                <p>Inspeksi & promosi kesling</p>
+            </div>
+            <div class="fasilitas-card fade-in d6">
+                <div class="fc-icon">♿</div>
+                <h4>Akses Difabel</h4>
+                <p>Fasilitas ramah disabilitas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         6. KONTAK & SOSIAL MEDIA
+    ══════════════════════════════ -->
+    <section class="section" id="kontak">
+        <div class="section-head">
+            <div class="s-icon"><i class="fas fa-address-book"></i></div>
+            <div>
+                <h3>Kontak & Media Sosial</h3>
+                <p>Hubungi atau ikuti kami di berbagai platform</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="kontak-grid">
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="kontak-card fade-in d1">
+                <!--
+                    CARA GANTI NOMOR WA:
+                    Ganti "6281234567890" dengan nomor WhatsApp Puskesmas
+                    Format: 62 + nomor tanpa 0 di depan
+                    Contoh: 082312345678 → 6282312345678
+                    Link: https://wa.me/6282312345678
+                -->
+                <div class="kontak-icon ki-wa"><i class="fab fa-whatsapp"></i></div>
+                <div class="kontak-info">
+                    <h4>WhatsApp</h4>
+                    <p>Konsultasi & informasi layanan</p>
+                    <span class="k-link">+62 812-XXXX-XXXX</span>
+                    <!-- Ganti dengan nomor WA resmi Puskesmas -->
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/puskesmas_dirgahayu" target="_blank" rel="noopener" class="kontak-card fade-in d2">
+                <!--
+                    CARA GANTI INSTAGRAM:
+                    Ganti "puskesmas.dirgahayu" dengan username Instagram resmi
+                    Link: https://instagram.com/[username]
+                -->
+                <div class="kontak-icon ki-ig"><i class="fab fa-instagram"></i></div>
+                <div class="kontak-info">
+                    <h4>Instagram</h4>
+                    <p>Informasi & edukasi kesehatan</p>
+                    <span class="k-link">@puskesmas.dirgahayu</span>
+                    <!-- Ganti dengan username IG resmi -->
+                </div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:puskesmasdirgahayu99@gmail.com" class="kontak-card fade-in d3">
+                <!--
+                    CARA GANTI EMAIL:
+                    Ganti alamat email di href="mailto:..." dan teks di bawah
+                    dengan email resmi Puskesmas Dirgahayu
+                -->
+                <div class="kontak-icon ki-email"><i class="fas fa-envelope"></i></div>
+                <div class="kontak-info">
+                    <h4>Email Resmi</h4>
+                    <p>Surat & korespondensi resmi</p>
+                    <span class="k-link">puskesmasdirgahayu99@gmail.com</span>
+                    <!-- Ganti dengan email resmi -->
+                </div>
+            </a>
+
+            <!-- Telepon -->
+            <a href="tel:+625161234567" class="kontak-card fade-in d4">
+                <!--
+                    CARA GANTI NOMOR TELEPON:
+                    Ganti "+625161234567" dengan nomor telepon Puskesmas
+                    dan teks di bawah
+                -->
+                <div class="kontak-icon ki-phone"><i class="fas fa-phone"></i></div>
+                <div class="kontak-info">
+                    <h4>Telepon</h4>
+                    <p>Hubungi langsung kantor Puskesmas</p>
+                    <span class="k-link">(0518) XXX-XXXX</span>
+                    <!-- Ganti dengan nomor telepon resmi -->
+                </div>
+            </a>
+
+            <!-- Google Maps -->
+            <a href="https://share.google/4Hs2GW8MvzzMpl2SJ" target="_blank" rel="noopener" class="kontak-card fade-in d5">
+                <div class="kontak-icon" style="background:#fce4ec;color:#c2185b;"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="kontak-info">
+                    <h4>Lokasi di Google Maps</h4>
+                    <p>Petunjuk arah ke Puskesmas Dirgahayu</p>
+                    <span class="k-link">Buka Google Maps →</span>
+                </div>
+            </a>
+
+            <!-- Darurat -->
+            <div class="kontak-card fade-in d6" style="border:2px solid #ffcc80;background:#fff8e1;cursor:default;">
+                <div class="kontak-icon" style="background:#fff3e0;color:#e65100;font-size:1.4em;"><i class="fas fa-ambulance"></i></div>
+                <div class="kontak-info">
+                    <h4>Darurat UGD (24 Jam)</h4>
+                    <p>Pelayanan gawat darurat tersedia sepanjang waktu</p>
+                    <span class="k-link" style="color:var(--secondary-dk);">Datang langsung ke UGD</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Hotline Kesehatan Nasional -->
+        <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:18px;padding:22px 28px;margin-top:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:#fff;">
+            <div style="font-size:2.2em;">📞</div>
+            <div style="flex:1;min-width:200px;">
+                <div style="font-size:0.72em;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-bottom:4px;">Hotline Kesehatan Nasional</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:1.1em;font-weight:900;">119 ext 8 — Hotline Kesehatan Jiwa</div>
+                <div style="font-size:0.8em;opacity:0.85;margin-top:4px;">Tersedia 24 jam, 7 hari seminggu, gratis</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;font-family:'Montserrat',sans-serif;font-size:1.4em;font-weight:900;letter-spacing:2px;">119 ext 8</div>
+        </div>
+    </section>
+
+</div><!-- /container -->
+
+<footer style="text-align:center;padding:40px;color:var(--primary);font-size:0.88em;border-top:1px solid var(--border);margin-top:20px;">
+    <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kotabaru, Kalimantan Selatan</p>
+</footer>
+
+<script>
+// Auto-tandai link subnav aktif berdasarkan scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.subnav a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
