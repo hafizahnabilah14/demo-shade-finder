@@ -384,12 +384,25 @@ function submitRegistrasi() {
     // Kirim ke Google Sheets
     if (SCRIPT_URL_REGISTRASI && !SCRIPT_URL_REGISTRASI.includes('GANTI')) {
         fetch(SCRIPT_URL_REGISTRASI, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
-        .then(() => tampilkanHasil(data))
-        .catch(() => tampilkanHasil(data));
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            tampilkanHasil(data);
+        })
+        .catch(error => {
+            console.error(error);
+            showToast('Gagal mengirim data ke spreadsheet', true);
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftarkan Sekarang';
+        });
     } else {
         // Jika URL Apps Script kosong, langsung lewati proses backend database ke ringkasan & kirim WA
         tampilkanHasil(data);
