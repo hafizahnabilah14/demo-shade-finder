@@ -362,8 +362,12 @@ function validate() {
 }
 
 // ── Submit Registrasi Pendaftaran Pasien ──
-function submitRegistrasi() {
-    if (!validate()) return;
+async function submitRegistrasi() {
+
+    if (!validate()) {
+        showToast('Periksa kembali data yang belum lengkap', true);
+        return;
+    }
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
@@ -371,41 +375,81 @@ function submitRegistrasi() {
 
     const data = {
         tanggalKunjungan: document.getElementById('r-tanggal').value,
-        pembiayaan:       document.getElementById('r-biaya').value,
-        poliTujuan:       selectedPoli,
-        namaPasien:       document.getElementById('r-nama').value.trim(),
-        nikJkn:           document.getElementById('r-nik').value.trim(),
-        tanggalLahir:     document.getElementById('r-tgllahir').value,
-        noHp:             document.getElementById('r-hp').value.trim(),
-        alamat:           document.getElementById('r-alamat').value.trim(),
-        timestamp:        new Date().toLocaleString('id-ID'),
+        pembiayaan: document.getElementById('r-biaya').value,
+        poliTujuan: selectedPoli,
+        namaPasien: document.getElementById('r-nama').value.trim(),
+        nikJkn: document.getElementById('r-nik').value.trim(),
+        tanggalLahir: document.getElementById('r-tgllahir').value,
+        noHp: document.getElementById('r-hp').value.trim(),
+        alamat: document.getElementById('r-alamat').value.trim(),
+        timestamp: new Date().toLocaleString('id-ID'),
     };
 
-    // Kirim ke Google Sheets
-    if (SCRIPT_URL_REGISTRASI && !SCRIPT_URL_REGISTRASI.includes('GANTI')) {
-        fetch(SCRIPT_URL_REGISTRASI, {
+    try {
+
+        // VALIDASI TAMBAHAN
+        if (data.nikJkn.length < 13) {
+            throw new Error('NIK / No. BPJS minimal 13 digit');
+        }
+
+        if (!/^08[0-9]{8,13}$/.test(data.noHp)) {
+            throw new Error('Format nomor HP tidak valid');
+        }
+
+        if (data.namaPasien.length < 3) {
+            throw new Error('Nama pasien terlalu pendek');
+        }
+
+        // KIRIM DATA
+        const response = await fetch(SCRIPT_URL_REGISTRASI, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.text())
-        .then(result => {
-            console.log(result);
-            tampilkanHasil(data);
-        })
-        .catch(error => {
-            console.error(error);
-            showToast('Gagal mengirim data ke spreadsheet', true);
-
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftarkan Sekarang';
+            body: new URLSearchParams(data)
         });
-    } else {
-        // Jika URL Apps Script kosong, langsung lewati proses backend database ke ringkasan & kirim WA
+
+        // STATUS ERROR SERVER
+        if (!response.ok) {
+            throw new Error('Server spreadsheet tidak merespons');
+        }
+
+        const result = await response.text();
+
+        // RESPON ERROR DARI APPS SCRIPT
+        if (
+            result.toLowerCase().includes('error') ||
+            result.toLowerCase().includes('failed')
+        ) {
+            throw new Error('Spreadsheet menolak data');
+        }
+
+        console.log(result);
+
         tampilkanHasil(data);
+
+    } catch (error) {
+
+        console.error(error);
+
+        let pesan = error.message;
+
+        // ERROR INTERNET
+        if (!navigator.onLine) {
+            pesan = 'Tidak ada koneksi internet';
+        }
+
+        // ERROR FETCH
+        if (error.name === 'TypeError') {
+            pesan = 'Tidak dapat terhubung ke server spreadsheet';
+        }
+
+        showToast('❌ ' + pesan, true);
+
+    } finally {
+
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftarkan Sekarang';
     }
 }
 
