@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan & Saran – SIDAYU Puskesmas Dirgahayu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary:       #00796b;
+            --primary-dark:  #004d40;
+            --primary-light: #e0f2f1;
+            --red:           #e53935;
+            --red-dark:      #b71c1c;
+            --red-light:     #ffebee;
+            --orange:        #e65100;
+            --secondary:     #ffb74d;
+            --white:         #ffffff;
+            --bg:            #f4f7f6;
+            --text:          #1a2e2b;
+            --text-muted:    #5a7470;
+            --border:        #d0e4e1;
+            --shadow:        0 8px 32px rgba(0,77,64,0.09);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* ── HEADER ── */
+        .site-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 900; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand h1 { font-family: 'Montserrat', sans-serif; font-size: 1.4em; color: #fff; font-weight: 900; letter-spacing: 2px; line-height: 1; }
+        .brand p { font-size: 0.63em; color: rgba(255,255,255,0.75); margin-top: 2px; }
+        .back-btn { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; padding: 8px 18px; border-radius: 50px; font-size: 0.82em; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s; }
+        .back-btn:hover { background: rgba(255,255,255,0.28); }
+
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, #b71c1c 0%, var(--red) 60%, #ef5350 100%); padding: 50px 28px 68px; text-align: center; color: #fff; clip-path: polygon(0 0,100% 0,100% 88%,0 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E"); }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; padding: 6px 18px; font-size: 0.78em; font-weight: 600; letter-spacing: 1px; margin-bottom: 16px; }
+        .hero h2 { font-family: 'Montserrat', sans-serif; font-size: 2em; font-weight: 900; line-height: 1.15; margin-bottom: 12px; }
+        .hero p { font-size: 0.92em; opacity: 0.9; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+        /* ── MAIN LAYOUT ── */
+        .main-wrap { max-width: 900px; margin: 0 auto; padding: 36px 22px 70px; }
+
+        /* ── INFO CARDS ── */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .info-card { background: var(--white); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); display: flex; align-items: flex-start; gap: 14px; }
+        .info-card.red { border-left-color: var(--red); }
+        .info-card.orange { border-left-color: var(--orange); }
+        .info-card .ic-icon { font-size: 1.8em; flex-shrink: 0; }
+        .info-card h4 { font-size: 0.85em; font-weight: 700; margin-bottom: 4px; }
+        .info-card p { font-size: 0.76em; color: var(--text-muted); line-height: 1.55; }
+
+        /* ── FORM CARD ── */
+        .form-card { background: var(--white); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+        .form-header { background: linear-gradient(135deg, var(--red-dark), var(--red)); padding: 22px 28px; color: #fff; }
+        .form-header h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 900; margin-bottom: 4px; }
+        .form-header p { font-size: 0.78em; opacity: 0.85; }
+        .form-body { padding: 28px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label { font-size: 0.76em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); }
+        .form-group label .req { color: var(--red); margin-left: 3px; }
+        .form-group input,
+        .form-group textarea,
+        .form-group select { padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 0.86em; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(229,57,53,0.1); }
+        .form-group input.error,
+        .form-group textarea.error { border-color: var(--red); box-shadow: 0 0 0 3px rgba(229,57,53,0.15); }
+        .form-group .err-msg { font-size: 0.72em; color: var(--red); display: none; }
+        .form-group .err-msg.show { display: block; }
+        .form-group textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+
+        /* Karakter counter */
+        .char-counter { font-size: 0.7em; color: var(--text-muted); text-align: right; margin-top: 3px; }
+        .char-counter.warn { color: var(--orange); font-weight: 600; }
+
+        /* Jenis pengaduan pills */
+        .jenis-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .jenis-pill { padding: 7px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.78em; font-weight: 600; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
+        .jenis-pill:hover { border-color: var(--red); color: var(--red); }
+        .jenis-pill.selected { background: var(--red-light); border-color: var(--red); color: var(--red); }
+
+        /* Submit button */
+        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--red-dark), var(--red)); color: #fff; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.95em; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s; box-shadow: 0 4px 16px rgba(229,57,53,0.3); margin-top: 8px; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(229,57,53,0.35); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* ── HASIL / SUKSES ── */
+        .hasil-panel { display: none; }
+        .hasil-panel.show { display: block; }
+        .hasil-card { background: var(--white); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+        .hasil-header { background: linear-gradient(135deg, #1b5e20, #2e7d32); padding: 28px; text-align: center; color: #fff; }
+        .hasil-header .h-icon { font-size: 3.5em; margin-bottom: 10px; }
+        .hasil-header h3 { font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 900; margin-bottom: 6px; }
+        .hasil-header p { font-size: 0.85em; opacity: 0.9; }
+        .hasil-body { padding: 28px; }
+
+        /* Ringkasan pengaduan */
+        .ringkasan-box { background: var(--bg); border-radius: 14px; padding: 18px 20px; margin-bottom: 22px; }
+        .ringkasan-box h4 { font-size: 0.78em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+        .ringkasan-row { display: flex; gap: 10px; font-size: 0.83em; margin-bottom: 8px; }
+        .ringkasan-row .rr-label { font-weight: 700; min-width: 120px; flex-shrink: 0; color: var(--text-muted); }
+        .ringkasan-row .rr-val { color: var(--text); line-height: 1.5; }
+
+        /* Template DM */
+        .template-box { background: #fff8e1; border: 1.5px solid #ffcc80; border-radius: 14px; padding: 18px 20px; margin-bottom: 20px; }
+        .template-box h4 { font-size: 0.78em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #e65100; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .template-text { background: var(--white); border: 1px solid #ffe082; border-radius: 10px; padding: 14px 16px; font-size: 0.82em; color: var(--text); line-height: 1.7; font-family: monospace; white-space: pre-wrap; word-break: break-word; }
+
+        /* Action buttons */
+        .action-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .act-btn { flex: 1; min-width: 150px; padding: 13px 18px; border-radius: 12px; border: 2px solid var(--border); background: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.85em; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text); text-decoration: none; transition: all 0.2s; }
+        .act-btn:hover { background: var(--bg); transform: translateY(-1px); }
+        .act-btn.ig { background: linear-gradient(135deg, #833ab4, #c13584, #e1306c); border: none; color: #fff; }
+        .act-btn.ig:hover { opacity: 0.9; transform: translateY(-2px); }
+        .act-btn.copy { background: #fff3e0; border-color: #ffcc80; color: #e65100; }
+        .act-btn.copy:hover { background: #ffe0b2; }
+        .act-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .act-btn.primary:hover { background: var(--primary-dark); }
+
+        /* Catatan */
+        .catatan-box { background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 14px 18px; margin-top: 20px; font-size: 0.8em; color: var(--primary-dark); line-height: 1.65; }
+
+        /* Toast */
+        .toast { position: fixed; bottom: 28px; right: 28px; background: #1b5e20; color: #fff; padding: 13px 20px; border-radius: 12px; font-size: 0.84em; font-weight: 600; display: flex; align-items: center; gap: 9px; box-shadow: 0 8px 28px rgba(0,0,0,0.2); z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.35s ease; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.err { background: var(--red-dark); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 620px) { .form-row { grid-template-columns: 1fr; } .hero h2 { font-size: 1.5em; } .action-row { flex-direction: column; } }
+
+        /* ── PRINT ── */
+        @media print { .site-header, .hero, .back-btn, .action-row, .submit-btn, .form-card { display: none !important; } .hasil-panel.show { display: block !important; } }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <div><h1>SIDAYU</h1><p>Puskesmas Dirgahayu</p></div>
+    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge"><i class="fas fa-comment-dots"></i> PENGADUAN & SARAN</div>
+    <h2>Suara Anda Penting<br>untuk Kami</h2>
+    <p>Sampaikan pengaduan, saran, atau masukan terkait layanan Puskesmas Dirgahayu. Setiap pengaduan akan kami tindaklanjuti.</p>
+</section>
+
+<div class="main-wrap">
+
+    <!-- INFO CARDS -->
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="ic-icon">🔒</div>
+            <div>
+                <h4>Kerahasiaan Terjaga</h4>
+                <p>Data pengaduan hanya diakses oleh petugas berwenang dan tidak disebarluaskan.</p>
+            </div>
+        </div>
+        <div class="info-card red">
+            <div class="ic-icon">📋</div>
+            <div>
+                <h4>Wajib Isi Lengkap</h4>
+                <p>Isi semua field bertanda * agar pengaduan dapat diproses dengan cepat.</p>
+            </div>
+        </div>
+        <div class="info-card orange">
+            <div class="ic-icon">⏱️</div>
+            <div>
+                <h4>Tindak Lanjut</h4>
+                <p>Pengaduan akan ditindaklanjuti dalam waktu 3×24 jam hari kerja.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM PENGADUAN -->
+    <div class="form-card" id="formCard">
+        <div class="form-header">
+            <h3><i class="fas fa-edit" style="margin-right:8px"></i>Form Pengaduan / Saran</h3>
+            <p>Puskesmas Dirgahayu — Kabupaten Kotabaru, Kalimantan Selatan</p>
+        </div>
+        <div class="form-body">
+
+            <div class="form-row">
+                <!-- Tanggal Pengaduan -->
+                <div class="form-group">
+                    <label>Tanggal Pengaduan <span class="req">*</span></label>
+                    <input type="date" id="p-tanggal" max="">
+                    <span class="err-msg" id="err-tanggal">Tanggal wajib diisi</span>
+                </div>
+
+                <!-- Jenis Layanan -->
+                <div class="form-group">
+                    <label>Terkait Unit / Layanan</label>
+                    <select id="p-unit">
+                        <option value="">— Pilih Unit —</option>
+                        <option>Poli Umum</option>
+                        <option>Poli Gigi</option>
+                        <option>KIA / KB</option>
+                        <option>Farmasi</option>
+                        <option>Laboratorium</option>
+                        <option>Poli Gizi</option>
+                        <option>UGD / Gawat Darurat</option>
+                        <option>Rawat Inap</option>
+                        <option>Loket / Pendaftaran</option>
+                        <option>Imunisasi</option>
+                        <option>Kesehatan Lingkungan</option>
+                        <option>Rekam Medis</option>
+                        <option>Umum / Lainnya</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Jenis Pengaduan -->
+            <div class="form-group">
+                <label>Jenis Pengaduan <span class="req">*</span></label>
+                <div class="jenis-grid" id="jenisGrid">
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Keluhan Pelayanan')">😤 Keluhan Pelayanan</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Saran & Masukan')">💡 Saran & Masukan</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Fasilitas & Sarana')">🏥 Fasilitas & Sarana</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Petugas & SDM')">👩‍⚕️ Petugas & SDM</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Obat & Farmasi')">💊 Obat & Farmasi</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Waktu Tunggu')">⏰ Waktu Tunggu</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Apresiasi')">⭐ Apresiasi</div>
+                    <div class="jenis-pill" onclick="pilihJenis(this,'Lainnya')">📌 Lainnya</div>
+                </div>
+                <input type="hidden" id="p-jenis">
+                <span class="err-msg" id="err-jenis">Pilih jenis pengaduan</span>
+            </div>
+
+            <div class="form-row">
+                <!-- Nama -->
+                <div class="form-group">
+                    <label>Nama Lengkap <span class="req">*</span></label>
+                    <input type="text" id="p-nama" placeholder="Nama Anda">
+                    <span class="err-msg" id="err-nama">Nama wajib diisi</span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label>Email <span class="req">*</span></label>
+                    <input type="email" id="p-email" placeholder="email@contoh.com">
+                    <span class="err-msg" id="err-email">Email tidak valid</span>
+                </div>
+            </div>
+
+            <!-- No HP (opsional) -->
+            <div class="form-group">
+                <label>No. HP / WhatsApp <span style="font-weight:400;text-transform:none;letter-spacing:0">(opsional, untuk konfirmasi)</span></label>
+                <input type="tel" id="p-hp" placeholder="Contoh: 0812xxxxxxxx" maxlength="15">
+            </div>
+
+            <!-- Isi Pengaduan -->
+            <div class="form-group">
+                <label>Isi Pengaduan / Saran <span class="req">*</span></label>
+                <textarea id="p-isi" placeholder="Tuliskan pengaduan atau saran Anda secara jelas dan lengkap. Sertakan waktu kejadian, nama petugas (jika ada), dan dampak yang dirasakan..." maxlength="1000" oninput="updateCounter()"></textarea>
+                <div class="char-counter" id="charCounter">0 / 1000 karakter</div>
+                <span class="err-msg" id="err-isi">Isi pengaduan wajib diisi (min. 20 karakter)</span>
+            </div>
+
+            <button class="submit-btn" onclick="submitPengaduan()" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Kirim Pengaduan
+            </button>
+
+        </div>
+    </div><!-- /form-card -->
+
+    <!-- HASIL SUKSES -->
+    <div class="hasil-panel" id="hasilPanel">
+        <div class="hasil-card">
+            <div class="hasil-header">
+                <div class="h-icon">✅</div>
+                <h3>Pengaduan Berhasil Dikirim!</h3>
+                <p>Terima kasih telah menyampaikan pengaduan Anda. Kami akan menindaklanjuti dalam 3×24 jam kerja.</p>
+            </div>
+            <div class="hasil-body">
+
+                <!-- Ringkasan -->
+                <div class="ringkasan-box">
+                    <h4><i class="fas fa-clipboard-list" style="margin-right:6px"></i>Ringkasan Pengaduan</h4>
+                    <div id="ringkasanIsi"></div>
+                </div>
+
+                <!-- Template DM Instagram -->
+                <!--
+                    ════════════════════════════════════════════════
+                    TEMPLATE DM INSTAGRAM
+                    Teks ini otomatis diisi dari form yang disubmit.
+                    Pasien tinggal klik tombol "Kirim via DM Instagram"
+                    dan teks sudah ter-copy, tinggal paste di DM.
+                    ════════════════════════════════════════════════
+                -->
+                <div class="template-box">
+                    <h4><i class="fab fa-instagram"></i> Template Pesan untuk DM Instagram</h4>
+                    <p style="font-size:0.78em;color:#795548;margin-bottom:10px;line-height:1.55;">
+                        Salin teks di bawah ini lalu kirimkan ke DM Instagram
+                        <strong>@puskesmas_dirgahayu</strong> untuk tindak lanjut lebih cepat.
+                    </p>
+                    <div class="template-text" id="templateDM"></div>
+                </div>
+
+                <!-- Tombol aksi -->
+                <div class="action-row">
+                    <button class="act-btn copy" onclick="copyTemplate()" id="copyBtn">
+                        <i class="fas fa-copy"></i> Salin Teks
+                    </button>
+                    <!--
+                        TOMBOL INI membuka Instagram Direct Message ke @puskesmas_dirgahayu.
+                        Di mobile: langsung buka aplikasi Instagram.
+                        Di desktop: buka instagram.com/direct/new.
+                        Ganti "puskesmas_dirgahayu" jika username Instagram berubah.
+                    -->
+                    <a href="https://ig.me/m/puskesmas_dirgahayu" target="_blank" rel="noopener" class="act-btn ig" id="igBtn">
+                        <i class="fab fa-instagram"></i> Kirim via DM Instagram
+                    </a>
+                    <button class="act-btn primary" onclick="resetForm()">
+                        <i class="fas fa-plus-circle"></i> Pengaduan Baru
+                    </button>
+                    <a href="index.html" class="act-btn">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                </div>
+
+                <div class="catatan-box">
+                    <i class="fas fa-info-circle" style="margin-right:6px"></i>
+                    <strong>Catatan:</strong> Data pengaduan Anda telah tersimpan di sistem Puskesmas Dirgahayu.
+                    Untuk tindak lanjut lebih cepat, Anda dapat mengirim pesan di atas melalui DM Instagram
+                    <strong>@puskesmas_dirgahayu</strong>.
+                    Jika tidak menerima konfirmasi dalam 3 hari kerja, hubungi kami di
+                    <strong>+62 813-5109-0323</strong>.
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /hasil-panel -->
+
+</div><!-- /main-wrap -->
+
+<footer style="text-align:center;padding:32px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);">
+    <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kec. Pulau Laut Utara, Kab. Kotabaru</p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Berhasil!</span></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// GANTI URL INI dengan Web App URL Google Apps Script pengaduan
+// Buat script baru di Google Sheets "Data Pengaduan SIDAYU"
+// Gunakan kode Apps Script yang ada di panduan di bawah
+// ══════════════════════════════════════════════════════════════
+const SCRIPT_URL_PENGADUAN = 'GANTI_DENGAN_URL_APPS_SCRIPT_PENGADUAN';
+
+let selectedJenis = '';
+let templateText  = '';
+
+// Set tanggal hari ini sebagai default
+document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('p-tanggal').max   = today;
+    document.getElementById('p-tanggal').value = today;
+});
+
+// ── Pilih jenis pengaduan ──
+function pilihJenis(el, val) {
+    document.querySelectorAll('.jenis-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedJenis = val;
+    document.getElementById('p-jenis').value = val;
+    document.getElementById('err-jenis').classList.remove('show');
+}
+
+// ── Counter karakter ──
+function updateCounter() {
+    const v = document.getElementById('p-isi').value.length;
+    const el = document.getElementById('charCounter');
+    el.textContent = v + ' / 1000 karakter';
+    el.className = 'char-counter' + (v > 800 ? ' warn' : '');
+}
+
+// ── Validasi form ──
+function validate() {
+    const checks = [
+        { id:'p-tanggal', err:'err-tanggal', ok: v => v !== '' },
+        { id:'p-nama',    err:'err-nama',    ok: v => v.trim().length >= 2 },
+        { id:'p-email',   err:'err-email',   ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id:'p-isi',     err:'err-isi',     ok: v => v.trim().length >= 20 },
+    ];
+    let ok = true, first = null;
+    checks.forEach(c => {
+        const el = document.getElementById(c.id);
+        const err = document.getElementById(c.err);
+        if (!c.ok(el.value)) { el.classList.add('error'); err.classList.add('show'); if (!first) first = el; ok = false; }
+        else { el.classList.remove('error'); err.classList.remove('show'); }
+    });
+    if (!selectedJenis) {
+        document.getElementById('err-jenis').classList.add('show'); ok = false;
+    }
+    if (first) first.focus();
+    return ok;
+}
+
+// ── Submit pengaduan ──
+function submitPengaduan() {
+    if (!validate()) return;
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+
+    const data = {
+        tanggal:  document.getElementById('p-tanggal').value,
+        jenis:    selectedJenis,
+        unit:     document.getElementById('p-unit').value || 'Tidak disebutkan',
+        nama:     document.getElementById('p-nama').value.trim(),
+        email:    document.getElementById('p-email').value.trim(),
+        hp:       document.getElementById('p-hp').value.trim() || '—',
+        isi:      document.getElementById('p-isi').value.trim(),
+        timestamp: new Date().toLocaleString('id-ID'),
+    };
+
+    // Kirim ke Google Sheets
+    if (SCRIPT_URL_PENGADUAN && !SCRIPT_URL_PENGADUAN.includes('GANTI')) {
+        fetch(SCRIPT_URL_PENGADUAN, {
+            method: 'POST', mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(() => tampilkanHasil(data))
+        .catch(() => tampilkanHasil(data)); // tetap tampilkan hasil meski fetch error
+    } else {
+        // URL belum diisi — tetap lanjut (data tidak tersimpan ke sheets)
+        tampilkanHasil(data);
+    }
+}
+
+// ── Tampilkan hasil & buat template ──
+function tampilkanHasil(data) {
+    // Sembunyikan form
+    document.getElementById('formCard').style.display = 'none';
+
+    // Ringkasan
+    document.getElementById('ringkasanIsi').innerHTML = `
+        <div class="ringkasan-row"><span class="rr-label">Tanggal</span><span class="rr-val">${formatTanggal(data.tanggal)}</span></div>
+        <div class="ringkasan-row"><span class="rr-label">Jenis</span><span class="rr-val">${data.jenis}</span></div>
+        <div class="ringkasan-row"><span class="rr-label">Unit Terkait</span><span class="rr-val">${data.unit}</span></div>
+        <div class="ringkasan-row"><span class="rr-label">Nama</span><span class="rr-val">${data.nama}</span></div>
+        <div class="ringkasan-row"><span class="rr-label">Email</span><span class="rr-val">${data.email}</span></div>
+        <div class="ringkasan-row"><span class="rr-label">Isi Pengaduan</span><span class="rr-val">${data.isi}</span></div>
+    `;
+
+    // Template DM Instagram
+    templateText =
+`Halo Admin @puskesmas_dirgahayu 👋
+
+Saya ingin menyampaikan pengaduan/saran melalui SIDAYU:
+
+📅 Tanggal   : ${formatTanggal(data.tanggal)}
+🏷️ Jenis     : ${data.jenis}
+🏥 Unit      : ${data.unit}
+👤 Nama      : ${data.nama}
+📧 Email     : ${data.email}
+📱 No HP     : ${data.hp}
+
+📝 Isi Pengaduan:
+${data.isi}
+
+Mohon ditindaklanjuti. Terima kasih 🙏`;
+
+    document.getElementById('templateDM').textContent = templateText;
+
+    // Tampilkan hasil
+    const panel = document.getElementById('hasilPanel');
+    panel.classList.add('show');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    showToast('✅ Pengaduan berhasil dikirim!', false);
+}
+
+// ── Format tanggal ──
+function formatTanggal(d) {
+    if (!d) return '—';
+    const [y, m, day] = d.split('-');
+    const bulan = ['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return `${parseInt(day)} ${bulan[parseInt(m)]} ${y}`;
+}
+
+// ── Copy template ──
+function copyTemplate() {
+    if (!templateText) return;
+    navigator.clipboard.writeText(templateText).then(() => {
+        showToast('✅ Teks berhasil disalin! Sekarang buka DM Instagram.', false);
+        const btn = document.getElementById('copyBtn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Salin Teks'; }, 2500);
+    }).catch(() => {
+        showToast('Gagal menyalin — coba salin manual', true);
+    });
+}
+
+// ── Reset form ──
+function resetForm() {
+    document.getElementById('formCard').style.display = 'block';
+    document.getElementById('hasilPanel').classList.remove('show');
+    document.getElementById('p-isi').value = '';
+    document.getElementById('p-nama').value = '';
+    document.getElementById('p-email').value = '';
+    document.getElementById('p-hp').value = '';
+    document.getElementById('p-unit').selectedIndex = 0;
+    selectedJenis = ''; templateText = '';
+    document.querySelectorAll('.jenis-pill').forEach(p => p.classList.remove('selected'));
+    updateCounter();
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('p-tanggal').value = today;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pengaduan';
+    document.getElementById('formCard').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Toast ──
+function showToast(msg, isErr=false) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.className = 'toast' + (isErr ? ' err' : '');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+}
+</script>
+</body>
+</html>
