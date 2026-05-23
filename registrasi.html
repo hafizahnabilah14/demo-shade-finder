@@ -257,7 +257,9 @@
             </button>
 
         </div>
-    </div><div class="hasil-panel" id="hasilPanel">
+    </div>
+
+    <div class="hasil-panel" id="hasilPanel">
         <div class="hasil-card">
             <div class="hasil-header">
                 <div class="h-icon">✅</div>
@@ -301,7 +303,10 @@
 
             </div>
         </div>
-    </div></div><footer style="text-align:center;padding:32px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);">
+    </div>
+</div>
+
+<footer style="text-align:center;padding:32px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);">
     <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kec. Pulau Laut Utara, Kab. Kotabaru</p>
 </footer>
 
@@ -310,12 +315,11 @@
 <script>
 // ══════════════════════════════════════════════════════════════
 // GANTI URL INI dengan Web App URL Google Apps Script Pendaftaran
-// Buat script baru terpisah di Google Sheets khusus data registrasi
 // ══════════════════════════════════════════════════════════════
 const SCRIPT_URL_REGISTRASI = 'https://script.google.com/macros/s/AKfycbxNnasMy3qr3ygJ4FwH_O7TgCdRHYN7omN8zQEiC4-sVGk7UFKzcfbXfw-X5RES2UsH/exec';
 
 // NOMOR WHATSAPP PETUGAS LOKET PENDAFTARAN (Ganti sesuai nomor asli faskes, pakai kode negara 62)
-const NO_HP_PETUGAS = "6281234567890"; 
+const NO_HP_PETUGAS = "6281351090323"; 
 
 let selectedPoli = '';
 let templateText = '';
@@ -386,68 +390,30 @@ async function submitRegistrasi() {
     };
 
     try {
+        // VALIDASI INPUT TAMBAHAN
+        if (data.nikJkn.length < 13) throw new Error('NIK / No. BPJS minimal 13 digit');
+        if (data.namaPasien.length < 3) throw new Error('Nama pasien terlalu pendek');
 
-        // VALIDASI TAMBAHAN
-        if (data.nikJkn.length < 13) {
-            throw new Error('NIK / No. BPJS minimal 13 digit');
-        }
-
-        if (!/^08[0-9]{8,13}$/.test(data.noHp)) {
-            throw new Error('Format nomor HP tidak valid');
-        }
-
-        if (data.namaPasien.length < 3) {
-            throw new Error('Nama pasien terlalu pendek');
-        }
-
-        // KIRIM DATA
-        const response = await fetch(SCRIPT_URL_REGISTRASI, {
+        // PROSES KIRIM RAW JSON MURNI KE APPS SCRIPT
+        await fetch(SCRIPT_URL_REGISTRASI, {
             method: 'POST',
+            mode: 'no-cors', // Menghindari bloking CORS redirect khas Google App Script
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
-            body: new URLSearchParams(data)
+            body: JSON.stringify(data)
         });
 
-        // STATUS ERROR SERVER
-        if (!response.ok) {
-            throw new Error('Server spreadsheet tidak merespons');
-        }
-
-        const result = await response.text();
-
-        // RESPON ERROR DARI APPS SCRIPT
-        if (
-            result.toLowerCase().includes('error') ||
-            result.toLowerCase().includes('failed')
-        ) {
-            throw new Error('Spreadsheet menolak data');
-        }
-
-        console.log(result);
-
+        // Dalam mode no-cors, respon balik dari server dibungkus secara opaque (rahasia).
+        // Kita langsung asumsikan data sukses melompat ke catch bila gagal koneksi.
         tampilkanHasil(data);
 
     } catch (error) {
-
         console.error(error);
-
-        let pesan = error.message;
-
-        // ERROR INTERNET
-        if (!navigator.onLine) {
-            pesan = 'Tidak ada koneksi internet';
-        }
-
-        // ERROR FETCH
-        if (error.name === 'TypeError') {
-            pesan = 'Tidak dapat terhubung ke server spreadsheet';
-        }
-
+        let pesan = 'Tidak dapat terhubung ke server spreadsheet';
+        if (!navigator.onLine) pesan = 'Tidak ada koneksi internet';
         showToast('❌ ' + pesan, true);
-
     } finally {
-
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Daftarkan Sekarang';
     }
@@ -457,7 +423,6 @@ async function submitRegistrasi() {
 function tampilkanHasil(data) {
     document.getElementById('formCard').style.display = 'none';
 
-    // Cetak Ringkasan ke HTML Panel
     document.getElementById('ringkasanIsi').innerHTML = `
         <div class="ringkasan-row"><span class="rr-label">Tgl Kunjungan</span><span class="rr-val">${formatTanggal(data.tanggalKunjungan)}</span></div>
         <div class="ringkasan-row"><span class="rr-label">Pembiayaan</span><span class="rr-val">${data.pembiayaan}</span></div>
@@ -469,7 +434,6 @@ function tampilkanHasil(data) {
         <div class="ringkasan-row"><span class="rr-label">Alamat Lengkap</span><span class="rr-val">${data.alamat}</span></div>
     `;
 
-    // Penyusunan String Template Pesan WhatsApp
     templateText =
 `*PENDAFTARAN MANDIRI PASIEN - SIDAYU*
 ==============================
@@ -488,11 +452,9 @@ Mohon divalidasi datanya untuk diproses berkas antrian loket pendaftarannya. Ter
 
     document.getElementById('templateWA').textContent = templateText;
 
-    // Konfigurasi Link Tombol WhatsApp Aktif
     const urlWhatsapp = `https://api.whatsapp.com/send?phone=${NO_HP_PETUGAS}&text=${encodeURIComponent(templateText)}`;
     document.getElementById('waBtn').href = urlWhatsapp;
 
-    // Tampilkan panel sukses
     const panel = document.getElementById('hasilPanel');
     panel.classList.add('show');
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -500,7 +462,6 @@ Mohon divalidasi datanya untuk diproses berkas antrian loket pendaftarannya. Ter
     showToast('✅ Berhasil mencatat pra-pendaftaran!', false);
 }
 
-// ── Fungsi Format Lokalisasi Tanggal Indonesia ──
 function formatTanggal(d) {
     if (!d) return '—';
     const [y, m, day] = d.split('-');
@@ -508,7 +469,6 @@ function formatTanggal(d) {
     return `${parseInt(day)} ${bulan[parseInt(m)]} ${y}`;
 }
 
-// ── Fungsi Salin Clipboard Otomatis ──
 function copyTemplate() {
     if (!templateText) return;
     navigator.clipboard.writeText(templateText).then(() => {
@@ -521,7 +481,6 @@ function copyTemplate() {
     });
 }
 
-// ── Fungsi Kosongkan Input Form Pengisian ──
 function resetForm() {
     document.getElementById('formCard').style.display = 'block';
     document.getElementById('hasilPanel').classList.remove('show');
@@ -543,7 +502,6 @@ function resetForm() {
     document.getElementById('formCard').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ── Fungsi Pemicu Elemen Alert Toast ──
 function showToast(msg, isErr=false) {
     const t = document.getElementById('toast');
     document.getElementById('toastMsg').textContent = msg;
