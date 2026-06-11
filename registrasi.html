@@ -326,9 +326,10 @@ let templateText = '';
 
 // Set tanggal minimum kunjungan hari ini
 document.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('r-tanggal').min = today;
-    document.getElementById('r-tanggal').value = today;
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('r-tanggal').min = tomorrow.toISOString().split('T')[0];
+    document.getElementById('r-tanggal').value = tomorrow.toISOString().split('T')[0];
 });
 
 // ── Pilih Poliklinik ──
