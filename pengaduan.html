@@ -143,7 +143,6 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
     <a href="index.html" class="brand">
         <div><h1>SIDAYU</h1><p>Puskesmas Dirgahayu</p></div>
@@ -151,7 +150,6 @@
     <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
 </header>
 
-<!-- HERO -->
 <section class="hero">
     <div class="hero-badge"><i class="fas fa-comment-dots"></i> PENGADUAN & SARAN</div>
     <h2>Suara Anda Penting<br>untuk Kami</h2>
@@ -160,7 +158,6 @@
 
 <div class="main-wrap">
 
-    <!-- INFO CARDS -->
     <div class="info-grid">
         <div class="info-card">
             <div class="ic-icon">🔒</div>
@@ -185,7 +182,6 @@
         </div>
     </div>
 
-    <!-- FORM PENGADUAN -->
     <div class="form-card" id="formCard">
         <div class="form-header">
             <h3><i class="fas fa-edit" style="margin-right:8px"></i>Form Pengaduan / Saran</h3>
@@ -194,14 +190,12 @@
         <div class="form-body">
 
             <div class="form-row">
-                <!-- Tanggal Pengaduan -->
                 <div class="form-group">
                     <label>Tanggal Pengaduan <span class="req">*</span></label>
                     <input type="date" id="p-tanggal" max="">
                     <span class="err-msg" id="err-tanggal">Tanggal wajib diisi</span>
                 </div>
 
-                <!-- Jenis Layanan -->
                 <div class="form-group">
                     <label>Terkait Unit / Layanan</label>
                     <select id="p-unit">
@@ -223,7 +217,6 @@
                 </div>
             </div>
 
-            <!-- Jenis Pengaduan -->
             <div class="form-group">
                 <label>Jenis Pengaduan <span class="req">*</span></label>
                 <div class="jenis-grid" id="jenisGrid">
@@ -241,14 +234,12 @@
             </div>
 
             <div class="form-row">
-                <!-- Nama -->
                 <div class="form-group">
                     <label>Nama Lengkap <span class="req">*</span></label>
                     <input type="text" id="p-nama" placeholder="Nama Anda">
                     <span class="err-msg" id="err-nama">Nama wajib diisi</span>
                 </div>
 
-                <!-- Email -->
                 <div class="form-group">
                     <label>Email <span class="req">*</span></label>
                     <input type="email" id="p-email" placeholder="email@contoh.com">
@@ -256,13 +247,11 @@
                 </div>
             </div>
 
-            <!-- No HP (opsional) -->
             <div class="form-group">
                 <label>No. HP / WhatsApp <span style="font-weight:400;text-transform:none;letter-spacing:0">(opsional, untuk konfirmasi)</span></label>
                 <input type="tel" id="p-hp" placeholder="Contoh: 0812xxxxxxxx" maxlength="15">
             </div>
 
-            <!-- Isi Pengaduan -->
             <div class="form-group">
                 <label>Isi Pengaduan / Saran <span class="req">*</span></label>
                 <textarea id="p-isi" placeholder="Tuliskan pengaduan atau saran Anda secara jelas dan lengkap. Sertakan waktu kejadian, nama petugas (jika ada), dan dampak yang dirasakan..." maxlength="1000" oninput="updateCounter()"></textarea>
@@ -275,10 +264,7 @@
             </button>
 
         </div>
-    </div><!-- /form-card -->
-
-    <!-- HASIL SUKSES -->
-    <div class="hasil-panel" id="hasilPanel">
+    </div><div class="hasil-panel" id="hasilPanel">
         <div class="hasil-card">
             <div class="hasil-header">
                 <div class="h-icon">✅</div>
@@ -287,21 +273,11 @@
             </div>
             <div class="hasil-body">
 
-                <!-- Ringkasan -->
                 <div class="ringkasan-box">
                     <h4><i class="fas fa-clipboard-list" style="margin-right:6px"></i>Ringkasan Pengaduan</h4>
                     <div id="ringkasanIsi"></div>
                 </div>
 
-                <!-- Template DM Instagram -->
-                <!--
-                    ════════════════════════════════════════════════
-                    TEMPLATE DM INSTAGRAM
-                    Teks ini otomatis diisi dari form yang disubmit.
-                    Pasien tinggal klik tombol "Kirim via DM Instagram"
-                    dan teks sudah ter-copy, tinggal paste di DM.
-                    ════════════════════════════════════════════════
-                -->
                 <div class="template-box">
                     <h4><i class="fab fa-instagram"></i> Template Pesan untuk DM Instagram</h4>
                     <p style="font-size:0.78em;color:#795548;margin-bottom:10px;line-height:1.55;">
@@ -311,17 +287,10 @@
                     <div class="template-text" id="templateDM"></div>
                 </div>
 
-                <!-- Tombol aksi -->
                 <div class="action-row">
                     <button class="act-btn copy" onclick="copyTemplate()" id="copyBtn">
                         <i class="fas fa-copy"></i> Salin Teks
                     </button>
-                    <!--
-                        TOMBOL INI membuka Instagram Direct Message ke @puskesmas_dirgahayu.
-                        Di mobile: langsung buka aplikasi Instagram.
-                        Di desktop: buka instagram.com/direct/new.
-                        Ganti "puskesmas_dirgahayu" jika username Instagram berubah.
-                    -->
                     <a href="https://ig.me/m/puskesmas_dirgahayu" target="_blank" rel="noopener" class="act-btn ig" id="igBtn">
                         <i class="fab fa-instagram"></i> Kirim via DM Instagram
                     </a>
@@ -344,24 +313,17 @@
 
             </div>
         </div>
-    </div><!-- /hasil-panel -->
-
-</div><!-- /main-wrap -->
-
-<footer style="text-align:center;padding:32px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);">
+    </div></div><footer style="text-align:center;padding:32px;color:var(--primary);font-size:0.86em;border-top:1px solid var(--border);">
     <p>SIDAYU &copy; 2026 | Puskesmas Dirgahayu — Kec. Pulau Laut Utara, Kab. Kotabaru</p>
 </footer>
 
-<!-- Toast -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Berhasil!</span></div>
 
 <script>
 // ══════════════════════════════════════════════════════════════
 // GANTI URL INI dengan Web App URL Google Apps Script pengaduan
-// Buat script baru di Google Sheets "Data Pengaduan SIDAYU"
-// Gunakan kode Apps Script yang ada di panduan di bawah
 // ══════════════════════════════════════════════════════════════
-const SCRIPT_URL_PENGADUAN = 'https://script.google.com/macros/s/AKfycbzFye8e6jkrCzcfjp-3KvqdNL4XwQukdhf6EtEXvEELQQf65GtrbrzYX5I1zccB1k6Fqw/exec';
+const SCRIPT_URL_PENGADUAN = 'https://script.google.com/macros/s/AKfycbyNQjUqkWSYgwh4dbepcuWmGMv38x-wjTr8-FTl2zeGO14kbyEa4QZW93DVAgfAzTQr/exec';
 
 let selectedJenis = '';
 let templateText  = '';
@@ -413,8 +375,11 @@ function validate() {
 }
 
 // ── Submit pengaduan ──
-function submitPengaduan() {
-    if (!validate()) return;
+async function submitPengaduan() {
+    if (!validate()) {
+        showToast('Periksa kembali data yang belum lengkap', true);
+        return;
+    }
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
@@ -431,27 +396,34 @@ function submitPengaduan() {
         timestamp: new Date().toLocaleString('id-ID'),
     };
 
-    // Kirim ke Google Sheets
-    if (SCRIPT_URL_PENGADUAN && !SCRIPT_URL_PENGADUAN.includes('GANTI')) {
-        fetch(SCRIPT_URL_PENGADUAN, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(() => tampilkanHasil(data))
-        .catch(() => tampilkanHasil(data)); // tetap tampilkan hasil meski fetch error
-    } else {
-        // URL belum diisi — tetap lanjut (data tidak tersimpan ke sheets)
+    try {
+        // MENGUBAH DATA MENJADI FORM URL-ENCODED
+        const formData = new URLSearchParams();
+        for (const key in data) {
+            formData.append(key, data[key]);
+        }
+
+        // MENGIRIM DATA KE GOOGLE APPS SCRIPT
+        await fetch(SCRIPT_URL_PENGADUAN, {
+            method: 'POST',
+            body: formData
+        });
+
         tampilkanHasil(data);
+
+    } catch (error) {
+        console.error(error);
+        showToast('❌ Tidak dapat mengirim pengaduan ke server', true);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pengaduan';
     }
 }
 
 // ── Tampilkan hasil & buat template ──
 function tampilkanHasil(data) {
-    // Sembunyikan form
     document.getElementById('formCard').style.display = 'none';
 
-    // Ringkasan
     document.getElementById('ringkasanIsi').innerHTML = `
         <div class="ringkasan-row"><span class="rr-label">Tanggal</span><span class="rr-val">${formatTanggal(data.tanggal)}</span></div>
         <div class="ringkasan-row"><span class="rr-label">Jenis</span><span class="rr-val">${data.jenis}</span></div>
@@ -461,18 +433,17 @@ function tampilkanHasil(data) {
         <div class="ringkasan-row"><span class="rr-label">Isi Pengaduan</span><span class="rr-val">${data.isi}</span></div>
     `;
 
-    // Template DM Instagram
     templateText =
 `Halo Admin @puskesmas_dirgahayu 👋
 
 Saya ingin menyampaikan pengaduan/saran melalui SIDAYU:
 
-📅 Tanggal   : ${formatTanggal(data.tanggal)}
-🏷️ Jenis     : ${data.jenis}
-🏥 Unit      : ${data.unit}
-👤 Nama      : ${data.nama}
-📧 Email     : ${data.email}
-📱 No HP     : ${data.hp}
+📅 Tanggal : ${formatTanggal(data.tanggal)}
+🏷️ Jenis   : ${data.jenis}
+🏥 Unit    : ${data.unit}
+👤 Nama    : ${data.nama}
+📧 Email   : ${data.email}
+📱 No HP   : ${data.hp}
 
 📝 Isi Pengaduan:
 ${data.isi}
@@ -481,12 +452,11 @@ Mohon ditindaklanjuti. Terima kasih 🙏`;
 
     document.getElementById('templateDM').textContent = templateText;
 
-    // Tampilkan hasil
     const panel = document.getElementById('hasilPanel');
     panel.classList.add('show');
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    showToast('✅ Pengaduan berhasil dikirim!', false);
+    showToast('Pengaduan berhasil dikirim!', false);
 }
 
 // ── Format tanggal ──
@@ -501,7 +471,7 @@ function formatTanggal(d) {
 function copyTemplate() {
     if (!templateText) return;
     navigator.clipboard.writeText(templateText).then(() => {
-        showToast('✅ Teks berhasil disalin! Sekarang buka DM Instagram.', false);
+        showToast('Teks berhasil disalin! Sekarang buka DM Instagram.', false);
         const btn = document.getElementById('copyBtn');
         btn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
         setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Salin Teks'; }, 2500);
@@ -522,8 +492,10 @@ function resetForm() {
     selectedJenis = ''; templateText = '';
     document.querySelectorAll('.jenis-pill').forEach(p => p.classList.remove('selected'));
     updateCounter();
+    
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('p-tanggal').value = today;
+    
     const btn = document.getElementById('submitBtn');
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pengaduan';
