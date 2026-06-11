@@ -211,7 +211,7 @@
             <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-hospital-alt"></i></div>
                 <div class="pc-label">Nama Fasilitas</div>
-                <div class="pc-val">Puskesmas Dirgahayu</div>
+                <div class="pc-val">UPTD PUSKESMAS DIRGAHAYU</div>
             </div>
             <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -220,13 +220,13 @@
             </div>
             <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-user-md"></i></div>
-                <div class="pc-label">Plt. Kepala Puskesmas</div>
+                <div class="pc-label">Kepala UPTD Puskesmas Dirgahayu</div>
                 <div class="pc-val">dr. Gunawan Wibisono<br><small style="color:var(--text-muted);font-size:0.85em">NIP: 19790413 200903 1 004</small></div>
             </div>
             <div class="profil-card">
                 <div class="pc-icon"><i class="fas fa-layer-group"></i></div>
                 <div class="pc-label">Tipe</div>
-                <div class="pc-val">Puskesmas Rawat Inap — UPTD Dinas Kesehatan Kab. Kotabaru</div>
+                <div class="pc-val">PUSKESMAS NON RAWAT INAP — UPTD Dinas Kesehatan Kab. Kotabaru</div>
             </div>
             <div class="profil-card accent">
                 <div class="pc-icon"><i class="fas fa-calendar-alt"></i></div>
@@ -258,7 +258,6 @@
             <div class="stat-box"><div class="sb-num">11</div><div class="sb-label">TUGSUS</div></div>
             <div class="stat-box"><div class="sb-num">2</div><div class="sb-label">THL</div></div>
             <div class="stat-box"><div class="sb-num">2</div><div class="sb-label">TKS</div></div>
-            <div class="stat-box"><div class="sb-num">9</div><div class="sb-label">Dokter & Drg</div></div>
         </div>
 
         <!-- Tabel -->
@@ -291,7 +290,6 @@
                             <th>Unit/Kedudukan</th>
                             <th>Status</th>
                             <th>L/P</th>
-                            <th>No HP</th>
                         </tr>
                     </thead>
                     <tbody id="tabelBody">
@@ -313,17 +311,65 @@
             <div><h3>Jam Operasional</h3><p>Jadwal layanan Puskesmas Dirgahayu setiap harinya</p></div>
         </div>
         <div class="section-divider"></div>
-        <div class="jam-grid">
-            <div class="jam-card"><div class="jam-day">Senin</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card"><div class="jam-day">Selasa</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card"><div class="jam-day">Rabu</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card"><div class="jam-day">Kamis</div><div class="jam-time">07.30 – 14.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card"><div class="jam-day">Jumat</div><div class="jam-time">07.30 – 11.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card"><div class="jam-day">Sabtu</div><div class="jam-time">07.30 – 12.00</div><span class="jam-status status-buka">Buka</span></div>
-            <div class="jam-card tutup"><div class="jam-day">Minggu</div><div class="jam-time">Tutup</div><span class="jam-status status-tutup">Libur</span></div>
+
+        <!-- PENDAFTARAN -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="background:#e3f2fd;color:#1565c0;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1em;flex-shrink:0;"><i class="fas fa-clipboard-list"></i></div>
+            <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:0.88em;font-weight:900;letter-spacing:0.5px;">PENDAFTARAN</div>
+                <div style="font-size:0.72em;color:var(--text-muted);">Loket penerimaan dan registrasi pasien</div>
+            </div>
         </div>
-        <div style="background:var(--primary-light);border-radius:13px;padding:15px 20px;margin-top:15px;border-left:4px solid var(--primary);font-size:0.82em;color:var(--primary-dark);line-height:1.65;">
-            <i class="fas fa-info-circle" style="margin-right:6px"></i><strong>Catatan:</strong> Jam layanan dapat berubah pada hari libur nasional. Layanan UGD dan Rawat Inap tersedia 24 jam setiap hari.
+        <div class="jam-grid" style="margin-bottom:28px;">
+            <div class="jam-card">
+                <div class="jam-day">Senin – Kamis</div>
+                <div class="jam-time">07.45 – 11.00</div>
+                <div style="font-size:0.68em;color:var(--text-muted);margin-top:4px;">WITA</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card">
+                <div class="jam-day">Jumat</div>
+                <div class="jam-time">07.45 – 10.30</div>
+                <div style="font-size:0.68em;color:var(--text-muted);margin-top:4px;">WITA</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card tutup">
+                <div class="jam-day">Sabtu, Minggu &amp;<br>Hari Besar</div>
+                <div class="jam-time">Tutup</div>
+                <span class="jam-status status-tutup">Libur</span>
+            </div>
+        </div>
+
+        <!-- PELAYANAN -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="background:#e8f5e9;color:#2e7d32;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1em;flex-shrink:0;"><i class="fas fa-stethoscope"></i></div>
+            <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:0.88em;font-weight:900;letter-spacing:0.5px;">PELAYANAN</div>
+                <div style="font-size:0.72em;color:var(--text-muted);">Semua poli dan unit pelayanan medis</div>
+            </div>
+        </div>
+        <div class="jam-grid">
+            <div class="jam-card">
+                <div class="jam-day">Senin – Kamis</div>
+                <div class="jam-time">08.00 – Selesai</div>
+                <div style="font-size:0.68em;color:var(--text-muted);margin-top:4px;">WITA</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card">
+                <div class="jam-day">Jumat</div>
+                <div class="jam-time">08.00 – 11.00</div>
+                <div style="font-size:0.68em;color:var(--text-muted);margin-top:4px;">WITA</div>
+                <span class="jam-status status-buka">Buka</span>
+            </div>
+            <div class="jam-card tutup">
+                <div class="jam-day">Sabtu, Minggu &amp;<br>Hari Besar</div>
+                <div class="jam-time">Tutup</div>
+                <span class="jam-status status-tutup">Libur</span>
+            </div>
+        </div>
+
+        <div style="background:var(--primary-light);border-radius:13px;padding:15px 20px;margin-top:16px;border-left:4px solid var(--primary);font-size:0.82em;color:var(--primary-dark);line-height:1.65;">
+            <i class="fas fa-info-circle" style="margin-right:6px"></i><strong>Catatan:</strong> Jam layanan dapat berubah pada hari libur nasional dan hari besar keagamaan. Informasi jadwal terbaru dapat dilihat langsung di papan pengumuman Puskesmas Dirgahayu.
         </div>
     </section>
 
@@ -369,39 +415,203 @@
     <section class="section" id="organisasi">
         <div class="section-head">
             <div class="s-icon"><i class="fas fa-sitemap"></i></div>
-            <div><h3>Struktur Organisasi</h3><p>Bagan organisasi Puskesmas Dirgahayu berdasarkan data kepegawaian 2026</p></div>
+            <div><h3>Struktur Organisasi</h3><p>Bagan organisasi UPTD Puskesmas Dirgahayu sesuai struktur resmi</p></div>
         </div>
         <div class="section-divider"></div>
         <div class="org-wrap">
             <div class="org-chart">
 
-                <!-- PLT. KEPALA -->
+                <!-- KEPALA PUSKESMAS -->
                 <div style="display:flex;flex-direction:column;align-items:center;">
-                    <div class="org-box ob-kepala">
-                        <div class="ob-role">Plt. Kepala Puskesmas</div>
+                    <div class="org-box ob-kepala" style="min-width:200px;">
+                        <div class="ob-role">Kepala Puskesmas</div>
                         <div class="ob-name">dr. Gunawan Wibisono</div>
                         <div class="ob-nip">NIP: 19790413 200903 1 004</div>
                     </div>
                     <div class="v-line"></div>
                 </div>
 
-                <!-- LEVEL 2 — 3 KOLOM -->
+                <!-- GARIS HORIZONTAL KE 5 KLASTER -->
                 <div style="width:100%;position:relative;margin-bottom:0;">
-                    <div style="position:absolute;top:0;left:17%;right:17%;height:2px;background:var(--border);z-index:0;"></div>
-                    <div class="org-cols">
+                    <div style="position:absolute;top:0;left:5%;right:5%;height:2px;background:var(--border);z-index:0;"></div>
+                    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%;">
+
+                        <!-- KLASTER 1: MANAJEMEN -->
                         <div class="org-col">
                             <div class="col-top"></div>
-                            <div class="org-box ob-mutu">
-                                <div class="ob-role">Komite Mutu</div>
-                                <div class="ob-name">H. Muhammad Furqan, S.Kep.,Ners</div>
-                                <div class="ob-nip">NIP: 19730909 199403 1 005</div>
+                            <div class="org-box ob-tu" style="min-width:0;background:#1a237e;">
+                                <div class="ob-role">Klaster 1</div>
+                                <div class="ob-name">Manajemen</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-unit" style="min-width:0;">
+                                <div class="ob-role">Koordinator</div>
+                                <div class="ob-name">Fauzianor, SKM</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Ketatausahaan</div>
+                                <div class="ob-name">Syarifah Norjanatun Nikmah</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Manajemen Sumber Daya</div>
+                                <div class="ob-name">Muhammad Ikhsan Rifani</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Manajemen Puskesmas</div>
+                                <div class="ob-name">dr. Suminarti</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Manajemen Mutu & Keselamatan</div>
+                                <div class="ob-name">dr. Suminarti</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Manajemen Jejaring Puskesmas</div>
+                                <div class="ob-name">Aulia Nadila Mahfuza, S.Farm</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">SP Dashboard PWS</div>
+                                <div class="ob-name">Reni Dwi Susanti, SE</div>
                             </div>
                         </div>
+
+                        <!-- KLASTER 2: KIA -->
                         <div class="org-col">
                             <div class="col-top"></div>
-                            <div class="org-box ob-tu">
-                                <div class="ob-role">Ka. Subbag Tata Usaha</div>
-                                <div class="ob-name">Syarifah Norjanatun Nikmah</div>
+                            <div class="org-box ob-tu" style="min-width:0;background:#00695c;">
+                                <div class="ob-role">Klaster 2</div>
+                                <div class="ob-name">Kesehatan Ibu dan Anak</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-unit" style="min-width:0;">
+                                <div class="ob-role">Koordinator</div>
+                                <div class="ob-name">dr. Djoko Santoso</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Ibu Hamil, Bersalin & Nifas</div>
+                                <div class="ob-name">Hj. Wahdiyah, S.Keb.Bdn</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Kesehatan Balita & Anak Prasekolah</div>
+                                <div class="ob-name">Hj. Nurita Andriyani, S.Kep.Ners</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Anak Usia Sekolah & Remaja</div>
+                                <div class="ob-name">Hj. Mariyana, AM.Keb</div>
+                            </div>
+                        </div>
+
+                        <!-- KLASTER 3: DEWASA & LANSIA -->
+                        <div class="org-col">
+                            <div class="col-top"></div>
+                            <div class="org-box ob-tu" style="min-width:0;background:#1b5e20;">
+                                <div class="ob-role">Klaster 3</div>
+                                <div class="ob-name">Kes. Usia Dewasa & Lansia</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-unit" style="min-width:0;">
+                                <div class="ob-role">Koordinator</div>
+                                <div class="ob-name">dr. Gusti Khalida Rizma Rosa'dy</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Usia Dewasa</div>
+                                <div class="ob-name">H. Muhammad Furqan, S.Kep.,Ners</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Lanjut Usia</div>
+                                <div class="ob-name">Pathul Janah, AMK</div>
+                            </div>
+                        </div>
+
+                        <!-- KLASTER 4: P2M -->
+                        <div class="org-col">
+                            <div class="col-top"></div>
+                            <div class="org-box ob-tu" style="min-width:0;background:#bf360c;">
+                                <div class="ob-role">Klaster 4</div>
+                                <div class="ob-name">Penanggulangan Penyakit Menular</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-unit" style="min-width:0;">
+                                <div class="ob-role">Koordinator</div>
+                                <div class="ob-name">Tuti Kurniati, S.Kep.,Ns</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Kesehatan Lingkungan</div>
+                                <div class="ob-name">Taty Mesrati, AMd</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Surveilans</div>
+                                <div class="ob-name">Farida Roostanti, AMd.KL</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Tuberkulosis</div>
+                                <div class="ob-name">Aji Khairahdani Iskandar, S.Kep.Ners</div>
+                            </div>
+                        </div>
+
+                        <!-- LINTAS KLASTER -->
+                        <div class="org-col">
+                            <div class="col-top"></div>
+                            <div class="org-box ob-mutu" style="min-width:0;background:#4a148c;color:#fff;border-color:#4a148c;">
+                                <div class="ob-role" style="opacity:0.8;">Lintas Klaster</div>
+                                <div class="ob-name">Layanan Penunjang</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Kegawatdaruratan</div>
+                                <div class="ob-name">dr. Djoko Santoso</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Laboratorium</div>
+                                <div class="ob-name">Yeyen Romalina M H, S.ST</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Kefarmasian</div>
+                                <div class="ob-name">Rika Susanti, S.Farm., Apt</div>
+                            </div>
+                            <div class="v-line"></div>
+                            <div class="org-box ob-prog" style="min-width:0;font-size:0.72em;">
+                                <div class="ob-role">Kesehatan Gigi dan Mulut</div>
+                                <div class="ob-name">drg. Reni Dian Anggraeni</div>
+                            </div>
+                        </div>
+
+                    </div><!-- /grid 5 kolom -->
+                </div>
+
+            </div><!-- /org-chart -->
+
+            <!-- Legenda -->
+            <div class="org-legend">
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--primary-dark);"></div> Kepala Puskesmas</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#1a237e;"></div> Klaster 1 — Manajemen</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#00695c;"></div> Klaster 2 — KIA</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#1b5e20;"></div> Klaster 3 — Dewasa & Lansia</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#bf360c;"></div> Klaster 4 — P2M</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:#4a148c;"></div> Lintas Klaster</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--primary-light);border:1px solid var(--primary)"></div> Koordinator Klaster</div>
+                <div class="org-legend-item"><div class="org-legend-dot" style="background:var(--white);border:1px solid var(--border)"></div> Penanggung Jawab Program</div>
+                <div style="flex:1;text-align:right;font-size:0.7em;color:var(--text-muted);"><i class="fas fa-info-circle"></i> Berdasarkan Struktur Organisasi Resmi UPTD Puskesmas Dirgahayu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ 6. FASILITAS ══ -->
                                 <div class="ob-nip">NIP: 19691215 199203 2 008</div>
                             </div>
                         </div>
@@ -525,11 +735,11 @@
             <div class="fasilitas-card"><div class="fc-icon">💊</div><h4>Farmasi</h4><p>Apotek & obat</p></div>
             <div class="fasilitas-card"><div class="fc-icon">🔬</div><h4>Laboratorium</h4><p>Pemeriksaan lab</p></div>
             <div class="fasilitas-card"><div class="fc-icon">🥗</div><h4>Poli Gizi</h4><p>Konseling gizi</p></div>
-            <div class="fasilitas-card"><div class="fc-icon">🧠</div><h4>Kesehatan Jiwa</h4><p>PKPR & Keswa</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🧠</div><h4>Kesehatan Jiwa</h4><p>Pelayanan Keswa</p></div>
             <div class="fasilitas-card"><div class="fc-icon">💉</div><h4>Imunisasi</h4><p>Vaksinasi lengkap</p></div>
             <div class="fasilitas-card"><div class="fc-icon">🌿</div><h4>Kesling</h4><p>Sanitasi & kesling</p></div>
             <div class="fasilitas-card"><div class="fc-icon">📋</div><h4>Rekam Medis</h4><p>Administrasi pasien</p></div>
-            <div class="fasilitas-card"><div class="fc-icon">🏡</div><h4>Bidan Desa</h4><p>7 desa wilayah kerja</p></div>
+            <div class="fasilitas-card"><div class="fc-icon">🏡</div><h4>Bidan Desa</h4><p>9 Desa 1 Kelurahan </p></div>
             <div class="fasilitas-card"><div class="fc-icon">🏢</div><h4>Pustu Stagen</h4><p>Puskesmas pembantu</p></div>
             <div class="fasilitas-card"><div class="fc-icon">♿</div><h4>Akses Difabel</h4><p>Ramah disabilitas</p></div>
         </div>
@@ -735,7 +945,6 @@ function renderTable(data) {
             <td style="min-width:160px;">${unit}</td>
             <td><span class="badge-status ${sc}">${status}</span></td>
             <td><span class="badge-sex ${sexClass}">${sex}</span></td>
-            <td style="min-width:130px;font-size:0.82em;">${hp}</td>
         </tr>`;
     }).join('');
     document.getElementById('rowCount').textContent = `Menampilkan ${data.length} dari ${pegawai.length} pegawai`;
