@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -305,10 +305,8 @@
 
 <div class="main-container">
 
-    <!-- ══ POSTER KIRI ══ -->
     <aside class="poster-panel" id="poster-panel">
 
-        <!-- TBC -->
         <div id="poster-tbc" class="poster-tbc">
             <div class="poster-header"><span class="disease-icon">🫁</span><h2>TUBERKULOSIS (TBC)</h2><p class="tagline">Penyakit infeksi bakteri yang menyerang paru-paru dan dapat menular melalui udara.</p></div>
             <div class="poster-body">
@@ -323,7 +321,6 @@
             </div>
         </div>
 
-        <!-- HIV -->
         <div id="poster-hiv" class="poster-hiv" style="display:none">
             <div class="poster-header"><span class="disease-icon">🛡️</span><h2>HIV / AIDS</h2><p class="tagline">Virus yang melemahkan sistem kekebalan tubuh. Dapat dicegah dan dikendalikan dengan ARV.</p></div>
             <div class="poster-body">
@@ -337,7 +334,6 @@
             </div>
         </div>
 
-        <!-- Hepatitis -->
         <div id="poster-hep" class="poster-hep" style="display:none">
             <div class="poster-header"><span class="disease-icon">🫀</span><h2>HEPATITIS B & C</h2><p class="tagline">Infeksi virus pada hati yang bisa menjadi kronis dan menyebabkan sirosis atau kanker hati.</p></div>
             <div class="poster-body">
@@ -348,7 +344,6 @@
             </div>
         </div>
 
-        <!-- Kesehatan Jiwa -->
         <div id="poster-jiwa" class="poster-jiwa" style="display:none">
             <div class="poster-header"><span class="disease-icon">🧠</span><h2>KESEHATAN JIWA</h2><p class="tagline">Kesehatan mental sama pentingnya dengan kesehatan fisik. Kenali tanda-tanda sejak dini.</p></div>
             <div class="poster-body">
@@ -361,7 +356,6 @@
             </div>
         </div>
 
-        <!-- Skrining Anak -->
         <div id="poster-anak" class="poster-anak" style="display:none">
             <div class="poster-header"><span class="disease-icon">👧</span><h2>SKRINING KESEHATAN ANAK</h2><p class="tagline">Deteksi dini masalah kesehatan pada anak usia 7–10 tahun. Diisi oleh orang tua atau wali.</p></div>
             <div class="poster-body">
@@ -376,10 +370,8 @@
         </div>
     </aside>
 
-    <!-- ══ QUIZ PANEL KANAN ══ -->
     <section class="quiz-panel" id="quiz-panel">
 
-        <!-- FORM IDENTITAS -->
         <div class="identity-panel" id="identity-panel">
             <div class="identity-header">
                 <div class="id-icon"><i class="fas fa-user-edit"></i></div>
@@ -436,7 +428,6 @@
             </button>
         </div>
 
-        <!-- SUB-PILIHAN JIWA (Dewasa / Anak) — muncul khusus tab jiwa -->
         <div class="jiwa-selector" id="jiwa-selector" style="display:none;">
             <h4>Pilih Jenis Skrining Kesehatan Jiwa</h4>
             <p>Skrining kesehatan jiwa tersedia untuk dua kelompok. Pilih sesuai kebutuhan.</p>
@@ -459,7 +450,6 @@
             </div>
         </div>
 
-        <!-- Blok identitas khusus PRINT (tersembunyi di layar) -->
         <div class="print-identity-block" id="print-identity-block">
             <div class="print-logo-row">
                 <div>
@@ -469,8 +459,7 @@
             </div>
             <h4>Data Identitas Peserta Skrining</h4>
             <div class="print-identity-grid" id="print-identity-grid">
-                <!-- diisi JS -->
-            </div>
+                </div>
         </div>
 
         <div class="quiz-top-bar" id="quiz-top-bar" style="display:none;">
@@ -490,10 +479,8 @@
     </section>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Data berhasil disimpan!</span></div>
 
-<!-- BPJS Banner — diberi class agar bisa disembunyikan saat print -->
 <div class="bpjs-section" style="max-width:1100px;margin:0 auto;padding:0 20px 50px;">
     <div style="background:linear-gradient(135deg,#004d8c 0%,#0077cc 50%,#1a9be0 100%);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:0 10px 40px rgba(0,90,158,0.25);flex-wrap:wrap;">
         <div style="background:rgba(255,255,255,0.15);border-radius:16px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:2em;flex-shrink:0;">🩺</div>
@@ -509,8 +496,10 @@
 </div>
 
 <script>
-// ══ GANTI URL INI ══
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4H8qtWx4TKyXPYwNehftZWYaps9bTVRuGTbrf2kCuL8BAXsZONjsHwS9hmh8n_rJT/exec';
+// ══════════════════════════════════════════════════════════════
+// GANTI DENGAN URL WEB APP DARI GOOGLE APPS SCRIPT YANG BARU
+// ══════════════════════════════════════════════════════════════
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTYuayfV6vEJ-hCkZMUcpS_YPeDib6HGoUoh-RDU6zO-L115QMoP7Lkbs-wvIij3rr4Q/exec';
 
 // Label skala jiwa
 const SCALE_LABELS     = ['Tidak sama sekali', '< 1 minggu', '> 1 minggu', 'Hampir setiap hari'];
@@ -692,7 +681,6 @@ function submitIdentityAndStart() {
 
 function pilihJiwa(mode) {
     jiwaMode = mode;
-    // PENGONDISIAN YANG BENAR SESUAI KEY DATA
     if (mode === 'dewasa') {
         currentDisease = 'jiwa_dewasa';
     } else if (mode === 'mmys_anak') {
@@ -768,7 +756,6 @@ function render() {
             return `<button class="scale-btn${sel}" onclick="setAnswer(${o.val})"><span class="score-badge">${o.val}</span>${o.label}</button>`;
         }).join('') + `</div>`;
     } else if (d.isMMYS) {
-        // PERBAIKAN: Handler render untuk pilihan Ya (1) / Tidak (0) biner pada MMYS
         const gl = q.group ? `<div class="scale-group-label"><i class="fas fa-brain" style="margin-right:5px"></i>${q.group}</div>` : '';
         const mOpts = [{val: 1, label: 'Ya', icon: 'fas fa-check-circle'}, {val: 0, label: 'Tidak', icon: 'fas fa-times-circle'}];
         optsHtml = gl + `<div class="answer-opts">` + mOpts.map(o => {
@@ -817,7 +804,6 @@ function prevStep() { if (step > 0) { step--; render(); } }
 /* ── Hitung skor ── */
 function calcScore() {
     const d = DATA[currentDisease]; let score = 0;
-    // PERBAIKAN: MMYS juga melakukan akumulasi penambahan nilai angka langsung (0 atau 1)
     if (d.isScale || d.isMMYS) {
         d.questions.forEach((q,i) => { score += (answers[i] !== undefined ? Number(answers[i]) : 0); });
     } else if (d.isSDQ) {
@@ -848,7 +834,6 @@ function showResult() {
         else if (tot <= 5) { level='med'; icon='⚠️'; title='Gejala Ringan — Perlu Diperhatikan'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Terdapat beberapa gejala yang perlu diperhatikan.`; saran='Disarankan konsultasi ke petugas kesehatan jiwa di Puskesmas Dirgahayu.'; }
         else { level='high'; icon='🔴'; title='Gejala Signifikan — Segera Konsultasi'; desc=`Skor total: <strong>${tot}/12</strong> (PHQ-2: ${phq}/6 | GAD-2: ${gad}/6). Ditemukan gejala yang memerlukan perhatian profesional.`; saran='Segera temui dokter/konselor di Puskesmas. Hotline Sehat Jiwa: <strong>119 ext 8</strong> (24 jam, gratis).'; }
     } else if (d.isMMYS) {
-        // PERBAIKAN: Penentuan batas ambang bahaya skor untuk MMYS V.1 (Maksimal skor = 6)
         if (score <= d.thresholds.low) { 
             level='low'; icon='✅'; title='Hasil Skrining: Normal'; 
             desc=`Skor MMYS V.1: <strong>${score}/6</strong>. Kondisi psikologis terpantau stabil dan berada dalam batas normal.`; 
@@ -880,7 +865,6 @@ function showResult() {
             const v = Number(a); const clrs = ['pill-tidak','pill-tdktahu','pill-tdktahu','pill-ya'];
             pillClass = clrs[v]||'pill-tdktahu'; pillLabel = SCALE_LABELS[v]!==undefined ? `${v} – ${SCALE_LABELS[v]}` : '-';
         } else if (d.isMMYS) {
-            // PERBAIKAN: Menampilkan teks "Ya" / "Tidak" pada ringkasan cetak MMYS
             pillClass = a === 1 ? 'pill-ya' : 'pill-tidak';
             pillLabel = a === 1 ? 'Ya' : 'Tidak';
         } else if (d.isSDQ) {
@@ -924,7 +908,7 @@ function showResult() {
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('progress-wrap').style.display = 'block';
 
-    // Kirim ke Google Sheets
+    // Persiapkan data ringkasan untuk Google Sheets
     const detailLines = d.questions.map((q,i) => {
         const a = answers[i];
         let jw;
@@ -934,6 +918,8 @@ function showResult() {
         else jw = a==='ya'?'Ya':a==='tidak'?'Tidak':'Tidak Tahu';
         return `P${i+1}: ${jw}`;
     });
+    
+    // Panggil fungsi kirim
     kirimKeSheets(title, detailLines.join(' | '));
 }
 
@@ -953,11 +939,35 @@ function restartQuiz() {
     document.getElementById('umur-hint').textContent = '';
 }
 
-/* ── Kirim ke Sheets ── */
+/* ── Kirim ke Sheets (URL-Encoded) ── */
 function kirimKeSheets(hasilSkrining, detailJawaban) {
-    if (!SCRIPT_URL || SCRIPT_URL.includes('GANTI')) { showToast('⚠️ URL Google Script belum diisi', true); return; }
-    const payload = { ...identitas, jenisskrining: DATA[currentDisease].label, hasilSkrining, detailJawaban };
-    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    if (!SCRIPT_URL || SCRIPT_URL.includes('GANTI') || SCRIPT_URL === 'MASUKKAN_URL_WEB_APP_DI_SINI') { 
+        showToast('⚠️ URL Google Script belum diisi', true); 
+        return; 
+    }
+    
+    // Susun data yang akan dikirim
+    const payload = { 
+        ...identitas, 
+        jenisskrining: DATA[currentDisease].label, 
+        hasilSkrining: hasilSkrining, 
+        detailJawaban: detailJawaban,
+        timestamp: new Date().toLocaleString('id-ID')
+    };
+
+    // UBAH KE URL-ENCODED
+    const formData = new URLSearchParams();
+    for (const key in payload) {
+        formData.append(key, payload[key]);
+    }
+
+    // Kirim data menggunakan format form urlencoded
+    fetch(SCRIPT_URL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
+        body: formData.toString() 
+    })
     .then(() => showToast('✅ Data skrining berhasil disimpan!', false))
     .catch(() => showToast('⚠️ Gagal menyimpan data. Periksa koneksi.', true));
 }
@@ -971,6 +981,5 @@ function showToast(msg, isError=false) {
     setTimeout(()=>t.classList.remove('show'), 4000);
 }
 </script>
-
 </body>
 </html>
