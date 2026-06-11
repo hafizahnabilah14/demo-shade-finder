@@ -316,7 +316,7 @@
 // ══════════════════════════════════════════════════════════════
 // GANTI DENGAN URL WEB APP DARI GOOGLE APPS SCRIPT YANG BARU
 // ══════════════════════════════════════════════════════════════
-const SCRIPT_URL_REGISTRASI = 'https://script.google.com/macros/s/AKfycbywyDFN0HiM4HGCTym4NERgte_D0naa13bzHOawmyF5QjFV7u5RrstkYHNtTcmJxNHp/exec';
+const SCRIPT_URL_REGISTRASI = '';
 
 // NOMOR WHATSAPP PETUGAS LOKET PENDAFTARAN (Ganti sesuai nomor asli faskes)
 const NO_HP_PETUGAS = "6281351090323"; 
@@ -326,10 +326,9 @@ let templateText = '';
 
 // Set tanggal minimum kunjungan hari ini
 document.addEventListener('DOMContentLoaded', () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    document.getElementById('r-tanggal').min = tomorrow.toISOString().split('T')[0];
-    document.getElementById('r-tanggal').value = tomorrow.toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('r-tanggal').min = today;
+    document.getElementById('r-tanggal').value = today;
 });
 
 // ── Pilih Poliklinik ──
