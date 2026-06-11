@@ -314,11 +314,11 @@
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// GANTI URL INI dengan Web App URL Google Apps Script Pendaftaran
+// GANTI DENGAN URL WEB APP DARI GOOGLE APPS SCRIPT YANG BARU
 // ══════════════════════════════════════════════════════════════
-const SCRIPT_URL_REGISTRASI = 'https://script.google.com/macros/s/AKfycbxNnasMy3qr3ygJ4FwH_O7TgCdRHYN7omN8zQEiC4-sVGk7UFKzcfbXfw-X5RES2UsH/exec';
+const SCRIPT_URL_REGISTRASI = 'https://script.google.com/macros/s/AKfycbywyDFN0HiM4HGCTym4NERgte_D0naa13bzHOawmyF5QjFV7u5RrstkYHNtTcmJxNHp/exec';
 
-// NOMOR WHATSAPP PETUGAS LOKET PENDAFTARAN (Ganti sesuai nomor asli faskes, pakai kode negara 62)
+// NOMOR WHATSAPP PETUGAS LOKET PENDAFTARAN (Ganti sesuai nomor asli faskes)
 const NO_HP_PETUGAS = "6281351090323"; 
 
 let selectedPoli = '';
@@ -367,7 +367,6 @@ function validate() {
 
 // ── Submit Registrasi Pendaftaran Pasien ──
 async function submitRegistrasi() {
-
     if (!validate()) {
         showToast('Periksa kembali data yang belum lengkap', true);
         return;
@@ -386,26 +385,30 @@ async function submitRegistrasi() {
         tanggalLahir: document.getElementById('r-tgllahir').value,
         noHp: document.getElementById('r-hp').value.trim(),
         alamat: document.getElementById('r-alamat').value.trim(),
-        timestamp: new Date().toLocaleString('id-ID'),
+        timestamp: new Date().toLocaleString('id-ID')
     };
 
     try {
-        // VALIDASI INPUT TAMBAHAN
         if (data.nikJkn.length < 13) throw new Error('NIK / No. BPJS minimal 13 digit');
         if (data.namaPasien.length < 3) throw new Error('Nama pasien terlalu pendek');
 
-        // PROSES KIRIM RAW JSON MURNI KE APPS SCRIPT
+        // MENGUBAH DATA MENJADI FORM URL-ENCODED
+        const formData = new URLSearchParams();
+        for (const key in data) {
+            formData.append(key, data[key]);
+        }
+
+        // MENGIRIM DATA KE GOOGLE APPS SCRIPT
         await fetch(SCRIPT_URL_REGISTRASI, {
             method: 'POST',
-            mode: 'no-cors', // Menghindari bloking CORS redirect khas Google App Script
+            mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(data)
+            body: formData.toString()
         });
 
-        // Dalam mode no-cors, respon balik dari server dibungkus secara opaque (rahasia).
-        // Kita langsung asumsikan data sukses melompat ke catch bila gagal koneksi.
+        // Menampilkan hasil setelah fetch selesai
         tampilkanHasil(data);
 
     } catch (error) {
@@ -437,16 +440,16 @@ function tampilkanHasil(data) {
     templateText =
 `*PENDAFTARAN MANDIRI PASIEN - SIDAYU*
 ==============================
-📅 Rencana Kunjungan : ${formatTanggal(data.tanggalKunjungan)}
-💳 Jalur Pembiayaan   : ${data.pembiayaan}
-🏥 Poliklinik Tujuan : ${data.poliTujuan}
+Rencana Kunjungan : ${formatTanggal(data.tanggalKunjungan)}
+Jalur Pembiayaan  : ${data.pembiayaan}
+Poliklinik Tujuan : ${data.poliTujuan}
 
 *DATA IDENTITAS PASIEN:*
-👤 Nama Lengkap     : ${data.namaPasien}
-🆔 NIK / No. Kartu  : ${data.nikJkn}
-🎂 Tanggal Lahir     : ${formatTanggal(data.tanggalLahir)}
-📱 No. HP Kontak    : ${data.noHp}
-📍 Alamat Rumah     : ${data.alamat}
+Nama Lengkap    : ${data.namaPasien}
+NIK / No. Kartu : ${data.nikJkn}
+Tanggal Lahir   : ${formatTanggal(data.tanggalLahir)}
+No. HP Kontak   : ${data.noHp}
+Alamat Rumah    : ${data.alamat}
 ==============================
 Mohon divalidasi datanya untuk diproses berkas antrian loket pendaftarannya. Terima kasih petugas loket!`;
 
@@ -459,7 +462,7 @@ Mohon divalidasi datanya untuk diproses berkas antrian loket pendaftarannya. Ter
     panel.classList.add('show');
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    showToast('✅ Berhasil mencatat pra-pendaftaran!', false);
+    showToast('Berhasil mencatat pra-pendaftaran!', false);
 }
 
 function formatTanggal(d) {
@@ -472,7 +475,7 @@ function formatTanggal(d) {
 function copyTemplate() {
     if (!templateText) return;
     navigator.clipboard.writeText(templateText).then(() => {
-        showToast('✅ Format pesan disalin! Teruskan ke WhatsApp.', false);
+        showToast('Format pesan disalin! Teruskan ke WhatsApp.', false);
         const btn = document.getElementById('copyBtn');
         btn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
         setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Salin Format'; }, 2500);
